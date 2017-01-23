@@ -1,0 +1,6 @@
+INDEX VERSION 1.126+/home/scrabbler/Jatin/Programming Codes/Coding Problems/.metadata/.plugins/org.eclipse.jdt.core
+4172558006.index
+1549653844.index
+3074455524.index
+1057945087.index
+2353627191.index

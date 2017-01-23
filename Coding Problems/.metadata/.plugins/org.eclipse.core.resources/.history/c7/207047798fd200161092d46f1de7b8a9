@@ -1,0 +1,66 @@
+
+public class ReverseStringOrArray 
+{
+	void reverseArray(int a[], int start , int end)
+	{
+		int temp;
+		while(start<end)
+		{
+			temp = a[start];
+			a[start]=a[end];
+			a[end]=temp;
+			start++;
+			end--;
+		}
+	}
+	
+	void printArray(int arr[], int size)
+    {
+        for (int i=0; i < size; i++)
+            System.out.print(arr[i] + " ");
+        System.out.println("");
+    }
+ 
+	
+	public static void main(String[] args) 
+	{
+		ReverseStringOrArray ob = new ReverseStringOrArray();
+		
+		int flag=1;
+		int a[]= {1,2,3,4,5};
+		int n = a.length;
+		int start = 0;
+		int end = n-1;
+		int b[] = a.clone(); 
+		
+		System.out.println("The initial array is ");
+		ob.printArray(b,5);
+		
+		ob.reverseArray(a,start,end);
+		
+		System.out.println("The reversed array is");
+		ob.printArray(a, 5);
+		
+		for(int i=0,j=n-1;i<j;i++,j--)
+		{
+			if(a[i]!=b[j])
+			{
+				flag=0;
+				break;
+			}
+		}
+		
+		if(flag==0)
+		{
+			System.out.println("Not a palindrome");
+		}
+		else
+		{
+			System.out.println("Palindrome");
+		}
+		
+		
+		
+	}
+
+}

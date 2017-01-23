@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;InsertionSort&apos; to &apos;InsertionSort_Asc&apos;&#x0A;- Original project: &apos;SortingAlgos&apos;&#x0A;- Original element: &apos;InsertionSort&apos;&#x0A;- Renamed element: &apos;InsertionSort_Asc&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;InsertionSort&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{InsertionSort.java[InsertionSort" matchStrategy="1" name="InsertionSort_Asc" qualified="false" references="true" similarDeclarations="false" stamp="1483074206194" textual="false" version="1.0"/>
+</session>
