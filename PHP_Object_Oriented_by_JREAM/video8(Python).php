@@ -9,9 +9,9 @@ class Python implements DotSyntax
     $this->UsesDotSyntax();
   }
 
-    public function UsesDotSyntax()
-    {
-      echo 'Yes, it looks like this : Object.Method()';
-    }
+  public function UsesDotSyntax()
+  {
+    echo 'Yes, it looks like this : Object.Method()';
+  }
 }
- ?>
+?>
