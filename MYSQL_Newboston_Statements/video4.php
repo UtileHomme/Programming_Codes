@@ -57,25 +57,4 @@ SELECT id, name FROM customers WHERE id <= 8
 SELECT id, name FROM customers WHERE id BETWEEN 25 AND 30
 
 SELECT id, name FROM customers WHERE state='CA'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  ?>

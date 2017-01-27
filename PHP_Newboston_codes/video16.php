@@ -1,6 +1,7 @@
 <?php
 
 //valid for video 16,17
+
 $text  = 'Hello world';
 echo $text.'<br />';
 $day = 'Wednesday';

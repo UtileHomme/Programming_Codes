@@ -14,4 +14,9 @@ else {
   echo 'Not equal';
 }
 
+$text = 'Hello';
+$text = ' World';
+
+echo $text;
+
  ?>
