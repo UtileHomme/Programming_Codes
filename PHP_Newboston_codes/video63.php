@@ -6,7 +6,7 @@
 //header is used to redirect the user to another page
 //it cannot be used after output has been sent to another page
 
-//header();   -- wont Worker
+//header();   -- wont Work
 $redirect_page = 'http://google.com';
 $redirect = true;
 

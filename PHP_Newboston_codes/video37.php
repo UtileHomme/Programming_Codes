@@ -1,6 +1,6 @@
 <?php
 
-$string = 'This is an example string. ';
+$string = ' This is an example string. ';
 
 //trim will remove whitespaces from both ends of the string
 $string_trimmed = trim($string);
@@ -15,9 +15,10 @@ echo '<br />';
 $string1 = 'This is a <img scr="image.jpg" /> string ';
 
 //addslashes adds slashes before the quotes
+echo $string_slashes = htmlentities($string1).'<br />';
 echo $string_slashes = htmlentities(addslashes($string1));
 
 echo '<br />';
-
+echo $string_slashes = htmlentities(addslashes($string1)).'<br />';
 echo $string_strip = stripslashes(($string_slashes));
 ?>

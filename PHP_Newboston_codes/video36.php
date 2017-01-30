@@ -1,7 +1,7 @@
 <?php
 
 $string1 = 'This is my essay. I am going to be talking about PHP.';
-$string2 = 'Nothing matches.';
+$string2 = 'Jqra';
 
 //compares the given strings. Returns the third variable
 similar_text($string1, $string2, $result);

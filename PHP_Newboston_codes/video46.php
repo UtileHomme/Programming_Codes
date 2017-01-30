@@ -23,7 +23,7 @@ if(isset($_GET['user_name']) && !empty($_GET['user_name']))
 
   if($user_name1=='alex')
   {
-    echo 'You are the best';
+    echo 'You are the best '.$user_name;
   }
 }
 

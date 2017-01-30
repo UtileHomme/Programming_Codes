@@ -5,10 +5,10 @@ $number2 = 5;
 
 function add($number1, $number2)
 {
-  echo $number1 + $number2;
+  return $number1 + $number2;
 }
 
-add($number1,$number2);
+echo $sum = add($number1,$number2);
 
 echo '<br />';
 

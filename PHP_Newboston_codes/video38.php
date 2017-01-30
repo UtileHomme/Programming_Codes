@@ -11,6 +11,6 @@ echo '<br />';
 
 $food[4] = 'Fruit';
 
-var_dump($food);  //will show the index, the type of data stored as well as value
+var_dump($food);  //will show the index, the type of data stored,length of each data as well as value
 
  ?>

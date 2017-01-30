@@ -12,7 +12,7 @@ SELECT seller_id FROM items WHERE name LIKE '%boxes of frogs'
 
 //joining two tables to give complete result
 SELECT customers.id, customers.name, items.name, items.cost FROM customers, items
-WHERE customers.id = seller_id
+WHERE customers.id = items.seller_id
 GROUP BY customers.id
 
 (video 23)
