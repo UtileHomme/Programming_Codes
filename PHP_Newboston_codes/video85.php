@@ -1,5 +1,5 @@
 <?php
-//valid for video 85-86
+//valid for video 85
 
 //how to delete an uploaded file
 $filename = 'video85(filedelete).txt';

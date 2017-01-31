@@ -24,12 +24,19 @@ if(isset($_POST['name']))
       }
       $count++;
     }
+    echo '<br /><br /><br />';
+    foreach($readin as $fname)
+    {
+      echo trim($fname).',  ';
+    }
   }
   else
   {
     echo 'Please type a name';
   }
 }
+
+
 ?>
 
 <form action="video78.php" method="POST">

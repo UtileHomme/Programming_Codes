@@ -19,7 +19,7 @@ if(isset($name))
 {
   if(!empty($name))
   {
-    if($extension=='jpg' || $extension=='jpeg' && ($type=='image/jpeg')  && $size<=$max_size)
+    if(($extension=='jpg' || $extension=='jpeg') && ($type=='image/jpeg')  && $size<=$max_size)
     {
     //now we need to move the temporary file from temp location to its actual location
     $location = '/home/scrabbler/Jatin/Programming Codes/PHP_Newboston_codes/uploads/';
