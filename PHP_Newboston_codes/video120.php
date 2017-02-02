@@ -20,5 +20,5 @@ SELECT `people`.`name`, `pets`.`pet` FROM `people` LEFT JOIN `pets` ON `people`.
 SELECT `people`.`name`, `pets`.`pet` FROM `people` RIGHT JOIN `pets` ON `people`.`id`=`pets`.`people_id`
 
 //displays data only where matching condition is met
-SELECT `people`.`name`, `pets`.`pet` FROM `people` RIGHT JOIN `pets` ON `people`.`id`=`pets`.`people_id`
+SELECT `people`.`name`, `pets`.`pet` FROM `people` JOIN `pets` ON `people`.`id`=`pets`.`people_id`
 ?>

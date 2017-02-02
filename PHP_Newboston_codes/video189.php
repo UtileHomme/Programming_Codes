@@ -37,7 +37,7 @@ class SavingsAccount extends BankAccount
 
 }
 //new instance of class
-$alex = new BankAccount;
+$alex = new BankAccount();
 
 //withdrawing 5 pounds
 $alex->Withdraw(12);

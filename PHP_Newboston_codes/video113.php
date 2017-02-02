@@ -8,7 +8,6 @@ require 'video113(connect.inc).php';
     $query = "SELECT `food` , `calories` FROM `food` ORDER BY `id` DESC";
 
     $result = $conn->prepare($query); //helps avoid sql injection
-    $result->bindParam(':uh', $uh, PDO::PARAM_STR); //putting parameters in place of actual data
     if($result->execute())
     {
       $result->setFetchMode(PDO::FETCH_ASSOC);

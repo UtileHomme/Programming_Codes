@@ -1,5 +1,5 @@
 <?php
-//valid for video 132-134
+//valid for video 132-133
 
 require 'video113(connect.inc).php';
 
@@ -13,7 +13,7 @@ if(isset($_POST['search_name']))
     $query = "SELECT `name` FROM `names` WHERE `name` LIKE ?";
     $result = $conn->prepare($query);
     $result->bindValue(1,"%$search_name%", PDO::PARAM_STR);
-    $result->execute();
+
 
     if($result->execute())
     {

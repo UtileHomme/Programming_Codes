@@ -6,6 +6,7 @@ include_once('video136(connect.inc).php');
 
 $current_file = $_SERVER['SCRIPT_NAME']; // this is for storing the current file names
 
+//this will tell us the page we have come from 
 if(isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER']))
 {
   $http_referer = $_SERVER['HTTP_REFERER'];
