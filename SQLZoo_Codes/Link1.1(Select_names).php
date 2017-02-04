@@ -10,7 +10,7 @@ Find the country that start with Y
 
 Answer:
 SELECT name FROM world
-  WHERE name LIKE 'Y%'
+WHERE name LIKE 'Y%'
 
 Q2:
 Find the countries that end with y

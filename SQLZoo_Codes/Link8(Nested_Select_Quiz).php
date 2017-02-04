@@ -1,5 +1,7 @@
 <?php
 
+// http://sqlzoo.net/wiki/Nested_SELECT_Quiz  -- IMPORTANT
+
 Q1:
 Select the code that shows the name, region and population of the smallest country in each region
 
