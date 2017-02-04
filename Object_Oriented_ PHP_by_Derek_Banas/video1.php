@@ -1,3 +1,5 @@
+<!-- http://www.newthinktank.com/2014/08/object-oriented-php/ -->
+
 <html>
 <head>
 	<title><?php echo "PHP Object Oriented Programming";?></title>
@@ -251,7 +253,7 @@ echo $animal_two;
 $animal_two->sing();
 
 // 6. You can also define functions that will except classes
-// extending a secific class or interface
+// extending a specific class or interface
 
 function make_them_sing(Singable $singing_animal){
 
