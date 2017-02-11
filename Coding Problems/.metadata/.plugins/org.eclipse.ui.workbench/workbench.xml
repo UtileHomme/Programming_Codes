@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="22" version="2.0">
+<workbench progressCount="21" version="2.0">
 <workbenchAdvisor/>
 <window height="744" width="1301" x="65" y="24">
 <fastViewData fastViewLocation="1024"/>
@@ -14,7 +14,7 @@
 <coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="76" y="30"/>
 <coolItem id="org.eclipse.jst.j2ee.J2eeMainActionSet" itemType="typeToolBarContribution" x="84" y="30"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="104" y="30"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="152" y="30"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="68" y="30"/>
 <coolItem id="org.eclipse.wst.server.ui.internal.webbrowser.actionSet" itemType="typeToolBarContribution" x="40" y="30"/>
 <coolItem id="org.eclipse.wst.ws.explorer.explorer" itemType="typeToolBarContribution" x="40" y="30"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -22,7 +22,7 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="184" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -31,31 +31,10 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-<part id="1"/>
-<part id="2"/>
-<part id="3"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReverseArray_Iterative.java" partName="ReverseArray_Iterative.java" path="/home/scrabbler/Jatin/Programming Codes/Coding Problems/Arrays/src/ReverseArray_Iterative.java" title="ReverseArray_Iterative.java" tooltip="Arrays/src/ReverseArray_Iterative.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Arrays/src/ReverseArray_Iterative.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="874" selectionOffset="0" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReverseArray_Recursive.java" partName="ReverseArray_Recursive.java" path="/home/scrabbler/Jatin/Programming Codes/Coding Problems/Arrays/src/ReverseArray_Recursive.java" title="ReverseArray_Recursive.java" tooltip="Arrays/src/ReverseArray_Recursive.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Arrays/src/ReverseArray_Recursive.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="247" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CheckForPalindrome_UsingAFunction.java" partName="CheckForPalindrome_UsingAFunction.java" path="/home/scrabbler/Jatin/Programming Codes/Coding Problems/String/src/CheckForPalindrome_UsingAFunction.java" title="CheckForPalindrome_UsingAFunction.java" tooltip="String/src/CheckForPalindrome_UsingAFunction.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/String/src/CheckForPalindrome_UsingAFunction.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="443" selectionTopPixel="0"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CheckForPalindrome_WithoutFunction.java" partName="CheckForPalindrome_WithoutFunction.java" path="/home/scrabbler/Jatin/Programming Codes/Coding Problems/String/src/CheckForPalindrome_WithoutFunction.java" title="CheckForPalindrome_WithoutFunction.java" tooltip="String/src/CheckForPalindrome_WithoutFunction.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/String/src/CheckForPalindrome_WithoutFunction.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="89" selectionTopPixel="0"/>
-</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
@@ -81,9 +60,7 @@
 <view id="org.eclipse.datatools.connectivity.DataSourceExplorerNavigator" partName="Data Source Explorer"/>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>
-<category IMemento.internal.id="Warnings (5 items)"/>
-<category IMemento.internal.id="Warnings"/>
+<expanded>&#x0A;<category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.resourceField="0" org.eclipse.ui.ide.severityAndDescriptionField="0"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -147,7 +124,7 @@
 <view id="org.eclipse.wst.server.ui.ServersView" partName="Servers"/>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jst.j2ee.internal.perspective.J2EEPerspective" id="org.eclipse.jst.j2ee.J2EEPerspective" label="Java EE"/>
 <alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
@@ -341,7 +318,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.1970405" ratioLeft="253" ratioRight="1031" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.7535322" ratioLeft="480" ratioRight="157" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.77080065" ratioLeft="491" ratioRight="146" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
@@ -379,183 +356,12 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory>
-<editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/LinkedList/src/SearchElement_Iterative.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/LinkedList/src/ReverseLinkedList_Iterative.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/LinkedList/src/ReverseLinkedList_Recursive.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/LinkedList/src/ReverseLinkedList_Iterative.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Arrays/src/ReverseStringOrArray.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Arrays/src/ReverseStringOrArray_Iterative.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Arrays/src/ReverseStringOrArray_Recursive.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Arrays/src/ReverseArray_Iterative.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Arrays/src/ReverseArray_Recursive.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/String/src/CheckForPalindrome.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/String/src/CheckForPalindrome_UsingAFunction.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/String/src/CheckForPalindrome_WithoutFunction.java"/>
-</editors>
-<item historyLabel="ReverseLinkedList_Iterative.java" index="1">
-<position info="not_deleted" x="0" y="1097"/>
-</item>
-<item historyLabel="ReverseLinkedList_Recursive.java" index="2">
-<position info="not_deleted" x="593" y="0"/>
-</item>
-<item historyLabel="SearchElement_Iterative.java" index="0">
-<position info="not_deleted" x="143" y="226"/>
-</item>
-<item historyLabel="ReverseLinkedList_Recursive.java" index="2">
-<position info="not_deleted" x="593" y="0"/>
-</item>
-<item historyLabel="ReverseLinkedList_Iterative.java" index="1">
-<position info="not_deleted" x="832" y="57"/>
-</item>
-<item historyLabel="ReverseLinkedList_Recursive.java" index="2">
-<position info="not_deleted" x="593" y="0"/>
-</item>
-<item historyLabel="ReverseLinkedList_Iterative.java" index="1">
-<position info="not_deleted" x="832" y="57"/>
-</item>
-<item historyLabel="ReverseLinkedList_Recursive.java" index="2">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="ReverseLinkedList_Iterative.java" index="3">
-<position info="not_deleted" x="832" y="57"/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position info="not_deleted" x="115" y="0"/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position info="not_deleted" x="587" y="0"/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position info="not_deleted" x="178" y="0"/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position info="not_deleted" x="463" y="0"/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position info="not_deleted" x="753" y="0"/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position info="not_deleted" x="229" y="0"/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position info="not_deleted" x="679" y="0"/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position info="not_deleted" x="317" y="0"/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position info="not_deleted" x="561" y="0"/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position info="not_deleted" x="753" y="0"/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position info="not_deleted" x="831" y="0"/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position info="not_deleted" x="854" y="0"/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position info="not_deleted" x="856" y="0"/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position/>
-</item>
-<item historyLabel="ReverseStringOrArray.java" index="4">
-<position/>
-</item>
-<item historyLabel="ReverseStringOrArray_Iterative.java" index="5">
-<position info="not_deleted" x="0" y="898"/>
-</item>
-<item historyLabel="ReverseStringOrArray_Recursive.java" index="6">
-<position info="not_deleted" x="0" y="973"/>
-</item>
-<item historyLabel="ReverseStringOrArray_Iterative.java" index="5">
-<position info="not_deleted" x="0" y="898"/>
-</item>
-<item historyLabel="ReverseStringOrArray_Recursive.java" index="6">
-<position info="not_deleted" x="0" y="973"/>
-</item>
-<item historyLabel="ReverseArray_Iterative.java" index="7">
-<position info="not_deleted" x="0" y="874"/>
-</item>
-<item historyLabel="ReverseArray_Recursive.java" index="8">
-<position info="not_deleted" x="379" y="0"/>
-</item>
-<item historyLabel="ReverseArray_Recursive.java" index="8">
-<position info="not_deleted" x="247" y="0"/>
-</item>
-<item historyLabel="CheckForPalindrome.java" index="9">
-<position info="not_deleted" x="26" y="0"/>
-</item>
-<item historyLabel="CheckForPalindrome.java" index="9">
-<position info="not_deleted" x="99" y="0"/>
-</item>
-<item historyLabel="CheckForPalindrome.java" index="9">
-<position info="not_deleted" x="486" y="0"/>
-</item>
-<item historyLabel="CheckForPalindrome.java" index="9">
-<position info="not_deleted" x="231" y="0"/>
-</item>
-<item historyLabel="CheckForPalindrome.java" index="9">
-<position info="not_deleted" x="360" y="0"/>
-</item>
-<item historyLabel="CheckForPalindrome_UsingAFunction.java" index="10">
-<position info="not_deleted" x="220" y="0"/>
-</item>
-<item historyLabel="CheckForPalindrome_UsingAFunction.java" index="10">
-<position info="not_deleted" x="235" y="0"/>
-</item>
-<item historyLabel="ReverseArray_Recursive.java" index="8">
-<position info="not_deleted" x="247" y="0"/>
-</item>
-<item historyLabel="CheckForPalindrome_UsingAFunction.java" index="10">
-<position info="not_deleted" x="319" y="0"/>
-</item>
-<item historyLabel="CheckForPalindrome_WithoutFunction.java" index="11">
-<position info="not_deleted" x="122" y="0"/>
-</item>
-<item historyLabel="CheckForPalindrome_UsingAFunction.java" index="10">
-<position info="not_deleted" x="173" y="198"/>
-</item>
-<item historyLabel="CheckForPalindrome_WithoutFunction.java" index="11">
-<position info="not_deleted" x="122" y="0"/>
-</item>
-<item historyLabel="CheckForPalindrome_WithoutFunction.java" index="11">
-<position info="not_deleted" x="600" y="0"/>
-</item>
-<item historyLabel="CheckForPalindrome_UsingAFunction.java" index="10">
-<position info="not_deleted" x="173" y="198"/>
-</item>
-<item historyLabel="CheckForPalindrome_WithoutFunction.java" index="11">
-<position info="not_deleted" x="89" y="0"/>
-</item>
-<item historyLabel="CheckForPalindrome_UsingAFunction.java" index="10">
-<position info="not_deleted" x="443" y="0"/>
-</item>
-<item active="true" historyLabel="CheckForPalindrome_WithoutFunction.java" index="11">
-<position info="not_deleted" x="89" y="0"/>
-</item>
-</navigationHistory>
+<navigationHistory/>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="left"/>
-</trimArea>
-<trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="right"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -563,13 +369,36 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
-<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CheckForPalindrome_WithoutFunction.java" tooltip="String/src/CheckForPalindrome_WithoutFunction.java">
 <persistable path="/String/src/CheckForPalindrome_WithoutFunction.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CheckForPalindrome_UsingAFunction.java" tooltip="String/src/CheckForPalindrome_UsingAFunction.java">
+<persistable path="/String/src/CheckForPalindrome_UsingAFunction.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BinarySearch_Recursive.java" tooltip="SearchingAlgos/src/BinarySearch_Recursive.java">
+<persistable path="/SearchingAlgos/src/BinarySearch_Recursive.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BinarySearch_Iterative.java" tooltip="SearchingAlgos/src/BinarySearch_Iterative.java">
+<persistable path="/SearchingAlgos/src/BinarySearch_Iterative.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LinearSearch_UsingFunctions.java" tooltip="SearchingAlgos/src/LinearSearch_UsingFunctions.java">
+<persistable path="/SearchingAlgos/src/LinearSearch_UsingFunctions.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LinearSearch_usingLoops.java" tooltip="SearchingAlgos/src/LinearSearch_usingLoops.java">
+<persistable path="/SearchingAlgos/src/LinearSearch_usingLoops.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Stack_LinkedLists.java" tooltip="Stack/src/Stack_LinkedLists.java">
+<persistable path="/Stack/src/Stack_LinkedLists.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LinkedList_AddAfterNode.java" tooltip="LinkedList/src/LinkedList_AddAfterNode.java">
+<persistable path="/LinkedList/src/LinkedList_AddAfterNode.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Stack_Arrays.java" tooltip="Stack/src/Stack_Arrays.java">
+<persistable path="/Stack/src/Stack_Arrays.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CheckForPalindrome.java" tooltip="String/src/CheckForPalindrome.java">
 <persistable path="/String/src/CheckForPalindrome.java"/>
@@ -588,30 +417,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReverseLinkedList.java" tooltip="LinkedList/src/ReverseLinkedList.java">
 <persistable path="/LinkedList/src/ReverseLinkedList.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SearchElement_Recursive.java" tooltip="LinkedList/src/SearchElement_Recursive.java">
-<persistable path="/LinkedList/src/SearchElement_Recursive.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MajorityElementMethod2.java" tooltip="Arrays/src/MajorityElementMethod2.java">
-<persistable path="/Arrays/src/MajorityElementMethod2.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MajorityElementMethod1.java" tooltip="Arrays/src/MajorityElementMethod1.java">
-<persistable path="/Arrays/src/MajorityElementMethod1.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FrequencyOfOccurrenceOfElementsInArray.java" tooltip="Arrays/src/FrequencyOfOccurrenceOfElementsInArray.java">
-<persistable path="/Arrays/src/FrequencyOfOccurrenceOfElementsInArray.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BubbleSort_Optimized.java" tooltip="SortingAlgos/src/BubbleSort_Optimized.java">
-<persistable path="/SortingAlgos/src/BubbleSort_Optimized.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LinkedList_AddAtTheEnd.java" tooltip="LinkedList/src/LinkedList_AddAtTheEnd.java">
-<persistable path="/LinkedList/src/LinkedList_AddAtTheEnd.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LinkedList_AddinBeginning.java" tooltip="LinkedList/src/LinkedList_AddinBeginning.java">
-<persistable path="/LinkedList/src/LinkedList_AddinBeginning.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LinkedList_AddAfterNode.java" tooltip="LinkedList/src/LinkedList_AddAfterNode.java">
-<persistable path="/LinkedList/src/LinkedList_AddAfterNode.java"/>
 </file>
 </mruList>
 </workbench>

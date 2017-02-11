@@ -1,5 +1,6 @@
 <?php
 
+// http://sqlzoo.net/wiki/The_JOIN_operation
 
 Q1:
 The first example shows the goal scored by a player with the last name 'Bender'.
@@ -106,6 +107,8 @@ SELECT distinct(player)
 FROM game JOIN goal ON matchid = id
 WHERE (team1='GER' or team2='GER') and teamid!='GER'
 
+// teamid is the team which scored goals
+
 Q9:
 Show teamname and the total number of goals scored.
 COUNT and GROUP BY
@@ -140,8 +143,8 @@ SELECT matchid,mdate, count(*)
 FROM game JOIN goal ON matchid = id
 WHERE teamid='GER'
 group by matchid,mdate
-// 
-Q13:
+//
+Q13: IMPORTANT
 mdate	team1	score1	team2	score2
 List every match with the goals scored by each team as shown. This will use CASE WHEN which has not been explained in any previous exercises.
 1 July 2012	ESP	4	ITA	0

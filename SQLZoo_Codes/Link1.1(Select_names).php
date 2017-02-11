@@ -105,7 +105,7 @@ SELECT name
   FROM world
  WHERE name LIKE capital
 
-Q12:
+Q12: - Important
 The capital of Mexico is Mexico City. Show all the countries where the capital has the country together with the word "City".
 
 Find the country where the capital is the country plus "City".
@@ -115,7 +115,7 @@ SELECT name
   FROM world
  WHERE capital LIKE CONCAT(name, ' City')
 
-Q13:
+Q13: - Important
 Find the capital and the name where the capital includes the name of the country.
 
 Answer:
@@ -123,7 +123,7 @@ SELECT capital, name
 from world
 WHERE capital LIKE concat('%', name , '%')
 
-Q14:
+Q14: - Important
 Find the capital and the name where the capital is an extension of name of the country.
 You should include Mexico City as it is longer than Mexico. You should not include Luxembourg as the capital is the same as the country.
 
@@ -132,7 +132,7 @@ SELECT name,capital
 from world
 WHERE capital LIKE concat(name , '_%')
 
-Q15:
+Q15: - Important
 For Monaco-Ville the name is Monaco and the extension is -Ville.
 Show the name and the extension where the capital is an extension of name of the country.
 You can use the SQL function REPLACE.

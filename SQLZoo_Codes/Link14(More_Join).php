@@ -109,7 +109,7 @@ FROM movie JOIN casting ON (id=movieid)
 JOIN actor ON (actor.id = actorid)
 WHERE ord=1 AND  yr = 1962
 
-Q12:
+Q12: IMPORTANT 
 Which were the busiest years for 'John Travolta', show the year and the number of movies he made each year for any year in which he made more than 2 movies.
 
 Answer:

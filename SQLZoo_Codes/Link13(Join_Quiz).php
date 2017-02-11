@@ -44,7 +44,7 @@ WHERE stadium = 'National Stadium, Warsaw'
 AND (team1 = 'POL' OR team2 = 'POL')
 AND teamid != 'POL'
 
-Q6:
+Q6: IMPORTANT
 Select the code which shows the player, their team and the time they scored, for players who have played in Stadion Miejski (Wroclaw) but not against Italy(ITA).
 
 Answer:

@@ -1,0 +1,37 @@
+import LinkedList_AddAfterNode.Node;
+
+
+public class Stack_LinkedLists {
+
+	static Node head;
+
+	static class Node
+	{
+		int data;
+		Node next;
+
+		Node(int d)
+		{
+			data = d;
+			next = null;
+		}
+	}
+
+	void printList()
+	{
+		System.out.println("The Linked List now is ");
+		Node temp = head;
+		while(temp!=null)
+		{
+			System.out.print(" " + temp.data);
+			temp = temp.next;
+		}
+		System.out.println();
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
