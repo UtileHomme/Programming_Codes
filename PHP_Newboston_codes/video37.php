@@ -1,6 +1,6 @@
 <?php
 
-$string = ' This is an example string. ';
+$string = '                         This is an example string. ';
 
 //trim will remove whitespaces from both ends of the string
 $string_trimmed = trim($string);
