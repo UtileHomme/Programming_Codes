@@ -3,7 +3,6 @@
 
 //shows the file name of the file the user has uploaded
 $name = $_FILES['file']['name'];
-
 //size is measured in bytes
 $size = $_FILES['file']['size'];    //not required for uploading file
 $type = $_FILES['file']['type'];    //not required for uploading file
@@ -12,7 +11,7 @@ $type = $_FILES['file']['type'];    //not required for uploading file
 $extension = strtolower(substr($name, strpos($name, '.')+1));
 $max_size = 2097152;
 //This file is stored in a temporary folder which an alias
-$temp_name = $_FILES['file']['tmp_name'];
+echo $temp_name = $_FILES['file']['tmp_name'];
 
 
 if(isset($name))

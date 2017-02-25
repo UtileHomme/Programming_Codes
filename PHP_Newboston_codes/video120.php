@@ -1,5 +1,5 @@
 <?php
-//valid for video 120 - 123, 127-129
+//valid for video 120 - 122, 127-129
 
 SELECT `username` , `password` FROM users where `id`=1
 

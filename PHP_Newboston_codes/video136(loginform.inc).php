@@ -17,14 +17,12 @@ if(isset($_POST['username']) && isset($_POST['password']))
     $result = $conn->prepare($query); //helps avoid sql injection
     $result->bindParam(':username', $username, PDO::PARAM_STR); //putting parameters in place of actual data
     $result->bindParam(':password', $password_hash, PDO::PARAM_STR);
-
-
-
     $result->execute();
     $num_of_rows = $result->rowCount(); //this will count the rows affected in the last execution of the query
     //which are returned after executing the sql statement
 
     if($num_of_rows==0)
+    // password and username combination don't match
     {
       echo 'Invalid username/password';
     }

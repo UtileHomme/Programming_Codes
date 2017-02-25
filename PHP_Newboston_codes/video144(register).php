@@ -91,6 +91,7 @@ else if(loggedin())
 }
 
 ?>
+
 <form action="video144(register).php" method="POST">
   Username:<br />
   <input type="text" name="username" maxlength="30" value="<?php if(isset($username)) {echo $username;} ?>" /><br /><br />

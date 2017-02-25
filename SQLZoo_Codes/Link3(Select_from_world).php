@@ -142,6 +142,7 @@ Caribbean islands starting with 'B' go to North America, other Caribbean islands
 Order by country name in ascending order
 Test your query using the WHERE clause with the following:
 WHERE tld IN ('.ag','.ba','.bb','.ca','.cn','.nz','.ru','.tr','.uk')
+
 Show the name, the original continent and the new continent of all countries.
 
 // http://stackoverflow.com/questions/30195610/what-is-the-solution-to-13th-part-of-select-from-world-tutorial-on-sqlzoo

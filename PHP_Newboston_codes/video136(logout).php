@@ -7,4 +7,5 @@ require 'video136(core.inc).php';
 session_destroy();   //will destroy the session
 
 header('Location: '.$http_referer);
+//HTTP_REFERER ---- this will tell us the page we have come from
  ?>
