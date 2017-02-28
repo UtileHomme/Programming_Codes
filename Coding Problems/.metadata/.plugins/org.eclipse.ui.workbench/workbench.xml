@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="22" version="2.0">
+<workbench progressCount="14" version="2.0">
 <workbenchAdvisor/>
-<window height="744" width="1301" x="65" y="24">
+<window height="716" width="1301" x="65" y="24">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -14,14 +14,14 @@
 <coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="76" y="30"/>
 <coolItem id="org.eclipse.jst.j2ee.J2eeMainActionSet" itemType="typeToolBarContribution" x="84" y="30"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="104" y="30"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="68" y="30"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="152" y="30"/>
 <coolItem id="org.eclipse.wst.server.ui.internal.webbrowser.actionSet" itemType="typeToolBarContribution" x="40" y="30"/>
 <coolItem id="org.eclipse.wst.ws.explorer.explorer" itemType="typeToolBarContribution" x="40" y="30"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="UserSeparator" itemType="typeSeparator"/>
@@ -32,10 +32,21 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
 </folder>
 </info>
 </editorArea>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="QuickSort_Asc.java" partName="QuickSort_Asc.java" path="/home/scrabbler/Jatin/Programming Codes/Coding Problems/SortingAlgos/src/QuickSort_Asc.java" title="QuickSort_Asc.java" tooltip="SortingAlgos/src/QuickSort_Asc.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SortingAlgos/src/QuickSort_Asc.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="931" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="QuickSort_Desc.java" partName="QuickSort_Desc.java" path="/home/scrabbler/Jatin/Programming Codes/Coding Problems/SortingAlgos/src/QuickSort_Desc.java" title="QuickSort_Desc.java" tooltip="SortingAlgos/src/QuickSort_Desc.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SortingAlgos/src/QuickSort_Desc.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="249" selectionTopPixel="0"/>
+</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
@@ -123,7 +134,7 @@
 <view id="org.eclipse.wst.server.ui.ServersView" partName="Servers"/>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jst.j2ee.internal.perspective.J2EEPerspective" id="org.eclipse.jst.j2ee.J2EEPerspective" label="Java EE"/>
 <alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
@@ -315,7 +326,7 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.29224807" ratioLeft="377" ratioRight="913" relationship="2" relative="left"/>
+<info part="org.eclipse.ui.editorss" ratio="0.28992248" ratioLeft="374" ratioRight="916" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.77080065" ratioLeft="491" ratioRight="146" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
@@ -352,7 +363,53 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SortingAlgos/src/InsertionSort_Asc.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SortingAlgos/src/InsertionSort_Desc.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SortingAlgos/src/QuickSort_Asc.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SortingAlgos/src/QuickSort_Desc.java"/>
+</editors>
+<item historyLabel="InsertionSort_Asc.java" index="0">
+<position info="not_deleted" x="0" y="661"/>
+</item>
+<item historyLabel="InsertionSort_Desc.java" index="1">
+<position info="not_deleted" x="139" y="0"/>
+</item>
+<item historyLabel="InsertionSort_Asc.java" index="0">
+<position info="not_deleted" x="0" y="661"/>
+</item>
+<item historyLabel="QuickSort_Asc.java" index="2">
+<position info="not_deleted" x="44" y="0"/>
+</item>
+<item historyLabel="QuickSort_Asc.java" index="2">
+<position info="not_deleted" x="96" y="0"/>
+</item>
+<item historyLabel="QuickSort_Asc.java" index="2">
+<position info="not_deleted" x="263" y="0"/>
+</item>
+<item historyLabel="QuickSort_Asc.java" index="2">
+<position info="not_deleted" x="268" y="0"/>
+</item>
+<item historyLabel="QuickSort_Asc.java" index="2">
+<position info="not_deleted" x="278" y="0"/>
+</item>
+<item historyLabel="QuickSort_Asc.java" index="2">
+<position info="not_deleted" x="366" y="0"/>
+</item>
+<item historyLabel="QuickSort_Asc.java" index="2">
+<position info="not_deleted" x="406" y="0"/>
+</item>
+<item historyLabel="QuickSort_Asc.java" index="2">
+<position info="not_deleted" x="388" y="0"/>
+</item>
+<item historyLabel="QuickSort_Asc.java" index="2">
+<position info="not_deleted" x="0" y="931"/>
+</item>
+<item active="true" historyLabel="QuickSort_Desc.java" index="3">
+<position info="not_deleted" x="0" y="934"/>
+</item>
+</navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
@@ -369,6 +426,18 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="QuickSort_Desc.java" tooltip="SortingAlgos/src/QuickSort_Desc.java">
+<persistable path="/SortingAlgos/src/QuickSort_Desc.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="QuickSort_Asc.java" tooltip="SortingAlgos/src/QuickSort_Asc.java">
+<persistable path="/SortingAlgos/src/QuickSort_Asc.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InsertionSort_Desc.java" tooltip="SortingAlgos/src/InsertionSort_Desc.java">
+<persistable path="/SortingAlgos/src/InsertionSort_Desc.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InsertionSort_Asc.java" tooltip="SortingAlgos/src/InsertionSort_Asc.java">
+<persistable path="/SortingAlgos/src/InsertionSort_Asc.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CheckForPerfectNumber.java" tooltip="General/src/CheckForPerfectNumber.java">
 <persistable path="/General/src/CheckForPerfectNumber.java"/>
 </file>
@@ -401,18 +470,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BinarySearch_Recursive.java" tooltip="SearchingAlgos/src/BinarySearch_Recursive.java">
 <persistable path="/SearchingAlgos/src/BinarySearch_Recursive.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BinarySearch_Iterative.java" tooltip="SearchingAlgos/src/BinarySearch_Iterative.java">
-<persistable path="/SearchingAlgos/src/BinarySearch_Iterative.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LinearSearch_UsingFunctions.java" tooltip="SearchingAlgos/src/LinearSearch_UsingFunctions.java">
-<persistable path="/SearchingAlgos/src/LinearSearch_UsingFunctions.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LinearSearch_usingLoops.java" tooltip="SearchingAlgos/src/LinearSearch_usingLoops.java">
-<persistable path="/SearchingAlgos/src/LinearSearch_usingLoops.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Stack_LinkedLists.java" tooltip="Stack/src/Stack_LinkedLists.java">
-<persistable path="/Stack/src/Stack_LinkedLists.java"/>
 </file>
 </mruList>
 </workbench>
