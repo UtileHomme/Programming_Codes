@@ -7,6 +7,7 @@ $food = array('Healthy'=>
 
 foreach($food as $element => $inner_array)
 {
+  echo '<br />';
   echo '<strong>'.$element.'</strong><br />';
   foreach($inner_array as $item)
   {

@@ -2,33 +2,21 @@
 
 Beginner PHP Tutorial - 1 - Introduction to PHP
 by thenewboston
-5:15
-  96%96%96%
 
 Beginner PHP Tutorial - 2 - Installing XAMPP Part 1
 by thenewboston
-4:14
-  97%97%97%
 
 Beginner PHP Tutorial - 3 - Installing XAMPP Part 2
 by thenewboston
-4:38
-  96%96%96%
 
 Beginner PHP Tutorial - 4 - Creating Your First PHP File
 by thenewboston
-6:32
-  94%94%94%
 
 Beginner PHP Tutorial - 5 - Writing Your First PHP File
 by thenewboston
-7:23
-  97%97%97%
 
 Beginner PHP Tutorial - 6 - The phpinfo Function
 by thenewboston
-5:01
-  93%93%93%
 
 Beginner PHP Tutorial - 7 - The php.ini File
 by thenewboston
@@ -145,10 +133,6 @@ by thenewboston
 5:40
   98%98%98%
 
-Beginner PHP Tutorial - 44 - Expression Matching
-by thenewboston
-4:45
-  97%97%97%
 
 Beginner PHP Tutorial - 30 - Basic Functions
 by thenewboston
@@ -219,6 +203,11 @@ Beginner PHP Tutorial - 43 - include_once and require_once
 by thenewboston
 4:37
   97%97%97%
+
+Beginner PHP Tutorial - 44 - Expression Matching
+by thenewboston
+  4:45
+    97%97%97%
 
 Beginner PHP Tutorial - 45 - More on Expression Matching
 by thenewboston

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="14" version="2.0">
+<workbench progressCount="22" version="2.0">
 <workbenchAdvisor/>
 <window height="716" width="1301" x="65" y="24">
 <fastViewData fastViewLocation="1024"/>
@@ -34,18 +34,13 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="QuickSort_Asc.java" partName="QuickSort_Asc.java" path="/home/scrabbler/Jatin/Programming Codes/Coding Problems/SortingAlgos/src/QuickSort_Asc.java" title="QuickSort_Asc.java" tooltip="SortingAlgos/src/QuickSort_Asc.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SortingAlgos/src/QuickSort_Asc.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="931" selectionOffset="0" selectionTopPixel="0"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="QuickSort_Desc.java" partName="QuickSort_Desc.java" path="/home/scrabbler/Jatin/Programming Codes/Coding Problems/SortingAlgos/src/QuickSort_Desc.java" title="QuickSort_Desc.java" tooltip="SortingAlgos/src/QuickSort_Desc.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SortingAlgos/src/QuickSort_Desc.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="249" selectionTopPixel="0"/>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SumOfFirst1000PrimeNumbers.java" partName="SumOfFirst1000PrimeNumbers.java" path="/home/scrabbler/Jatin/Programming Codes/Coding Problems/General/src/SumOfFirst1000PrimeNumbers.java" title="SumOfFirst1000PrimeNumbers.java" tooltip="General/src/SumOfFirst1000PrimeNumbers.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/General/src/SumOfFirst1000PrimeNumbers.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="60" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -369,6 +364,10 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SortingAlgos/src/InsertionSort_Desc.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SortingAlgos/src/QuickSort_Asc.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SortingAlgos/src/QuickSort_Desc.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/General/src/SwappingNumbers.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/General/src/Sum_Of_Digits_Of_Number_Recursion.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/General/src/CheckForPrimeNumber.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/General/src/SumOfFirst1000PrimeNumbers.java"/>
 </editors>
 <item historyLabel="InsertionSort_Asc.java" index="0">
 <position info="not_deleted" x="0" y="661"/>
@@ -406,8 +405,53 @@
 <item historyLabel="QuickSort_Asc.java" index="2">
 <position info="not_deleted" x="0" y="931"/>
 </item>
-<item active="true" historyLabel="QuickSort_Desc.java" index="3">
-<position info="not_deleted" x="0" y="934"/>
+<item historyLabel="QuickSort_Desc.java" index="3">
+<position info="not_deleted" x="123" y="0"/>
+</item>
+<item historyLabel="SwappingNumbers.java" index="4">
+<position info="not_deleted" x="68" y="0"/>
+</item>
+<item historyLabel="SwappingNumbers.java" index="4">
+<position info="not_deleted" x="138" y="0"/>
+</item>
+<item historyLabel="SwappingNumbers.java" index="4">
+<position info="not_deleted" x="416" y="0"/>
+</item>
+<item historyLabel="SwappingNumbers.java" index="4">
+<position info="not_deleted" x="240" y="0"/>
+</item>
+<item historyLabel="SwappingNumbers.java" index="4">
+<position info="not_deleted" x="276" y="0"/>
+</item>
+<item historyLabel="SwappingNumbers.java" index="4">
+<position info="not_deleted" x="318" y="1"/>
+</item>
+<item historyLabel="Sum_Of_Digits_Of_Number_Recursion.java" index="5">
+<position info="not_deleted" x="71" y="0"/>
+</item>
+<item historyLabel="Sum_Of_Digits_Of_Number_Recursion.java" index="5">
+<position info="not_deleted" x="255" y="0"/>
+</item>
+<item historyLabel="Sum_Of_Digits_Of_Number_Recursion.java" index="5">
+<position info="not_deleted" x="163" y="0"/>
+</item>
+<item historyLabel="SwappingNumbers.java" index="4">
+<position info="not_deleted" x="318" y="1"/>
+</item>
+<item historyLabel="CheckForPrimeNumber.java" index="6">
+<position info="not_deleted" x="66" y="0"/>
+</item>
+<item historyLabel="CheckForPrimeNumber.java" index="6">
+<position info="not_deleted" x="65" y="0"/>
+</item>
+<item historyLabel="SumOfFirst1000PrimeNumbers.java" index="7">
+<position info="not_deleted" x="60" y="0"/>
+</item>
+<item historyLabel="SumOfFirst1000PrimeNumbers.java" index="7">
+<position info="not_deleted" x="249" y="0"/>
+</item>
+<item active="true" historyLabel="SumOfFirst1000PrimeNumbers.java" index="7">
+<position info="not_deleted" x="228" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -426,6 +470,18 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SumOfFirst1000PrimeNumbers.java" tooltip="General/src/SumOfFirst1000PrimeNumbers.java">
+<persistable path="/General/src/SumOfFirst1000PrimeNumbers.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CheckForPrimeNumber.java" tooltip="General/src/CheckForPrimeNumber.java">
+<persistable path="/General/src/CheckForPrimeNumber.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Sum_Of_Digits_Of_Number_Recursion.java" tooltip="General/src/Sum_Of_Digits_Of_Number_Recursion.java">
+<persistable path="/General/src/Sum_Of_Digits_Of_Number_Recursion.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SwappingNumbers.java" tooltip="General/src/SwappingNumbers.java">
+<persistable path="/General/src/SwappingNumbers.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="QuickSort_Desc.java" tooltip="SortingAlgos/src/QuickSort_Desc.java">
 <persistable path="/SortingAlgos/src/QuickSort_Desc.java"/>
 </file>
@@ -458,18 +514,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Factorial_Recursive.java" tooltip="General/src/Factorial_Recursive.java">
 <persistable path="/General/src/Factorial_Recursive.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Factorial_NonRecursive.java" tooltip="General/src/Factorial_NonRecursive.java">
-<persistable path="/General/src/Factorial_NonRecursive.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CheckForPalindrome_WithoutFunction.java" tooltip="String/src/CheckForPalindrome_WithoutFunction.java">
-<persistable path="/String/src/CheckForPalindrome_WithoutFunction.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CheckForPalindrome_UsingAFunction.java" tooltip="String/src/CheckForPalindrome_UsingAFunction.java">
-<persistable path="/String/src/CheckForPalindrome_UsingAFunction.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BinarySearch_Recursive.java" tooltip="SearchingAlgos/src/BinarySearch_Recursive.java">
-<persistable path="/SearchingAlgos/src/BinarySearch_Recursive.java"/>
 </file>
 </mruList>
 </workbench>

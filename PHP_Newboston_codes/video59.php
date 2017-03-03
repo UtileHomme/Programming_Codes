@@ -2,7 +2,7 @@
 
 $time = time();
 
-$time_now = date('d M Y @ g:i:s a', $time);
+$time_now = date('d M Y @ H:i:s a', $time);
 $time_modified = date('d M Y @ H:i:s', $time-60);
 
 echo $time_now.'<br />';

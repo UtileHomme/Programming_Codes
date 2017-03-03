@@ -1,6 +1,7 @@
 <?php
 
-$host = $_SERVER['HTTP_HOST'];
+//returns the server details
+echo $host = $_SERVER['HTTP_HOST'];
 
 
  ?>
