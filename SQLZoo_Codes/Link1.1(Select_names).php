@@ -139,6 +139,7 @@ You can use the SQL function REPLACE.
 
 Answer:
 SELECT name, REPLACE(capital, name, '')
+// the string to replace in , what to replace in the string, what to replace with
 from world
 WHERE capital LIKE concat(name , '_%_')
  ?>

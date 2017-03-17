@@ -482,6 +482,505 @@ by thenewboston
 Beginner PHP Tutorial - 99 - Sending an Email Part 2
 by thenewboston
 5:01
-  98%98%98%
 
+Beginner PHP Tutorial - 100 - Creating a Simple Contact Form Part 1
+by thenewboston
+
+Beginner PHP Tutorial - 101 - Creating a Simple Contact Form Part 2
+by thenewboston
+5:44
+96%
+
+Beginner PHP Tutorial - 102 - Creating a Simple Contact Form Part 3
+by thenewboston
+6:04
+98%
+
+Beginner PHP Tutorial - 103 - Creating a Simple Contact Form Part 4
+by thenewboston
+5:32
+95%
+
+Beginner PHP Tutorial - 104 - An Introduction to XML
+by thenewboston
+6:24
+97%
+
+Beginner PHP Tutorial - 105 - Reading a Simple XML File: Part 1
+by thenewboston
+9:56
+99%
+
+Beginner PHP Tutorial - 106 - Reading a Simple XML File: Part 2
+by thenewboston
+7:36
+98%
+
+Beginner PHP Tutorial - 107 - A YouTube XML Example
+by thenewboston
+8:54
+98%
+
+Beginner PHP Tutorial - 108 - An Introduction to Databases
+by thenewboston
+5:38
+97%
+
+Beginner PHP Tutorial - 109 - More About Databases
+by thenewboston
+5:36
+95%
+
+Beginner PHP Tutorial - 110 - phpMyAdmin Part 1
+by thenewboston
+6:31
+98%
+
+Beginner PHP Tutorial - 111 - phpMyAdmin Part 2
+by thenewboston
+5:50
+98%
+
+Beginner PHP Tutorial - 112 - phpMyAdmin Part 3
+by thenewboston
+6:16
+98%
+
+Beginner PHP Tutorial - 113 - Connecting to a Server and Database Part 1
+by thenewboston
+6:22
+96%
+
+Beginner PHP Tutorial - 114 - Connecting to a Server and Database Part 2
+by thenewboston
+5:59
+97%
+
+Beginner PHP Tutorial - 115 - SELECT Part 1
+by thenewboston
+7:33
+92%
+
+Beginner PHP Tutorial - 116 - SELECT Part 2
+by thenewboston
+7:58
+98%
+
+Beginner PHP Tutorial - 117 - SELECT Part 3
+by thenewboston
+6:51
+98%
+
+Beginner PHP Tutorial - 118 - SELECT By Example Part 1
+by thenewboston
+7:13
+98%
+
+Beginner PHP Tutorial - 119 - SELECT By Example Part 2
+by thenewboston
+6:37
+94%
+
+Beginner PHP Tutorial - 120 - More Basic Querying Part 1
+by thenewboston
+8:59
+97%
+
+Beginner PHP Tutorial - 121 - More Basic Querying Part 2
+by thenewboston
+9:44
+98%
+
+Beginner PHP Tutorial - 122 - More Basic Querying Part 3
+by thenewboston
+9:11
+96%
+
+Beginner PHP Tutorial - 123 - Creating a Database Hit Counter Part 1
+by thenewboston
+7:39
+95%
+
+Beginner PHP Tutorial - 124 - Creating a Database Hit Counter Part 2
+by thenewboston
+7:47
+98%
+
+Beginner PHP Tutorial - 125 - Creating a Database Hit Counter Part 3
+by thenewboston
+5:45
+94%
+
+Beginner PHP Tutorial - 126 - Creating a Database Hit Counter Part 4
+by thenewboston
+6:39
+95%
+
+Beginner PHP Tutorial - 127 - LEFT JOIN
+by thenewboston
+6:52
+97%
+
+Beginner PHP Tutorial - 128 - RIGHT JOIN
+by thenewboston
+3:10
+98%
+
+Beginner PHP Tutorial - 129 - JOIN
+by thenewboston
+3:29
+98%
+
+Beginner PHP Tutorial - 130 - LIKE With a Search Engine Example Part 1
+by thenewboston
+4:49
+100%
+
+Beginner PHP Tutorial - 131 - LIKE With a Search Engine Example Part 2
+by thenewboston
+4:51
+100%
+
+Beginner PHP Tutorial - 132 - LIKE With a Search Engine Example Part 3
+by thenewboston
+5:03
+99%
+
+Beginner PHP Tutorial - 133 - LIKE With a Search Engine Example Part 4
+by thenewboston
+4:35
+97%
+
+Beginner PHP Tutorial - 134 - SELECT DISTINCT
+by thenewboston
+7:03
+96%
+
+Beginner PHP Tutorial - 135 - Creating Tables
+by thenewboston
+7:52
+98%
+
+Beginner PHP Tutorial - 136 - Logging the User In Part 1
+by thenewboston
+8:15
+93%
+
+Beginner PHP Tutorial - 137 - Logging the User In Part 2
+by thenewboston
+7:24
+98%
+
+Beginner PHP Tutorial - 138 - Logging the User In Part 3
+by thenewboston
+7:22
+97%
+
+Beginner PHP Tutorial - 139 - Logging the User In Part 4
+by thenewboston
+7:29
+100%
+
+Beginner PHP Tutorial - 140 - Logging the User Out
+by thenewboston
+5:55
+100%
+
+Beginner PHP Tutorial - 141 - Getting User Data Part 1
+by thenewboston
+5:55
+98%
+
+Beginner PHP Tutorial - 142 - Getting User Data Part 2
+by thenewboston
+5:21
+96%
+
+Beginner PHP Tutorial - 143 - Protecting the User Against SQL Injection
+by thenewboston
+4:46
+98%
+
+Beginner PHP Tutorial - 144 - Registration Form Part 1
+by thenewboston
+7:15
+97%
+
+Beginner PHP Tutorial - 145 - Registration Form Part 2
+by thenewboston
+7:16
+97%
+
+Beginner PHP Tutorial - 146 - Registration Form Part 3
+by thenewboston
+6:54
+98%
+
+Beginner PHP Tutorial - 147 - Registration Form Part 4
+by thenewboston
+6:21
+97%
+
+Beginner PHP Tutorial - 148 - More Validation Part 1
+by thenewboston
+6:31
+98%
+
+Beginner PHP Tutorial - 149 - More Validation Part 2
+by thenewboston
+6:07
+98%
+
+Beginner PHP Tutorial - 150 - More Validation Part 3
+by thenewboston
+5:57
+99%
+
+Beginner PHP Tutorial - 151 - SQL Injection Part 1
+by thenewboston
+5:22
+99%
+
+Beginner PHP Tutorial - 152 - SQL Injection Part 2
+by thenewboston
+5:42
+99%
+
+Beginner PHP Tutorial - 153 - SQL Injection Part 3
+by thenewboston
+6:16
+97%
+
+Beginner PHP Tutorial - 154 - SQL Injection Part 4
+by thenewboston
+6:47
+94%
+
+Beginner PHP Tutorial - 155 - SQL Injection Part 5
+by thenewboston
+6:28
+96%
+
+Beginner PHP Tutorial - 156 - Introduction to GD
+by thenewboston
+7:25
+98%
+
+Beginner PHP Tutorial - 157 - Protecting Email with String to Image Part 1
+by thenewboston
+7:24
+98%
+
+Beginner PHP Tutorial - 158 - Protecting Email with String to Image Part 2
+by thenewboston
+7:46
+98%
+
+Beginner PHP Tutorial - 159 - Protecting Email with String to Image Part 3
+by thenewboston
+8:08
+93%
+
+Beginner PHP Tutorial - 160 - Protecting Email with String to Image Part 4
+by thenewboston
+7:55
+97%
+
+Beginner PHP Tutorial - 161 - Watermarking Images Part 1
+by thenewboston
+7:19
+94%
+
+Beginner PHP Tutorial - 162 - Watermarking Images Part 2
+by thenewboston
+7:25
+97%
+
+Beginner PHP Tutorial - 163 - Watermarking Images Part 3
+by thenewboston
+9:31
+94%
+
+Beginner PHP Tutorial - 164 - Creating Captcha Image Security Part 1
+by thenewboston
+7:28
+98%
+
+Beginner PHP Tutorial - 165 - Creating Captcha Image Security Part 2
+by thenewboston
+7:40
+96%
+
+Beginner PHP Tutorial - 166 - Creating Captcha Image Security Part 3
+by thenewboston
+6:25
+96%
+
+Beginner PHP Tutorial - 167 - Creating Captcha Image Security Part 4
+by thenewboston
+5:53
+95%
+
+Beginner PHP Tutorial - 168 - Scaling Down Images to Thumbnails Part 1
+by thenewboston
+7:25
+100%
+
+Beginner PHP Tutorial - 169 - Scaling Down Images to Thumbnails Part 2
+by thenewboston
+7:07
+100%
+
+Beginner PHP Tutorial - 170 - Scaling Down Images to Thumbnails Part 3
+by thenewboston
+7:42
+95%
+
+Beginner PHP Tutorial - 171 - Introduction to AJAX
+by thenewboston
+8:18
+99%
+
+Beginner PHP Tutorial - 172 - Loading in file Contents to a DIV Part 1
+by thenewboston
+6:19
+96%
+
+Beginner PHP Tutorial - 173 - Loading in file Contents to a DIV Part 2
+by thenewboston
+6:44
+96%
+
+Beginner PHP Tutorial - 174 - Loading in file Contents to a DIV Part 3
+by thenewboston
+5:45
+97%
+
+Beginner PHP Tutorial - 175 - Auto Suggest Application Part 1
+by thenewboston
+6:48
+96%
+
+Beginner PHP Tutorial - 176 - Auto Suggest Application Part 2
+by thenewboston
+5:59
+96%
+
+Beginner PHP Tutorial - 177 - Auto Suggest Application Part 3
+by thenewboston
+7:47
+99%
+
+Beginner PHP Tutorial - 179 - Auto Suggest Application Part 5
+by thenewboston
+5:56
+96%
+
+Beginner PHP Tutorial - 178 - Auto Suggest Application Part 4
+by thenewboston
+6:36
+94%
+
+Beginner PHP Tutorial - 180 - POSTing Data Part 1
+by thenewboston
+5:35
+89%
+
+Beginner PHP Tutorial - 181 - POSTing Data Part 2
+by thenewboston
+5:14
+96%
+
+Beginner PHP Tutorial - 182 - POSTing Data Part 3
+by thenewboston
+5:31
+96%
+
+Beginner PHP Tutorial - 183 - POSTing Data Part 4
+by thenewboston
+5:48
+100%
+
+Beginner PHP Tutorial - 184 - POSTing Data Part 5
+by thenewboston
+5:17
+97%
+
+Beginner PHP Tutorial - 185 - Throwing an Exception
+by thenewboston
+5:02
+93%
+
+Beginner PHP Tutorial - 186 - try, throw, catch
+by thenewboston
+5:06
+94%
+
+Beginner PHP Tutorial - 187 - Custom Exceptions
+by thenewboston
+9:25
+95%
+
+Beginner PHP Tutorial - 188 - Custom Error Messages
+by thenewboston
+6:53
+96%
+
+Beginner PHP Tutorial - 189 - Introduction to OOP
+by thenewboston
+5:21
+94%
+
+Beginner PHP Tutorial - 190 - Classes, Properties, and Methods
+by thenewboston
+6:24
+97%
+
+Beginner PHP Tutorial - 191 - Return a Property Value
+by thenewboston
+7:02
+97%
+
+Beginner PHP Tutorial - 192 - Changing a Property Value
+by thenewboston
+7:21
+84%
+
+Beginner PHP Tutorial - 193 - public, private, and protected
+by thenewboston
+9:15
+96%
+
+Beginner PHP Tutorial - 194 - Constants
+by thenewboston
+7:45
+94%
+
+Beginner PHP Tutorial - 195 - Class Constructor
+by thenewboston
+5:01
+97%
+
+Beginner PHP Tutorial - 196 - Multiple Instances of Classes
+by thenewboston
+7:35
+97%
+
+Beginner PHP Tutorial - 197 - extends Part 1
+by thenewboston
+7:07
+94%
+
+Beginner PHP Tutorial - 198 - extends Part 2
+by thenewboston
+7:07
+96%
+
+Beginner PHP Tutorial - 199 - Connecting to a Database the OOP Way
+by thenewboston
+6:19
+97%
+
+Beginner PHP Tutorial - 200 - Final PHP Video!!!
+by thenewboston
  ?>

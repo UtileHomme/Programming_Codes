@@ -31,7 +31,7 @@ SELECT customers.name, items.name FROM customers RIGHT OUTER JOIN items
 ON customers.id = seller_id
 
 (video 24)
-//using UNION --- columns for both queries should be same
+//using UNION --- columns for both queries should be of the same datatype
 SELECT name, cost, bids FROM items WHERE bids>190
 UNION
 SELECT name, cost, bids FROM items WHERE cost>1000
