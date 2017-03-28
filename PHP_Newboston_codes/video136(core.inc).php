@@ -10,7 +10,7 @@ $current_file = $_SERVER['SCRIPT_NAME']; // this is for storing the current file
 if(isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER']))
 {
   $http_referer = $_SERVER['HTTP_REFERER'];
-  //this will tell us the page we have come from 
+  //this will tell us the page we have come from
 }
 
 function loggedin()     //to check whether the user is loggedin
@@ -29,7 +29,7 @@ function getfield1($field, $conn)
 {
   //  $query1 = "SELECT ".implode(' ', $fields)." FROM `users` WHERE `id`=".intval($_SESSION['user_id']);
   $query1 = "SELECT $field FROM `users` WHERE `id`=".intval($_SESSION['user_id']);
-  //this query will retrive the field(column) value for the user id - (the user_id of the user logged in)
+  //this query will retrieve the field(column) value for the user id - (the user_id of the user logged in)
   //var_dump($query1);
   $result = $conn->query($query1);
   $result->setFetchMode(PDO::FETCH_OBJ);

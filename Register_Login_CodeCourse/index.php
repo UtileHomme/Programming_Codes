@@ -5,4 +5,6 @@ include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/
       <p>
         Just a template
       </p>
+
+
 <?php   include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/includes/overall/footer.php'; ?>
