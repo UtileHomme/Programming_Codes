@@ -2,7 +2,19 @@
 
 require_once ('/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/database/connect.php');
 
+//for checking how many users are active
+function user_count($conn)
+{
+  $query = "SELECT `user_id` FROM `login_register` WHERE `active`=1";
+  $res = $conn->prepare($query);
+  if($res->execute())
+  {
+    $num_of_rows = $res->rowCount();
+    return $num_of_rows;
+  }
+}
 
+user_count($conn);
 function user_data($user_id,$conn)
 {
   $user_id = intval($user_id);

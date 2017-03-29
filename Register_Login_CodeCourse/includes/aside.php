@@ -8,5 +8,6 @@
   {
     include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/includes/widgets/login.php';
   }
+  include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/includes/widgets/user_count.php';
    ?>
 </aside>
