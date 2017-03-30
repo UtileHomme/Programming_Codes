@@ -2,6 +2,21 @@
 
 require_once ('/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/database/connect.php');
 
+function change_password($user_id, $password,$conn)
+{
+  $user_id = intval($user_id);
+  $password = sha1($password);
+
+  $query = "UPDATE `login_register` SET `password`=:password WHERE `user_id`=$user_id ";
+  $res = $conn->prepare($query);
+  $res->bindParam(':password',$password,PDO::PARAM_STR);
+  if($res->execute())
+  {
+    $num_of_rows = $res->rowCount();
+    echo $num_of_rows.' have been updated';
+  }
+}
+
 function register_user($register_data, $conn)
 {
   $bind = ':'.implode(',:', array_keys($register_data));

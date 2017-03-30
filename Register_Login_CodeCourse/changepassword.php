@@ -1,5 +1,7 @@
 <?php
 include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/init.php';
+require('/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/database/connect.php');
+
 
 protect_page();
 
@@ -16,27 +18,71 @@ if(empty($_POST)===false)
     }
   }
 
+//if the actual password and the password typed in the current password field  match
+  if(sha1($_POST['current_password'])===$user_data['password'])
+  {
+    //if the password and password again do not match
+   if(trim($_POST['password']) !== trim($_POST['password_again']))
+   {
+     $errors[] = 'Your new passwords do not match';
+   }
+   else if(strlen($_POST['password'])<6)
+   {
+     $errors[] = 'Your password must be at least 6 characters';
+   }
+
+  }
+  else {
+    $errors[] = 'Your current password is incorrect';
+  }
+
 }
+
 include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/includes/overall/header.php'; ?>
+
 <h1>Change Password</h1>
+
+<!-- //output the errors -->
+<?php
+
+if(isset($_GET['success']) && empty($_GET['success']))
+{
+  echo 'Your password has been changed successfully';
+}
+else
+{
+if(empty($_POST==false) && empty($errors)===true)
+{
+ change_password($session_user_id, $_POST['password'], $conn);
+ header('Location: changepassword.php?success');
+
+}
+else if(empty($errors)===false)
+{
+  echo output_errors($errors);
+}
+ ?>
 
 <form action="changepassword.php" method="POST">
   <ul>
     <li>
       Current Password*:<br />
-      <input type="text" name = "current_password"/>
+      <input type="password" name = "current_password"/>
     </li>
     <li>
       New Password*:<br />
-      <input type="text" name = "password"/>
+      <input type="password" name = "password"/>
     </li>
     <li>
       New Password Again*:<br />
-      <input type="text" name = "password_again"/>
+      <input type="password" name = "password_again"/>
     </li>
     <li>
       <input type="submit" value="Change Password" />
     </li>
   </ul>
 </form>
-<?php   include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/includes/overall/footer.php'; ?>
+
+<?php
+
+}  include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/includes/overall/footer.php'; ?>

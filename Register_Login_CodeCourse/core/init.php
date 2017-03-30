@@ -12,6 +12,7 @@ if(logged_in()===true)
 
   $user_data = user_data($session_user_id,$conn,'user_id', 'username', 'password', 'firstname','lastname','email');
 
+
   if(user_active($user_data['username'],$conn)===false)              //if at any point of time during browsing the user active value is set to 0.. logout
   {
     session_destroy();
