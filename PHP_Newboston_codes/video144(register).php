@@ -63,7 +63,7 @@ if(!loggedin())
           $a = $result3->execute();
           //var_dump($a);
 
-          if($result3)        //if the above query gets executed, then go to the register_success page
+          if($a)        //if the above query gets executed, then go to the register_success page
           {
             header('Location: video144(register_success).php');
           }

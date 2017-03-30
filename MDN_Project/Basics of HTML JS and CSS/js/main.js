@@ -10,12 +10,12 @@ var myImage = document.querySelector('img');
 myImage.onclick = function()
 {
   var mySrc = myImage.getAttribute('src');
-  if(mySrc === '/home/scrabbler/Jatin/Programming Codes/MDN_Project/images/firefox.png')
+  if(mySrc === '/home/scrabbler/Jatin/Programming_Codes/MDN_Project/Basics of HTML JS and CSS/images/firefox.png')
   {
-    myImage.setAttribute('src','/home/scrabbler/Jatin/Programming Codes/MDN_Project/images/chrome.png')
+    myImage.setAttribute('src','/home/scrabbler/Jatin/Programming_Codes/MDN_Project/Basics of HTML JS and CSS/images/chrome.png')
   }
   else {
-    myImage.setAttribute('src','/home/scrabbler/Jatin/Programming Codes/MDN_Project/images/firefox.png');
+    myImage.setAttribute('src','/home/scrabbler/Jatin/Programming_Codes/MDN_Project/Basics of HTML JS and CSS/images/images/firefox.png');
   }
 }
 

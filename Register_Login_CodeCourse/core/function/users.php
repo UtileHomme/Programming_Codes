@@ -2,6 +2,18 @@
 
 require_once ('/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/database/connect.php');
 
+function register_user($register_data, $conn)
+{
+  $bind = ':'.implode(',:', array_keys($register_data));
+  $query  = 'insert into `login_register` ('.implode(',', array_keys($register_data)).') '.
+          'values ('.$bind.')';
+  $res = $conn->prepare($query);
+
+  $a = $res->execute(array_combine(explode(',',$bind), array_values($register_data)));
+
+
+
+}
 //for checking how many users are active
 function user_count($conn)
 {
@@ -65,6 +77,7 @@ function logged_in()
     return false;
   }
 }
+
 function user_exists($username,$conn)
 {
   $query = "SELECT `user_id` FROM `login_register` WHERE `username`=:username ";
@@ -82,6 +95,24 @@ function user_exists($username,$conn)
     return false;
   }
 }
+
+function email_exists($email,$conn)
+{
+  $query = "SELECT `user_id` FROM `login_register` WHERE `email`=:email ";
+  $res = $conn->prepare($query);
+  $res->bindParam(':email', $email, PDO::PARAM_STR);
+  $a=$res->execute();
+  $num_of_rows = $res->rowCount();
+  if($num_of_rows == 1)
+  {
+    return true;
+  }
+  else if($num_of_rows ==0)
+  {
+    return false;
+  }
+}
+
 
 function user_active($username,$conn)
 {

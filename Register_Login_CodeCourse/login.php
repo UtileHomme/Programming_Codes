@@ -1,6 +1,8 @@
 <?php
 require_once ('/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/init.php');
 
+ logged_in_redirect();
+ 
 if(empty($_POST)==false)
 {
   $username = $_POST['username'];
