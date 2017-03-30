@@ -2,6 +2,33 @@
 
 require_once ('/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/database/connect.php');
 
+function activate($email, $email_code,$conn)
+{
+  //query to update user active status
+
+    $query1 = "SELECT `user_id` FROM `login_register` WHERE `email`=:email AND `email_code`=:email_code AND `active`=0";
+  $res = $conn->prepare($query1);
+  $res->bindParam(':email',$email,PDO::PARAM_STR);
+  $res->bindParam(':email_code',$email_code,PDO::PARAM_STR);
+  $res->execute();
+  $num_of_rows = $res->rowCount();
+  if($num_of_rows=1)
+  {
+    $query2 = "UPDATE `login_register` SET `active`=1 WHERE `email`=:email1";
+    $res1 = $conn->prepare($query2);
+    $res1->bindParam(':email1',$email,PDO::PARAM_STR);
+      $res1->execute();
+    $num_of_rows1 = $res1->rowCount();
+
+    echo 'Successfully activated';
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
 function change_password($user_id, $password,$conn)
 {
   $user_id = intval($user_id);
@@ -25,9 +52,8 @@ function register_user($register_data, $conn)
   $res = $conn->prepare($query);
 
   $a = $res->execute(array_combine(explode(',',$bind), array_values($register_data)));
-
-
-
+  email($register_data['email'], 'Active your account', " Hello ".$register_data['firstname']." \n \nYou need to the activate your account, so use the link below: \n \n
+  http://localhost:8000/activate.php?&email=".$register_data['email']."&email_code=".$register_data['email_code']."\n \n---company's name");
 }
 //for checking how many users are active
 function user_count($conn)
@@ -42,6 +68,7 @@ function user_count($conn)
 }
 
 user_count($conn);
+
 function user_data($user_id,$conn)
 {
   $user_id = intval($user_id);
@@ -120,6 +147,7 @@ function email_exists($email,$conn)
   $num_of_rows = $res->rowCount();
   if($num_of_rows == 1)
   {
+    echo 'Email exists';
     return true;
   }
   else if($num_of_rows ==0)
@@ -127,7 +155,6 @@ function email_exists($email,$conn)
     return false;
   }
 }
-
 
 function user_active($username,$conn)
 {

@@ -63,7 +63,7 @@ if(empty($_POST)===false)
 
 if(isset($_GET['success']) && empty($_GET['success']))
 {
-  echo 'You\'ve been registered successfully';
+  echo 'You\'ve been registered successfully!! Please check you email to activate your account';
 }
 else
 {
@@ -75,14 +75,15 @@ if(empty($_POST==false) && empty($errors)===true)
   $firstname =  $_POST['firstname'];
    $lastname =  $_POST['lastname'];
   $email =  $_POST['email'];
-
+  $email_code = $_POST['username'] ;
 
   $register_data= array(
       'username' => $username ,
       'password' => $password,
       'firstname' =>   $firstname,
       'lastname' => $lastname,
-      'email' => $email
+      'email' => $email,
+      'email_code' => sha1($email_code + microtime())
   );
 
 register_user($register_data,$conn);
@@ -99,27 +100,27 @@ else if(empty($errors)===false)
   <ul>
     <li>
       Username*:<br />
-      <input type="text" name="username" value = "<?php if (isset($_POST['username'])) {echo $_POST['username']; } ?>"/>
+      <input type="text" name="username" />
     </li>
     <li>
       Password*:<br />
-      <input type="password" name="password" value=" <?php if (isset($_POST['password'])) {echo $_POST['password']; } ?>" />
+      <input type="password" name="password" />
     </li>
     <li>
       Password again*:<br />
-      <input type="password" name="password_again" value=" <?php if (isset($_POST['password_again'])) {echo $_POST['password_again']; } ?>" />
+      <input type="password" name="password_again" />
     </li>
     <li>
       First Name*:<br />
-      <input type="text" name="firstname" value=" <?php if (isset($_POST['firstname'])) {echo $_POST['firstname']; } ?>"  />
+      <input type="text" name="firstname"/>
     </li>
     <li>
       Last Name:<br />
-      <input type="text" name="lastname" value = "<?php if (isset($_POST['lastname'])) {echo $_POST['lastname']; } ?>" />
+      <input type="text" name="lastname"  />
     </li>
     <li>
       Email*:<br />
-      <input type="text" name="email" value ="<?php if (isset($_POST['email'])) {echo $_POST['email']; } ?>" />
+      <input type="text" name="email" />
     </li>
     <br />
     <input type="submit" value="Register" />

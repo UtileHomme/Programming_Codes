@@ -8,6 +8,13 @@ h1, h2 {
     margin:0 0 20px 0;
     font-weight:normal;
 }
+img
+{
+  padding:0;
+  margin:0 0 0 0;
+  width:100px;
+  height:100px;
+}
 p {
     padding:0;
     margin:0 0 20px 0;

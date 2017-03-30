@@ -1,5 +1,12 @@
 <?php
 
+//function for sending email to user giving him/her the link for activation
+
+function email($to, $subject, $body)
+{
+  mail($to, $subject, $body, 'From: jatins368@gmail.com');
+}
+
 //after user is logged in no need to show register page if register.php used
 function logged_in_redirect()
 {
