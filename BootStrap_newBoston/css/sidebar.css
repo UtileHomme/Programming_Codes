@@ -1,0 +1,67 @@
+/*Sidebar / Entire left menu*/
+#sidebar-wrapper
+{
+  z-index: 1;
+  /*Position will be from top left*/
+  position: absolute;
+  width: 0;
+  height: 100%;
+  /*Whenever the wrapper bar is decreased in size, hide the content*/
+  overflow-y: hidden;
+  background: #2C3E50;
+  
+  opacity: 0.9;
+}
+
+/*Main Content - Area on the right*/
+
+#page-content-wrapper
+{
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+
+}
+
+/*Change the width of the sidebar to display*/
+
+#wrapper.menuDisplayed  #sidebar-wrapper
+{
+  width: 250px;
+
+}
+
+#wrapper.menuDisplayed  #page-content-wrapper
+{
+  /*The main content will start 250px to the left*/
+  padding-left: 250px;
+
+}
+
+
+/*Sidebar styling*/
+
+.sidebar-nav
+{
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li
+{
+  text-indent: 20px;
+  line-height: 40px;
+}
+
+.sidebar-nav li a
+{
+  /*to stack elements on top of each other*/
+  display:block;
+  text-decoration: none;
+  color: #ddd;
+}
+
+.sidebar-nav li a:hover
+{
+  background: #16D0E5;
+}
