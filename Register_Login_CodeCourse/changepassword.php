@@ -2,7 +2,6 @@
 include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/init.php';
 require('/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/database/connect.php');
 
-
 protect_page();
 
 if(empty($_POST)===false)

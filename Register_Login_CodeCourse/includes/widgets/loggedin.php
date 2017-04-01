@@ -6,7 +6,13 @@
           <a href="logout.php">Log Out</a>
         </li>
         <li>
+          <a href="/profile.php?username=<?php echo $user_data['username']; ?>">Profile</a>
+        </li>
+        <li>
           <a href="changepassword.php">Change Password</a>
+        </li>
+        <li>
+          <a href="settings.php">Settings</a>
         </li>
     </ul>
   </div>

@@ -1,5 +1,5 @@
 <nav>
-  <img src="/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/images/reglogin.png"/>
+  <img src="../../images/reglogin.png"/>
   <ul>
     <li><a href="index.php">Home</a></li>
     <li><a href="downloads.php">Downloads</a></li>

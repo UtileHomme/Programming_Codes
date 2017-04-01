@@ -1,0 +1,4 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ localhost:8000/profile.php?username=$1 [L,QSA]
