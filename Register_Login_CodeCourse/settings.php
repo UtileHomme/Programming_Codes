@@ -1,6 +1,6 @@
 <?php
-include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/init.php';
-require('/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/database/connect.php');
+include_once '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/init.php';
+require_once('/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/database/connect.php');
 
 protect_page();
 
@@ -48,9 +48,9 @@ else
   if(empty($_POST)===false && empty($errors)===true)
   {
     //update the user
-    $firstname =  $_POST['firstname'];
-    $lastname =  $_POST['lastname'];
-    $email =  $_POST['email'];
+    $firstname =  htmlentities(strip_tags($_POST['firstname']));
+    $lastname =  htmlentities(strip_tags($_POST['lastname']));
+    $email =  htmlentities(strip_tags($_POST['email']));
 
     $update_data= array(
       'firstname' => $firstname,
@@ -58,7 +58,7 @@ else
       'email' => $email
     );
 
-    update_user($update_data,$conn);
+    update_user($session_user_id,$update_data,$conn);
 
    header('Location: settings.php?success');
   }

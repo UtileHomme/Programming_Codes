@@ -1,12 +1,54 @@
 <?php
 
-require_once ('/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/database/connect.php');
+include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/database/connect.php';
 
-function update_user($update_data, $conn)
+function has_access($user_id,$type,$conn)
 {
-    global $session_user_id;
-    $session_user_id = intval($session_user_id);
-    var_dump($session_user_id);
+    $user_id = intval($user_id);
+    $type = intval($type);
+    $query = "SELECT `user_id` FROM `login_register` WHERE `user_id`=:userid AND `type`=$type";
+    $res = $conn->prepare($query);
+    $res->bindParam(':userid',$user_id,PDO::PARAM_STR);
+    $res->execute();
+    $num_of_rows = $res->rowCount();
+    if($num_of_rows==1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+
+    }
+}
+
+//recover the account of the user via email
+function recover($mode,$email,$conn)
+{
+    $user_data = user_data(user_id_from_email($email,$conn),$conn,'firstname','username');
+
+    if($mode=='username')
+    {
+        email($email,'Your username', " Hello ".$user_data['firstname'].",\n\n Your username is: ".$user_data['username']." \n\n -- Created by Jatin Sharma");
+    }
+    else if($mode=='password')
+    {
+        //hash the password and extract first 8 characters
+        $generated_password = substr(sha1(rand(999,999999)),0,8);
+        //change the password
+        change_password($user_data['user_id'], $generated_password,$conn);
+
+        //set the password_recover field to 1 so that they can go and reset their password
+        update_user($user_data['user_id'], array('password_recover'=>'1'),$conn);
+        email($email,'Your password recovery', " Hello ".$user_data['firstname'].",\n\n Your new password: ".$generated_password." \n\n -- Created by Jatin Sharma");
+        //the changed password will be hashed and stored in the db... the password sent to email will be used for one time login
+    }
+}
+
+
+//to update the details of the user once he/she is logged in
+function update_user($user_id, $update_data, $conn)
+{
     $query = 'UPDATE `login_register` SET';
     $values = array();
     foreach($update_data as $name => &$value)
@@ -16,11 +58,11 @@ function update_user($update_data, $conn)
         $values[':'.$name] = $value; // save the placeholder
     }
     // var_dump($values);
-    $query = substr($query, 0, -1)." WHERE `user_id`=".intval($session_user_id);
+    $query = substr($query, 0, -1)." WHERE `user_id`=".intval($user_id);
     echo $query;
     $res = $conn->prepare($query);
 
-    $res->bindParam(':userid',$session_user_id ,PDO::PARAM_STR);
+    //$res->bindParam(':userid',$session_user_id ,PDO::PARAM_STR);
     $a = $res->execute($values);
     var_dump($a);
     $num_of_rows = $res->rowCount();
@@ -42,7 +84,7 @@ function activate($email, $email_code,$conn)
     $res->bindParam(':email_code',$email_code,PDO::PARAM_STR);
     $res->execute();
     $num_of_rows = $res->rowCount();
-    if($num_of_rows=1)
+    if($num_of_rows==1)
     {
         $query2 = "UPDATE `login_register` SET `active`=1 WHERE `email`=:email1";
         $res1 = $conn->prepare($query2);
@@ -64,7 +106,7 @@ function change_password($user_id, $password,$conn)
     $user_id = intval($user_id);
     $password = sha1($password);
 
-    $query = "UPDATE `login_register` SET `password`=:password WHERE `user_id`=$user_id ";
+    $query = "UPDATE `login_register` SET `password`=:password,`password_recover`=0 WHERE `user_id`=$user_id ";
     $res = $conn->prepare($query);
     $res->bindParam(':password',$password,PDO::PARAM_STR);
     if($res->execute())
@@ -113,10 +155,10 @@ function user_data($user_id,$conn)
         unset($func_get_args[1]);
         $fields = '`'.implode('`, `',$func_get_args).'`'.'<br />';          //this will store all the parameters in the form of a string
 
-        $query = "SELECT `user_id`, `username`, `password`, `firstname`, `lastname`, `email` from `login_register` where `user_id`=$user_id";
+        $query = "SELECT `user_id`, `username`, `password`, `firstname`, `lastname`, `email`,`email_code`,`active`,`password_recover`,`type` from `login_register` where `user_id`=$user_id";
         echo '<br />';
         $res = $conn->prepare($query);
-        $res->bindParam(':fields',$fields,PDO::PARAM_STR);
+    //    $res->bindParam(':fields',$fields,PDO::PARAM_STR);
         $a = $res->execute();
 
         if($res->execute())
@@ -221,6 +263,21 @@ function user_id_from_username($username,$conn)
     }
 }
 
+function user_id_from_email($email,$conn)
+{
+    $query = "SELECT `user_id` FROM `login_register` WHERE `email`=:email";
+    $res = $conn->prepare($query);
+    $res->bindParam(':email', $email, PDO::PARAM_STR);
+    $res->execute();
+    $num_of_rows = $res->rowCount();
+    echo '<br />';
+    if($num_of_rows==1)
+    {
+        $user_id =  $res->fetchColumn();
+        $user_id = intval($user_id);
+        return $user_id;
+    }
+}
 
 function login($username, $password,$conn)
 {

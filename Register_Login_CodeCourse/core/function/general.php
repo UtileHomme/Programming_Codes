@@ -1,7 +1,8 @@
 <?php
+require_once('/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/database/connect.php');
+require_once('/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/function/users.php');
 
 //function for sending email to user giving him/her the link for activation
-
 function email($to, $subject, $body)
 {
   mail($to, $subject, $body, 'From: jatins368@gmail.com');
@@ -24,14 +25,23 @@ function protect_page()
     header('Location: protected.php');
   }
 }
-function array_sanitize(&$item)
-{
 
-}
-function sanitize($data)
+//only if the type=1, will the user have admin privileges
+function admin_protect()
 {
-
+    global $user_data;
+    $id = $user_data['user_id'];
+    $a = has_access($id,1,$conn);
+    if($a===false)
+    {
+        header('Location: index.php');
+    }
+    else
+    {
+        echo 'hello';
+    }
 }
+
 
 function output_errors($errors)
 {

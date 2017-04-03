@@ -1,5 +1,5 @@
 <?php
-include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/init.php';
+include_once '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/init.php';
 
 //if logged in , no need to activate account
 logged_in_redirect();
