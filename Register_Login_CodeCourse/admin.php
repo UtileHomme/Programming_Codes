@@ -4,7 +4,7 @@ include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/
 
 //to ensure that the user is logged in first
 protect_page();
-admin_protect();
+admin_protect($conn);
 
 include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/includes/overall/header.php';
 

@@ -1,5 +1,6 @@
 <?php
-require_once('/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/database/connect.php');
+
+include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/database/connect.php';
 require_once('/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/function/users.php');
 
 //function for sending email to user giving him/her the link for activation
@@ -27,18 +28,14 @@ function protect_page()
 }
 
 //only if the type=1, will the user have admin privileges
-function admin_protect()
+function admin_protect($conn)
 {
     global $user_data;
     $id = $user_data['user_id'];
     $a = has_access($id,1,$conn);
-    if($a===false)
+    if($a==false)
     {
         header('Location: index.php');
-    }
-    else
-    {
-        echo 'hello';
     }
 }
 

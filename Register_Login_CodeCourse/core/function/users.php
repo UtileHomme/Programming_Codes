@@ -2,17 +2,53 @@
 
 include '/home/scrabbler/Jatin/Programming_Codes/Register_Login_CodeCourse/core/database/connect.php';
 
+function change_profile_image($user_id, $filetemp, $fileext, $conn)
+{
+    //10 character code for filename
+    $filepath = 'images/profile/'.substr(sha1(time()),0,10).'.'.$fileext;
+    move_uploaded_file($filetemp, $filepath);
+
+    $query = "UPDATE `login_register` SET `profile`='".$filepath."' WHERE `user_id`=".(int)$user_id;
+    $res = $conn->prepare($query);
+    $a = $res->execute();
+}
+
+
+//admin mailing something to users
+function mail_users($subject, $body, $conn)
+{
+    $query= "SELECT `firstname`, `email` FROM `login_register` WHERE `allow_email`=1";
+    $res = $conn->prepare($query);
+    $a = $res->execute();
+    if($a)
+    {
+        $res->setFetchMode(PDO::FETCH_ASSOC);
+        while($row=$res->fetch())
+        {
+            email($row['email'],$subject,"Hello ".$row['firstname']."\n\n".$body);
+        }
+    }
+}
+
+
+//for checking if the type =1 , admin access else not
 function has_access($user_id,$type,$conn)
 {
     $user_id = intval($user_id);
+
     $type = intval($type);
-    $query = "SELECT `user_id` FROM `login_register` WHERE `user_id`=:userid AND `type`=$type";
+
+    $query = "SELECT `user_id` FROM `login_register` WHERE `user_id`=$user_id AND `type`=1";
+
     $res = $conn->prepare($query);
-    $res->bindParam(':userid',$user_id,PDO::PARAM_STR);
-    $res->execute();
+    // $res->bindParam(':userid',$user_id,PDO::PARAM_STR);
+
+    $a = $res->execute();
+
     $num_of_rows = $res->rowCount();
     if($num_of_rows==1)
     {
+
         return true;
     }
     else
@@ -155,7 +191,7 @@ function user_data($user_id,$conn)
         unset($func_get_args[1]);
         $fields = '`'.implode('`, `',$func_get_args).'`'.'<br />';          //this will store all the parameters in the form of a string
 
-        $query = "SELECT `user_id`, `username`, `password`, `firstname`, `lastname`, `email`,`email_code`,`active`,`password_recover`,`type` from `login_register` where `user_id`=$user_id";
+        $query = "SELECT `user_id`, `username`, `password`, `firstname`, `lastname`, `email`,`email_code`,`active`,`password_recover`,`type`,`allow_email`,`profile` from `login_register` where `user_id`=$user_id";
         echo '<br />';
         $res = $conn->prepare($query);
     //    $res->bindParam(':fields',$fields,PDO::PARAM_STR);

@@ -51,11 +51,13 @@ else
     $firstname =  htmlentities(strip_tags($_POST['firstname']));
     $lastname =  htmlentities(strip_tags($_POST['lastname']));
     $email =  htmlentities(strip_tags($_POST['email']));
+    $allow_email = htmlentities(strip_tags($_POST[allow_email]=='on'?1:0));
 
     $update_data= array(
       'firstname' => $firstname,
       'lastname' => $lastname,
-      'email' => $email
+      'email' => $email,
+      'allow_email' => $allow_email
     );
 
     update_user($session_user_id,$update_data,$conn);
@@ -80,6 +82,19 @@ else
       <li>
         Email*: <br />
         <input type="text" name="email" value="<?php echo $user_data['email']; ?>"/>
+      </li>
+      <br />
+      <li>
+          <input type="checkbox" name="allow_email"
+          <?php
+
+          if($user_data['allow_email']==1)
+          {
+              echo 'checked="checked" ';
+          }
+
+          ?> />
+          Would you like to see an email from us
       </li>
       <br />
       <input type="submit" value="Update" />
