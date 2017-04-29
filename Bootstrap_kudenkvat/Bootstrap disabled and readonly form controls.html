@@ -1,0 +1,118 @@
+<!-- Bootstrap_specific_layout_for_different_devices -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- css style sheets -->
+    <link href="bootstrap/CustomStyles.css" rel="stylesheet" />
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <br />
+                <form class="form-horizontal">
+                    <input disabled type="text" class="form-control" placeholder="Your full name" />
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <br />
+                <form class="form-horizontal">
+                    <fieldset disabled>
+                        <div class="form-group">
+                            <label for="txtName">Name</label>
+                            <input type="text" id="txtName" class="form-control" placeholder="Your full name" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="selectGender">Gender</label>
+                            <select id="selectGender" class="form-control">
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" />I agree
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <br />
+                <form class="form-horizontal">
+                    <input readonly type="text" class="form-control" placeholder="Your full name" />
+                    <br />
+                    <input disabled type="text" class="form-control" placeholder="Your full name" />
+                </form>
+            </div>
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="col-xs-12">
+                <br />
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">Id</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                101
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtFirstName" class="col-xs-2 control-label">First Name</label>
+                        <div class="col-xs-10">
+                            <input type="text" class="form-control" id="txtFirstName" placeholder="Your first name"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtLastName" class="col-xs-2 control-label">Last Name</label>
+
+                        <div class="col-xs-10">
+                            <input type="text" class="form-control" id="txtLastName" placeholder="Your last name"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
