@@ -25,7 +25,7 @@ class Animal implements Singable{
 		but those that are public or protected are
 
 		By making sure our data can only be changed by the class
-		operations we are inencapsulating or protecting it.
+		operations we are encapsulating or protecting it.
 	*/
 
 	protected $name;

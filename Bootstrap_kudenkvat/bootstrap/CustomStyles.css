@@ -7,7 +7,36 @@
     line-height: 1.42857143 !important;
     letter-spacing: 4px;
     border-radius: 0;
-    height: 50px;
+    /*height: 50px;*/
+}
+
+.jumbotron {
+
+  background-color: #e3e3ed;
+}
+
+.well
+{
+  background-color: #f4511e;
+}
+
+.breadcrumb {
+
+  background-color: #ffd800;
+
+}
+
+.breadcrumb > .active {
+  color: red;
+}
+
+.breadcrumb > li + li:before {
+  content: "|";
+}
+
+body
+{
+    padding-top:50px;
 }
 
 .carousel-caption
