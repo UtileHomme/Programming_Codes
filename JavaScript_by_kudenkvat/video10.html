@@ -1,72 +1,29 @@
 <!DOCTYPE html !>
 <html>
   <head>
-    <script>
-      function addNumbers()
-      {
-        var firstNumber = document.getElementById('txtFirstNumber').value
-
-        if(firstNumber == "")
-        {
-          alert("First Number is required");
-          return;
-        }
-
-        // now parse the value accordingly
-        firstNumber= parseInt(firstNumber);
-
-        if(isNaN(firstNumber))
-        {
-          alert('Please enter a valid number in first number textbox');
-          return;
-        }
-
-        var secondNumber = document.getElementById('txtSecondNumber').value
-
-
-
-        if(secondNumber == "")
-        {
-          alert("Second Number is required");
-          return;
-        }
-
-        // now parse the value accordingly
-        secondNumber= parseInt(secondNumber);
-        // use parseFloat for decimals
-
-
-        //for checking whether it is a valid number
-        if(isNaN(secondNumber))
-        {
-          alert('Please enter a valid number in second number textbox');
-          return;
-        }
-
-        document.getElementById('txtResult').value = firstNumber + secondNumber;
-      }
+    <script type="text/javascript">
+      var string1 = "Hello";
+      var string2 = "JavaScript"
+      var result = string1.concat(" ",string2," Hello ", "World");
+      alert(result);
     </script>
   </head>
   <body>
-    <table style="border: 1px solid black , font-family:Arial">
-       <tr>
-         <td>First Number</td>
-         <td><input type="text" id="txtFirstNumber" /></td>
-       </tr>
-       <tr>
-         <td>Second Number</td>
-         <td><input type="text" id="txtSecondNumber" /></td>
-       </tr>
+    <form id="form1" action="video10.html">
 
-       <tr>
-         <td>Result</td>
-         <td><input type="text" id="txtResult" /></td>
-       </tr>
-
-       <tr>
-         <td><input type="submit" value="Add" id="btnAdd" onclick = "addNumbers()"/></td>
-       </tr>
-
-    </table>
+    </form>
   </body>
 </html>
+
+<!-- Other string functions -->
+<!-- 1. string.toUpperCase()
+2. stirng.toLowerCase()
+3. string.length;
+4. string.trim();
+5. string.replace("what you wish to replace","what you wish to replace it with")
+6. string.replace(/blue/gi, "green")  -> whereever there is blue replace with green,'g' indicates global replacement
+  'i' is for case insensitive
+7. string.substring('start position', 'end position')
+8. string.substr('start position', 'no of characters to extract')
+9. string.slice('start position', 'end position without including the mentioned position')
+-->
