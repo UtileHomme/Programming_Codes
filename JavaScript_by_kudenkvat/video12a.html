@@ -1,0 +1,45 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+    <script type="text/javascript">
+      function getDomainName()
+      {
+        var url = document.getElementById("txtURL").value;
+        var domainName = url.substring(url.lastIndexOf("."));
+        document.getElementById("txtDomain").value = domainName;
+      }
+    </script>
+  </head>
+  <body>
+      <form id="form1">
+        <table style="border 1px solid black; font-family: Arial">
+          <tr>
+            <td>
+              Website URL
+            </td>
+            <td>
+              <input type="text" id="txtURL" width="250px">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              Top Level Domain
+            </td>
+            <td>
+              <input type="text" id="txtDomain" width="250px">
+            </td>
+          </tr>
+
+
+          <tr>
+            <td>
+              <input type="button" value="Get top level domain" onclick="getDomainName()" width="250px">
+            </td>
+          </tr>
+
+
+        </table>
+      </form>
+  </body>
+</html>
