@@ -1,0 +1,27 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+    var myArray = ["sam","mark","sam","tim","sam"];
+
+    //this filter method will create a new array filling itself with the
+    //values that satisfy the above conditions
+
+    var result = myArray.filter(
+    function (value,index,array)
+    {
+      //compare the indices of all elements
+      //if not equal, then don't add to new array
+      return array.indexOf(value) == index
+    }
+    );
+
+    document.write(result);
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

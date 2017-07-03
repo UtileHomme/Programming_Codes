@@ -1,0 +1,33 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+    var myArray = [1,2,3,4,5,6,7,8,9,10];
+
+    //this function has the following parameters: value,index,array
+    function isEven(value,index,array)
+    {
+      if(value%2 ==0)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+
+    //this filter method will create a new array filling itself with the
+    //values that satisfy the above conditions
+
+    var result = myArray.filter(isEven);
+
+    document.write(result);
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>
