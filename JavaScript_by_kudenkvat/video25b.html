@@ -1,0 +1,26 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+    <script type="text/javascript">
+
+      //named function expression - useful for creating recursive function
+      var factorial = function computeFactorial(number)
+      {
+        if(number<=1)
+        {
+          return 1;
+        }
+        return number* computeFactorial(number-1);
+      }
+
+      //calling computeFactorial won't work
+      var res = factorial(5);
+      document.write(res);
+    </script>
+  </head>
+  <body>
+    <form id="form1" action="video10.html">
+
+    </form>
+  </body>
+</html>

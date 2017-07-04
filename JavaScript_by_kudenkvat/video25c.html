@@ -1,0 +1,26 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+    <script type="text/javascript">
+
+      //self invoking function expression - useful for creating recursive function
+      //this is how we make computeFactorial work
+      var res = (function computeFactorial(number)
+      {
+        if(number<=1)
+        {
+          return 1;
+        }
+        return number* computeFactorial(number-1);
+      }(5));
+
+
+      document.write(res);
+    </script>
+  </head>
+  <body>
+    <form id="form1" action="video10.html">
+
+    </form>
+  </body>
+</html>
