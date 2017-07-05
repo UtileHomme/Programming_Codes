@@ -3,11 +3,11 @@
   <head>
     <script type="text/javascript">
 
-    //global definition
-    var greeting = "Hello";
+
     function helloWorld()
     {
-      greeting = greeting + "JavaScript";
+      //this will automatically become a global variable since we are not using the keyworld 'var'
+      greeting = "Hello JavaScript";
       document.write(greeting);
     }
 

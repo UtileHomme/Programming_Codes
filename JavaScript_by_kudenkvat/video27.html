@@ -1,0 +1,37 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+    <script type="text/javascript">
+
+      /*
+      A closure is a function in which the inner function
+      has access to outer function variables along with its own
+      more like nested function
+      */
+      function addNumbers(first, second)
+      {
+        var returnValue = "Result is: ";
+        function add()
+        {
+          return returnValue + (first + second);
+        }
+
+
+        return add();
+      }
+
+      /*
+      Outer function runs then the value is accessed in the
+      inner function and finally returned 
+      */
+      var result = addNumbers(10,20);
+      document.write(result);
+
+    </script>
+  </head>
+  <body>
+    <form id="form1" action="video10.html">
+
+    </form>
+  </body>
+</html>

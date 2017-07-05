@@ -3,13 +3,21 @@
   <head>
     <script type="text/javascript">
 
-    //global definition
-    var greeting = "Hello";
+    //global copy
+    var greeting = "Hello from Global Variable";
+
     function helloWorld()
     {
-      greeting = greeting + "JavaScript";
+      //local copy
+      var greeting = "Hello from Local variable";
+
+      // only the local variable will be modified
+      greeting += "?????";
       document.write(greeting);
     }
+
+    //only the global thing will be modified
+    greeting += "!!!";
 
     helloWorld();
 

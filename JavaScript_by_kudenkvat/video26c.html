@@ -3,15 +3,19 @@
   <head>
     <script type="text/javascript">
 
-    //global definition
-    var greeting = "Hello";
+    //global copy
+    var greeting = "Hello from Global Variable";
+    helloWorld();
+
     function helloWorld()
     {
-      greeting = greeting + "JavaScript";
       document.write(greeting);
+
+      //local variable with the same name - we will get an error here
+      var greeting = "Hello from global variable";
     }
 
-    helloWorld();
+    //inside 'if' condition doesn't create scope
 
     document.write("<br />");
     document.write(greeting);

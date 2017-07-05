@@ -1,0 +1,23 @@
+<!-- Closure example
+Incrementing the count on every click
+This won't work
+-->
+
+<script type="text/javascript">
+
+/*
+closure function
+outer function executes only once
+on button click, the inner function is called 
+*/
+
+var incrementClickCount = (function()
+{
+  var clickCount = 0;
+  return function()
+  {
+    return ++clickCount;
+  }
+})();
+</script>
+<input type="button" value="Click me" onclick="alert(incrementClickCount())">
