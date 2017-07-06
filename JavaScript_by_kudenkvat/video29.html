@@ -1,0 +1,30 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+    <script type="text/javascript">
+
+      //printing the arguments passed in a function
+      function printArguments()
+      {
+        document.write("Arguments Count = " + arguments.length + "<br />");
+
+        //an arguments variable in the form of an array will be created
+        // printing all the arguments
+        for(var i=0; i<arguments.length; i++)
+        {
+          document.write("Argument " + i + " = " + arguments[i] + "<br />" );
+        }
+        document.write("<br />");
+      }
+
+      printArguments();
+      printArguments("A", "B");
+      printArguments(10,20,30);
+    </script>
+  </head>
+  <body>
+    <form id="form1" action="video10.html">
+
+    </form>
+  </body>
+</html>

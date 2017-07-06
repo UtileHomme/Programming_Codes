@@ -1,0 +1,22 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+    <script type="text/javascript">
+
+      function printNumbers()
+      {
+        // all arguments will be converted to an array format in the new variable
+        var argsArray = Array.prototype.slice.call(arguments);
+        argsArray.sort();
+        document.write(argsArray);
+      }
+
+      printNumbers(50,20,70);
+    </script>
+  </head>
+  <body>
+    <form id="form1" action="video10.html">
+
+    </form>
+  </body>
+</html>
