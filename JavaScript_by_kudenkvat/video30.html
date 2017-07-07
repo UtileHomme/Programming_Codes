@@ -1,0 +1,42 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+    <script type="text/javascript">
+
+      function factorial(n)
+      {
+        /*
+        while n=1 or n=0 store 1 into result
+        */
+        if(n==0 || n==1)
+        {
+          return 1;
+        }
+
+        var result = n;
+
+        /*
+          Present value of result till this stage = 1
+        */
+
+        /*
+        While n>1, do res = 1 * (n-1)
+        */
+        while(n>1)
+        {
+          result = result * (n-1);
+          n=n-1;
+        }
+
+        return result;
+      }
+
+      document.write(factorial(5));
+    </script>
+  </head>
+  <body>
+    <form id="form1" action="video10.html">
+
+    </form>
+  </body>
+</html>
