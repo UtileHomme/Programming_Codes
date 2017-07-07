@@ -1,0 +1,43 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+
+  function divide()
+  {
+    var numerator = Number(prompt("Please enter numerator"));
+    var denominator = Number(prompt("Please enter denominator"));
+
+    try
+    {
+      if(denominator==0){
+        throw{
+          //customized exception
+          error: "Divide by zero error",
+          message: "denominator cannot be ZERO"
+        }
+      }
+      else
+      {
+        document.write("Result = " + (numerator/denominator));
+      }
+    }
+
+    catch(e)
+    {
+      document.write("Error = " + e.error + "<br />");
+      document.write("Message = " + e.message + "<br />");
+    }
+  }
+
+  divide();
+
+
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+    <script type="text/javascript">
+
+      // onerror is handled only when there is no try catch statements
+      function imageErrorHandler()
+      {
+        //the message, the url and the line where the error occurred
+        alert("There is a problem loading the image");
+        return true;
+      }
+
+      try
+      {
+      NonExistingFunction();
+      }
+      catch(e)
+      {
+        document.write(e.message);
+      }
+    </script>
+
+    <img src="NonExistingImage" onerror="imageErrorHandler()">
+  </head>
+  <body>
+    <form id="form1" action="video10.html">
+
+    </form>
+  </body>
+</html>

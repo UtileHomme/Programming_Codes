@@ -1,0 +1,41 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+    <script type="text/javascript">
+
+      var d = new Date();
+
+      //how to customize date in dd/yy/mm format
+
+      function formatDate(date)
+      {
+        var year = date.getFullYear();
+
+        //month numbers start with 0
+        var month = date.getMonth();
+        month = month+1;
+
+        if(month < 10)
+        {
+          month = "0" + month;
+        }
+
+        var day = date.getDate();
+
+        if(day<10)
+        {
+          day = "0" + day;
+        }
+
+        return day+ "/" + month + "/" + year;
+      }
+
+      document.write(formatDate(d));
+    </script>
+  </head>
+  <body>
+    <form id="form1" action="video10.html">
+
+    </form>
+  </body>
+</html>

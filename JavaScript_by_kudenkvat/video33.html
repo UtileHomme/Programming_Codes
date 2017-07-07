@@ -1,0 +1,40 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+    <script type="text/javascript">
+
+      var d = new Date();
+      document.write(d + "<br />");
+
+      document.write("Jan 13, 1980 11:20:00"+ "<br />");
+
+      var dateofBirth = new Date(1980,0,13,11,20,0,0);
+      document.write(dateofBirth  + "<br />");
+
+      //printing the month part of the date
+      var monthNumber = d.getMonth();
+      document.write(monthNumber = "<br />");
+
+      //how to print month name from date
+      function getMonthNameFromMonthNumber(monthNumber)
+      {
+        var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Noveember","December"];
+        return monthNames[monthNumber];
+      }
+
+      document.write(getMonthNameFromMonthNumber(monthNumber));
+
+      var dayNumber = d.getDay();
+      document.write(dayNumber + "<br />")
+
+      //we can customize it for week name
+
+
+    </script>
+  </head>
+  <body>
+    <form id="form1" action="video10.html">
+
+    </form>
+  </body>
+</html>

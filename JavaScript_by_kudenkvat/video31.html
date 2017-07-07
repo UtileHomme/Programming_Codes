@@ -1,0 +1,37 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+    <script type="text/javascript">
+
+    //try catch cannot catch SYNTAX ERRORS
+    // Any statement that can cause a problem should come in 'try' block
+    try
+    {
+      // function doesn't exist
+      document.write(sayHello());
+      document.write("This line will not be executed");
+    }
+    catch(e)
+    {
+      document.write("Message = " + e.message + "<br />");
+      document.write("Description = " + e.description + "<br />");
+      document.write("Stack Trace = " + e.stack + "<br />");
+    }
+
+    //finally block will be executed irrespective of the nature of execution of above content
+    finally
+    {
+      document.write("This line is guaranted to execute");
+    }
+
+    //Any line after the 'catch' block is executed
+
+
+    </script>
+  </head>
+  <body>
+    <form id="form1" action="video10.html">
+
+    </form>
+  </body>
+</html>
