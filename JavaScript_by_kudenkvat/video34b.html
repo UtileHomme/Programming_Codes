@@ -1,0 +1,54 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+  <input type="text" value="10" id="txtBox">
+  <br />
+
+  <input type="button" value="Start Timer" onclick="startTimer('txtBox')">
+  <input type="button" value="Stop Timer" onclick="stopTimer()">
+
+  <script type="text/javascript">
+
+  var intervalID;
+
+  //whatever ID is passed in the onclick function gets transferred to controlId
+  function startTimer(controlId)
+  {
+    //it will return the textbox control
+    var control = document.getElementById(controlId);
+    var seconds = control.value;
+
+    seconds = seconds -1;
+
+    //if timer has run out
+    if(seconds == 0)
+    {
+      control.value = "Done";
+      return;
+    }
+    else
+    {
+      control.value = seconds;
+    }
+
+    intervalID = setTimeout(function() { startTimer("txtBox") }, 1000 );
+
+  }
+
+  function stopTimer()
+  {
+    clearTimeout(intervalID);
+  }
+
+
+
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

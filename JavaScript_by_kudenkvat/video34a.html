@@ -1,0 +1,41 @@
+<!DOCTYPE html !>
+<html>
+<head>
+   <meta charset="UTF-8">
+  <div id="timeDiv"></div>
+  <br />
+  <input type="button" value="Start Clock" onclick="startClock()">
+  <input type="button" value="Stop Clock" onclick="stopClock()">
+  <script type="text/javascript">
+
+  function startClock()
+  {
+    //start the repetitive action and set it into a variable
+  intervalID = setInterval(getCurrentDateTime,1000);
+  }
+
+  function stopClock()
+  {
+    //cancel the repetitive execution by passing the above id
+    clearInterval(intervalID);
+  }
+
+  //execute some particular function after some time interval
+  function getCurrentDateTime()
+  {
+    document.getElementById("timeDiv").innerHTML=new Date();
+  }
+
+  //to display date and time the first time
+  getCurrentDateTime();
+
+
+
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

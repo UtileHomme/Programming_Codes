@@ -1,22 +1,25 @@
 <!DOCTYPE html !>
 <html>
-  <head>
-    <div id = "timeDiv"></div>
-    <script type="text/javascript">
+<head>
+   <meta charset="UTF-8">
+  <div id="timeDiv"></div>
+  <script type="text/javascript">
 
-      //execute some particular function after some time interval
-      function getCurrentDateTime()
-      {
-        document.getElementById("timeDiv").innerHTML = new Date();
-      }
+  setInterval(getCurrentDateTime,1000);
 
-      setInterval(getCurrentDateTime(), 1000);
+  //execute some particular function after some time interval
+  function getCurrentDateTime()
+  {
+    document.getElementById("timeDiv").innerHTML=new Date();
+  }
 
-    </script>
-  </head>
-  <body>
-    <form id="form1" action="video10.html">
 
-    </form>
-  </body>
+
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
 </html>

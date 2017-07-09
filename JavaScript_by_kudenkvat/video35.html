@@ -1,17 +1,50 @@
 <!DOCTYPE html !>
 <html>
   <head>
-    <div id = "timeDiv"></div>
+    <img src="images/1.jpg" id="image" style="height:150px; width:150px;">
+    <br />
+    <input type="button" value="Start Slide show" onclick = "startSlideShow()">
+    <input type="button" value="Stop Slide show" onclick = "stopSlideShow()">
+    <br>
+    <div id="result"></div>
     <script type="text/javascript">
 
-      //execute some particular function after some time interval
-      function getCurrentDateTime()
-      {
-        document.getElementById("timeDiv").innerHTML = new Date();
-      }
+        var intervalId;
 
-      setInterval(getCurrentDateTime(), 1000);
+        function startSlideShow()
+        {
+          //set it into a variable
+          intervalId = setInterval(changeImage, 2000);
+        }
 
+        function stopSlideShow()
+        {
+          clearInterval(intervalId);
+        }
+        function changeImage()
+        {
+          //from the image id get the attribute value
+          var imageSrc = document.getElementById("image").getAttribute("src");
+
+          //to get the name of the image
+          //position at which we want to start the extractoin and position where want to end it
+          var currentImageNumber = imageSrc.substring(imageSrc.lastIndexOf("/")+1,imageSrc.lastIndexOf("/")+2);
+
+          if(currentImageNumber == 8)
+          {
+            currentImageNumber = 0;
+          }
+
+          //get the next image in the series
+          var newImage = "images/"+ (Number(currentImageNumber) + 1) + ".jpg"
+
+          //we wish to set the value of image to new image number
+          document.getElementById("image").setAttribute("src", newImage);
+
+          //show the current image number by assigning it to result id
+          // document.getElementById("result").innerHTML = newImage;
+
+        }
     </script>
   </head>
   <body>
