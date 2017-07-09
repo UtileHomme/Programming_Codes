@@ -1,0 +1,41 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+
+    <style type="text/css">
+      .styleClass
+      {
+        display: table-cell;
+        border: 5px solid black;
+        padding: 20px;
+        text-align: center;
+      }
+    </style>
+
+  </head>
+  <body>
+      <div id="DIV1" class="styleClass">DIV 1
+        <div id="DIV2" class="styleClass">DIV 2
+          <div id="DIV3" class="styleClass">DIV 3</div>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+        var divs = document.getElementsByTagName("div");
+
+        for(var i=0; i<divs.length; i++)
+        {
+          //false enables event bubbling -- innermost to outermost
+          //true enables event capturing -- outermost to innermost
+          divs[i].addEventListener("click", clickHandler, true);
+          divs[i].addEventListener("click", clickHandler, false);
+        }
+
+        function clickHandler(event)
+        {
+          alert(this.getAttribute("id") + " click event handled");
+        }
+
+      </script>
+  </body>
+</html>

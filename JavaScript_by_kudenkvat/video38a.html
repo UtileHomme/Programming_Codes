@@ -1,0 +1,30 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+    <!-- When the mouse is taken to the button it becomes background color is red and font color is yellow -->
+    <input type="button" value="Click Me" id="btn">
+
+    <script type="text/javascript">
+
+        //type of event, the handler, phase
+        btn.addEventListener("click",Handler1);
+        btn.addEventListener("click",Handler2);
+
+        // For the same event we are associating two different methods
+        function Handler1()
+        {
+          alert("Handler 1 called:");
+        }
+
+        function Handler2()
+        {
+          alert("Handler 2 called:");
+        }
+    </script>
+  </head>
+  <body>
+    <form id="form1" action="video10.html">
+
+    </form>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+    <!-- using HTML attribute -->
+    <input type="button" value="Click Me" id="btn" onclick="handler1()">
+
+    <script type="text/javascript">
+
+        //this will overwrite the above HTML onclick
+        document.getElementById("btn").onclick = handler2;
+        function handler1()
+        {
+          alert("Handler assigned using HTML attribute");
+        }
+
+        function handler2()
+        {
+          alert("Hander assigned using DOM object property");
+        }
+
+
+    </script>
+  </head>
+  <body>
+    <form id="form1" action="video10.html">
+
+    </form>
+  </body>
+</html>

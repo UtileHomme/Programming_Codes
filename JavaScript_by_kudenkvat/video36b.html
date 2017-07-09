@@ -1,0 +1,38 @@
+<!DOCTYPE html !>
+<html>
+<head>
+
+  <table>
+    <tr>
+      <td>First Name</td>
+      <td><input type="text" id="txtFirstName" onkeyup="validateRequiredField('txtFirstName')" onblur="validateRequiredField('txtFirstName')"></td>
+    </tr>
+    <tr>
+      <td>Last Name</td>
+      <td><input type="text" id="txtLastName" onkeyup="validateRequiredField('txtLastName')" onblur="validateRequiredField('txtLastName')"></td>
+    </tr>
+  </table>
+
+  <script type="text/javascript">
+  function validateRequiredField(controlid)
+  {
+    var control = document.getElementById(controlid);
+    control.style.color = 'white';
+    if(control.value=="")
+    {
+      control.style.background = 'red';
+    }
+    else
+    {
+      control.style.background = 'green';
+    }
+  }
+
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

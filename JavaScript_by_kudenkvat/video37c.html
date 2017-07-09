@@ -1,0 +1,30 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+
+    <input type="button" value="Click Me" id="btn" >
+
+    <script type="text/javascript">
+
+        //the latter of the two will be executed
+        document.getElementById("btn").onclick = handler1;
+        document.getElementById("btn").onclick = handler2;
+        function handler1()
+        {
+          alert("Handler 1");
+        }
+
+        function handler2()
+        {
+          alert("Hander 2");
+        }
+
+
+    </script>
+  </head>
+  <body>
+    <form id="form1" action="video10.html">
+
+    </form>
+  </body>
+</html>

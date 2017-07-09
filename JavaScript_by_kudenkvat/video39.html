@@ -1,0 +1,39 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+
+    <input type="button" value="Click me" id="btn" onclick="getEventDetails(event)"
+    onmouseover="getEventDetails(event)" onmouseout="getEventDetails(event)">
+    <br><br>
+    <div id="resultDiv"></div>
+    <script type="text/javascript">
+
+    //getting all details of the events
+    function getEventDetails(event)
+    {
+      //to make it work for lower IE versions
+      var sourceElement;
+
+      if(event.srcElement)
+      {
+        sourceElement = event.srcElement;
+      }
+      else
+      {
+        sourceElement = event.target;
+      }
+      var eventDetails = "Event Name = " + event.type + "<br /> X" + event.clientX
+                        + "<br /> Y = " + event.clientY + "<br />Target Type = "
+                        + sourceElement.type + "<br />Target Tag Name = " + sourceElement.tagName;
+
+      document.getElementById("resultDiv").innerHTML = eventDetails;
+    }
+
+    </script>
+  </head>
+  <body>
+    <form id="form1" action="video10.html">
+
+    </form>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+    <!-- When the mouse is taken to the button it becomes background color is red and font color is yellow -->
+    <input type="button" value="Click Me" id="btn">
+    <input type="button" value="Remove Event Handlers" onclick="removeHandlers()" >
+
+    <script type="text/javascript">
+
+        //type of event, the handler, phase
+        btn.addEventListener("mouseover",changeColorOnMouseOver);
+        btn.addEventListener("mouseout",changeColorOnMouseOut);
+
+        document.getElementById("btn").onmouseover = changeColorOnMouseOver;
+        document.getElementById("btn").onmouseout = changeColorOnMouseOut;
+      function changeColorOnMouseOver()
+      {
+        //this variable has a reference to the button
+        this.style.background='red';
+        this.style.color='yellow';
+      }
+      function changeColorOnMouseOut()
+      {
+        //this variable has a reference to the button
+        this.style.background='black';
+        this.style.color='white';
+      }
+
+      function removeHandlers()
+      {
+        btn.removeEventListener("mouseover",changeColorOnMouseOver);
+        btn.removeEventListener("mouseout",changeColorOnMouseOut);
+      }
+    </script>
+  </head>
+  <body>
+    <form id="form1" action="video10.html">
+
+    </form>
+  </body>
+</html>

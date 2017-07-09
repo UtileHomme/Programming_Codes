@@ -1,0 +1,62 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+    <style type="text/css">
+      .imgStyle
+      {
+        height: 100px;
+        width: 100px;
+        border: 3px solid grey;
+      }
+    </style>
+
+  </head>
+  <body>
+    <img height="540px" width="540px" style="border:3px solid grey"
+    src="images/1.jpg" id="mainImage">
+    <br>
+
+    <div id = "myDiv" onclick="changeImage(event)">
+    <img class="imgStyle" src="images/1.jpg">
+    <img class="imgStyle" src="images/2.jpg">
+    <img class="imgStyle" src="images/3.jpg">
+    <img class="imgStyle" src="images/4.jpg">
+    <img class="imgStyle" src="images/5.jpg">
+  </div>
+    <script type="text/javascript">
+
+      //change the look of the border
+      var images = document.getElementById("myDiv").getElementsByTagName("img");
+
+      for(var i = 0; i < images.length; i++)
+      {
+        images[i].onmouseover = function()
+        {
+          this.style.cursor = 'hand';
+          this.style.borderColor = 'red';
+        }
+        images[i].onmouseout = function()
+        {
+          this.style.cursor = 'pointer';
+          this.style.borderColor = 'grey';
+        }
+
+      }
+
+
+      // change image from thumbnail when image is clicked
+      function changeImage(event)
+      {
+        event = event || window.event;
+
+        //targetElement contains the element on which it occurred
+        var targetElement = event.target || event.srcElement;
+
+        if(targetElement.tagName == "IMG")
+        {
+          document.getElementById("mainImage").src = targetElement.getAttribute("src");
+        }
+      }
+    </script>
+  </body>
+</html>

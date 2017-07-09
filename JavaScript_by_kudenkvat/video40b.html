@@ -1,0 +1,53 @@
+<!DOCTYPE html !>
+<html>
+  <head>
+
+    <style type="text/css">
+      .styleClass
+      {
+        display: table-cell;
+        border: 5px solid black;
+        padding: 20px;
+        text-align: center;
+      }
+    </style>
+
+  </head>
+  <body>
+      <div id="DIV1" class="styleClass">DIV 1
+        <div id="DIV2" class="styleClass">DIV 2
+          <div id="DIV3" class="styleClass">DIV 3</div>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+        //return all the div elements
+        var divElements = document.getElementsByTagName('div');
+
+        for(var i = 0; i<divElements.length; i++)
+        {
+          divElements[i].onclick = function(event)
+          {
+            //to ensure that only the event which is clicked and its parent gets changed
+            event = event || window.event;
+
+            if(event.stopPropagation)
+            {
+              event.stopPropagation();
+            }
+            else
+            {
+              //account for IE 8 and earlier versions
+              event.cancelBubble = true;
+            }
+            //'this' refers to the current element on which event is triggered
+            this.style.borderColor = 'red';
+
+            //tp retrieve the attribute id
+            alert(this.getAttribute('id') + " border colour changed");
+          }
+        }
+
+      </script>
+  </body>
+</html>
