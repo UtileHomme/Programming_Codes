@@ -1,0 +1,65 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <body>
+    <input type="button" value="Click me" onmouseup="whichMouseButtonClicked(event)">
+    <script type="text/javascript">
+
+    function whichMouseButtonClicked(event)
+    {
+      var whichButton;
+
+      if(event.which)
+      {
+        switch (event.which)
+        {
+          case 1:whichButton = "Left Button Clicked";
+          break;
+          case 2:whichButton = "Middle Button Clicked";
+          break;
+          case 3:whichButton = "Right Button Clicked";
+          break;
+          default:
+          whichButton = "Invalid Button Clicked";
+          break;
+        }
+      }
+      else
+      {
+        switch (event.button)
+        {
+          case 1:
+          whichButton = "Left Button Clicked";
+          break;
+          case 2:
+          whichButton = "Middle Button Clicked";
+          break;
+          case 3:
+          whichButton = "Right Button Clicked";
+          break;
+          default:
+          whichButton = "Invalid Button Clicked";
+          break;
+        }
+      }
+      alert(whichButton);
+    }
+    document.oncontextmenu = preventContextMenu;
+
+    function preventContextMenu(event)
+    {
+      event = event || window.event;
+      if(event.preventDefault)
+      {
+        event.preventDefault();
+      }
+      else
+      {
+        event.returnValue = false;
+      }
+    }
+    </script>
+  </head>
+
+</body>
+</html>

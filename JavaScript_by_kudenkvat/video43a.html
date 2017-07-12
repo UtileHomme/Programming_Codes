@@ -1,0 +1,26 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <body>
+    <h1>on this page right click is disabled</h1>
+    <script type="text/javascript">
+
+    document.oncontextmenu = preventDefaultAction;
+    function preventDefaultAction(event)
+    {
+      event = event || window.event;
+
+      if(event.preventDefault)
+      {
+        event.preventDefault();
+      }
+      else
+      {
+        event.returnValue = false;
+      }
+    }
+    </script>
+  </head>
+
+</body>
+</html>

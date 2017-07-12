@@ -1,0 +1,46 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <body>
+    <input type="button" value="Click me" onmouseup="getMouseClickCode(event)">
+    <input type="button" value="Clear" onclick="clearText()">
+    <br><br>
+    <textarea name="" id="txtArea" cols="20" rows="3"></textarea>
+  <script type="text/javascript">
+
+    function clearText()
+    {
+      document.getElementById("txtArea").value="";
+    }
+
+    function getMouseClickCode(event)
+    {
+      if(event.which)
+      {
+        document.getElementById("txtArea").value += "event.which =" + event.which + "\r\n";
+      }
+      else
+      {
+        document.getElementById("txtArea").value += "event.button =" + event.button + "\r\n";
+      }
+    }
+
+    document.oncontextmenu = preventContextMenu;
+
+    function preventContextMenu(event)
+    {
+      event = event || window.event;
+      if(event.preventDefault)
+      {
+        event.preventDefault();
+      }
+      else
+      {
+        event.returnValue = false;
+      }
+    }
+  </script>
+</head>
+
+</body>
+</html>
