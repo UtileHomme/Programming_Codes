@@ -1,0 +1,32 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <input type="button" value="Single,Double or Right Click"
+  onmousedown="logEvent(event)"
+  onmouseup="logEvent(event)"
+  onmouseover="logEvent(event)"
+  onmouseout="logEvent(event)"
+  ondblclick="logEvent(event)"
+  oncontextmenu="logEvent(event)">
+
+  <input type="button" value="Clear" onclick="clearText()">
+  <br><br>
+  <textarea name="" id="txtArea" cols="20" rows="10"></textarea>
+  <script type="text/javascript">
+
+  //this function will log all the events
+    function logEvent(event)
+    {
+      event = event || window.event;
+      document.getElementById("txtArea").value += event.type + "\r\n";
+    }
+
+    function clearText()
+    {
+      document.getElementById("txtArea").value = "";
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>

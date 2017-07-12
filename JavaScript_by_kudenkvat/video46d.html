@@ -1,0 +1,24 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <!-- Opens google.com in a separate window at a particular position -->
+  <input type="button" value="Open popup" onclick="openpopup()">
+  <input type="button" value="Close popup" onclick="closePopup()">
+  <script type="text/javascript">
+
+    var mywindow;
+    function openpopup()
+    {
+      mywindow = window.open('http://www.google.com','_blank','height=300,width=300');
+    }
+
+    function closePopup()
+    {
+      mywindow.close();
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
+</html>
