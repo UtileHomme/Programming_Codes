@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;LinkedList_a&apos; to &apos;LinkedList_AddinBeginning&apos;&#x0A;- Original project: &apos;LinkedList&apos;&#x0A;- Original element: &apos;LinkedList_a&apos;&#x0A;- Renamed element: &apos;LinkedList_AddinBeginning&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;LinkedList_a&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{LinkedList_a.java[LinkedList_a" matchStrategy="1" name="LinkedList_AddinBeginning" qualified="false" references="true" similarDeclarations="false" stamp="1482217605717" textual="false" version="1.0"/>
-</session>

@@ -1,0 +1,39 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <input type="text" id="txtBox" style="width: 250px">
+  <br /><br>
+  <input type="button" value="Process String" onclick="processString()" style="width: 250px">
+  <br /><br>
+  <textarea id="txtArea" cols="30" rows="4"></textarea>
+
+  <script type="text/javascript">
+    function processString()
+    {
+      //to make the textarea empty at start of the function processing
+      document.getElementById("txtArea").value="";
+      var inputString = document.getElementById("txtBox").value;
+
+      // d is for numbers
+      //g is for global match - to find all occurrences
+      var result = inputString.match(/\d+/g);
+
+      if(result!=null)
+      {
+        for(var i=0;i<result.length;i++)
+        {
+          document.getElementById("txtArea").value+= result[i]+"\r\n";
+
+        }
+      }
+      alert(result);
+    }
+
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

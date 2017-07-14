@@ -1,0 +1,27 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+
+    var string = "Tom contact number is 10110110101. His age is 35";
+    string += "Mark contact number is 891233222. His age is 45";
+
+    // regexp object
+    var regexp = new RegExp("\\d+","g");
+    var result;
+
+    //till it is not null, write the regexp value to an array
+    while((result = regexp.exec(string))!=null)
+    {
+      document.write(result[0] + "<br />");
+    }
+    // document.write(regexp.exec(string));
+
+
+  </script>
+</head>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>
