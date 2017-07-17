@@ -1,0 +1,32 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+
+    function Employee(name)
+    {
+      this.name = name;
+
+      //if we create 100 employees, there will be 100 copies of the functions
+      // but we wish to share function across all objects
+      this.getName = function()
+      {
+        return this.name;
+      }
+    }
+
+    var e1 = new Employee("Mark");
+    var e2 = new Employee("Sara");
+
+    document.write("E1 Name = " + e1.getName() + "<br />");
+    document.write("E2 Name = " + e2.getName() + "<br />");
+
+
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

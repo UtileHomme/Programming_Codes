@@ -1,0 +1,33 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+
+      //object literal
+      var employee =
+      {
+        name : "John"
+      }
+
+      var newEmployee = employee;
+
+      document.write("Before Changes <br />")
+      document.write("employee.name = " + employee.name + "<br />");
+      document.write("newEmployee.name = " + newEmployee.name + "<br /><br />");
+
+      newEmployee.name = "Marry";
+
+      //both employee.name and newEmployee.name gets changed
+      document.write("After Changes <br />")
+      document.write("employee.name = " + employee.name + "<br />");
+      document.write("newEmployee.name = " + newEmployee.name + "<br /><br />");
+
+
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

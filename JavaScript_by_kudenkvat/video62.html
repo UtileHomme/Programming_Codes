@@ -1,0 +1,45 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+
+      var Employee = function(name)
+      {
+        this.name = name;
+      }
+
+      Employee.prototype.getName = function()
+      {
+        return this.name;
+      }
+
+      Employee.prototype.getNameLength = function()
+      {
+        return this.name.length;
+      }
+
+      //PermanentEmployee has been inherited from Employee
+      var PermanentEmployee = function(annualSalary)
+      {
+        this.annualSalary = annualSalary;
+      }
+
+      //way of inheriting
+      var employee = new Employee("Mark");
+
+      PermanentEmployee.prototype = employee;
+
+      // should be able to access Employee getName function
+      var pe = new PermanentEmployee(5000);
+      document.write(pe.getName() + "<br />");
+      document.write(pe.getNameLength());
+
+      //should return true -- since permanent employee is instance of Employee
+      alert(pe instanceof Employee);
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+
+  //this is the generic copy
+  var Shape = function()
+  {
+  }
+  Shape.prototype.draw = function()
+  {
+    return "I am a generic shape";
+  }
+
+  //this will override the generic copy
+  var Circle = function()
+  {
+  }
+  Circle.prototype = Object.create(Shape.prototype);
+  Circle.prototype.draw = function()
+  {
+    return "I am a circle";
+  }
+
+
+  //this will override the generic copy
+  var Square = function()
+  {
+  }
+  Square.prototype = Object.create(Shape.prototype);
+  Square.prototype.draw = function()
+  {
+    return "I am a square";
+  }
+  
+
+  //doesn't override the generic copy
+  var Triangle = function()
+  {
+  }
+  Triangle.prototype = Object.create(Shape.prototype);
+
+
+
+  var shapes = [new Shape(), new Circle(), new Square(), new Triangle()];
+
+  shapes.forEach(function (shape)
+  {
+    document.write(shape.draw() + "<br />");
+  });
+
+
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

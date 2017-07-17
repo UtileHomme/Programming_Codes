@@ -1,0 +1,36 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <!-- Instance members are different for each object -->
+  <!-- Static members are shared by all objects -->
+  <script type="text/javascript">
+
+    function Shape(shapeName)
+    {
+      this.ShapeName = shapeName;
+
+      //if this field exists, increment by one else initialize by 1
+      //static field
+      Shape.Count = ++Shape.Count || 1;
+
+      Shape.ShowCount = function()
+      {
+        return Shape.Count;
+      }
+    }
+
+    var shape1 = new Shape("Circle");
+    var shape2 = new Shape("Rectangle");
+    var shape3 = new Shape("Triangle");
+
+    //all objects will have their own copy
+    document.write("Shape Count = " + Shape.ShowCount());
+
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

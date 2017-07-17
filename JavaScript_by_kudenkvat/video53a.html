@@ -4,25 +4,32 @@
 
   <!-- In javascript, we don't create objects using classes, we use functions -->
   <script type="text/javascript">
-    function Employee(firstName, lastName)
-    {
-      this.firstName = firstName;
-      this.lastName = lastName;
+    // function Employee(firstName, lastName)
+    // {
+    //   this.firstName = firstName;
+    //   this.lastName = lastName;
+    //
+    //   this.getFullName = function()
+    //   {
+    //     return this.firstName + " " + this.lastName;
+    //   }
+    // }
 
-      this.getFullName = function()
+    var employee =
+    {
+      firstName : "Pragim",
+      lastName: "Tech",
+      getFullName : function()
       {
         return this.firstName + " " + this.lastName;
       }
     }
 
-
-
-    //employee constructor function
-    var employee = new Employee("Pragim", "Tech");
-
     document.write("First Name = " + employee.firstName + "<br />");
     document.write("Last Name = " + employee.lastName + "<br />");
     document.write("Full Name = " + employee.getFullName() + "<br />");
+
+
   </script>
 </head>
 <body>

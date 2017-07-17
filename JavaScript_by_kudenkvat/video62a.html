@@ -1,0 +1,43 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+
+      var Employee = function(name)
+      {
+        this.name = name;
+      }
+
+      Employee.prototype.getName = function()
+      {
+        return this.name;
+      }
+
+      Employee.prototype.getNameLength = function()
+      {
+        return this.name.length;
+      }
+
+      //PermanentEmployee has been inherited from Employee
+      var PermanentEmployee = function(annualSalary)
+      {
+        this.annualSalary = annualSalary;
+      }
+
+      //way of inheriting
+      var employee = new Employee("Mark");
+
+      PermanentEmployee.prototype = employee;
+
+      var pe = new PermanentEmployee(500);
+
+      document.write("employee.name " + employee.hasOwnProperty('name') + "<br />");
+      document.write("PermanentEmployee.annualSalary: " + pe.hasOwnProperty('annualSalary') + "<br />");
+
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

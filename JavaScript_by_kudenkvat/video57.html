@@ -1,0 +1,67 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+
+    function Employee(firstName, lastName)
+    {
+      //Public field
+      this.firstName = firstName;
+      this.lastName = lastName;
+
+      //Private field -- only accessed by the private functions and privileged methods
+      var privateFullName;
+
+      //Private Function
+      // function privateGetFullName()
+      // {
+      //
+      // }
+
+      var privateGetFullName = function()
+      {
+        privateFullName = firstName + " " + lastName;
+        return privateFullName;
+      }
+
+      //Privileged function can access private fields and private methods
+      this.privilegedGetFullName = function()
+      {
+       return privateGetFullName();
+      }
+
+      //public function creation can call privileged methods but not private methods
+      Employee.prototype.publicGetFullName = function()
+      {
+        return this.privilegedGetFullName();
+      }
+    }
+
+    /*
+    Public and privileged fields and functions are available both inside and outside the constructor
+    function.
+    Private fields and functions are available only inside the Employee constructor function
+
+    */
+
+    var employee = new Employee("Jatin", "Sharma");
+
+    document.write(employee.publicGetFullName() + "<br />");
+    document.write(employee.privilegedGetFullName() + "<br />");
+
+    //can't be accessed outside the constructor function
+    document.write(employee.privateGetFullName() + "<br />");
+
+    employee.privateGetFullName();
+    employee.privateFullName;
+
+    //private functions cannot be modified outside the constructor function
+
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

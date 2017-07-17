@@ -1,0 +1,35 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+
+      //constructor function  ** multiple instances of object allowed
+      var emp = function()
+      {
+        this.name = "John"
+      }
+
+
+      var employee = new emp();
+      var newEmployee = new emp();
+
+      document.write("Before Changes <br />")
+      document.write("employee.name = " + employee.name + "<br />");
+      document.write("newEmployee.name = " + newEmployee.name + "<br /><br />");
+
+      newEmployee.name = "Marry";
+
+      //both employee.name and newEmployee.name gets changed
+      document.write("After Changes <br />")
+      document.write("employee.name = " + employee.name + "<br />");
+      document.write("newEmployee.name = " + newEmployee.name + "<br /><br />");
+
+
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

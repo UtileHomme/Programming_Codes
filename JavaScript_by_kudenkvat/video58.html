@@ -1,0 +1,59 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+
+  function Employee(name, age)
+  {
+    var _name = name;
+    var _age = age;
+
+    //getter setters in javascript
+    Object.defineProperty(this,"age",
+    {
+      get :function()
+      {
+        return _age;
+
+      },
+
+      set :function(value)
+      {
+        if(value <1 || value>100)
+        {
+          alert("Invalid age");
+        }
+        else
+        {
+          _age = value;
+        }
+      }
+
+    })
+
+    Object.defineProperty(this,"name",
+    {
+      get :function()
+      {
+        return _name;
+      }
+
+
+
+  })
+
+}
+
+var employee = new Employee("Tom", 1566);
+employee.age = 1000;
+employee.name = "Riya";
+alert(employee.age);
+
+</script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

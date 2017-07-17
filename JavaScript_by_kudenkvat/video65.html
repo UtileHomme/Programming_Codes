@@ -1,0 +1,50 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+
+  var Employee = function(firstName, lastName, gender,email)
+  {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.gender= gender;
+    this.email = email;
+  }
+
+  Employee.prototype.getFullName = function()
+  {
+    return this.firstName + " " + this.lastName;
+  }
+
+  Employee.prototype.getEmail = function()
+  {
+    return this.email;
+  }
+
+  Employee.prototype.getGender = function()
+  {
+    return this.email;
+  }
+
+  var employee = new Employee("Mark","Matt", "Male", "a@a.com");
+
+  //we are displaying the property of the values
+  for(var property in employee)
+  {
+    //if the property is not equal to function then give the variables of the class
+    if(typeof employee[property]!= "function")
+    {
+      document.write(property + " : " + employee[property] + "<br />");
+    }
+  }
+
+
+
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

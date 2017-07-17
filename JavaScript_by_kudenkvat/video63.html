@@ -1,0 +1,42 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+
+      var Shape = function()
+      {
+        this.shapeName = "none";
+        throw new Error("Cannot create an instance of an abstract class");
+      }
+
+      //add draw function to the Shape prototype
+      //object derived from Shape should be able to call the draw() method
+      Shape.prototype.draw = function()
+      {
+        return "Drawing " + this.shapeName;
+      }
+
+      //error will be thrown if we try to create an object for an abstract class
+      // var shape = new Shape();
+
+      var Circle = function(shapeName)
+      {
+        this.shapeName = shapeName;
+      }
+
+      //shape is going to be the base type of circle
+      //Object.create() allows to create an object without using constructor
+      Circle.prototype = Object.create(Shape.prototype);
+
+      var circle = new Circle("Circle");
+
+      document.write(circle.draw());
+
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

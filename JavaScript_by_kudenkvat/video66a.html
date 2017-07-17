@@ -1,0 +1,35 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+
+      "use strict";
+
+      var Employee = function(name)
+      {
+        var _name = name;
+
+        Object.defineProperty(this, "name",
+        {
+          get: function()
+          {
+            return _name;
+          }
+        }
+      );
+      }
+
+      var employee = new Employee("Mark");
+      employee.name = "Mark M";
+
+      document.write(employee.name);
+
+
+  </script>
+</head>
+<body>
+  <form id="form1" action="video10.html">
+
+  </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <input type="button" value="Set Cookie" onclick="setCookie()">
+  <input type="button" value="Get Cookie" onclick="getCookie()">
+  <script type="text/javascript">
+
+    function setCookie()
+    {
+      document.cookie="color=red";
+    }
+
+    function getCookie()
+    {
+      if(document.cookie.length!=0)
+      {
+        var nameValueArray = document.cookie.split("=");
+        alert("Name = " + nameValueArray[0] + "Value = " + nameValueArray[1]);
+      }
+      else
+      {
+        alert("Cookie not found");
+      }
+    }
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

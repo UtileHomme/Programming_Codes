@@ -1,0 +1,31 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script src="js/video61a.js" type="text/javascript"></script>
+
+</head>
+<body>
+  <script type="text/javascript">
+
+  getEmployeeDetails();
+
+  function getEmployeeDetails()
+  {
+    //we wish to override the above function without changing it's work
+    Employee.prototype.getName = function()
+    {
+      return this.name.toUpperCase();
+    }
+
+
+    var e1 = new Employee("Mark");
+
+    var e2 = new Employee("Sara");
+
+    document.write("E1 Name = " + e1.getName() + "<br />");
+    document.write("E2 Name = " + e2.getName() + "<br />");
+
+  }
+  </script>
+</body>
+</html>

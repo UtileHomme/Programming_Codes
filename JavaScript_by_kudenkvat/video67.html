@@ -1,0 +1,28 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <select name="" id="dd1Theme" onchange="setColor()">
+    <option value="Select Color">Select Color</option>
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+  </select>
+  <script type="text/javascript">
+
+    function setColor()
+    {
+      var selectedColor = document.getElementById("dd1Theme").value;
+
+      //one of the above colors have been selected
+      if(selectedColor!="Select Color")
+      {
+          document.bgColor = selectedColor;
+      }
+    }
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

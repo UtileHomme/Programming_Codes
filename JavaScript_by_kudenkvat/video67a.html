@@ -1,0 +1,43 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <select name="" id="dd1Theme" onchange="setColorCookie()">
+    <option value="Select Color">Select Color</option>
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+  </select>
+  <script type="text/javascript">
+
+  window.onload = function()
+  {
+    if(document.cookie.length!=0)
+    {
+      //here the color type will come up
+      var nameValueArray = document.cookie.split("=");
+      document.bgcolor = nameValueArray[1];
+      document.getElementById("dd1Theme").value = nameValueArray[1];
+      document.bgcolor = nameValueArray[1];
+    }
+  }
+
+  function setColorCookie()
+  {
+    var selectedColor = document.getElementById("dd1Theme").value;
+
+    //one of the above colors have been selected
+    if(selectedColor!="Select Color")
+    {
+      document.bgColor = selectedColor;
+      //create a persistent cookie
+      document.cookie = "color=" + selectedColor + ";expires=Fri, 21 Jul 2017 01:00:00 UTC;";
+
+    }
+  }
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
