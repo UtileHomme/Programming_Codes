@@ -1,50 +1,68 @@
+//http://www.geeksforgeeks.org/binary-search/
+
 #include <iostream>
 
 using namespace std;
 
+#define MAX 1111
+
 int main()
 {
-  int size,a[10],i,x,pos;
-  cout<<"enter the size of the array"<<endl;
-  cin>>size;
+  int x,n,a[MAX];
 
-  int flag = 0;
+  //Enter size of array
+  cout<<"Enter the size of the array"<<endl;
+  cin>>n;
 
-  cout<<"enter the number that you wish to search";
+  //Enter the element to be searched
+  cout<<"Enter the element to be searched"<<endl;
   cin>>x;
 
-  cout<<"enter the array"<<endl;
-  for(i=0;i<size;i++)
+  //Enter the array
+  cout<<"Enter the array"<<endl;
+
+  for(int i=0;i<n;i++)
   {
-    cin >> a[i];
-    cout<<endl;
+    cin>>a[i];
   }
 
+  int l = 0;
+  int h = n-1;
+  int flag = 0;
+  int mid=0;
 
-  cout<<"show the aray"<<endl;
-  for(i=0;i<size;i++)
+  while(l<=h)
   {
-    cout<<a[i]<<endl;
-  }
+   mid = l + (h-l)/2;
 
-  for(i=0;i<size;i++)
-  {
-    if(x==a[i])
+    //element found
+    if(x==a[mid])
     {
       flag = 1;
-      pos = i+1;
       break;
+    }
+    else if(x<a[mid])
+    {
+      h = mid -1;
+    }
+    else
+    {
+      l = mid + 1;
     }
   }
 
+  //element found
   if(flag==1)
   {
-    cout<<"Number found at position "<<pos;
+    cout<<"Element found at position "<<mid+1;
   }
+  //element not found
   else
   {
-    cout<<"Number not found";
+    cout<<"Element not found";
   }
 
-  return 0;
+
+
+
 }
