@@ -5,11 +5,10 @@
   <input type="button" value="Get Cookie" onclick="getCookie()">
   <script type="text/javascript">
 
-    //not a persistent cookie
-    //will be deleted after closing the browser
+    //this is a persistent cookie
     function setCookie()
     {
-      document.cookie="color=red";
+      document.cookie="color=red;max-age=" + (60*60*24*30);
     }
 
     function getCookie()

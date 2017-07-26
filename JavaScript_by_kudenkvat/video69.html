@@ -1,0 +1,54 @@
+<!DOCTYPE html !>
+<html>
+<head>
+  <script type="text/javascript">
+  </script>
+</head>
+<body>
+  <table border="1">
+    <tr>
+      <td>Name</td>
+      <td><input type="text" id="txtName"></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><input type="text" id="txtEmail"></td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td><input type="text" id="txtGender"></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="button" value="Set Cookie" onclick = "setCookie()">
+        <input type="button" value="Get Cookie" onclick = "getCookie()">
+        <input type="button" value="Clear" onclick = "clearTextBoxes()">
+      </td>
+    </tr>
+  </table>
+
+  <script type="text/javascript">
+    function setCookie()
+    {
+      var cookieString = "name = " +document.getElementById("txtName").value+
+      " email = " +document.getElementById("txtEmail").value
+      +" gender = "+document.getElementById("txtGender").value;
+      // var cookieString = "name="+";email="+";gender=";
+
+      document.cookie = cookieString;
+    }
+
+    function getCookie()
+    {
+      alert(document.cookie);
+    }
+
+    function clearTextBoxes()
+    {
+      document.getElementById("txtName").value = "";
+      document.getElementById("txtEmail").value = "";
+      document.getElementById("txtGender").value = "";
+    }
+  </script>
+</body>
+</html>
