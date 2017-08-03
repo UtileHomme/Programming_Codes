@@ -30,9 +30,16 @@
 
       <div class="panel panel-default">
         <div class="panel-heading">
-          <button data-target="#imageGallery" class="btn btn-primary" data-toggle="collapse">
+          <button id=toggleButton class="btn btn-primary">
             Toggle Image Gallery
           </button>
+          <button id=hideButton class="btn btn-primary">
+            Hide Image Gallery
+          </button>
+          <button id=showButton class="btn btn-primary">
+            Show Image Gallery
+          </button>
+
         </div>
         <div class="panel-body collapse" id="imageGallery">
           <div class="col-xs-4">
@@ -63,8 +70,33 @@
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="bootstrap/bootstrap.min.js"></script>
+<script src="bootstrap/bootstrap.min.js">
+</script>
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+  $('#toggleButton').click(function()
+  {
+    $('#imageGallery').collapse('toggle');
+  }
+);
+$('#hideButton').click(function()
+{
+  $('#imageGallery').collapse('hide');
+}
+);
+$('#showButton').click(function()
+{
+  $('#imageGallery').collapse('show');
+}
+);
+}
+);
+</script>
+
 </body>
 </html>
