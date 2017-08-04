@@ -1,0 +1,81 @@
+<!-- Bootstrap_specific_layout_for_different_devices -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Bootstrap 101 Template</title>
+
+  <!-- Bootstrap -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- css style sheets -->
+  <link href="bootstrap/CustomStyles.css" rel="stylesheet" />
+
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <br><br />
+
+      <button id="btnSubmit" class="btn btn-primary">Submit</button>
+      <br><br>
+
+      <!-- collapse is for hiding the alert on initial page load -->
+      <div id="myAlert" class="alert alert-danger collapse">
+
+        <!-- if we don't want to close the alert and always display it  -->
+        <a id="linkClose" class="close" >&times;</a>
+      <strong>Error!</strong> This is a problem submitting your form
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="bootstrap/bootstrap.min.js">
+</script>
+
+
+
+<script type="text/javascript">
+  $(document).ready(function()
+  {
+    $('#btnSubmit').click(function()
+    {
+      $('#myAlert').show('fade');
+
+      // if the closing thing isn't done in 2 seconds automaticall close
+      setTimeout(function()
+    {
+      $("#myAlert").hide('fade');
+    },2000);
+  });
+    
+
+  $('#linkClose').click(function()
+  {
+    $('#myAlert').hide('fade');
+  }
+);
+  }
+);
+</script>
+</body>
+</html>

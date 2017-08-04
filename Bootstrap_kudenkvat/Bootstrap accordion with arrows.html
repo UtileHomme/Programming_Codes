@@ -1,0 +1,110 @@
+<!-- Bootstrap_specific_layout_for_different_devices -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Bootstrap 101 Template</title>
+
+  <!-- Bootstrap -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- css style sheets -->
+  <link href="bootstrap/CustomStyles.css" rel="stylesheet" />
+
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-7">
+      <div id="accordion" class="panel-group">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#panelBodyOne" data-toggle="collapse" data-parent="#accordion">
+                <span class="glyphicon glyphicon-menu-up"></span>
+                 Asia
+              </a>
+            </h4>
+          </div>
+          <div id="panelBodyOne" class="panel-collapse collapse">
+            <div class="panel-body">
+                <img src="images/med1.jpg" alt="meditation" class="img-responsive">
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#panelBodyTwo" data-toggle="collapse" data-parent="#accordion">
+                <span class="glyphicon glyphicon-menu-down"></span>
+
+                Europe
+              </a>
+            </h4>
+          </div>
+          <!-- collapse in to keep this one expaned -->
+          <div id="panelBodyTwo" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <img src="images/med2.jpg" alt="meditation" class="img-responsive">
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#panelBodyThree" data-toggle="collapse" data-parent="#accordion">
+                <span class="glyphicon glyphicon-menu-down"></span>
+                North America
+              </a>
+            </h4>
+          </div>
+          <div id="panelBodyThree" class="panel-collapse collapse">
+            <div class="panel-body">
+              <img src="images/med3.jpeg" alt="meditation" class="img-responsive">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="bootstrap/bootstrap.min.js">
+</script>
+<script type="text/javascript">
+  $(document).ready(function()
+  {
+    $('.collapse').on('shown.bs.collapse',function()
+    {
+      $(this).parent().find('.glyphicon-menu-down').removeClass('glyphicon-menu-down').addClass('glyphicon-menu-up');
+    }
+  ).on('hidden.bs.collapse',function()
+  {
+    $(this).parent().find('.glyphicon-menu-up').removeClass('glyphicon-menu-up').addClass('glyphicon-menu-down');
+  }
+);
+  }
+);
+
+</script>
+
+</body>
+</html>
