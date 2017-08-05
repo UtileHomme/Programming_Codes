@@ -1,0 +1,126 @@
+/*pos*/
+position: relative;
+
+/*pos:s*/
+position: static;
+
+/*pos:a*/
+position: absolute;
+
+/*pos:r*/
+position: relative;
+
+/*pos:f*/
+position: fixed;
+
+/*t*/
+top: ;
+
+/*t:a*/
+top: auto;
+
+/*r*/
+right: ;
+
+/*r:a*/
+right: auto;
+
+/*b*/
+bottom: ;
+
+/*b:a*/
+bottom: auto;
+
+/*l*/
+left: ;
+
+/*l:a*/
+left: auto;
+
+/*z*/
+z-index: ;
+
+/*fl*/
+float: left;
+
+/*fl:n*/
+float: none;
+
+/*fl:l*/
+float: left;
+
+/*fl:r*/
+float: right;
+
+/*cl*/
+clear: both;
+
+/*cl:n*/
+clear: none;
+
+/*cl:l*/
+clear: left;
+
+/*cl:r*/
+clear: right;
+
+/*cl:b*/
+clear: both;
+
+/*d*/
+display: block;
+
+/*d:n*/
+display: none;
+
+/*d:b*/
+display: block;
+
+/*d:n*/
+display: none;
+
+/*d:b*/
+display: block;
+
+/*d:f*/
+display: -webkit-flex;
+display: -ms-flex;
+display: flex;
+
+/*d:if*/
+display: -webkit-inline-flex;
+display: -ms-inline-flex;
+display: inline-flex;
+
+/*d:i*/
+display: inline;
+
+/*d:ib*/
+display: inline-block;
+
+/*d:li*/
+display: list-item;
+
+/*d:ri*/
+display: run-in;
+
+/*d:cp*/
+display: compact;
+
+/*d:tb*/
+display: table;
+
+/*d:itb*/
+display: inline-table;
+
+/*d:tbcp*/
+display: table-caption;
+
+/*d:tbcl*/
+display: table-column;
+
+/*d:tbclg*/
+display: table-column-group;
+
+/*d:tbhg*/
+display: table-header-group;

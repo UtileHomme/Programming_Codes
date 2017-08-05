@@ -1,0 +1,307 @@
+<!-- First the inline particular element styles, then the head inline styles then the external styles -->
+
+<!-- This is how we use inline css -->
+
+<!-- Inside head -->
+
+<style type="text/css">
+  p
+  {
+    color:red;
+  }
+</style>
+
+<!-- To apply external style sheet use this in the head -->
+
+<link rel="stylesheet" href="location" type="text/css">
+
+<!-- This is how we use classes  -->
+
+<!-- In HTML -->
+<p class="blue">Paragraph Two</p>
+
+<!-- In CSS -->
+p.blue
+{
+  color:blue;
+}
+
+
+<!-- This is how we use child selectors -->
+
+<!-- In HTML -->
+
+<body>
+  <p>
+    Para 1
+  </p>
+</body>
+
+<!-- In CSS -->
+<!-- Here we wish to style the paragraph in body element -->
+
+body>p
+{
+  color:orange;
+}
+
+<!-- If we wish to modify any attribute value we use this method  -->
+
+<!-- In HTML -->
+<input type="text" name="first"></input>
+
+<!-- In CSS -->
+input[type="text"]
+{
+  color:orange;
+}
+
+<!-- If we wish to use modify mutiple elemnts with same style use this -->
+
+p,h1
+{
+  color:blue;
+  font-family:garamond;
+}
+
+<!-- To apply inline styles i.e. to the particular element use : -->
+
+<h1 style="color:green;"></h1>
+
+<!-- Following measurements are followed -->
+
+p
+{
+  line-height: 2px;
+  font-size: 2in/2pt;
+  border:2px solid black
+}
+
+<!-- Background color can be added using : -->
+
+background-color: color-name/rgb value/Hexadecimal value
+
+<!-- To add background image use the following -->
+
+background-image:url('path');
+background-repeat: no-repeat/repeat/repeat-x or y;
+background-position: 5px 3px;
+
+<!-- How to change the font-size and other parameters -->
+
+p
+{
+<!-- For the size -->
+font-size: 22pt;
+
+<!-- For the type of font -->
+font-family: calibri;
+
+<!-- Whether all text should be capitalized or not -->
+font-variant: small-caps;
+
+<!-- Whether it should be bold -->
+font-weight:bold;
+
+<!-- Whether it should be italics -->
+font-style:italics;
+
+}
+
+<!-- Other Text properties -->
+
+p
+{
+  <!-- For showing the text from right to left of the page -->
+  direction:rtl;
+
+  <!-- For giving spacing between individual letters -->
+  letter-spacing:5px;
+
+  <!-- For spacing between words  -->
+  word-spacing: 10px;
+}
+
+h4
+{
+  <!-- To indent or shift the text by some amount -->
+  text-indent: 1in;
+
+  <!-- To align the text  -->
+  text-align: left/center/right;
+
+  <!-- To decorate the text in some manner -->
+  text-decoration: line-through/underline;
+
+  <!-- To capitalize the text -->
+  text-transform: lowercase/uppercase/capitalize;
+}
+
+<!-- For images use the following properties -->
+
+img
+{
+  <!-- height by default will also change the width -->
+  height:10px;
+  width:20px;
+
+  <!-- for transparent , 1 for completely opaque, for other between 0 or 1  -->
+  opacity:0
+}
+
+<!-- For href links -->
+
+<!-- This will make the link orange -->
+a:link
+{
+  color:orange;
+}
+
+<!-- This will make the color blue after it has been visited -->
+a:visited
+{
+  color:blue;
+}
+
+<!-- This will make the color black when we hover on it -->
+a:hover
+{
+  color:black;
+}
+
+<!-- This is when the user clicks on it but doesn't release the click, change color to red -->
+a:active
+{
+  color:red;
+}
+
+<!-- How to modify the borders -->
+
+p
+{
+  border-color: red;
+
+  border-style: dotted;
+
+  border-width 2 px:
+}
+
+<!-- How to set the margins and paddings of a page -->
+
+<!-- Margin is the distance between the element and the left most part of the page -->
+margin-top: 10px;
+margin-bottom: 10px;
+margin-left: 10px;
+margin-right: 10px;
+
+<!-- Padding is the distance between the border and the element content -->
+
+
+<!-- Properties of lists -->
+
+<!-- For setting an image instead of a bullet -->
+
+ul
+{
+    list-style-image:url('path of image');
+
+    <!-- The text will come in line with the second line of the paragraph text -->
+    list-style-position: inside;
+}
+
+<!-- How to add cursors to an element. When we hover over that element different cursors will come up -->
+
+p
+{
+  cursor:default;
+  cursor:crosshair;
+  cursor:pointer;
+  cursor:move;
+  cursor:wait;
+  cursor:text;
+  cursor:help;
+
+}
+
+<!-- How to control the dimensions of an element -->
+
+<!-- same for width -->
+max-height:10px;
+min-height:2px;
+
+<!-- To make the text indented towards the left -->
+float-left;
+
+<!-- If there is text, which is going beyond the border, we use the overflow property -->
+
+p
+{
+  border: 2px solid black;
+
+  <!-- Hidden is when whatever text is going outside the border can be hidden
+  Auto is the normal state
+  scroll is when we want the text to be scrollable -->
+  overflow:scroll / auto / hidden ;
+  float:left;
+}
+
+<!-- To make some element visible or hidden-->
+
+<!-- Used mainly when we want some element to hide when the page is reloaded or in some other scenario using JS -->
+p
+{
+  visibility:hidden/visible;
+}
+
+<!-- How to position an element -->
+
+div
+{
+  <!-- In case of 'fixed', even if we have some other elements before 'div', it will be aligned according to below
+  dimensions from left and top  -->
+  position:fixed;
+  left:300px;
+  top:300px;
+
+  <!-- In case of 'relative', everything will be done relative to other elements  -->
+  position:relative;
+  left:300px;
+  top:300px;
+}
+
+<!-- If we wish to create layers of images on top of each other but in some order of precedence use this -->
+
+div >img
+{
+  z-index:4;
+}
+duv>img1
+{
+  z-index:3
+}
+
+<!-- Pseudo elements are used for applying styles to a particular part of the element -->
+
+<!-- Style will be applied to only first line of paragraph -->
+p.para1:first-line
+{
+  color:blue;
+}
+
+p.para1:first-letter
+{
+  font-size: bold;
+}
+
+<!-- Anytime we want something to proceed with the content define below, do this -->
+p.para1:before
+{
+  content: "hello, ";
+  font-style:bold;
+}
+
+p.para1:after
+{
+  content: "bye.";
+  color:blue;
+}
