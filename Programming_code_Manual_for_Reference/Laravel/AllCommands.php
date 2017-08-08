@@ -15,7 +15,7 @@ php artisan route:list
 
 <!-- Our routes files are in web.php -->
 
-<!-- session data can be changed in confic/sessions.php
+<!-- session data can be changed in config/sessions.php
   the session file is stored in storage/framework/sessions
   the session time by default is 120 minutes
 -->

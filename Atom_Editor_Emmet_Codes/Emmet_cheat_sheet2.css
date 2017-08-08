@@ -1,0 +1,172 @@
+/*d:tbfg*/
+display: table-footer-group;
+
+/*d:tbr*/
+display: table-row;
+
+/*d:tbrg*/
+display: table-row-group;
+
+/*d:tbc*/
+display: table-cell;
+
+/*d:rb*/
+display: ruby;
+
+/*d:rb*/
+display: ruby;
+
+/*d:rbb*/
+display: ruby-base;
+
+/*d:rbbg*/
+display: ruby-base-group;
+
+/*d:rbt*/
+display: ruby-text;
+
+/*d:rbtg*/
+display: ruby-text-group;
+
+/*v*/
+visibility: hidden;
+
+/*v:v*/
+visibility: visible;
+
+/*v:h*/
+visibility: hidden;
+
+/*v:c*/
+visibility: collapse;
+
+/*ov*/
+overflow: hidden;
+
+/*ov:v*/
+overflow: visible;
+
+/*ov:h*/
+overflow: hidden;
+
+/*ov:s*/
+overflow: scroll;
+
+/*ov:a*/
+overflow: auto;
+
+/*ovx*/
+overflow-x: hidden;
+
+/*ovx:v*/
+overflow-x: visible;
+
+/*ovx:h*/
+overflow-x: hidden;
+
+/*ovx:s*/
+overflow-x: scroll;
+
+/*ovx:a*/
+overflow-x: auto;
+
+/*ovy*/
+overflow-y: hidden;
+
+/*ovy:v*/
+overflow-y: visible;
+
+/*ovy:v*/
+overflow-y: visible;
+
+/*ovy:h*/
+overflow-y: hidden;
+
+/*ovy:s*/
+overflow-y: scroll;
+/*ovy:h*/
+overflow-y: hidden;
+
+/*ovy:s*/
+overflow-y: scroll;
+
+/*ovy:a*/
+overflow-y: auto;
+
+/*ovs*/
+-ms-overflow-style: scrollbar;
+overflow-style: scrollbar;
+
+/*ovs:a*/
+-ms-overflow-style: auto;
+overflow-style: auto;
+
+/*ovs:s*/
+-ms-overflow-style: scrollbar;
+overflow-style: scrollbar;
+
+/*ovs:p*/
+-ms-overflow-style: panner;
+overflow-style: panner;
+
+/*ovs:m*/
+-ms-overflow-style: move;
+overflow-style: move;
+
+/*ovs:mq*/
+-ms-overflow-style: marquee;
+overflow-style: marquee;
+
+/*zoo  || zm*/
+zoom: 1;
+
+/*cp*/
+clip: ;
+
+/*cp:a*/
+clip: auto;
+
+/*cp:r*/
+clip: rect(top right bottom left);
+
+/*rsz*/
+resize: ;
+
+/*rsz:n*/
+resize: none;
+
+/*rsz:b*/
+resize: both;
+
+/*rsz:h*/
+resize: horizontal;
+
+/*rsz:v*/
+resize: vertical;
+
+/*cur*/
+cursor: pointer;
+
+/*cur:a*/
+cursor: auto;
+
+/*cur:d*/
+cursor: default;
+
+/*cur:c*/
+cursor: crosshair;
+
+/*cur:ha*/
+cursor: hand;
+
+/*cur:he*/
+cursor: help;
+
+/*cur:m*/
+cursor: move;
+
+/*cur:p*/
+cursor: pointer;
+
+/*cur:t*/
+cursor: text;
