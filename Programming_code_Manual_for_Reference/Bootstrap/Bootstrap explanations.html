@@ -19,21 +19,21 @@ we can define divs as follows -->
 
 <div class="col-md-3 col-lg-3 col-sm-6">
 
-<!-- Offset is for shifting the grid by some fixed grid amount -->
-.col-xs-offset*
-.col-sm-offset*
-.col-xs-offset*
-.col-lg-offset*
+  <!-- Offset is for shifting the grid by some fixed grid amount -->
+  .col-xs-offset*
+  .col-sm-offset*
+  .col-xs-offset*
+  .col-lg-offset*
 
 
 
-<!-- To make image responsive apply img-responsive -->
+  <!-- To make image responsive apply img-responsive -->
 
-<!-- To make image circular apply img-circle -->
+  <!-- To make image circular apply img-circle -->
 
-<!-- To make the image as a thumbnail apply  img-thumbnail -->
+  <!-- To make the image as a thumbnail apply  img-thumbnail -->
 
-<!-- To make the image as a thumbnail apply  img-rounded
+  <!-- To make the image as a thumbnail apply  img-rounded
   doesn't work with the grid classes
 -->
 
@@ -79,30 +79,96 @@ popular HTML, CSS and JS framework developed by twitter
 <!-- For lowercase and uppercase and capitalizing first letter of every word use this -->
 
 <p class="text-lowercase">
-    All letters will be lowercase
+  All letters will be lowercase
 </p>
 
 <p class="text-uppercase">
-    All letters will be uppercase
+  All letters will be uppercase
 </p>
 
 <p class="text-capitalize">
-    First letter will be capitalized
+  First letter will be capitalized
 </p>
 
 <!-- To make the first paragraph stand out from other paragraphs -->
 
 <p class="lead">
-    What is Bootstrap
+  What is Bootstrap
 </p>
 <p>
-    Bootstrap is a free, open-source and is the most popular
-    HTML, CSS and JavaScript framework
+  Bootstrap is a free, open-source and is the most popular
+  HTML, CSS and JavaScript framework
 </p>
 
 <!-- For abbreviations and tooltips use this: initialism is for making that word smaller in size -->
 
 <abbr title="Hello World" class="initialism">HW</abbr>
+
+<!-- For quotations use the following -->
+
+Use blockquote element
+To get the quote in reverse , use the class "blockquote-reverse"
+
+<!-- For getting a list in a straight line, use the class "list-inline" along with the ul/ol element -->
+
+<!-- For removing the default style like buttons, use the class "list-unstyled" along with the ul/ol element -->
+
+<!-- If we want the Term(dl) and its description in the same line, use the class "dl-horizontal" on dl -->
+
+<!-- We can beautify the lists by creating list groups -->
+<ul class="list-group">
+  <li class="list-group-item">India</li>
+  <li class="list-group-item">USA</li>
+  <li class="list-group-item">UK</li>
+</ul>
+
+<!-- We can also create a badge for a particular list group : use the class "badge" in the span element -->
+<ul class="list-group">
+  <li class="list-group-item">India</li>
+  <li class="list-group-item">USA</li>
+  <li class="list-group-item">UK</li>
+  <li class="list-group-item">Australia<span class="badge">New Country</span></li>
+</ul>
+
+<!-- To use links in list group use 'div' instead of 'ul' and use 'a' instead of li -->
+<div class="list-group">
+  <a href="http://www.google.com" class="list-group-item">Google</a>
+  <a href="http://www.youtube.com" class="list-group-item">Youtube</a>
+</div>
+
+
+
+
+<!-- To apply colors to the list groups use the class "list-group-item-danger/info/success/warning" -->
+
+<!-- To disable the list group item , use the disabled term along with list-group-item -->
+
+<!-- To highlight the list group item , use the active term along with list-group-item -->
+
+<!-- Use the list-group-item-heading for showing the heading in a list group
+Use the list-group-item-text for showing the text part under the heading -->
+
+<!-- There is a possibility we might want to show some code on a website. To style that use the following -->
+
+<p>To highlight text use <code>&lt;mark&gt;</code> tag</p>
+<p>To underline text use <code>&lt;u&gt;</code> tag</p>
+<p>To bold text use <code>&lt;strong&gt;</code> tag</p>
+
+<pre>
+  &lt;strong&gt;Bold Text&lt;/strong&gt;
+  &lt;u&gt;Underlined Text&lt;/u&gt;
+  &lt;mark&gt;Highlighted Text&lt;/mark&gt;
+</pre>
+
+<!-- If there is a lot of code and we need a scroll bar, use the "pre-scrollable" class along with pre -->
+
+<!-- To make the code appear in indented form use this -->
+
+var <var>fullname</var> = <var>firstname</var>
+
+<!-- To display the keyboard keys on the screen use this -->
+
+<kbd>Ctrl</kbd> <kbd>K</kbd>
 
 <!-- To fix the navbar at the top without scrolling use class 'navbar-fixed-top' -->
 

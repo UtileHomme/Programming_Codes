@@ -16,7 +16,8 @@ class ABC implements test
     }
 }
 
-class XYZ 
+//file
+class XYZ
 {
     public function doingSomething()
     {
