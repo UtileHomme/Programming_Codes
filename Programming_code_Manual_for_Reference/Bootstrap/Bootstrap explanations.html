@@ -180,42 +180,7 @@ we can define divs as follows -->
   - To make the table responsive, so that it can adjust to screen size, put the entire table in a div with class "table-responsive"
   We will get a new scrollbar
 
-
-  - To beautify the buttons, use the class "btn"
-
-  - we have three classes to change the size of the buttons
-  btn-lg , btn-sm, btn-xs
-
-  - To make the buttons span according to the parent element, use class "btn-block"
-
-  - use disabled class for disabling the button
-
-  <!-- How to get glyphicons and add them -->
-
-  ** Use the following url : http://getbootstrap.com/components/
-
-  <div class="container">
-    <div class="row">
-
-      <button class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-search"></span> Search</button>
-      <button class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span> Search</button>
-      <button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-search"></span> Search</button>
-    </div>
-  </div>
-
-  ** Note - The span class is what gives us the glyphicon but the btn-primary is what gets us the color
-
-  - When we wish to club the buttons together without any spaces, we use cldass "btn-group"
-
-  - When we wish to club many button groups together use class "btn-toolbar" on the "div" element
-
-  - Use classes "btn-group-lg" , "btn-group-sm", "btn-group-xs" for button size change
-
-  - To vertically align the btn-groups, use class "btn-group-vertical" instead of "btn-group"
-
-  - To make the buttons span across the entire page, use class "btn-group-justifiedd" in "div" element
-
-  <!-- To make the dropdown menu work follow this order for JSx and jQuery script -->
+  <!-- To make the dropdown menu work follow this order for JS and jQuery script -->
 
   <!-- IN THE HEAD -->
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -284,23 +249,195 @@ we can define divs as follows -->
   - class 'divider' will be needed for making a horizontal line but the menu elements
   - if we want the drop menu to go 'up' instead of 'down' we use class 'dropup' in the div above
 
-<!-- How to create a button toolbars -->
+  - To beautify the buttons, use the class "btn"
 
-<div class="btn-group">
-    <button class="btn btn-default">btn-default</button>
-    <button class="btn btn-primary">btn-primary</button>
-    <button class="btn btn-success">btn-success</button>
-    <button class="btn btn-info">btn-info</button>
-    <button class="btn btn-warning">btn-warning</button>
-    <button class="btn btn-danger">btn-danger</button>
-    <button class="btn btn-primary">btn-7</button>
-</div>
+  - we have three classes to change the size of the buttons
+  btn-lg , btn-sm, btn-xs
+
+  - To make the buttons span according to the parent element, use class "btn-block"
+
+  - use disabled class for disabling the button
+
+  <!-- How to get glyphicons and add them -->
+
+  ** Use the following url : http://getbootstrap.com/components/
+
+  <div class="container">
+    <div class="row">
+
+      <button class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-search"></span> Search</button>
+      <button class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span> Search</button>
+      <button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-search"></span> Search</button>
+    </div>
+  </div>
+
+  ** Note - The span class is what gives us the glyphicon but the btn-primary is what gets us the color
+
+  - When we wish to club the buttons together without any spaces, we use cldass "btn-group"
+
+  - When we wish to club many button groups together use class "btn-toolbar" on the "div" element
+
+  - Use classes "btn-group-lg" , "btn-group-sm", "btn-group-xs" for button size change
+
+  - To vertically align the btn-groups, use class "btn-group-vertical" instead of "btn-group"
+
+  - To make the buttons span across the entire page, use class "btn-group-justifiedd" in "div" element
+
+  <!-- How to create a split button dropdown -->
+
+  <div class="btn-group btn-group-xs">
+      <button class="btn btn-primary">SQL Server</button>
+      <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+      </button>
+
+      <ul class="dropdown-menu">
+          <li><a href="#">C#</a></li>
+          <li><a href="#">ASP.net</a></li>
+          <li><a href="#">C++</a></li>
+      </ul>
+  </div>
+
+  ** Note - The button and the caret are different buttons, hence, the name split button dropdown
+
+  <!-- How to beautify a form -->
+
+  <form>
+      <div class="form-group">
+          <label for="inputUserName">Username</label>
+          <input class="form-control" placeholder="Login Username" type="text" id="inputUserName" />
+      </div>
+      <div class="form-group">
+          <label for="inputPassword">Password</label>
+          <input class="form-control" placeholder="Login Password" type="password" id="inputPassword" />
+      </div>
+      <button type="submit"  class="btn btn-primary">Login</button>
+
+  </form>
+
+  - labels are for the naming conventions
+
+  - apply class "form-group" to each label
+
+  - class "form-control" is going to stack the labels one over the other
+
+  - placeholder refers to the text that will be displayed inside the fields
+
+  - use the class "form-inline" on the "div" element to stack the labels side by side
+
+  <!-- How to get the label and the field in the same line -->
+
+  <form class="form-horizontal">
+      <div class="form-group">
+          <label for="inputUserName" class="control-label col-sm-2">Username</label>
+
+          <div class="col-sm-10">
+              <input class="form-control" placeholder="Login Username" type="text" id="inputUserName" />
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="inputPassword" class="control-label col-sm-2">Password</label>
+
+          <div class="col-sm-10">
+              <input class="form-control" placeholder="Login Password" type="password" id="inputPassword" />
+          </div>
+      </div>
+      <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+              <button type="submit"  class="btn btn-primary">Login</button>
+          </div>
+      </div>
+
+  </form>
+
+  <!-- How to get a beautified textarea -->
+
+  <div class="row">
+      <form class="form-horizontal">
+          <div class="form-group">
+              <label for="inputDescription">Product Description</label>
+              <textarea class="form-control" id="inputDescription" rows="10"
+              placeholder="Full Product Description"></textarea>
+          </div>
+          <button type="submit" class="btn btn-default">Login</button>
+      </form>
+  </div>
+
+  <!-- How to get a checkbox  -->
+
+  <form class="form-horizontal">
+      <div class="checkbox">
+          <label>
+              <input type="checkbox" value="option1" />
+              Option 1
+          </label>
+      </div>
+      <div class="checkbox">
+          <label>
+              <input type="checkbox" value="option1" />
+              Option 2
+          </label>
+      </div>
+      <div class="checkbox">
+          <label>
+              <input disabled type="checkbox" value="option1" />
+              Option 3
+          </label>
+      </div>
+      <button type="submit" class="btn btn-default">Login</button>
+  </form>
+
+  - To get the checkboxes in the same line, use class "checkbox-inline" on the label element
+
+  <!-- How to get radio buttons -->
+
+  form class="form-horizontal">
+
+          <div class="radio">
+              <label>
+                  <input type="radio" name="radioGroup" value="1" />
+                  Option 1
+              </label>
+          </div>
+          <div class="radio">
+              <label>
+                  <input type="radio" name="radioGroup" value="2" />
+                  Option 2
+              </label>
+          </div>
+          <div class="radio disabled">
+              <label>
+                  <input type="radio" name="radioGroup" value="3" />
+                  Option 3
+              </label>
+          </div>
+      <button type="submit" class="btn btn-default">Login</button>
+  </form>
+
+  - name is used to select one out of all the options
+
+  - use class "radio-inline" to make them come in the same line
+
+  <!-- How to get a multi select list -->
+
+  <form class="form-horizontal">
+
+      <select multiple class="form-control">
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+          <option>Option 4</option>
+          <option>Option 5</option>
+          <option>Option 6</option>
+      </select>
+
+      <button type="submit" class="btn btn-default">Login</button>
+  </form>
+
+  - use "multiple" to make the selection multi-select
 
 
-
-
-
-  -To fix the navbar at the top without scrolling use class 'navbar-fixed-top'
+  - To fix the navbar at the top without scrolling use class 'navbar-fixed-top'
 
   - To make the navbar dark colored use class 'navbar-inverse'
 
