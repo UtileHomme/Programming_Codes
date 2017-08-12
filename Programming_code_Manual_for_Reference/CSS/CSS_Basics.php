@@ -9,4 +9,4 @@ An Analogy
   - Imagine a fence has been built using HTML
   - The painting etc. is done using CSS
 
-- If the fonts mentioned in the font-family selector are not found, then the browswer will upload its default font-family
+- If the fonts mentioned in the font-family selector are not found, then the browser will upload its default font-family
