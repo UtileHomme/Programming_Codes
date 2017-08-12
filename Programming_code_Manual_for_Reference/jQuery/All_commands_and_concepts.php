@@ -70,3 +70,37 @@ $('#click_me').click(function()
   alert('Hello');
 }
 );
+
+<!-- How to reference the element itself without an id. This selects all buttons -->
+
+$(':button').click(function()
+{
+  alert('Hello');
+});
+
+<!-- When any button is clicked, we wish to display "Please wait... in the button" -->
+
+$(':submit').click(function()
+{
+  $(':submit').attr('value', 'Please wait...');
+});
+
+<!-- This is how we change the css property of some element -->
+
+<!-- Here, as soon as we click inside a field, we wish to change some property like color etc.
+    This will work on input type = "text"
+-->
+
+$(':text').focusin(function()
+{
+  $(this).css('background-color:yellow');
+}
+);
+
+<!-- This will work on all elements with an empty field -->
+
+$(':text').focusin(function()
+{
+  $(this).css('background-color','yellow');
+}
+);

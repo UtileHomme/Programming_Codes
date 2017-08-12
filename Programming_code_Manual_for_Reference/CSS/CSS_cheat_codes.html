@@ -15,6 +15,8 @@
 
 <link rel="stylesheet" href="location" type="text/css">
 
+- "rel" says that it is css stylesheet
+
 <!-- This is how we use classes  -->
 
 <!-- In HTML -->
@@ -40,6 +42,7 @@ p.blue
 <!-- In CSS -->
 <!-- Here we wish to style the paragraph in body element -->
 
+<!-- This is CSS inheritance -->
 body>p
 {
   color:orange;
@@ -70,12 +73,28 @@ p,h1
 
 <!-- Following measurements are followed -->
 
+- line-height is for the height between individual lines
+
 p
 {
   line-height: 2px;
   font-size: 2in/2pt;
   border:2px solid black
 }
+
+Let's assume "body" has "h1"
+
+body
+{
+  font-size: 25px;
+}
+h1
+{
+  font-size:150%
+}
+
+- Since "h1" has been inherited from "body" , the font-size of "h1" will be 150% of "body = 25 px"
+- Similary "h2" will be 1.2 times in case of "em"
 
 <!-- Background color can be added using : -->
 
@@ -92,7 +111,7 @@ background-position: 5px 3px;
 p
 {
 <!-- For the size -->
-font-size: 22pt;
+font-size: 22pt/px;
 
 <!-- For the type of font -->
 font-family: calibri;
