@@ -3,6 +3,14 @@
 - It stands for PHP(Personal Home Page) Hypertext Preprocessor.
 - It is a server side programming language
 - It is used to create dynamic content on a website
+- PHP is a case sensitive language.
+
+- When a PHP page is accessed, the PHP code is read or parsed by the server the page resides on.
+- The output from the PHP functions are returned as HTML code which can be read by the browser
+
+<!-- What does Parsing in PHP mean -->
+
+- It means processing and analysis of data in PHP in order to output data structures in a certain way.
 
 <!-- What is php.ini  -->
 
@@ -18,7 +26,7 @@ print ('<strong>Hello!</strong>');
 
 <!-- How to put PHP inside HTML -->
 
- <input type="text" value="<?php echo $text; ?>"  />
+<input type="text" value="<?php echo $text; ?>"  />
 <!-- assuming "$text" has some value -->
 
 <!-- How to display errors while developing -->
@@ -38,3 +46,81 @@ echo "The date is $day $date $year";
 - To get an integer result use this:
 
 echo $result1 = intval($result).'<br />';
+
+<!-- Difference between 'echo' and 'print' -->
+
+- ECHO
+- can be used with or without parenthesis
+- can pass multiple strings separated as ','
+- doesn't return a value
+
+echo $name, $profile, age ;   //will work
+
+- PRINT
+- can be used with or without parenthesis
+- can't pass multiple arguments
+- always returns "1"
+
+print $name , $profile , $age, " years old"; // will return an error
+
+<!-- What do var_dump and print_r do -->
+
+VAR_DUMP
+
+- prints out the detailed dump of a variable
+- includes its type and the type of any sub-items(like array or object)
+- also gives the number of items in that variable
+
+PRINT_R
+
+- prints a variable in a more human-readable form
+- strings are not quoted, type information is omitted, array sizes are not given etc.
+
+Eg - $values = array(0, 0.0, 'false');
+
+- print_r will consider '0', '0.0','false' as same
+
+Array
+(
+[0] => 0
+[1] => 0
+[2] =>
+[3] =>
+)
+
+<!-- How to write HTML in PHP -->
+
+<?php
+echo "<table>";
+echo "<tr>";
+echo "<td>Name</td>";
+echo "<td>".$name."</td>";
+echo "</tr>";
+echo "</table>";
+?>
+
+<!-- How to write PHP in HTML -->
+
+<?php /*Do some PHP calculation or something*/ ?>
+<table>
+  <tr>
+    <td>Name</td>
+    <td><?php echo $name;?></td>
+  </tr>
+</table>
+
+<!-- How to print a variable by putting it in { } braces -->
+
+$variable = 'hack';
+
+// now I want to append 'ed' to $variable:
+
+echo "my name is {$variable}";   // prints my name is hack
+
+echo "my name is {$variable}ed"; // prints my name is hacked
+
+<!-- Another way -->
+
+$money=10;
+
+print "you have earned ${$money}.00"; //would now output 'you have earned $10.00'
