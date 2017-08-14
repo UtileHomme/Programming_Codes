@@ -79,3 +79,10 @@ when we wish to change the attribute of any element
 <!-- This is how we disable a button after its click -->
 
 $(this).attr('disabled',true);
+
+* Never define a variable inside an 'if', since JS doesn't have the idea of a 'block scope'
+- always define them outside the conditions
+
+<!-- How to extract a numerical value from a string -->
+
+- - "parseInt" will extract the numerical value for us
