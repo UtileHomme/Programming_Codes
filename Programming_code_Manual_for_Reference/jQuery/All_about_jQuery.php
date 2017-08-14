@@ -54,53 +54,28 @@ $('p').click(function()
 }
 );
 
-<!-- This gives the count of all the elements on the page -->
-var count = $('*').length;
+- we used the "click()" method to activate click events
 
-<!-- This gives the count of all the elements within the selected element -->
-var count = $('#area').find('*').length;
-alert(count);
+- we use ".length" on an element when we wish to print the count of that element
 
-<!-- How to return the value of the id -->
-var name = $('#name').val();
+- we use ".val()" when we wish to find the value that element contains
 
-<!-- This is how we call an event when a button is clicked -->
-$('#click_me').click(function()
-{
-  alert('Hello');
-}
-);
+- we use ".attr('attribute of that element', 'value of the attribute that we wish to see in that attribute')"
+when we wish to change the attribute of any element
 
-<!-- How to reference the element itself without an id. This selects all buttons -->
+- we use the ".focusin" function when we wish to perform an event when we focus in
 
-$(':button').click(function()
-{
-  alert('Hello');
-});
+- we use the ".addClass('css class')" function when we want to add a CSS class to an element
 
-<!-- When any button is clicked, we wish to display "Please wait... in the button" -->
+<!-- This is how we check for the value entered in a field  -->
 
-$(':submit').click(function()
-{
-  $(':submit').attr('value', 'Please wait...');
-});
 
-<!-- This is how we change the css property of some element -->
+  $("#names li:contains('" + search_name + "')").addClass('highlight');
 
-<!-- Here, as soon as we click inside a field, we wish to change some property like color etc.
-    This will work on input type = "text"
--->
+- we used "jQuery.trim()" for removing whitespaces
 
-$(':text').focusin(function()
-{
-  $(this).css('background-color:yellow');
-}
-);
+- we use ".blur()" for removing the functionality from the element
 
-<!-- This will work on all elements with an empty field -->
+<!-- This is how we disable a button after its click -->
 
-$(':text').focusin(function()
-{
-  $(this).css('background-color','yellow');
-}
-);
+$(this).attr('disabled',true);
