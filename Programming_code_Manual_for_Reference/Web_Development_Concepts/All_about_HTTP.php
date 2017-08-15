@@ -11,6 +11,11 @@ exchange
 
 Current version = HTTP/1.1
 
+<!-- What is TCP/IP -->
+
+- Transmission Control Protocol and Communication Protocol
+- define how the data should travel across the web
+
 <!-- How does a URL look -->
 
 http://www.domain.come:1234/path/to/resource?a=x&b=y;

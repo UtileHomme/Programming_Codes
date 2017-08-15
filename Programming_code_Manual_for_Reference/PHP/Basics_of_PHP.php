@@ -124,3 +124,35 @@ echo "my name is {$variable}ed"; // prints my name is hacked
 $money=10;
 
 print "you have earned ${$money}.00"; //would now output 'you have earned $10.00'
+
+<!-- What is the difference between "==" and "===" -->
+
+- The operator "==" casts between two different types if they are different
+  - even if they are of the different type but signify same value, it will return true
+
+- The operator "===" performs a 'typesafe' comparison
+  - This means that it will only be true if both the operands have the same type and the same value
+
+Eg -
+a. 1 === 1;   // true
+b. 1 == 1;    //true
+c. 1 === "1"   //false -- because one of them is "int" other is "string"
+d. 1 == "1"    //true  -- the "string" gets cast to int. 1
+
+<!-- What is the difference between "$a" and "$$a" -->
+
+"$a" represents a variable
+
+"$$a" represents a variable with the content of "$a". Also called, variable variable
+
+Eg - $test = 'hello world';
+     $a = "test";
+     echo $$a;     // $(test)  --> hello world
+
+<!-- What is the difference between "<?php ?>" and "<? ?>"  -->
+
+<?php ?>  = safe open and close tag variation
+
+<? ?> = short-open tag
+  - is not always available
+  - can be confused with "xml" version

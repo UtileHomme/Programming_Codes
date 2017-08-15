@@ -3,6 +3,7 @@
 Communication between 2 parties happens using the HTTP protocol
 a. The Server
 - This party is responsible for serving the pages.
+- stores webpages, sites or apps
 
 b. The Client
 - This party requests pages from the Server, and displays them to the user.

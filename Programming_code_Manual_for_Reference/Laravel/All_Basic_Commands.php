@@ -153,6 +153,10 @@ Route::get('user/profile', 'UserController@showProfile')->name('profile');
 $url = route('profile');
 
 <!-- Generating Redirects -->
+return redirect('/admin');
+
+OR
+
 return redirect()->route('profile')
 
 <!-- How to pass parameters to named routes -->
@@ -207,6 +211,9 @@ Route::resource('posts','PostController');
   <li><a href="{{ route('logout') }}">Logout</a></li>
 
   - Auth::user()->name will access the column 'name' for the user table
+
+  <!-- In case a guard has been applied -->
+  - Auth::guard('admin')->user()->name
 
   <!-- How to set pagination in laravel -->
 
@@ -358,5 +365,31 @@ Route::resource('posts','PostController');
   <!-- How to set up the authentication system by default -->
 
   php artisan make:auth
+
+  <!-- This is how we put data in a session -->
+
+  session()->put('name',$name1);
+
+  - 'name' is the variable we wish to use
+  - '$name1' is the value we are putting into that variable
+
+  <!-- This is how we grab variable data from a session or the URL -->
+
+  if (session()->has('name'))
+  {
+    $name1=session()->get('name');
+  }
+  else
+  {
+    $name1=$_GET['name'];
+  }
+
+  <!-- How to check if the person is authenticated for proper display of view using the guards -->
+
+  @if (!Auth::guard('admin')->check())
+
+  @else
+
+  @endif
 
   <!-- Find out how to put all the routes under a middleware in laravel 5.4 -->
