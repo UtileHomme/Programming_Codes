@@ -28,7 +28,6 @@ php artisan migrate:refresh
 php artisan key:generate
 
 
-
 <!-- Our routes files are in web.php -->
 
 <!-- session data can be changed in config/sessions.php
@@ -243,6 +242,83 @@ Route::resource('posts','PostController');
   {{ Html::linkRoute('posts.index','<< See All Posts',[],['class' => 'btn btn-default btn-block btn-h1-spacing'])}}
 
   - first argument is route, second is the value, the parameters if we wish to pass any and finally the classes
+
+  <!-- What is a middleware -->
+
+  - provides a convenient mechanism for filtering HTTP requests entering our application
+
+  <!-- How to create a middleware -->
+
+  - php artisan make:middleware CheckAge
+      - this will place a new "CheckAge" class within the app/Http/Middleware directory
+
+  Eg -
+
+  public function handle($request, Closure $next)
+   {
+       if ($request->age <= 200) {
+           return redirect('home');
+       }
+
+       return $next($request);
+   }
+
+   <!-- How to assign Middlewares to routes -->
+
+   - Navigate to app/Http/Kernel.php
+
+   - add the middleware to the "protected $routeMiddleware" variable
+
+   Eg -
+
+   protected $routeMiddleware =
+   [
+    'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+    'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+    'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    'can' => \Illuminate\Auth\Middleware\Authorize::class,
+    'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+    'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+    ];
+
+  <!-- How to use a middleware after its definition -->
+
+  Route::get('admin/profile', function () {
+    //
+  })->middleware('auth');
+
+  - We can use multiple middlewares too
+      -  ->middleware('first','second');
+
+  <!-- What are Middleware groups -->
+
+  - Sometimes, we might want to group several middleware under a single key to make them easier to assign routes
+
+  Eg -
+
+  protected $middlewareGroups = [
+    'web' => [
+        \App\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\VerifyCsrfToken::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    ],
+
+    'api' => [
+        'throttle:60,1',
+        'auth:api',
+    ],
+];
+
+  <!-- How to assign Middleware groups to routes -->
+
+  Route::group(['middleware' => ['web']], function () {
+    //
+  });
+
+  
 
   <!-- How do we represent a middleware -->
 
