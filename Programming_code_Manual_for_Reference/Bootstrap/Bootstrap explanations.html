@@ -27,21 +27,21 @@ we can define divs as follows -->
 
 
 
--  To make image responsive apply img-responsive
+  -  To make image responsive apply img-responsive
 
--  To make image circular apply img-circle
+  -  To make image circular apply img-circle
 
--  To make the image as a thumbnail apply  img-thumbnail
+  -  To make the image as a thumbnail apply  img-thumbnail
 
--  To make the image as a thumbnail apply  img-rounded
+  -  To make the image as a thumbnail apply  img-rounded
   doesn't work with the grid classes
 
 
--  To make the image center use class center-block
+  -  To make the image center use class center-block
 
--  To make the text wrap around an image and show it on the left use class 'pull-left'
+  -  To make the text wrap around an image and show it on the left use class 'pull-left'
 
--  To make an image show as thumbnail use class 'thumbnail'
+  -  To make an image show as thumbnail use class 'thumbnail'
 
   <!-- To make images visible or hidden we use the following classes: -->
 
@@ -286,34 +286,87 @@ we can define divs as follows -->
   <!-- How to create a split button dropdown -->
 
   <div class="btn-group btn-group-xs">
-      <button class="btn btn-primary">SQL Server</button>
-      <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-          <span class="caret"></span>
-      </button>
+    <button class="btn btn-primary">SQL Server</button>
+    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <span class="caret"></span>
+    </button>
 
-      <ul class="dropdown-menu">
-          <li><a href="#">C#</a></li>
-          <li><a href="#">ASP.net</a></li>
-          <li><a href="#">C++</a></li>
-      </ul>
+    <ul class="dropdown-menu">
+      <li><a href="#">C#</a></li>
+      <li><a href="#">ASP.net</a></li>
+      <li><a href="#">C++</a></li>
+    </ul>
   </div>
 
   ** Note - The button and the caret are different buttons, hence, the name split button dropdown
 
-  <!-- How to beautify a form -->
+  <!-- There are 3 types of form-layouts -->
+
+  1. Vertical Form (Default)
+  2. Inline form
+  3. Horizontal form
+
+  <!-- How to make a vertical form -->
+  - this has the label and then the field below it
 
   <form>
-      <div class="form-group">
-          <label for="inputUserName">Username</label>
-          <input class="form-control" placeholder="Login Username" type="text" id="inputUserName" />
-      </div>
-      <div class="form-group">
-          <label for="inputPassword">Password</label>
-          <input class="form-control" placeholder="Login Password" type="password" id="inputPassword" />
-      </div>
-      <button type="submit"  class="btn btn-primary">Login</button>
-
+    <div class="form-group">
+      <label for="inputUserName">Username</label>
+      <input class="form-control" placeholder="Login Username" type="text" id="inputUserName" />
+    </div>
+    <div class="form-group">
+      <label for="inputPassword">Password</label>
+      <input class="form-control" placeholder="Login Password" type="password" id="inputPassword" />
+    </div>
+    <button type="submit"  class="btn btn-primary">Login</button>
   </form>
+
+  - use class "form-group" on the "div" element to group the elements together
+  - use class "form-control" to make the form look better
+
+  <!-- How to make an inline form -->
+
+  <form class="form-inline">
+    <div class="form-group">
+      <label for="inputUserName">Username</label>
+      <input class="form-control" placeholder="Login Username" type="text" id="inputUserName" />
+    </div>
+    <div class="form-group">
+      <label for="inputPassword">Password</label>
+      <input class="form-control" placeholder="Login Password" type="password" id="inputPassword" />
+    </div>
+    <button type="submit"  class="btn btn-primary">Login</button>
+  </form>
+
+  - use class "form-inline" on the "form" element
+
+  <!-- How to make a horizontal form -->
+  - this will have the label and the field on the same line for different groups
+
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="inputUserName" class="control-label col-sm-2">Username</label>
+
+      <div class="col-sm-10">
+        <input class="form-control" placeholder="Login Username" type="text" id="inputUserName" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="control-label col-sm-2">Password</label>
+
+      <div class="col-sm-10">
+        <input class="form-control" placeholder="Login Password" type="password" id="inputPassword" />
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+        <button type="submit"  class="btn btn-primary">Login</button>
+      </div>
+    </div>
+  </form>
+
+  - use the class "control-label" on the label element to make the label align with the fields
+  - use the class "form-horizontal" on the "div" element
 
   - labels are for the naming conventions
 
@@ -325,66 +378,42 @@ we can define divs as follows -->
 
   - use the class "form-inline" on the "div" element to stack the labels side by side
 
-  <!-- How to get the label and the field in the same line -->
-
-  <form class="form-horizontal">
-      <div class="form-group">
-          <label for="inputUserName" class="control-label col-sm-2">Username</label>
-
-          <div class="col-sm-10">
-              <input class="form-control" placeholder="Login Username" type="text" id="inputUserName" />
-          </div>
-      </div>
-      <div class="form-group">
-          <label for="inputPassword" class="control-label col-sm-2">Password</label>
-
-          <div class="col-sm-10">
-              <input class="form-control" placeholder="Login Password" type="password" id="inputPassword" />
-          </div>
-      </div>
-      <div class="form-group">
-          <div class="col-sm-10 col-sm-offset-2">
-              <button type="submit"  class="btn btn-primary">Login</button>
-          </div>
-      </div>
-
-  </form>
 
   <!-- How to get a beautified textarea -->
 
   <div class="row">
-      <form class="form-horizontal">
-          <div class="form-group">
-              <label for="inputDescription">Product Description</label>
-              <textarea class="form-control" id="inputDescription" rows="10"
-              placeholder="Full Product Description"></textarea>
-          </div>
-          <button type="submit" class="btn btn-default">Login</button>
-      </form>
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label for="inputDescription">Product Description</label>
+        <textarea class="form-control" id="inputDescription" rows="10"
+        placeholder="Full Product Description"></textarea>
+      </div>
+      <button type="submit" class="btn btn-default">Login</button>
+    </form>
   </div>
 
   <!-- How to get a checkbox  -->
 
   <form class="form-horizontal">
-      <div class="checkbox">
-          <label>
-              <input type="checkbox" value="option1" />
-              Option 1
-          </label>
-      </div>
-      <div class="checkbox">
-          <label>
-              <input type="checkbox" value="option1" />
-              Option 2
-          </label>
-      </div>
-      <div class="checkbox">
-          <label>
-              <input disabled type="checkbox" value="option1" />
-              Option 3
-          </label>
-      </div>
-      <button type="submit" class="btn btn-default">Login</button>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" value="option1" />
+        Option 1
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" value="option1" />
+        Option 2
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input disabled type="checkbox" value="option1" />
+        Option 3
+      </label>
+    </div>
+    <button type="submit" class="btn btn-default">Login</button>
   </form>
 
   - To get the checkboxes in the same line, use class "checkbox-inline" on the label element
@@ -393,61 +422,115 @@ we can define divs as follows -->
 
   form class="form-horizontal">
 
-          <div class="radio">
-              <label>
-                  <input type="radio" name="radioGroup" value="1" />
-                  Option 1
-              </label>
+  <div class="radio">
+    <label>
+      <input type="radio" name="radioGroup" value="1" />
+      Option 1
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="radioGroup" value="2" />
+      Option 2
+    </label>
+  </div>
+  <div class="radio disabled">
+    <label>
+      <input type="radio" name="radioGroup" value="3" />
+      Option 3
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default">Login</button>
+</form>
+
+- name is used to select one out of all the options
+
+- use class "radio-inline" to make them come in the same line
+
+<!-- How to get a multi select list -->
+
+<form class="form-horizontal">
+
+  <select multiple class="form-control">
+    <option>Option 1</option>
+    <option>Option 2</option>
+    <option>Option 3</option>
+    <option>Option 4</option>
+    <option>Option 5</option>
+    <option>Option 6</option>
+  </select>
+
+  <button type="submit" class="btn btn-default">Login</button>
+</form>
+
+- use "multiple" to make the selection multi-select
+
+<!-- How to make a field set "readonly" -->
+
+<input readonly type="text" class="form-control" placeholder="Your full name" />
+
+  <!-- How to display a value beside a label  -->
+
+  <div class="form-group">
+      <label class="col-xs-2 control-label">Id</label>
+      <div class="col-xs-10">
+          <p class="form-control-static">
+              101
+          </p>
+      </div>
+  </div>
+
+  - use the class "form-control-static" inside the "p" tag
+
+  - the cursor in case of "readonly" is different from the one in case of "disabled"
+
+  <!-- How to display validation states with colours -->
+
+  <div class="form-group has-success has-feedback">
+      <label for="txtStrongPassword" class="col-xs-2 control-label">Password</label>
+      <div class="col-xs-10">
+          <input type="password" id="txtStrongPassword" class="form-control" placeholder="Your password" />
+          <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+      <span class="help-block">Strong Password</span>
+      </div>
+  </div>
+
+  - use class "has-success" with the colour
+  - use the class "glyphicon" and its variants in the "span" element
+  - also use "form-control-feedback" on the span and "has-feedback" for the div element
+
+  <!-- How to add symbols with beautification in the form field -->
+
+  <div class="form-group has-success has-feedback">
+      <label for="txtStrongPassword" class="col-xs-2 control-label">Income</label>
+      <div class="col-xs-10">
+          <div class="input-group">
+              <span class="input-group-addon">$</span>
+              <input type="password" id="txtStrongPassword" class="form-control" placeholder="Your annual income" />
+
           </div>
-          <div class="radio">
-              <label>
-                  <input type="radio" name="radioGroup" value="2" />
-                  Option 2
-              </label>
-          </div>
-          <div class="radio disabled">
-              <label>
-                  <input type="radio" name="radioGroup" value="3" />
-                  Option 3
-              </label>
-          </div>
-      <button type="submit" class="btn btn-default">Login</button>
-  </form>
+          <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+      <span class="help-block">Strong Password</span>
+      </div>
+  </div>
 
-  - name is used to select one out of all the options
+  - use the "input-group-addon" class in the "span" element
 
-  - use class "radio-inline" to make them come in the same line
+  - use the "input-lg/sm" class to the field to increase or decrease the size of fields
 
-  <!-- How to get a multi select list -->
+  - use the "form-group-lg/sm" class to apply the same pattern on all fields in the "form group"
 
-  <form class="form-horizontal">
+- To fix the navbar at the top without scrolling use class 'navbar-fixed-top'
 
-      <select multiple class="form-control">
-          <option>Option 1</option>
-          <option>Option 2</option>
-          <option>Option 3</option>
-          <option>Option 4</option>
-          <option>Option 5</option>
-          <option>Option 6</option>
-      </select>
+- To make the navbar dark colored use class 'navbar-inverse'
 
-      <button type="submit" class="btn btn-default">Login</button>
-  </form>
+- data-target attribute is required for targetting an 'id' or a 'class'
 
-  - use "multiple" to make the selection multi-select
+- data-spy="scroll" ensures that as we scroll the corresspoing button becomes active
 
+- data-offset attribute is required for determining how soon or how late will the button activeness change when scrolled
 
-  - To fix the navbar at the top without scrolling use class 'navbar-fixed-top'
+- To get the navbar in the form of a stack on the left hand side use the classes 'nav-pills nav-stacked'
 
-  - To make the navbar dark colored use class 'navbar-inverse'
-
-  - data-target attribute is required for targetting an 'id' or a 'class'
-
-  - data-spy="scroll" ensures that as we scroll the corresspoing button becomes active
-
-  - data-offset attribute is required for determining how soon or how late will the button activeness change when scrolled
-
-  - To get the navbar in the form of a stack on the left hand side use the classes 'nav-pills nav-stacked'
-
-  - data-spy="affix" is used when we want to scroll through some point but after that we want the rest of the elements to be fixed
-  use the data-offset-top property along with it
+- data-spy="affix" is used when we want to scroll through some point but after that we want the rest of the elements to be fixed
+use the data-offset-top property along with it
