@@ -85,4 +85,25 @@ $(this).attr('disabled',true);
 
 <!-- How to extract a numerical value from a string -->
 
-- - "parseInt" will extract the numerical value for us
+- "parseInt" will extract the numerical value for us
+
+- use "removeAttr" when you wish to remove the value set for a particular attribute
+
+<!-- How to hide a particular element -->
+
+- use "hide" function on the element
+
+<!-- How to use "double click" and "show" events -->
+
+- use the "show" function
+- use "dblclick" function for double click
+
+<!-- How to capture "keypress" events -->
+
+- function ".html" will output the value that is entered in the field
+- function ".keyup" is used whenever we want to capture the event when after pressing the key it is released.
+- function ".keydown" for pressing the key
+
+<!-- How to capture "submit" button events -->
+
+- use the "submit" function for this purpose

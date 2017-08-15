@@ -177,3 +177,101 @@ $('#bigger').click(function()
 );
 
 - "parseInt" will extract the numerical value for us
+
+<!-- This is how we enable an upload file button -->
+
+$(document).ready(function()
+{
+  $('#file').change(function()
+  {
+    //this stores the value of the path of the file
+    value = $(this).attr('value');
+
+    $('#submit').removeAttr('disabled');
+
+  }
+);
+}
+);
+
+- removeAttr is used for nullifying the "disabled" attribute
+- "change" function is used when we want to capture and perform an event when a change is made to the element
+
+<!-- This is how we disabled the button and then enable it -->
+
+$(document).ready(function()
+{
+  //this will select the element after the input type (in this case, the submit button)
+
+  //we are trying to disable the upload button here
+
+  //first select the next element and disable it, then run the change function
+  $('input[type="file"]').change(function()
+  {
+      $(this).next().removeAttr('disabled');
+  }
+).next().attr('disabled','disabled');
+
+}
+);
+
+- function "next" is used to capture the element next to the present element. Similarly for "prev"
+
+<!-- This is how we hide a particular element -->
+
+$('#hide_message').click(function()
+{
+  // This will hide the 'p' tag when the button is clicked
+  $('#message').hide();
+}
+);
+
+<!-- This is how we show a menu on "double click" -->
+
+$('#menu_link').dblclick(function()
+{
+  $('#menu').show();
+}
+);
+
+- use the "show" function for this purpose
+- use "dblclick" function for double click
+
+<!-- This is how we display data that is entered in the field as soon as keys are pressed -->
+
+$('#user_text').keyup(function()
+{
+  // when we use the keydown function, it will run the event first and then grab the value
+  var user_text = $('#user_text').val();
+
+  //this will output the value into user_text_feedback
+  $('#user_text_feedback').html(user_text);
+}
+);
+
+- function ".html" will output the value that is entered in the field
+- function ".keyup" is used whenever we want to capture the event when after pressing the key it is released.
+- function ".keydown" for pressing the key
+
+
+<!-- This is how we display what has been selected from the menu using "change" function -->
+
+$('#list').change(function()
+{
+  //when we use a different option, this event will be triggered
+  var list_value = $('#list').val();
+  $('#list_feedback').html('You have selected ' + list_value);
+}
+);
+
+<!-- This is how we handle the "submit" event -->
+
+$('#signup_form').submit(function()
+{
+  var user_email = $('#user_email').val();
+
+  $('#signup_feedback').html('Thanks!! ' + 'user_email' + ' has been signed up.');
+}
+);
+
+- use the "submit" function for this purpose
