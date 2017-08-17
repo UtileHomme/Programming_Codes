@@ -11,6 +11,12 @@
   </body>
 </html>
 
+<!-- This is how we add a hyperlinke -->
+
+<a href="http://www.google.com" title="Google" target="_blank"><p>A link to my favourite website.</p></a>
+
+- "target" attribute is for opening the link in a new tab
+
 <!-- This is how we add an image  -->
 
 <img src="images/firefox-icon.png" alt="My test image">

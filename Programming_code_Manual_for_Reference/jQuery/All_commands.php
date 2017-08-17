@@ -275,3 +275,110 @@ $('#signup_form').submit(function()
 );
 
 - use the "submit" function for this purpose
+
+<!-- This is how we display a text as soon as we hover on some element -->
+
+$('#menu_videos').hover(function()
+{
+    $('#menu_feedback').html('Free Video tutorials');
+}
+);
+
+<!-- This is how we display a text as soon as the user scrolls through a textarea -->
+
+$('#some_text').scroll(function()
+{
+  var scroll_pos = $('#some_text').scrollTop();
+  $('#some_feedback').html('You have scrolled and are at position ' + scroll_pos);
+}
+);
+
+- use "scroll" function on the element
+- use "scrollTop" function to get the "position" of the scrolling bar in integer format
+
+<!-- This is how we trigger an event when a text in a field is selected -->
+
+// Here, we want to display something when the user selects some text
+
+$('#some_text').select(function()
+{
+  $('#some_feedback').html('Something has been selected');
+}
+);
+
+- use the "select" function for this purpose
+
+<!-- How to trigger an event when we focus on a element,i.e., we place a pointer onto the field -->
+
+// As soon as we focus on the element, something gets displayed
+
+$('#name').focusin(function()
+{
+  $('#name_span').html('Enter your full name');
+}
+);
+
+- use "focusin" function
+
+<!-- How to trigger an event as soon as the "mouse" enters or leaves an element -->
+
+// This is the conventional way
+
+$('a').mouseenter(function()
+{
+  $(this).addClass('bold');
+}
+).mouseleave(function()
+{
+  $(this).removeClass('bold');
+}
+);
+
+<!-- How to use bind to carry out the above two events together -->
+
+$('a').bind('mouseenter mouseleave',function()
+{
+  $(this).toggleClass('bold');
+}
+);
+
+- use "toggleClass" because it will check whether a class is applied or not and change the state accordingly
+- use "bind" to carry out something on the basis of multiple events
+
+<!-- this is how we add an element "after" an event is triggered -->
+$(document).ready(function()
+{
+  $('.duplicate').click(function()
+{
+  alert('You have clicked');
+  $(this).after('<input type="button" value="Click" class="duplicate" />');
+}
+);
+}
+);
+
+- use the "after" function
+
+<!-- This is how we monitor the number of characters remaining in a textarea and print them -->
+
+$(document).ready(function()
+{
+  var text_max=55;
+
+  $('#textarea_feedback').html(text_max + 'character remaining');
+
+  // We are trying to print the number of characters remaining after text
+  // has been typed in the textarea
+
+  $('#textarea').keyup(function()
+  {
+    //take the length of the number of characters entered in the textarea
+    var text_length = $('#textarea').val().length;
+
+    var text_remaining = text_max - text_length;
+
+    $('#textarea_feedback').html(text_remaining + 'characters remaining');
+  }
+);
+}
+);

@@ -107,3 +107,25 @@ $(this).attr('disabled',true);
 <!-- How to capture "submit" button events -->
 
 - use the "submit" function for this purpose
+
+<!-- How to use "hover" feature -->
+
+- use "hover" function
+
+<!-- How to use "scroll" feature -->
+
+- use "scroll" function on the element
+- use "scrollTop" function to get the "position" of the scrolling bar in integer format
+
+<!-- How to use "select" something and show an event  -->
+
+- use "select" function on the element
+
+<!-- How to trigger an event, when we place our pointer onto an element  and click-->
+
+- use "focusin" function
+- use "focusout" function to change the event to do something when we move the pointer away
+
+<!-- How to dynamically carry out and event -->
+
+- use "toggleClass" which applies the class on the basis of its present state

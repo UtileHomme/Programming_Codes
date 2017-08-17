@@ -472,4 +472,6 @@ Route::resource('posts','PostController');
 
   <a href="/assignedview?name={{ Auth::user()->name }}&status=In%20Progress">
 
+		
+
   <!-- Find out how to put all the routes under a middleware in laravel 5.4 -->
