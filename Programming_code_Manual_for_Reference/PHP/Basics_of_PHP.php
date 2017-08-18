@@ -128,10 +128,10 @@ print "you have earned ${$money}.00"; //would now output 'you have earned $10.00
 <!-- What is the difference between "==" and "===" -->
 
 - The operator "==" casts between two different types if they are different
-  - even if they are of the different type but signify same value, it will return true
+- even if they are of the different type but signify same value, it will return true
 
 - The operator "===" performs a 'typesafe' comparison
-  - This means that it will only be true if both the operands have the same type and the same value
+- This means that it will only be true if both the operands have the same type and the same value
 
 Eg -
 a. 1 === 1;   // true
@@ -146,13 +146,29 @@ d. 1 == "1"    //true  -- the "string" gets cast to int. 1
 "$$a" represents a variable with the content of "$a". Also called, variable variable
 
 Eg - $test = 'hello world';
-     $a = "test";
-     echo $$a;     // $(test)  --> hello world
+$a = "test";
+echo $$a;     // $(test)  --> hello world
 
 <!-- What is the difference between "<?php ?>" and "<? ?>"  -->
 
 <?php ?>  = safe open and close tag variation
 
 <? ?> = short-open tag
-  - is not always available
-  - can be confused with "xml" version
+- is not always available
+- can be confused with "xml" version
+
+**** $_SERVER['REMOTE_ADDR']; returns the server IP address
+
+*** use "global $variable_name" inside the function to use the global variable
+
+<!-- How to use "str_word_count" for counting letters in a string -->
+
+ str_word_count($s, 'another argument for the way the data is returned', 'argument for an special characters to be considered');
+
+<!-- How to shuffle the letters of a string -->
+
+-- use "str_shuffle($s)" for this purpose
+
+<!-- How to reverse the letters of a string -->
+
+-- use "strrev($s)"

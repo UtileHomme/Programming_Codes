@@ -58,3 +58,18 @@ will move one level up the chain and try to find the method
 
 6. String
   - an object with properties of its own
+
+*** In Javascript, String variable are immutable
+    - they cannot be altered once created
+
+<!-- We cannot do this -->
+
+var myStr = "Bob";
+myStr[0] = "J";
+
+-- The individual letters of a string cannot be changed. We'll have to change the entire string
+
+var myStr = "Bob";
+myStr = "Job";
+
+*** Unlike strings, the entries of arrays are mutable and can be changed freely.
