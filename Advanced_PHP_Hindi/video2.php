@@ -11,7 +11,6 @@
         }
     }
 }
-
 //this is global namespace
 namespace
 {
