@@ -382,3 +382,53 @@ $(document).ready(function()
 );
 }
 );
+
+<!-- This is how we show a text on an element when the user hovers over it -->
+
+// 'e' is an object out here which has been passed as a parameter
+$('.hover').mousemove(function(e)
+{
+    // we are displaying the mouse 'x' and 'y' coordinates
+    //these coordinates are relative to the document
+    // $('#co').text('x: ' + e.clientX + 'y: '  + e.clientY);
+
+    //will retrieve the value of the 'hovertext' attribute set in the 'anchor' tag
+    var hovertext = $(this).attr('hovertext');
+
+    $('#hoverdiv').text(hovertext).show();
+
+    //we are setting the top and left property when we hover
+    $('#hoverdiv').css('top', e.clientY+15).css('left', e.clientX+15);
+}
+).mouseout(function()
+{
+    //to hide the hoverdiv when the cursor leaves the links
+    $('#hoverdiv').hide();
+}
+);
+
+<!-- This is how we copy some text and display it when we click on a button -->
+
+$('#copy_button').click(function()
+{
+    //this will capture the value from the '#text' id
+    var text = $('#text').html();
+
+    //here, we are placing it in the second "id"
+    $('#copy').html(text);
+}
+);
+
+<!-- This is how we grab the value from a field and display it -->
+
+$('#button').click(function()
+{
+    var name = $('#name').val();
+    $('#area').text(name);
+}
+);
+
+<!-- How to display the value of an attribute -->
+
+var attr = $('#link').attr('href');
+$('#attr').text(attr);

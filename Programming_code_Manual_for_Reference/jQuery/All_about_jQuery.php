@@ -129,3 +129,13 @@ $(this).attr('disabled',true);
 <!-- How to dynamically carry out and event -->
 
 - use "toggleClass" which applies the class on the basis of its present state
+
+<!-- How to capture an event when the user moves away from the element -->
+
+- use "mouseout" event
+
+*** 'html' function in jquery is used for grabbing some html content from one area and showing it in another area
+
+<!-- How to display a text stored in a variable which has some value grabbed on a click -->
+
+-- use the "text" function 
