@@ -193,7 +193,6 @@ Route::middleware(['web','admin'])->group(function()
 
 Route::post('auth/login','Auth\LoginController@login')->name('login');      //naming the route according to middleware
 
-
 <!-- This is how we define a resource controller -->
 
 Route::resource('posts','PostController');
@@ -318,7 +317,7 @@ Route::resource('posts','PostController');
     //
   });
 
-  
+
 
   <!-- How do we represent a middleware -->
 
