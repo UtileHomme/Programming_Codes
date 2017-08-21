@@ -232,6 +232,9 @@ Route::resource('posts','PostController');
     {!! $posts->links() !!}
   </div>
 
+  <!-- //when we have passed a parameter in the url and we want the same parameter to be carried to the next page we use "appends" method -->
+  <div style="text-align: -webkit-center;"> {{$leads->appends(request()->except('page'))->links()}} </div>
+
   <!-- This is how put limits on all the data to be displayed -->
 
   $posts = Post::orderBy('created_at','desc')->limit(4)->get();

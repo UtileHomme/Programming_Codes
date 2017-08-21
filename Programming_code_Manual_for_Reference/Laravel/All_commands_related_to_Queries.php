@@ -23,6 +23,9 @@ $leads = DB::table('leads')
     ->orderBy('leads.id', 'DESC')
     ->paginate(50);
 
-- use "paginate" or "get" for retrieving all the data 
+- use "paginate" or "get" for retrieving all the data
 - use "count" for retrieving the count of all the data retrieved
 
+*** The "id" which we want to order by should have its "table name" last in the "select" statement
+
+  
