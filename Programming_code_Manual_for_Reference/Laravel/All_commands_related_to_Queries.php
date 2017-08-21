@@ -28,4 +28,10 @@ $leads = DB::table('leads')
 
 *** The "id" which we want to order by should have its "table name" last in the "select" statement
 
-  
+  <!-- This is how we apply a query with "LIKE" in laravel -->
+
+  $data1 = DB::table('leads')->select('services.*','personneldetails.*','addresses.*','leads.*')
+  ->join('personneldetails', 'leads.id', '=', 'personneldetails.Leadid')
+  ->join('addresses', 'leads.id', '=', 'addresses.leadid')
+  ->join('services', 'leads.id', '=', 'services.LeadId')
+  ->Where($filter1, 'like',   $keyword1 . '%')->orderBy('leads.id', 'DESC')->paginate(200);

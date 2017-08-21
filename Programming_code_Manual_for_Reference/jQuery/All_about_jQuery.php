@@ -138,4 +138,8 @@ $(this).attr('disabled',true);
 
 <!-- How to display a text stored in a variable which has some value grabbed on a click -->
 
--- use the "text" function 
+-- use the "text" function
+
+<!-- How to check whether a checkbox has been selected or not -->
+
+-- use ".is(':checked')" function along with the "selector "
