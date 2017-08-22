@@ -16,11 +16,9 @@
         <input type="button" name="" value="Combine" id="combine">
     </p>
 
-    <div class="" id="combined">
 
-    </div>
 
     <script type="text/javascript" src="js/jquery.js"> </script>
-    <script type="text/javascript" src="js/ext10.js"> </script>
+    <script type="text/javascript" src="js/ext11.js"> </script>
 </body>
 </html>

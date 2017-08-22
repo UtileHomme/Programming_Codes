@@ -143,3 +143,5 @@ $(this).attr('disabled',true);
 <!-- How to check whether a checkbox has been selected or not -->
 
 -- use ".is(':checked')" function along with the "selector "
+
+-- use "each" function when you wish to loop through a series of selectors

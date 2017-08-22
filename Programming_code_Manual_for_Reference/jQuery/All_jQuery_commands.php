@@ -458,3 +458,57 @@ $(document).ready(function()
 );
 }
 );
+
+<!-- How to combine two texts from different input fields when button is clicked -->
+
+$(document).ready(function()
+{
+    $('#combine').click(function()
+    {
+        var combined_text = ' ';
+
+        //index gives the order number of the element
+        //using "each" function , we are looping through each selector
+        $('input[type=text]').each(function()
+        {
+            combined_text += $(this).val() + ' ';
+        }
+    );
+
+    $('#combined').text(combined_text);
+}
+);
+}
+);
+
+<!-- How to select the child element of a parent and append something to the last , middle or first child -->
+
+$(document).ready(function()
+{
+    // $('.names li:first').append(' First');
+    // $('.names li:last').append(' Last');
+
+    //we are selecting the child of a parent, then the "first occurrence of it" and appending some text to it
+    $('.names').find('li').first().append(' (first)');
+    $('.names').find('li').first().next().append(' (second)');
+    $('.names').find('li').last().append(' (last)');
+}
+);
+
+-- use "first" function  for selecting the first child
+-- use "last" function for selecting the last child
+- use "next" after "first" to get the second child
+
+<!-- How to toggle the info after a class has been applied -->
+
+$(document).ready(function()
+{
+    //find the first "li" in the menu, add class "bold" to it and hide everything after that class
+    $('.menu').find('li').first().addClass('bold').click(function()
+    {
+        $(this).nextAll().toggle();
+    }
+).nextAll().hide();
+});
+
+-- the function "nextAll" will select all the information after the selected "li" and hide it

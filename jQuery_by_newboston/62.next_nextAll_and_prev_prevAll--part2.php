@@ -10,17 +10,14 @@
 </head>
 <body>
 
-    <p>
-        <input type="text" name="" value="">
-        <input type="text" name="" value="">
-        <input type="button" name="" value="Combine" id="combine">
-    </p>
-
-    <div class="" id="combined">
-
-    </div>
+    <ul class="menu">
+        <li>User</li>
+        <li>Settings</li>
+        <li>Log Out</li>
+        <li>Delete account</li>
+    </ul>
 
     <script type="text/javascript" src="js/jquery.js"> </script>
-    <script type="text/javascript" src="js/ext10.js"> </script>
+    <script type="text/javascript" src="js/ext13.js"> </script>
 </body>
 </html>
