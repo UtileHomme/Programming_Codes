@@ -474,4 +474,22 @@ Route::resource('posts','PostController');
 
   <a href="/assignedview?name={{ Auth::user()->name }}&status=In%20Progress">
 
+<!-- This is how we send a Mail in Laravel -->
+
+$service_type=DB::table('services')->where('leadid',$leadid)->value('ServiceType');
+
+$data = ['leadid'=>$leadid,'name'=>$name,'user'=>$user,'service_type'=>$service_type,'contact'=>$contact,'location'=>$location,'from'=>$from,'to'=>$to,'who'=>$who];
+
+$data1 = ['leadid'=>$leadid,'name'=>$name,'user'=>$user,'service_type'=>$service_type,'contact'=>$contact,'location'=>$location,'from'=>$from,'to'=>$to1,'who'=>$who];
+
+Mail::send('mail', $data, function($message)use($data) {
+  $message->to($data['to'], $data['user'] )->subject
+  ('Lead ['.$data['leadid'].'] Created!!!');
+  $message->from($data['from'],$data['who']);
+});
+
+- the 1st argument in the "send" function is the 'view page' which consists of the body
+- the 2nd argument is the list of "values" that we want to send along the view page in the first argument
+- we also need to use the "use" function for this purpose
+
   <!-- Find out how to put all the routes under a middleware in laravel 5.4 -->

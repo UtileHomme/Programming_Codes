@@ -172,3 +172,93 @@ echo $$a;     // $(test)  --> hello world
 <!-- How to reverse the letters of a string -->
 
 -- use "strrev($s)"
+
+<!-- How to capture a part of the string -->
+
+- use "substr" function
+- format for "substr" = substr(string, start_position, no_of_characters);
+
+<!-- How to get the string length of the string -->
+
+- use "strlen" function
+
+<!-- How to get the difference between 2 strings in the form of a "percentage" -->
+
+- use "similar_text($string1, $string2, $result)" function
+
+<!-- How to remove spaces from both sides of a string -->
+
+- use "trim" function with the variable inside it
+- use "rtrim" for right space removal and "ltrim" for left space removal
+
+<!-- How to add elements to an array -->
+
+$food = array('Pasta', 'Salad', 'Salad');
+
+<!-- What are associative arrays and how do we define them -->
+
+//associative arrays help rename the index to our own choice
+
+$food = array('Pasta'=>300, 'Pizza'=>1000, 'Salad'=>150, 'Vegetable'=>50);
+
+<!-- What are Multi-dimensional arrays and how do we define them -->
+
+$food = array('Healthy'=>
+                                      array('Salad', 'Vegetables', 'Pasta'),
+                      'Unhealthy'=>
+                                      array('Pizza', 'Ice cream') );
+
+//This is how it looks
+
+                        0                1              2
+Healthy       |  Salad  | Vegetables | Pasta
+Unhealty     |  Pizaa  |  Ice Cream
+
+
+<!-- How to traverse through a Multi-dimensional array -->
+
+$food = array('Healthy'=>
+                                      array('Salad', 'Vegetables', 'Pasta'),
+                      'Unhealthy'=>
+                                      array('Pizza', 'Ice cream') );
+
+foreach($food as $element => $inner_array)
+{
+  echo '<br />';
+  echo '<strong>'.$element.'</strong><br />';
+  foreach($inner_array as $item)
+  {
+    echo $item.'<br />';
+  }
+}
+
+- "$element" gives the index
+- "$inner_array" gives the value at that index
+
+<!-- Difference between include and require -->
+
+- Both are used for including code from another page
+- code that might be wanted in many pages - this is to avoid DRY
+
+- include will work and "continue" reloading the page even if the "mentioned" file is not found
+- require will "kill" the page if the mentioned file is not found
+
+//This is how both are declared
+include 'video42(header.inc).php';
+require 'video42(header.inc).php
+
+<!-- How to search for a substring in a string -->
+
+-- use "preg_match" function
+
+<!-- How to change the "case" of a string -->
+
+-- use "strtolower" or "strtoupper" respectively
+
+<!-- How to find position of a substring in a string -->
+
+-- use "strpos(string_name, string_to_search, position_to_start_from)" function
+
+<!-- How to replace part of a string if the position to replace from and no. of characters to replace is known -->
+
+- use "substr_replace(string_name, string_we_want_to_replace_with,starting_position,no_of_characters)" function

@@ -188,3 +188,81 @@ echo $string_shuffled = str_shuffle($string);
 echo $str_reversed = strrev($string);
 
 -- use "strrev($s)"
+
+<!-- How to capture a part of the string -->
+
+$half = substr($string_shuffled, 2 , 5);      //returns the sub string from position
+
+- format for "substr" = substr(string, start_position, no_of_characters);
+
+<!-- How to get the length of a string -->
+
+$length = strlen(string_name);
+
+<!-- How to check how different two string are by getting the "percentage" as a value -->
+
+similar_text($string1, $string2, $result);
+
+- the value will be stored in the "$result" variable
+- simply echo it
+
+<!-- How to remove spaces from both sides of a string -->
+
+$string_trimmed = trim($string);
+
+<!-- How to add slashes before any special chars -->
+
+$string1 = 'This is a <img scr="image.jpg" /> string ';
+
+echo $string_slashes = htmlentities(addslashes($string1));
+echo $string_strip = stripslashes(($string_slashes));
+
+- use "addslashes" function to add the slashes so that everything is treated as an html
+- use "stripslashes" function if we want to convert an "html" to normal string
+
+<!-- How to use "preg_match" for finding whether a substring exists in a string or not -->
+
+if(preg_match('/is/', $string))       //Search for 'is' in the string
+{
+  echo 'Match found';
+}
+else
+{
+    echo 'No match found';
+}
+
+<!-- How to convert lowercase to uppercase and vice versa -->
+
+echo $string_lower = strtolower($string);
+echo $string_upper = strtoupper($string);
+
+<!-- How to find position of a substring in a string -->
+
+-- use "strpos(string_name, string_to_search, position_to_start_from)" function
+
+<!-- How to find the multiple positions where that substring has occurred -->
+
+$offset = 0;
+$find = ' is  ';
+$find_length = strlen($find);
+
+$string = 'This is a string, and it is an example';
+echo strpos($string, $find);     //third argument is offset -> from where to start checking
+echo '<br />';
+
+//we'll loop through the string by finding the string , going forward the find_length value until the next occurrenc eis found
+while($string_pos = strpos($string,$find,$offset))
+{
+  echo '<strong>'.$find.'</strong> found at '.$string_pos.'<br />';
+  $offset = $string_pos + $find_length;
+}
+
+<!-- How to replace a string part with another string depending on position and number of characters to replace -->
+
+$string = 'This part do not search. This part search';
+
+echo $string_new = substr_replace($string, 'alex', 29, 4);
+//29 specifies the position we want to start replacing; 4 specifies the number of characters to replace
+// alex is the string we want to replace
+
+- use "substr_replace(string_name, string_we_want_to_replace_with,starting_position,no_of_characters)" function
