@@ -145,3 +145,12 @@ $(this).attr('disabled',true);
 -- use ".is(':checked')" function along with the "selector "
 
 -- use "each" function when you wish to loop through a series of selectors
+
+<!-- How to change an html element by finding it as a part of another element -->
+
+-- use the "find" function
+
+<!-- How to slide an element down or up -->
+
+-- use the "slideDown" function
+-- use the "slideUp" function

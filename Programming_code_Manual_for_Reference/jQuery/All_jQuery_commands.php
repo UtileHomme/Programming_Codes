@@ -226,6 +226,11 @@ $('#hide_message').click(function()
 }
 );
 
+-- hide('how fast we want it to disappear','the way we want it to disappear',call_back function)
+    - first parameter can be a string or a number Eg - 'fast','slow', 1000 , 500 etc.
+    - second parameter can be 'linear','swing (by default)' etc.
+
+
 <!-- This is how we show a menu on "double click" -->
 
 $('#menu_link').dblclick(function()
@@ -512,3 +517,54 @@ $(document).ready(function()
 });
 
 -- the function "nextAll" will select all the information after the selected "li" and hide it
+
+<!-- How to change an html element by finding it as a part of another element -->
+
+$(document).ready(function()
+    {
+        $('p').find('strong').addClass('big');
+    }
+);
+
+-- use the "find" function
+
+<!-- How to check whether there is a "child" element present in the "parent" or not -->
+
+$(document).ready(function()
+{
+    $('ul').each(function()
+    {
+        this_sel = $(this);
+
+        // if there is no "li" element in the "ul" , print empty something
+        if(this_sel.has('li').length==0)
+        {
+            this_sel.after('Empty menu');
+        }
+    }
+);
+}
+);
+
+- use the "has" function
+
+<!-- How to make an element "slide down" when it is hidden by default -->
+
+$(document).ready(function()
+{
+    $('#top_message').slideDown('slow');
+}
+)
+
+$(document).ready(function()
+{
+    var speed = 300
+    $('#top_message').slideDown(speed);
+
+    $('#hide_message').click(function()
+    {
+            $('#top_message').slideUp(speed);
+    }
+);
+}
+)
