@@ -122,9 +122,6 @@ e. 5xx. Server Error
 
 http://imgur.com/a/O0zwM
 
-
-
-
 <!-- Why is HTTP is called a stateless protocol and how can be make it stateful -->
 
 - It doesn't require the server to retain the information or status of the user for the duration of multiple requests.
@@ -145,9 +142,21 @@ The statelessness is required so that there is less traffic and the webpage load
 - The server stores whatever info it cares about to maintain between requests and assigns that information an ID.
 - It then tells the browswer that session ID in such a way that it can hand the ID back when it's time to make another request
 
-- If the browswer plays its part and provides the session ID, then the stored info can be retrieved, updated with each request providing
+- If the browser plays its part and provides the session ID, then the stored info can be retrieved, updated with each request providing
 some degree of statefulness
 
 - Sessions are implemented using cookies. The server hands over the browser a cookie with the session ID and the browser hands over the
 same cookies with each request until the cookie expires or is otherwise forgotten
    - Some cookies(session cookies) are forgotten as soon as the browswer closes
+
+<!-- What does TCP do -->
+
+- It defines how data is formatted and how the packets are sent.
+- HTTP uses TCP and sits above that.
+- HTTP never cares about how the data is formatted
+
+<!-- What are HEADERS -->
+
+- They are tiny bits of custom information we send along with our request and receive in the response
+
+Eg - Content type  -> xml / pdf/ json (Request header)
