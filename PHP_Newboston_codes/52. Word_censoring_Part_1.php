@@ -18,7 +18,7 @@ if(isset($_POST['user_input']) && !empty($_POST['user_input']))
  ?>
 
  <hr />
- <form action="video52.php" method="POST">
+ <form action="52. Word_censoring_Part_1.php" method="POST">
    <textarea name="user_input" rows="6" cols="30"></textarea><? php echo $user_input ?><br /><br />
    <input type="submit" value="submit" />
  </form>

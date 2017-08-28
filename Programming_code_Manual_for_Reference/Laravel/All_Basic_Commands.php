@@ -28,7 +28,7 @@ php artisan migrate:refresh
 php artisan key:generate
 
 
-<!-- Our routes files are in web.php -->
+<!-- All routes are in web.php -->
 
 <!-- session data can be changed in config/sessions.php
 the session file is stored in storage/framework/sessions

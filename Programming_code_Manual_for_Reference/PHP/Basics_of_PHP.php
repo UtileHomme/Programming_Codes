@@ -262,3 +262,20 @@ require 'video42(header.inc).php
 <!-- How to replace part of a string if the position to replace from and no. of characters to replace is known -->
 
 - use "substr_replace(string_name, string_we_want_to_replace_with,starting_position,no_of_characters)" function
+
+<!-- How to replace a word when the word to replace with is known -->
+
+- use "str_replace(find_the_substring_we_wish_replace, the_string_that_we_want_to_replace_the_found_string, the_string_in_which_the_changes_are_to_be_made)" function
+
+** use "str_ireplace" when we are looking for case_insensitivity
+
+<!-- What are timestamps  -->
+
+- It is an integer value giving the number of seconds passed starting from Jan 1970
+
+- use "time()" for getting the timestamp
+- use "date('format', timestamp_variable)" for getting the timestamp in a nice format
+
+<!-- How to increase or decrease time  -->
+
+- use "strtotime" as the second argument of the date function

@@ -266,3 +266,106 @@ echo $string_new = substr_replace($string, 'alex', 29, 4);
 // alex is the string we want to replace
 
 - use "substr_replace(string_name, string_we_want_to_replace_with,starting_position,no_of_characters)" function
+
+<!-- How to replace a word when the word to replace with is known -->
+
+$find = array('is', 'string', 'example');
+$replace = array('IS', 'STRING', ' ');
+
+$string = 'This is a string, and is an example';
+
+//the function will look for all the strings in the array
+echo $new_string = str_replace($find, $replace, $string);
+
+str_replace(find_the_substring_we_wish_replace, the_string_that_we_want_to_replace_the_found_string, the_string_in_which_the_changes_are_to_be_made)
+
+<!-- This is how we create a word censoring program in BASIC PHP -->
+$find = array('alex', 'billy', 'dale');
+$replace = array('a**x', 'bil', ' ');
+
+if(isset($_POST['user_input']) && !empty($_POST['user_input']))
+{
+  $user_input = $_POST['user_input'];
+//  $user_input_lc = strtolower($user_input);
+
+//str_ireplace is case insensitive
+  $user_input_new = str_ireplace($find, $replace, $user_input);
+
+  echo $user_input_new;
+}
+ ?>
+
+ <hr />
+ <form action="video52.php" method="POST">
+   <textarea name="user_input" rows="6" cols="30"></textarea><? php echo $user_input ?><br /><br />
+   <input type="submit" value="submit" />
+ </form>
+
+<!-- This is how we check for a GET variable in PHP -->
+
+if(isset($_POST['user_input']) && !empty($_POST['user_input']))
+{
+  $user_input = $_POST['user_input'];
+//  $user_input_lc = strtolower($user_input);
+
+//str_ireplace is case insensitive
+  $user_input_new = str_ireplace($find, $replace, $user_input);
+
+  echo $user_input_new;
+
+  <!-- This is how we create a "Find and Replace" Application in PHP -->
+
+  $offset = 0;
+  if(isset($_POST['text']) && isset($_POST['searchfor']) && isset($_POST['replacewith']))
+  {
+    $text = $_POST['text'];
+    $searchfor = $_POST['searchfor'];
+    $replacewith = $_POST['replacewith'];
+
+  //search length is the length of the string we are searching for
+    $search_length = strlen($searchfor);
+    echo '<br />';
+
+
+    if(!empty($text) && !empty($replacewith) && !empty($searchfor) )
+    {
+       //find the position of the first occurrence of that substring
+       //offset is the place we need to start the search from
+      while($strpos = strpos($text, $searchfor, $offset))
+      {
+        $strpos.'<br />';
+
+       //increment the offset so that it starts from a position after the substring
+        $offset = $strpos + $search_length;
+        $text = substr_replace($text, $replacewith, $strpos, $search_length);
+      }
+      echo $text;
+    }
+    else
+    {
+      echo 'Please fill in all fields';
+    }
+  }
+
+<!-- This is how retrieve the current time -->
+
+$time = time();
+$actual_time = date('H:i:s', $time);
+
+- "H:i:s" displays Hour in numbers, minutes in numbers and seconds in numbers
+- "D M Y" displays Date in String, Month in String, Year in Numbers
+
+<!-- This is how we retrieve the date and time together -->
+
+$time = time();
+
+$time_now = date('d M Y @ H:i:s a', $time);
+
+<!-- How to reduce or increase the time by seconds -->
+
+$time_modified = date('d M Y @ H:i:s', $time-60);
+
+OR
+
+echo $time_modified1= date('d M Y @ H:i:s', strtotime('-1 week'));
+//+1 year or week or +1 week 2 hours 30 seconds

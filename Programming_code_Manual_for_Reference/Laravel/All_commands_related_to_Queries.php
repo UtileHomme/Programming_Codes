@@ -35,3 +35,13 @@ $leads = DB::table('leads')
   ->join('addresses', 'leads.id', '=', 'addresses.leadid')
   ->join('services', 'leads.id', '=', 'services.LeadId')
   ->Where($filter1, 'like',   $keyword1 . '%')->orderBy('leads.id', 'DESC')->paginate(200);
+
+<!-- This is how we use "whereIn" to simulate "OR" statements -->
+
+$Servicesarray = ["Physiotherapy - clinic","Physiotherapy - Home","Physiotherapy"];
+
+$newcount = DB::table('services')
+->where('ServiceStatus',$status0)
+->wherein('ServiceType',$Servicesarray)
+->orderBy('id', 'DESC')
+->count();

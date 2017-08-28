@@ -8,15 +8,20 @@ if(isset($_POST['text']) && isset($_POST['searchfor']) && isset($_POST['replacew
   $searchfor = $_POST['searchfor'];
   $replacewith = $_POST['replacewith'];
 
+//search length is the length of the string we are searching for
   $search_length = strlen($searchfor);
   echo '<br />';
 
 
   if(!empty($text) && !empty($replacewith) && !empty($searchfor) )
   {
+     //find the position of the first occurrence of that substring
+     //offset is the place we need to start the search from
     while($strpos = strpos($text, $searchfor, $offset))
     {
       $strpos.'<br />';
+
+     //increment the offset so that it starts from a position after the substring
       $offset = $strpos + $search_length;
       $text = substr_replace($text, $replacewith, $strpos, $search_length);
     }
