@@ -568,3 +568,79 @@ $(document).ready(function()
 );
 }
 )
+
+<!-- How to stop an ongoing animation -->
+
+$('#start').click(function()
+{
+    $('#image').slideToggle('slow');
+}
+);
+
+$('#stop').click(function()
+{
+    $('#image').stop();
+}
+);
+
+<!-- How to delay an event by some time before it takes effect -->
+
+$('#go').click(function()
+{
+    //we are fading out the element, giving a delay of 3seconds and then fading in the element
+    $('#para').fadeOut().delay(3000).fadeIn();
+}
+);
+
+<!-- How to fadein one element at a time while the previous one fades out -->
+
+$(document).ready(function() {
+    $('.fadeto').css('opacity','0.4');
+        //speed , opacity
+        $('.fadeto').mouseover(function()
+        {
+            //we only want to fadein one element at a time and fadeout the other
+            $(this).fadeTo(100, 1);
+
+            //here, we are ensuring that the one that is not "this" is set to opacity=0.4
+            $('.fadeto').not(this).fadeTo(100,0.4);
+        }
+    );
+    }
+);
+
+<!-- How to append a user entered value at the end of a sentence -->
+
+$('#button').click(function()
+{
+    //whatever the user enters into the input field, we want to append to the sentence
+    var name = $('#name').val();
+    $('#sentence').append(name);
+}
+);
+
+<!-- How to append a value from an element and appending it to another element -->
+
+$('#append').click(function()
+{
+    $('#span').appendTo('#paragraph');
+}
+);
+
+<!-- How to keep the element at its place and still append to another element -->
+
+$('#append').click(function()
+{
+    $('#span').clone().appendTo('#paragraph');
+}
+);
+
+<!-- How to get the "height" and "width" of an element -->
+
+$(document).ready(function() {
+
+    //also $('#div').css('height')  -- here we'll get the "px" along with the numerical value  -- use parseInt to only get the numerical value
+    var div_height = $('#div').height();
+    var div_width = $('#div').width();
+    $('#div').text('Width: ' + div_width + ' / Height : ' + div_height);
+});

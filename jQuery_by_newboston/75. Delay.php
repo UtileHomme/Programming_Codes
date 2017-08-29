@@ -10,13 +10,10 @@
 </head>
 <body>
 
-    <p><input type="button" name="" value="Start" id="start">
-        <input type="button" name="" value="Stop" id="stop">
-    </p>
-
-    <p id="image"><img src="images/1.jpg" alt="IMAGE"></p>
+    <p><input type="button" id="go" name="" value="Go"></p>
+    <p id="para">I'm going to vanish. I'll be back, did you miss me</p>
 
   <script type="text/javascript" src="js/jquery.js"> </script>
-  <script type="text/javascript" src="js/effects8.js"> </script>
+  <script type="text/javascript" src="js/effects9.js"> </script>
 </body>
 </html>

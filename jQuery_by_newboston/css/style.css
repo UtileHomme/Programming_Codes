@@ -55,3 +55,10 @@ body
     font-size: 20px;
     color: #fff;
 }
+
+#div
+{
+    background-color: #f0f0f0;
+    height: 100px;
+    width: 250px;
+}

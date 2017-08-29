@@ -73,3 +73,9 @@ var myStr = "Bob";
 myStr = "Job";
 
 *** Unlike strings, the entries of arrays are mutable and can be changed freely.
+
+<!-- Where to put the "script" tag -->
+
+- it doesn't have to go inside the "head" of the document
+- it is better to put it at the bottom of the body (just before closing the "body" tag)
+    - make sure that all the HTML content has been read by the browser before it applies JS to it 

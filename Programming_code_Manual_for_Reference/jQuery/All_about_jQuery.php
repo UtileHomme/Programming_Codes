@@ -154,3 +154,27 @@ $(this).attr('disabled',true);
 
 -- use the "slideDown" function
 -- use the "slideUp" function
+
+<!-- How to "stop" an ongoing animation -->
+
+-- use the "stop" function
+
+<!-- How to delay an event by some time before it takes effect -->
+
+-- use the "delay" function
+
+<!-- How to append a word after any sentence -->
+
+-- use the "append" function
+
+<!-- How to append a value from an element and appending it to another element -->
+
+-- use the "appendTo" function
+
+<!-- How to keep the element at its place and still append to another element -->
+
+-- use the "clone" function
+
+<!-- How to get the "height" and "width" of an element -->
+
+-- use the "width" and "height" functions
