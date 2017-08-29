@@ -644,3 +644,23 @@ $(document).ready(function() {
     var div_width = $('#div').width();
     $('#div').text('Width: ' + div_width + ' / Height : ' + div_height);
 });
+
+<!-- How to use "height" and "width" of a screen to set the "image" height and width  -->
+
+$(document).ready(function() {
+    var w_height = $(window).height();
+    var w_width = $(window).width();
+
+    $('.fit').css('height', w_height).css('width', w_width);
+});
+
+<!-- How to find the integer value of the current position when we are scrolling down a textarea -->
+
+$(document).ready(function() {
+    $('#textarea').scroll(function()
+    {
+        var scroll_top = $(this).scrollTop();
+        $('#feedback').text('Currently at Position: ' + scroll_top);
+    }
+);
+});

@@ -178,3 +178,7 @@ $(this).attr('disabled',true);
 <!-- How to get the "height" and "width" of an element -->
 
 -- use the "width" and "height" functions
+
+<!-- How to find the integer value of the current position when we are scrolling down a textarea -->
+
+-- use the "scrollTop" function

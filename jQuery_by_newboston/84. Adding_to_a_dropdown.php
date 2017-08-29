@@ -10,9 +10,7 @@
 </head>
 <body>
 
-    <img class="fit" src="images/1.jpg" alt="">
-
     <script type="text/javascript" src="js/jquery.js"> </script>
-    <script type="text/javascript" src="js/ext17.js"> </script>
+    <script type="text/javascript" src="js/ext18.js"> </script>
 </body>
 </html>
