@@ -27,3 +27,23 @@ git commit -m "Message"
 
 git branch "branchname"
     - helps build a new branch and work on your own part of the code
+
+git checkout "repository name to checkout to"
+    - allows one to checkout to a repository that we are not currently working inside
+
+git merge "the repositorie's code that we want inside the current working repository"
+    - used for merging into the current repository from another repository
+
+git push
+    - adding local changes to Github repository
+
+git pull
+    - to pull the updated Github repository code
+
+<!-- How to set "username" for Git -->
+
+- git config --global user.name "Your GitHub account name here"
+
+<!-- How to set "email" for Git -->
+
+- git config --global user.email "Your Git email name here"

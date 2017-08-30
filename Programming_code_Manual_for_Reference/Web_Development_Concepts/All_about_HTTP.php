@@ -2,7 +2,9 @@
 <!-- What is HTTP -->
 
 - Stands for HyperText Transfer Protocol
+- hypertext means a page containing links to other pages
 - is a stateless, application-layer protocol for communicating between distributed systems.
+- also, a "messenger" of the web
 
 - It allows for communication between a variety of hosts and clients, and supports a mixture of network configurations.
 - to make this possible, it assumes very little about a particular system, and does not keep a state between different message
@@ -50,6 +52,45 @@ d. DELETE
 e. HEAD
   - is similar to GET but without a message body
   - is used to retrieve the server headers for a particular resource, generally to check if the resource has changed via timestamps
+
+  <!-- What does a Typical HTTP message look like -->
+
+  http://imgur.com/a/o9hDo
+
+  1. Start line
+  2. Headers
+  3. Body
+
+-  The information in each section depends on the kind of HTTP message ,i.e., it's a request or a response.
+- They all contain plain text, unless the body contains binary data
+
+<!-- How a request and response message looks like -->
+
+http://imgur.com/a/VsILG
+
+1. Request message
+    - Start line contains
+        - the Method
+        - the URI
+        - the HTTP version
+
+    Eg. - GET /products/myproducts.html HTTP/1.0
+
+    - Headers contain named value pairs
+
+    Eg - Host :: www.website.com
+            Accept: text/html
+            Accept-language: en-us
+
+    ** Methods tells the server what to do
+    ** URI is a set of readable characters to locate the resources we are requesting from the server
+    ** Headers tells about what type of file, in what format, from where etc.
+
+2. Response message
+            - Http version
+            
+            -Status Codes
+                - gives response depending on the request from the server
 
 <!-- What are HTTP Status Codes -->
 
