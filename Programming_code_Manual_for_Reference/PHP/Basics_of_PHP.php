@@ -279,3 +279,50 @@ require 'video42(header.inc).php
 <!-- How to increase or decrease time  -->
 
 - use "strtotime" as the second argument of the date function
+
+<!-- How to generate a random number -->
+
+-- use the "rand" function
+
+-- use the " getrandmax" function to get the max allowed limit of the numbers
+
+-- to echo a number between 2 numbers , use rand(min limit, max limit)
+
+<!-- How to display the current files name -->
+
+ -- use $_SERVER['SCRIPT_NAME'];
+
+<!-- How to access the name of the server -->
+
+-- use $_SERVER['HTTP_HOST']
+
+** We need to use the "header" function before the content
+
+This is how we do it:
+header('Location: '.$redirect_page);
+
+<!-- How to use "ob_start" to solve header problem -->
+
+-- use "ob_start()" in the beginning php tag
+-- put the html content
+-- then again the php tags
+-- in the end use "ob_end_flush" to flush the output and show it on the screen
+
+** ob_start() stores the output inside a buffer
+** ob_end_clean() is used to clean the output but not show it on the screen
+
+<!-- How to capture the user IP's address in a non-conventional way -->
+
+$_SERVER['REMOTE_ADDR']
+
+//checks the INTERNET ip address
+$_SERVER['HTTP_CLIENT_IP']
+
+//checks for proxy
+$_SERVER['HTTP_X_FORWARDED_FOR']
+
+<!-- How to filter "html" tags inside a form-field -->
+
+-- use "htmlentities" function
+Eg- htmlentities($_GET['day']);
+ 

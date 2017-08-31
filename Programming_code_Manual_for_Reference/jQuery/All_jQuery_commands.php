@@ -664,3 +664,105 @@ $(document).ready(function() {
     }
 );
 });
+
+<!-- How to append a link into a dropdown menu by clicking on it  -->
+
+$('.link').click(function()
+    {
+        //everytime we click on a link, it will be filled into the dropdown menu
+        var item = $(this).text();
+        $('#list').append('<option>' + item + '</option>');
+    }
+);
+
+<!-- How to place something in the center of the window -->
+
+$(document).ready(function() {
+    function move_div()
+    {
+        window_width = $(window).width();
+        window_height = $(window).height();
+
+        obj_width = $('#verycenter').width();
+        obj_height = $('#verycenter').height();
+
+        $('#verycenter').css( 'top', (window_height/2)-(obj_height/2) ).css( 'left' , (window_width/2)-(obj_width/2) );
+    }
+
+    move_div();
+
+    //to make a responsive
+    $(window).resize(function()
+    {
+        move_div();
+    }
+);
+});
+
+
+-- use "resize" function to dynamically set the values of a window
+
+<!-- How to show a error message beside a text field and remove it once the action is taken -->
+
+$(document).ready(function() {
+    $('input[type="text"]').focusin(function()
+    {
+        this_sel = $(this);
+        minlength = this_sel.attr('minlength');
+
+        //the minlength shouldn't be zero or less than it. Also, the value that we putting inside
+        //the form should be less than the minlength
+        if(minlength != 0 && minlength>0 && this_sel.val().length<minlength)
+        {
+            this_sel.after('<span>'+ minlength + ' Characters required</span>');
+        }
+    }
+).keyup(function()
+{
+    if(this_sel.val().length>=minlength)
+    {
+        this_sel.next().remove();
+    }
+}
+).blur(function()
+{
+    //here we are removing the span element
+    this_sel.next().remove();
+}
+);
+});
+
+<!-- How to scroll to the top if the user clicks a "Go to top" link -->
+
+$(document).ready(function() {
+    $('.top').click(function()
+    {
+        //animate(position, speed)
+        $('html, body').animate({ scrollTop: 0}, 'fast');
+    }
+);
+});
+
+<!-- How to enable checkbox when we scroll to the end -->
+
+$(document).ready(function() {
+    $('#agree').attr('disabled','disabled');
+
+    $('#terms').scroll(function()
+    {
+        //this is the height of the textarea
+        var textarea_height = $(this)[0].scrollHeight;
+
+        //this is the height of the inner part of the textarea
+        var scroll_height = textarea_height - $(this).innerHeight();
+
+        //returns the current position of the scroll top
+        var scroll_top = $(this).scrollTop();
+
+        if(scroll_top== scroll_height)
+        {
+            $('#agree').removeAttr('disabled');
+        }
+    }
+);
+});

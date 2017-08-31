@@ -1,6 +1,7 @@
 <?php
 
-//echo $rand = rand();
+// echo $rand = rand();
+echo '<br />';
 
 $max = getrandmax();      //specifies max integer
 
@@ -11,6 +12,6 @@ if(isset($_POST['roll']))
 }
  ?>
 
- <form action="video60.php" method="POST">
+ <form action="60. Random_Number_Generation.php" method="POST">
    <input type="submit" name="roll" value="Roll dice" />
  </form>

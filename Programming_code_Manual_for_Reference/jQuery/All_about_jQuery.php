@@ -182,3 +182,15 @@ $(this).attr('disabled',true);
 <!-- How to find the integer value of the current position when we are scrolling down a textarea -->
 
 -- use the "scrollTop" function
+
+<!-- How to set the window size to be responsive -->
+
+-- use "resize" function to dynamically set the values of a window
+
+<!-- This is how we take out the outer and inner height of a textarea -->
+
+//this is the height of the textarea
+var textarea_height = $(this)[0].scrollHeight;
+
+//this is the height of the inner part of the textarea
+var scroll_height = textarea_height - $(this).innerHeight();

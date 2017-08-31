@@ -1,6 +1,6 @@
 <?php
 
-include 'video61(header.inc).php';
+include '61.SERVER_variables(header.inc)';
 
 if(isset($_POST['submit']))
 {

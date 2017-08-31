@@ -2,9 +2,9 @@
 
 <?php
 
-require 'video62(conf.inc.php)';
+require '62.SERVER_variables_Host_Name(conf.inc).php';
 
 // can be used for accessing sub-folders or files in the server
-
+// Eg - $host./images/';
 
  ?>

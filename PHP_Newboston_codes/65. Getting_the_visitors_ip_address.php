@@ -1,6 +1,6 @@
 <?php
 
-require 'video65(conf.inc).php';
+require '65. Getting_the_visitors_ip_address(conf.inc).php';
 
 foreach($ip_blocked as $ip)
 {

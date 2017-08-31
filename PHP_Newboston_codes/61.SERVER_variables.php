@@ -2,7 +2,7 @@
 
 //displays the current file name
 //echo $script_name = $_SERVER['SCRIPT_NAME'];
-include 'video61(header.inc).php';
+include '61.SERVER_variables(header.inc)';
 
 if(isset($_POST['submit']))
 {

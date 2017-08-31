@@ -16,7 +16,7 @@ php artisan make:controller PostController --resource
 <!-- How to check the routes list -->
 php artisan route:list
 
-<!-- How to rollback ro an original table schema -->
+<!-- How to rollback to an original table schema -->
 php artisan migrate:refresh
 
 <!-- How to generate a key  -->
@@ -83,6 +83,10 @@ Route::any('foo', function () {
 
 <!-- What is CSRF Protection in Laravel -->
 
+- Cross Site Request Forgeries are a type of malicious exploit whereby unauthorized commands are performed on the behalf of an authenticated user
+- Laravel automatically generates a CSRF "token" for each active user sesssion managed by the application
+ - this token is used to verify whether the authenticated user is the one who is actually making a request to the application
+
 - Any HTML forms pointing to the POST, PUT or DELETE routes should include a CSRF token field
 - If not, the request will be rejected.
 
@@ -92,6 +96,10 @@ Route::any('foo', function () {
   {{ csrf_field() }}
   ...
 </form>
+
+- the VerifyCSRFtoken "middleware" which is included in the "web" middleware group will automatically verify that token in the request input matches the token stored in the session
+
+
 
 <!-- How to capture segments of a URL  -->
 

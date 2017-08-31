@@ -6,8 +6,8 @@ $counter = 1;
 
 while($counter<=10)
 {
-  echo $counter.' Hello<br />';
-  $counter++;
+    echo $counter.' Hello<br />';
+    $counter++;
 }
 
 ?>
@@ -21,8 +21,8 @@ $counter = 1;
 //do while loop will always run the block
 do
 {
-  echo 'This will ALWAYS show once. <br />';
-  $counter++;
+    echo 'This will ALWAYS show once. <br />';
+    $counter++;
 } while ($counter <= 10);
 
 ?>
@@ -33,7 +33,7 @@ do
 
 for($count=10; $count>=1; $count--)
 {
-  echo $count.'<br />';
+    echo $count.'<br />';
 }
 ?>
 
@@ -45,12 +45,12 @@ $day = 'Saturday';
 
 switch($day)
 {
-  case 'Saturday':
-  case 'Sunday':
-  echo 'It is a weekend.';
-  break;
-  default: echo 'Not a wekend';
-  break;
+    case 'Saturday':
+    case 'Sunday':
+    echo 'It is a weekend.';
+    break;
+    default: echo 'Not a wekend';
+    break;
 }
 
 ?>
@@ -61,7 +61,7 @@ switch($day)
 
 function MyName()
 {
-  echo 'Alex';
+    echo 'Alex';
 }
 
 echo 'My name is ';
@@ -78,7 +78,7 @@ $number2 = 5;
 
 function add($number1, $number2)
 {
-  return $number1 + $number2;
+    return $number1 + $number2;
 }
 
 echo $sum = add($number1,$number2);
@@ -92,14 +92,14 @@ echo '<br />';
 
 function addS($number1, $number2)
 {
-  $result = $number1 + $number2;
-  return $result;
+    $result = $number1 + $number2;
+    return $result;
 }
 
 function divide($number1, $number2)
 {
-  $result = $number1 / $number2;
-  return $result;
+    $result = $number1 / $number2;
+    return $result;
 }
 
 $sum = divide(addS(10,10), addS(5,5));
@@ -116,10 +116,10 @@ $user_ip = $_SERVER['REMOTE_ADDR'];
 
 function echo_ip()
 {
-  global $user_ip;
-  //$user_ip is not in scope of the function so needs to be globalized
-  $string = 'Your IP address is '.$user_ip;
-  echo $string;
+    global $user_ip;
+    //$user_ip is not in scope of the function so needs to be globalized
+    $string = 'Your IP address is '.$user_ip;
+    echo $string;
 }
 
 echo_ip();
@@ -224,7 +224,7 @@ echo $string_strip = stripslashes(($string_slashes));
 
 if(preg_match('/is/', $string))       //Search for 'is' in the string
 {
-  echo 'Match found';
+    echo 'Match found';
 }
 else
 {
@@ -253,8 +253,8 @@ echo '<br />';
 //we'll loop through the string by finding the string , going forward the find_length value until the next occurrenc eis found
 while($string_pos = strpos($string,$find,$offset))
 {
-  echo '<strong>'.$find.'</strong> found at '.$string_pos.'<br />';
-  $offset = $string_pos + $find_length;
+    echo '<strong>'.$find.'</strong> found at '.$string_pos.'<br />';
+    $offset = $string_pos + $find_length;
 }
 
 <!-- How to replace a string part with another string depending on position and number of characters to replace -->
@@ -285,87 +285,233 @@ $replace = array('a**x', 'bil', ' ');
 
 if(isset($_POST['user_input']) && !empty($_POST['user_input']))
 {
-  $user_input = $_POST['user_input'];
-//  $user_input_lc = strtolower($user_input);
+    $user_input = $_POST['user_input'];
+    //  $user_input_lc = strtolower($user_input);
 
-//str_ireplace is case insensitive
-  $user_input_new = str_ireplace($find, $replace, $user_input);
+    //str_ireplace is case insensitive
+    $user_input_new = str_ireplace($find, $replace, $user_input);
 
-  echo $user_input_new;
+    echo $user_input_new;
 }
- ?>
+?>
 
- <hr />
- <form action="video52.php" method="POST">
-   <textarea name="user_input" rows="6" cols="30"></textarea><? php echo $user_input ?><br /><br />
-   <input type="submit" value="submit" />
- </form>
+<hr />
+<form action="video52.php" method="POST">
+    <textarea name="user_input" rows="6" cols="30"></textarea><? php echo $user_input ?><br /><br />
+    <input type="submit" value="submit" />
+</form>
 
 <!-- This is how we check for a GET variable in PHP -->
 
 if(isset($_POST['user_input']) && !empty($_POST['user_input']))
 {
-  $user_input = $_POST['user_input'];
-//  $user_input_lc = strtolower($user_input);
+    $user_input = $_POST['user_input'];
+    //  $user_input_lc = strtolower($user_input);
 
-//str_ireplace is case insensitive
-  $user_input_new = str_ireplace($find, $replace, $user_input);
+    //str_ireplace is case insensitive
+    $user_input_new = str_ireplace($find, $replace, $user_input);
 
-  echo $user_input_new;
+    echo $user_input_new;
 
-  <!-- This is how we create a "Find and Replace" Application in PHP -->
+    <!-- This is how we create a "Find and Replace" Application in PHP -->
 
-  $offset = 0;
-  if(isset($_POST['text']) && isset($_POST['searchfor']) && isset($_POST['replacewith']))
-  {
-    $text = $_POST['text'];
-    $searchfor = $_POST['searchfor'];
-    $replacewith = $_POST['replacewith'];
+    $offset = 0;
+    if(isset($_POST['text']) && isset($_POST['searchfor']) && isset($_POST['replacewith']))
+    {
+        $text = $_POST['text'];
+        $searchfor = $_POST['searchfor'];
+        $replacewith = $_POST['replacewith'];
 
-  //search length is the length of the string we are searching for
-    $search_length = strlen($searchfor);
+        //search length is the length of the string we are searching for
+        $search_length = strlen($searchfor);
+        echo '<br />';
+
+
+        if(!empty($text) && !empty($replacewith) && !empty($searchfor) )
+        {
+            //find the position of the first occurrence of that substring
+            //offset is the place we need to start the search from
+            while($strpos = strpos($text, $searchfor, $offset))
+            {
+                $strpos.'<br />';
+
+                //increment the offset so that it starts from a position after the substring
+                $offset = $strpos + $search_length;
+                $text = substr_replace($text, $replacewith, $strpos, $search_length);
+            }
+            echo $text;
+        }
+        else
+        {
+            echo 'Please fill in all fields';
+        }
+    }
+
+    <!-- This is how retrieve the current time -->
+
+    $time = time();
+    $actual_time = date('H:i:s', $time);
+
+    - "H:i:s" displays Hour in numbers, minutes in numbers and seconds in numbers
+    - "D M Y" displays Date in String, Month in String, Year in Numbers
+
+    <!-- This is how we retrieve the date and time together -->
+
+    $time = time();
+
+    $time_now = date('d M Y @ H:i:s a', $time);
+
+    <!-- How to reduce or increase the time by seconds -->
+
+    $time_modified = date('d M Y @ H:i:s', $time-60);
+
+    OR
+
+    echo $time_modified1= date('d M Y @ H:i:s', strtotime('-1 week'));
+    //+1 year or week or +1 week 2 hours 30 seconds
+
+    <!-- How to create a random number -->
+
+    <?php
+
+    // echo $rand = rand();
     echo '<br />';
 
+    $max = getrandmax();      //specifies max integer
 
-    if(!empty($text) && !empty($replacewith) && !empty($searchfor) )
+    if(isset($_POST['roll']))
     {
-       //find the position of the first occurrence of that substring
-       //offset is the place we need to start the search from
-      while($strpos = strpos($text, $searchfor, $offset))
-      {
-        $strpos.'<br />';
+        $rand = rand(1,6);      //min and max limit for arguments
+        echo 'You rolled a '.$rand;
+    }
+    ?>
 
-       //increment the offset so that it starts from a position after the substring
-        $offset = $strpos + $search_length;
-        $text = substr_replace($text, $replacewith, $strpos, $search_length);
-      }
-      echo $text;
+    <!-- How to redirect a user to any other page -->
+
+
+    <!--won't work because output is being sent here-->
+    <h1>Page</h1>
+
+    <?php
+    //header is used to redirect the user to another page
+    //it cannot be used after output has been sent to another page
+
+    //header();   -- wont Work
+    $redirect_page = 'http://google.com';
+    $redirect = true;
+
+    if($redirect==true)
+    {
+        header('Location: '.$redirect_page);
+    }
+    ?>
+
+    <!-- How to solve the problem above of not being able to send headers -->
+
+    <?php
+    ob_start();                           //the page output will be stored in an output buffer
+    ?>
+    <h1>Page</h1>
+    This is my Page.
+    <?php
+    //header is used to redirect the user to another page
+    //it cannot be used after output has been sent to another page
+
+    //header();   -- wont Worker
+    $redirect_page = 'http://google.com';
+    $redirect = true;
+
+    if($redirect==true)
+    {
+        header('Location: '.$redirect_page);
+    }
+
+    ob_end_flush();     //This flushes the content and gives the output stored in the output buffer
+
+    //ob_end_clean   //cleans the output buffer but doesn't give any output -- used during redirection
+    ?>
+
+    <!-- How to get the user's IP address -->
+
+    <?php
+
+    //checks the INTERNET ip address
+    $http_client_ip = $_SERVER['HTTP_CLIENT_IP'];
+
+    //checks for proxy
+    $http_x_forwarded_for = $_SERVER['HTTP_X_FORWARDED_FOR'];
+
+    $remote_addr = $_SERVER['REMOTE_ADDR'];
+
+    if(!empty($http_client_ip))
+    {
+        $ip_address = $http_client_ip;
+    }
+    else if (!empty($http_x_forwarded_for))
+    {
+        $ip_address = $http_x_forwarded_for;
     }
     else
     {
-      echo 'Please fill in all fields';
+        $ip_address = $remote_addr;
     }
-  }
 
-<!-- This is how retrieve the current time -->
+    echo $ip_address
+    ?>
 
-$time = time();
-$actual_time = date('H:i:s', $time);
+    <!-- How to use "GET" variables -->
 
-- "H:i:s" displays Hour in numbers, minutes in numbers and seconds in numbers
-- "D M Y" displays Date in String, Month in String, Year in Numbers
+    <?php
+    //htmlentities ensures that no html code can be put in the form
+    //valid for video 69 and 72
 
-<!-- This is how we retrieve the date and time together -->
+    if(isset($_GET['day']) && isset($_GET['date']) && isset($_GET['year']))
+    {
+        $day = htmlentities($_GET['day']);
+        $date = htmlentities($_GET['date']);
+        $year = htmlentities($_GET['year']);
 
-$time = time();
+        if(!empty($day) && !empty($date) &&!empty($year))
+        {
+            echo 'It is '.$day.' '.$date.' '.$year;
+        }
+        else {
+            echo 'Fill in all fields';
+        }
+    }
+    ?>
 
-$time_now = date('d M Y @ H:i:s a', $time);
+    <!-- How to use "POST" variables -->
 
-<!-- How to reduce or increase the time by seconds -->
+    <?php
 
-$time_modified = date('d M Y @ H:i:s', $time-60);
+    //when typing something in a text box and submitting it or uploading files
+    //we should use POST
+    //sets the data directly in the form and does not send it to URL
+    //great for passwords and long registration forms
+    //there's a limit to the max chars in URL for GET
 
-OR
+    $match='pass123';
 
-echo $time_modified1= date('d M Y @ H:i:s', strtotime('-1 week'));
-//+1 year or week or +1 week 2 hours 30 seconds
+    if(isset($_POST['password']))
+    {
+      $password = $_POST['password'];
+      if(!empty($password))
+      {
+        if($password==$match)
+        {
+          echo 'This is correct';
+        }
+        else
+        {
+          echo 'This is incorrect';
+        }
+      }
+      else
+      {
+        echo 'Please fill in the details';
+      }
+    }
+
+
+    ?>

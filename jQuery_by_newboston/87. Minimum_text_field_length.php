@@ -11,16 +11,13 @@
 <body>
 
     <p>
-        <a href="#" class="link">Bread</a>
-        <a href="#" class="link">Sugar</a>
-        <a href="#" class="link">Tea</a>
+        5: <input type="text" name="" value="" minlength="5">
+    </p>
+    <p>
+        10: <input type="text" name="" value="" minlength="10">
     </p>
 
-    <select class="" name="" id="list">
-        
-    </select>
-
     <script type="text/javascript" src="js/jquery.js"> </script>
-    <script type="text/javascript" src="js/append3.js"> </script>
+    <script type="text/javascript" src="js/ext20.js"> </script>
 </body>
 </html>

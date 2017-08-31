@@ -10,17 +10,11 @@
 </head>
 <body>
 
-    <p>
-        <a href="#" class="link">Bread</a>
-        <a href="#" class="link">Sugar</a>
-        <a href="#" class="link">Tea</a>
-    </p>
+    <div class="" id="verycenter">
 
-    <select class="" name="" id="list">
-        
-    </select>
+    </div>
 
     <script type="text/javascript" src="js/jquery.js"> </script>
-    <script type="text/javascript" src="js/append3.js"> </script>
+    <script type="text/javascript" src="js/ext19.js"> </script>
 </body>
 </html>
