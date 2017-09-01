@@ -8,6 +8,4 @@ session_start();    //this is to be declared before doing anything using session
 
 $_SESSION['username'] = 'Alex';     //this will be available in all pages of the website
 
-
-
  ?>

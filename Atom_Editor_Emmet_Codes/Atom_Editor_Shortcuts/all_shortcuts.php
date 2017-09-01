@@ -31,3 +31,15 @@ Ctrl+Shift+M
 <!-- Toggle Developer Tools -->
 
 Ctrl+Alt+I
+
+<!-- To bookmark a particular line in the file -->
+
+Ctrl+Shift+f2
+
+<!-- How to clear all book marks -->
+
+Alt+Shift+f2
+
+<!-- To view all bookmarks -->
+
+Ctrl + f2

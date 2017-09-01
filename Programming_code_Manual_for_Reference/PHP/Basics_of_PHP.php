@@ -325,4 +325,32 @@ $_SERVER['HTTP_X_FORWARDED_FOR']
 
 -- use "htmlentities" function
 Eg- htmlentities($_GET['day']);
- 
+
+<!-- How are sessions stored and accessed in PHP -->
+
+- Sessions are stored on the server
+- We store some data inside a session on one php page
+- We will have to run this page once to set the session
+
+- this session value can be accessed in any other place by writing "session_start()"
+
+This is how we set a session
+
+session_start();
+$_SESSION['username'] = 'Alex';
+
+<!-- How to unset a session -->
+
+unset($_SESSION['username']);
+
+<!-- How to unset all sessions -->
+
+session_destroy();
+
+<!-- What is the "explode" function -->
+
+-- the "explode" function is used for converting the "character" separated data into an array
+
+<!-- What is the "implode" function -->
+
+-- converts an array into an "character" separated data

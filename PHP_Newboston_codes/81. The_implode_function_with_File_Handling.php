@@ -5,6 +5,4 @@ $string = implode(', ', $names_array);
 
 echo $string;
 
-
-
  ?>

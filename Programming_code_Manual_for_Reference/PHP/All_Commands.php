@@ -515,3 +515,191 @@ if(isset($_POST['user_input']) && !empty($_POST['user_input']))
 
 
     ?>
+
+<!-- This is how we store sessions in PHP -->
+
+<!-- Here we are setting the session -->
+
+<?php
+
+//sessions store info about the user that is currently visiting the website
+//sessions are stored on the server
+//useful for user login - to keep them logged in
+
+session_start();    //this is to be declared before doing anything using sessions
+
+$_SESSION['username'] = 'Alex';     //this will be available in all pages of the website
+ ?>
+
+<!-- Here we are accessing a session here. We won't need to include a file just to access variables from that file. Sessions will suffice -->
+<?php
+
+session_start();      //we won't need to include the other php file because a session is active
+
+//echo $_SESSION['name'];
+
+if(isset($_SESSION['username']))
+{
+  echo 'Welcome '.$_SESSION['username'];      //to make this run, we have to call the .php file once
+}
+else {
+  echo 'Please log in';
+}
+ ?>
+
+<!-- How to set a cookie and unset it -->
+
+<?php
+/*
+a cookie is a piece of data/file that is stores some info which is unique to the website / user is viewing.
+depending on the expiration time of the cookie , the info will be relayed from user's computer to website
+can be stored on the user's computer for later purposes
+session is closed as soon as browser is closed
+we can use cookies for years
+not good for sensitive data
+*/
+
+//valid for video 75-76
+$time = time();
+
+//variable, value, time of expiration(in seconds)
+setcookie('username' , 'alex', $time+15);
+
+//this will unset the cookie
+setcookie('username' , 'alex', $time-1000);
+
+/*
+we need to unset to log the user out -> done while clicking LOG OUT button
+*/
+
+ ?>
+
+ <!-- How to access a cookie -->
+
+ <?php
+
+ echo $_COOKIE['username'];    //this will be displayed only for 1000 seconds
+
+  ?>
+
+<!-- This is how we write data into a file -->
+
+<?php
+
+/*
+w - for writing
+r  - for reading
+a - appending
+*/
+
+//name of the file, type of operation on file
+$handle = fopen('names.txt', 'w ');
+
+//handle, data
+fwrite($handle, 'Alex'."\n");      //write the data to file 'names.txt'
+fwrite($handle, 'Billy');
+
+//closes the connection with the file
+fclose($handle);
+ ?>
+
+ <!-- How to read a data on a line by line basis -->
+
+ <?php
+
+ if(isset($_POST['name']))
+ {
+   $name = $_POST['name'];
+   if(!empty($name))
+   {
+     $handle = fopen('names.txt', 'a');
+     fwrite($handle,$name."\n");
+     fclose($handle);
+
+     echo 'Current names in file'.'<br />';
+     //this is used for reading purposes
+     $count = 1;
+     $readin = file('names.txt');
+     $readin_count = count($readin);
+
+     foreach($readin as $fname)
+     {
+       echo trim($fname);
+       if($count<$readin_count)
+       {
+         echo ', ';
+       }
+       $count++;
+     }
+     echo '<br /><br /><br />';
+     foreach($readin as $fname)
+     {
+       echo trim($fname).',  ';
+     }
+   }
+   else
+   {
+     echo 'Please type a name';
+   }
+ }
+ ?>
+
+<!-- How to append data to a file -->
+
+<?php
+/*
+$handle = fopen('names1.txt', 'a');
+fwrite($handle,'Alex'."\n");
+fclose($handle);
+echo 'Written';
+*/
+
+if(isset($_POST['name']))
+{
+  $name = $_POST['name'];
+  if(!empty($name))
+  {
+    $handle = fopen('names1.txt', 'a');
+    fwrite($handle,$name."\n");
+    fclose($handle);
+  }
+  else
+  {
+      echo 'Please type a name';
+  }
+}
+
+ ?>
+
+ <!-- How to retrieve data from a file -- second way
+Also, contains the explode function code
+-->
+
+ <?php
+ /*The file may have comma separated values
+ We wish to output data without the comma
+ */
+ $filename = 'names1.txt';
+ $handle = fopen($filename, 'r');
+ $datain = fread($handle, filesize($filename));    //This will read the data depending on the number of Characters
+
+ //explode function will convert all character separated data in arrays
+
+ $names_array = explode(',' , $datain );
+ foreach($names_array as $name)
+ echo $name.'<br />';
+ echo '<br />';
+
+ //echo $names_array[1];
+  ?>
+
+<!-- How to use "implode" -->
+
+<?php
+
+$names_array = array('Alex', 'Billy', 'Dale');
+$string = implode(', ', $names_array);
+
+echo $string;
+
+ ?>
