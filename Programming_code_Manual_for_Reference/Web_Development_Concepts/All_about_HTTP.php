@@ -88,7 +88,7 @@ http://imgur.com/a/VsILG
 
 2. Response message
             - Http version
-            
+
             -Status Codes
                 - gives response depending on the request from the server
 
@@ -201,3 +201,12 @@ same cookies with each request until the cookie expires or is otherwise forgotte
 - They are tiny bits of custom information we send along with our request and receive in the response
 
 Eg - Content type  -> xml / pdf/ json (Request header)
+
+<!-- What is HTTPS -->
+
+- To avoid any person from getting access to any secure data
+- HTTPS = HTTP + SSL
+    - SSL stands for Secure Socket Layer
+
+- Encryption and Decryption Algorithms are used on the data
+    - the converted data is called "cipher" data

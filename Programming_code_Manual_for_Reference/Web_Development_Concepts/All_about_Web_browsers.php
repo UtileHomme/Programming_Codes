@@ -48,3 +48,30 @@ http://imgur.com/a/75Gg5
     - it also handles the z-dimension (overlapping)
 
 ** DOM and Rendering Tree are constantly changing , so they need to be reparsed
+
+<!-- How a web browser displays a web page -->
+
+This is how a URL(Uniform Resource Locator) looks:
+
+- http://   www.google.com   ::80   /wiki   /Uniform_Resource_Locator?name=Jatin#top
+    1                       2                 3         4                 5                                     6                  7
+
+    1. Scheme or Protocol
+    2. Server Domain name
+    3. Port
+    4. Path to resource
+    5. Query string
+    6. Fragment Id
+
+- The URL tells the location of a Resource
+
+- The browser parses the HTML
+    - it breaks up the document into pieces and figures out what to do with the "pieces"
+    - it understands "headings","paragraphs" etc. and that they need to linked together
+
+- It also decides the "appearance" on the basis of CSS stylesheets
+- It also fetches any "Javascript" files
+
+- All this is stored in an "Internal Data Structure"
+- It then renders a visible page and publishes everything into "Document Object Model"
+- DOM allows one to traverse or manipulate the page and make it "sing and dance"

@@ -10,3 +10,9 @@
 - UTF-8 lets us write text in most of the languages
 
 Full form - UTF-8 (U from Universal Character Set + Transformation Format—8-bit)
+
+<!-- How to make a word "italic","underline" and "bold" in HTML -->
+
+-- use "<em></em>" tag
+-- use "<strong></strong>" tag
+-- use "<u></u>" tag

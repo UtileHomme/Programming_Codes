@@ -11,7 +11,7 @@
   </body>
 </html>
 
-<!-- This is how we add a hyperlinke -->
+<!-- This is how we add a hyperlink -->
 
 <a href="http://www.google.com" title="Google" target="_blank"><p>A link to my favourite website.</p></a>
 
@@ -26,6 +26,27 @@
 <!-- This is how we give size to an input field -->
 
 <p>Email: <br><input type="email" name="" value="" size="30"></p>
+
+<!-- This is how we make an unordered list -->
+
+<ul>
+  <li>milk</li>
+  <li>eggs</li>
+  <li>bread</li>
+  <li>hummus</li>
+</ul>
+
+-- No numbering required
+
+<!-- This is how we make an ordered list -->
+
+<ol>
+  <li>Drive to the end of the road</li>
+  <li>Turn right</li>
+  <li>Go straight across the first two roundabouts</li>
+  <li>Turn left at the third roundabout</li>
+  <li>The school is on your right, 300 meters up the road</li>
+</ol>
 
 <!-- This is how we add a selection menu with values -->
 
@@ -42,3 +63,21 @@
   <textarea name="user_input" rows="6" cols="30"></textarea><? php echo $user_input ?><br /><br />
   <input type="submit" value="submit" />
 </form>
+
+<!-- This is how we make a word "italic","underline" and "bold"-->
+
+<p>
+    Hello <em>Jatin</em>. How are <strong>YOU</strong>
+    <u>This needs to be underlined</u>
+</p>
+
+<!-- When to use which -->
+
+<i></i>
+    - For Foreign words, taxonomic designations, technical terms, a thought
+
+<b></b>
+    - Key words, product names, lead sentence
+
+<u></u>
+    - Proper names, misspelling

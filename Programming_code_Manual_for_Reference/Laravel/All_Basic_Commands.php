@@ -27,6 +27,9 @@ php artisan migrate:refresh
 
 php artisan key:generate
 
+<!-- This is how we make the pagination links centered by using webkit -->
+
+<div style="text-align: -webkit-center;"> {{$leads->links()}} </div>
 
 <!-- All routes are in web.php -->
 
@@ -66,26 +69,26 @@ Route::options($uri, $callback);
 <!-- This is how we set a custom route/closure -->
 
 Route::get('about', function () {
-  return view('about');
+    return view('about');
 });
 
 <!-- This is how we set a route which responds to multiple HTTP verbs -->
 
 Route::match(['get', 'post'], '/', function () {
-  //
+    //
 });
 
 OR
 
 Route::any('foo', function () {
-  //
+    //
 });
 
 <!-- What is CSRF Protection in Laravel -->
 
 - Cross Site Request Forgeries are a type of malicious exploit whereby unauthorized commands are performed on the behalf of an authenticated user
 - Laravel automatically generates a CSRF "token" for each active user sesssion managed by the application
- - this token is used to verify whether the authenticated user is the one who is actually making a request to the application
+- this token is used to verify whether the authenticated user is the one who is actually making a request to the application
 
 - Any HTML forms pointing to the POST, PUT or DELETE routes should include a CSRF token field
 - If not, the request will be rejected.
@@ -93,26 +96,26 @@ Route::any('foo', function () {
 - It can be defined like this:
 
 <form method="POST" action="/profile">
-  {{ csrf_field() }}
-  ...
+    {{ csrf_field() }}
+    ...
 </form>
 
-- the VerifyCSRFtoken "middleware" which is included in the "web" middleware group will automatically verify that token in the request input matches the token stored in the session
-
-
+- the VerifyCsrfToken "middleware" which is included in the "web" middleware group will automatically verify that token in the request input matches the token stored in the session
 
 <!-- How to capture segments of a URL  -->
 
 Route::get('user/{id}'),function()
 {
-  return 'User '.$id;
+    return 'User '.$id;
 }
 );
+
+------------------------------------------------------DONE--------------------------------------------------------
 
 <!-- We can define as many route parameters as we want -->
 
 Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
-  //
+    //
 });
 
 - Route parameters are always encased within {} and should consist of alphabetic characters only
@@ -122,7 +125,7 @@ Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
 
 Route::get('user/{name?}'), function($name='Jatin')
 {
-  return $name;
+    return $name;
 }
 );
 
@@ -131,13 +134,13 @@ Route::get('user/{name?}'), function($name='Jatin')
 <!-- The name should only have alphabetic character -->
 Route::get('usr/{name}'),function()
 {
-  //
+    //
 }
 )->where('name', '[A-Za-z]+');
 
 <!-- The id should be numerical in value -->
 Route::get('user/{id}', function ($id) {
-  //
+    //
 })->where('id', '[0-9]+');
 
 <!-- What are the uses of "named" routes -->
@@ -146,7 +149,7 @@ Route::get('user/{id}', function ($id) {
 
 Route::get('user/profile',function()
 {
-  //
+    //
 }
 )->name('profile');
 
@@ -169,7 +172,7 @@ return redirect()->route('profile')
 <!-- How to pass parameters to named routes -->
 
 Route::get('user/{id}/profile', function ($id) {
-  //
+    //
 })->name('profile');
 
 $url = route('profile',['id'=>1]);
@@ -182,17 +185,17 @@ without needing to define these attributes explicitly on each individual route
 Route::middleware(['web','admin'])->group(function()
 {
 
-  Route::get('/',function()
-  {
-    // Uses web & admin Middleware
-  }
-  );
+    Route::get('/',function()
+    {
+        // Uses web & admin Middleware
+    }
+    );
 
-  Route::get('user/profile', function ()
-  {
-    // Uses web & admin Middleware
-  }
-  );
+    Route::get('user/profile', function ()
+    {
+        // Uses web & admin Middleware
+    }
+    );
 
 }
 );
@@ -210,79 +213,79 @@ Route::resource('posts','PostController');
 <!-- Auth::user pulls out the present details and we can manipulate it -->
 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{ Auth::user()->name }} <span class="caret"></span></a>
 <ul class="dropdown-menu">
-  <li><a href="{{ route('posts.index') }}">Posts</a></li>
-  <li><a href="{{ route('categories.index') }}">Categories</a></li>
-  <li><a href="{{ route('tags.index') }}">Tags</a></li>
-  <li role="separator" class="divider"></li>
-  <li><a href="{{ route('logout') }}">Logout</a></li>
+    <li><a href="{{ route('posts.index') }}">Posts</a></li>
+    <li><a href="{{ route('categories.index') }}">Categories</a></li>
+    <li><a href="{{ route('tags.index') }}">Tags</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="{{ route('logout') }}">Logout</a></li>
 
-  - Auth::user()->name will access the column 'name' for the user table
+    - Auth::user()->name will access the column 'name' for the user table
 
-  <!-- In case a guard has been applied -->
-  - Auth::guard('admin')->user()->name
+    <!-- In case a guard has been applied -->
+    - Auth::guard('admin')->user()->name
 
-  <!-- How to set pagination in laravel -->
+    <!-- How to set pagination in laravel -->
 
-  $posts = Post::orderBy('id','desc')->paginate(2);
+    $posts = Post::orderBy('id','desc')->paginate(2);
 
-  - It works this way:
-  - Select * from posts LIMIT 5 OFFSET 10
+    - It works this way:
+    - Select * from posts LIMIT 5 OFFSET 10
 
-  - Start from the tenth element and display next 5 elements
+    - Start from the tenth element and display next 5 elements
 
-  - This is how it looks
+    - This is how it looks
 
-  http://localhost:8000/posts?page=2
+    http://localhost:8000/posts?page=2
 
-  <!-- This is how we generate pagination on the links -->
+    <!-- This is how we generate pagination on the links -->
 
-  <div class="text-center">
-    {!! $posts->links() !!}
-  </div>
+    <div class="text-center">
+        {!! $posts->links() !!}
+    </div>
 
-  <!-- //when we have passed a parameter in the url and we want the same parameter to be carried to the next page we use "appends" method -->
-  <div style="text-align: -webkit-center;"> {{$leads->appends(request()->except('page'))->links()}} </div>
+    <!-- //when we have passed a parameter in the url and we want the same parameter to be carried to the next page we use "appends" method -->
+    <div style="text-align: -webkit-center;"> {{$leads->appends(request()->except('page'))->links()}} </div>
 
-  <!-- This is how put limits on all the data to be displayed -->
+    <!-- This is how put limits on all the data to be displayed -->
 
-  $posts = Post::orderBy('created_at','desc')->limit(4)->get();
+    $posts = Post::orderBy('created_at','desc')->limit(4)->get();
 
-  <!-- This is how we link a route -->
+    <!-- This is how we link a route -->
 
-  {{ Html::linkRoute('posts.index','<< See All Posts',[],['class' => 'btn btn-default btn-block btn-h1-spacing'])}}
+    {{ Html::linkRoute('posts.index','<< See All Posts',[],['class' => 'btn btn-default btn-block btn-h1-spacing'])}}
 
-  - first argument is route, second is the value, the parameters if we wish to pass any and finally the classes
+    - first argument is route, second is the value, the parameters if we wish to pass any and finally the classes
 
-  <!-- What is a middleware -->
+    <!-- What is a middleware -->
 
-  - provides a convenient mechanism for filtering HTTP requests entering our application
+    - provides a convenient mechanism for filtering HTTP requests entering our application
 
-  <!-- How to create a middleware -->
+    <!-- How to create a middleware -->
 
-  - php artisan make:middleware CheckAge
-      - this will place a new "CheckAge" class within the app/Http/Middleware directory
+    - php artisan make:middleware CheckAge
+    - this will place a new "CheckAge" class within the app/Http/Middleware directory
 
-  Eg -
+    Eg -
 
-  public function handle($request, Closure $next)
-   {
-       if ($request->age <= 200) {
-           return redirect('home');
-       }
+    public function handle($request, Closure $next)
+    {
+        if ($request->age <= 200) {
+            return redirect('home');
+        }
 
-       return $next($request);
-   }
+        return $next($request);
+    }
 
-   <!-- How to assign Middlewares to routes -->
+    <!-- How to assign Middlewares to routes -->
 
-   - Navigate to app/Http/Kernel.php
+    - Navigate to app/Http/Kernel.php
 
-   - add the middleware to the "protected $routeMiddleware" variable
+    - add the middleware to the "protected $routeMiddleware" variable
 
-   Eg -
+    Eg -
 
-   protected $routeMiddleware =
-   [
+    protected $routeMiddleware =
+    [
     'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
     'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
     'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -291,213 +294,213 @@ Route::resource('posts','PostController');
     'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
 
-  <!-- How to use a middleware after its definition -->
+    <!-- How to use a middleware after its definition -->
 
-  Route::get('admin/profile', function () {
-    //
-  })->middleware('auth');
+    Route::get('admin/profile', function () {
+        //
+    })->middleware('auth');
 
-  - We can use multiple middlewares too
-      -  ->middleware('first','second');
+    - We can use multiple middlewares too
+    -  ->middleware('first','second');
 
-  <!-- What are Middleware groups -->
+    <!-- What are Middleware groups -->
 
-  - Sometimes, we might want to group several middleware under a single key to make them easier to assign routes
+    - Sometimes, we might want to group several middleware under a single key to make them easier to assign routes
 
-  Eg -
+    Eg -
 
-  protected $middlewareGroups = [
+    protected $middlewareGroups = [
     'web' => [
-        \App\Http\Middleware\EncryptCookies::class,
-        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-        \Illuminate\Session\Middleware\StartSession::class,
-        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        \App\Http\Middleware\VerifyCsrfToken::class,
-        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    \App\Http\Middleware\EncryptCookies::class,
+    \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+    \Illuminate\Session\Middleware\StartSession::class,
+    \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    \App\Http\Middleware\VerifyCsrfToken::class,
+    \Illuminate\Routing\Middleware\SubstituteBindings::class,
     ],
 
     'api' => [
-        'throttle:60,1',
-        'auth:api',
+    'throttle:60,1',
+    'auth:api',
     ],
-];
+    ];
 
-  <!-- How to assign Middleware groups to routes -->
+    <!-- How to assign Middleware groups to routes -->
 
-  Route::group(['middleware' => ['web']], function () {
-    //
-  });
+    Route::group(['middleware' => ['web']], function () {
+        //
+    });
 
 
 
-  <!-- How do we represent a middleware -->
+    <!-- How do we represent a middleware -->
 
-  http://imgur.com/a/WjE0C
+    http://imgur.com/a/WjE0C
 
-  - A request will be made to the app. First it goes to the Session Middleware, checks for the Authentication layer
-  and then accordingly responds.
+    - A request will be made to the app. First it goes to the Session Middleware, checks for the Authentication layer
+    and then accordingly responds.
 
-  <!-- What does the "web" middleware do -->
+    <!-- What does the "web" middleware do -->
 
-  - provides features like session state and CSRF protection
+    - provides features like session state and CSRF protection
 
-  <!-- What is form-method spoofing / Why do we need to send a hidden method like 'PUT' along with the form -->
+    <!-- What is form-method spoofing / Why do we need to send a hidden method like 'PUT' along with the form -->
 
-  - HTML forms do not support 'PUT/PATCH/DELETE' methods
-  - Therefore, we need to send a hidden method field along with the form
+    - HTML forms do not support 'PUT/PATCH/DELETE' methods
+    - Therefore, we need to send a hidden method field along with the form
 
-  <form action="/foo/bar" method="POST">
-    <input type="hidden" name="_method" value="PUT">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-  </form>
+    <form action="/foo/bar" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    </form>
 
-  - By using the method helper
+    - By using the method helper
 
-  {{ method_field('PUT') }}
+    {{ method_field('PUT') }}
 
-  <!-- How to access the current route -->
+    <!-- How to access the current route -->
 
-  $route = Route::current();
+    $route = Route::current();
 
-  $name = Route::currentRouteName();
+    $name = Route::currentRouteName();
 
-  $action = Route::currentRouteAction();
+    $action = Route::currentRouteAction();
 
-  <!-- How to check if user is logged in -->
+    <!-- How to check if user is logged in -->
 
-  Go for - Auth::check()
+    Go for - Auth::check()
 
-  <!-- How to check if user is logged out -->
+    <!-- How to check if user is logged out -->
 
-  Go for - Auth::guest()
+    Go for - Auth::guest()
 
-  <!-- How to access the user's details from the database -->
+    <!-- How to access the user's details from the database -->
 
-  Go for - Auth::user()
+    Go for - Auth::user()
 
-  <!-- How to access the id number in the database -->
+    <!-- How to access the id number in the database -->
 
-  Go for - Auth::id()
+    Go for - Auth::id()
 
-  <!-- How to try and login a person manually -->
+    <!-- How to try and login a person manually -->
 
-  public function attempt(array $credentials = [], $remember = false , $login = true);
+    public function attempt(array $credentials = [], $remember = false , $login = true);
 
-  <!-- This is how we apply the guest middleware -->
+    <!-- This is how we apply the guest middleware -->
 
-  - Guest middleware is checking whether you are guest or not
-  - Either you need to be a guest or you need to be logged out
-  - We don't want anyone who's logged in to go to login page by any means
-  - We don't wish to apply any middleware for logout
+    - Guest middleware is checking whether you are guest or not
+    - Either you need to be a guest or you need to be logged out
+    - We don't want anyone who's logged in to go to login page by any means
+    - We don't wish to apply any middleware for logout
 
 
-  - Auth is for checking that only people logged in are allowed to access those pages
+    - Auth is for checking that only people logged in are allowed to access those pages
 
-  - We don't want guests going to logout page
-  $this->middleware('guest')->except('logout');
+    - We don't want guests going to logout page
+    $this->middleware('guest')->except('logout');
 
-  <!-- This is how we apply the auth middleware -->
+    <!-- This is how we apply the auth middleware -->
 
-  //only authenticated users can access the posts
-  $this->middleware('auth');
+    //only authenticated users can access the posts
+    $this->middleware('auth');
 
-  <!-- How to send a route along with a parameter or token -->
+    <!-- How to send a route along with a parameter or token -->
 
-  Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
-  <!-- This is how we pass hidden fields along with a form -->
+    <!-- This is how we pass hidden fields along with a form -->
 
-  {{ Form::hidden('token', $token) }}
-  - This is for sending the token along with the rest of the url
+    {{ Form::hidden('token', $token) }}
+    - This is for sending the token along with the rest of the url
 
-  <!-- This is how the .env file looks like -->
+    <!-- This is how the .env file looks like -->
 
-  APP_NAME=Laravel
-  APP_ENV=local
-  APP_KEY=base64:Zcu542NTxWZHfjVbpCQGM6KU7QwzxGT0+CzuWw5s84g=
-  APP_DEBUG=true
-  APP_LOG_LEVEL=debug
-  APP_URL=http://localhost:8000
+    APP_NAME=Laravel
+    APP_ENV=local
+    APP_KEY=base64:Zcu542NTxWZHfjVbpCQGM6KU7QwzxGT0+CzuWw5s84g=
+    APP_DEBUG=true
+    APP_LOG_LEVEL=debug
+    APP_URL=http://localhost:8000
 
-  DB_CONNECTION=mysql
-  DB_HOST=127.0.0.1
-  DB_PORT=3306
-  DB_DATABASE=laravel_devm
-  DB_USERNAME=root
-  DB_PASSWORD=votreami
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=laravel_devm
+    DB_USERNAME=root
+    DB_PASSWORD=votreami
 
-  BROADCAST_DRIVER=log
-  CACHE_DRIVER=file
-  SESSION_DRIVER=file
-  QUEUE_DRIVER=sync
+    BROADCAST_DRIVER=log
+    CACHE_DRIVER=file
+    SESSION_DRIVER=file
+    QUEUE_DRIVER=sync
 
-  REDIS_HOST=127.0.0.1
-  REDIS_PASSWORD=null
-  REDIS_PORT=6379
+    REDIS_HOST=127.0.0.1
+    REDIS_PASSWORD=null
+    REDIS_PORT=6379
 
-  MAIL_DRIVER=smtp
-  MAIL_HOST=smtp.gmail.com
-  MAIL_PORT=587
-  MAIL_USERNAME=jatins368@gmail.com
-  MAIL_PASSWORD=dwuzbxymznmkixai
-  MAIL_ENCRYPTION=tls
+    MAIL_DRIVER=smtp
+    MAIL_HOST=smtp.gmail.com
+    MAIL_PORT=587
+    MAIL_USERNAME=jatins368@gmail.com
+    MAIL_PASSWORD=dwuzbxymznmkixai
+    MAIL_ENCRYPTION=tls
 
-  PUSHER_APP_ID=
-  PUSHER_APP_KEY=
-  PUSHER_APP_SECRET=
+    PUSHER_APP_ID=
+    PUSHER_APP_KEY=
+    PUSHER_APP_SECRET=
 
-  - Also set up the /config/mail.php file
+    - Also set up the /config/mail.php file
 
-  <!-- How to set up the authentication system by default -->
+    <!-- How to set up the authentication system by default -->
 
-  php artisan make:auth
+    php artisan make:auth
 
-  <!-- This is how we put data in a session -->
+    <!-- This is how we put data in a session -->
 
-  session()->put('name',$name1);
+    session()->put('name',$name1);
 
-  - 'name' is the variable we wish to use
-  - '$name1' is the value we are putting into that variable
+    - 'name' is the variable we wish to use
+    - '$name1' is the value we are putting into that variable
 
-  <!-- This is how we grab variable data from a session or the URL -->
+    <!-- This is how we grab variable data from a session or the URL -->
 
-  if (session()->has('name'))
-  {
-    $name1=session()->get('name');
-  }
-  else
-  {
-    $name1=$_GET['name'];
-  }
+    if (session()->has('name'))
+    {
+        $name1=session()->get('name');
+    }
+    else
+    {
+        $name1=$_GET['name'];
+    }
 
-  <!-- How to check if the person is authenticated for proper display of view using the guards -->
+    <!-- How to check if the person is authenticated for proper display of view using the guards -->
 
-  @if (!Auth::guard('admin')->check())
+    @if (!Auth::guard('admin')->check())
 
-  @else
+    @else
 
-  @endif
+    @endif
 
-  <!-- This is how we send a url in the form of a hyperlink with spaced parameters -->
+    <!-- This is how we send a url in the form of a hyperlink with spaced parameters -->
 
-  <a href="/assignedview?name={{ Auth::user()->name }}&status=In%20Progress">
+    <a href="/assignedview?name={{ Auth::user()->name }}&status=In%20Progress">
 
-<!-- This is how we send a Mail in Laravel -->
+        <!-- This is how we send a Mail in Laravel -->
 
-$service_type=DB::table('services')->where('leadid',$leadid)->value('ServiceType');
+        $service_type=DB::table('services')->where('leadid',$leadid)->value('ServiceType');
 
-$data = ['leadid'=>$leadid,'name'=>$name,'user'=>$user,'service_type'=>$service_type,'contact'=>$contact,'location'=>$location,'from'=>$from,'to'=>$to,'who'=>$who];
+        $data = ['leadid'=>$leadid,'name'=>$name,'user'=>$user,'service_type'=>$service_type,'contact'=>$contact,'location'=>$location,'from'=>$from,'to'=>$to,'who'=>$who];
 
-$data1 = ['leadid'=>$leadid,'name'=>$name,'user'=>$user,'service_type'=>$service_type,'contact'=>$contact,'location'=>$location,'from'=>$from,'to'=>$to1,'who'=>$who];
+        $data1 = ['leadid'=>$leadid,'name'=>$name,'user'=>$user,'service_type'=>$service_type,'contact'=>$contact,'location'=>$location,'from'=>$from,'to'=>$to1,'who'=>$who];
 
-Mail::send('mail', $data, function($message)use($data) {
-  $message->to($data['to'], $data['user'] )->subject
-  ('Lead ['.$data['leadid'].'] Created!!!');
-  $message->from($data['from'],$data['who']);
-});
+        Mail::send('mail', $data, function($message)use($data) {
+            $message->to($data['to'], $data['user'] )->subject
+            ('Lead ['.$data['leadid'].'] Created!!!');
+            $message->from($data['from'],$data['who']);
+        });
 
-- the 1st argument in the "send" function is the 'view page' which consists of the body
-- the 2nd argument is the list of "values" that we want to send along the view page in the first argument
-- we also need to use the "use" function for this purpose
+        - the 1st argument in the "send" function is the 'view page' which consists of the body
+        - the 2nd argument is the list of "values" that we want to send along the view page in the first argument
+        - we also need to use the "use" function for this purpose
 
-  <!-- Find out how to put all the routes under a middleware in laravel 5.4 -->
+        <!-- Find out how to put all the routes under a middleware in laravel 5.4 -->
