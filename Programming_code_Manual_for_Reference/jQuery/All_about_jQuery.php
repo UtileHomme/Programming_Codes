@@ -194,3 +194,14 @@ var textarea_height = $(this)[0].scrollHeight;
 
 //this is the height of the inner part of the textarea
 var scroll_height = textarea_height - $(this).innerHeight();
+
+<!-- How to check whether a "user entered" input is in an Array or not  -->
+
+-- use the jQuery.inArray(the element we are searching, the name of the array ) should not be equal to '-1'
+
+<!-- How to add user input data into an array and display it in a div-->
+-- use names.push(name)
+-- for looping use, $.each(array_name,function(index, value )
+
+<!-- How to display timestamp on the screen -->
+-- use "jQuery.now" function

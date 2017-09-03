@@ -767,4 +767,72 @@ $(document).ready(function() {
 );
 });
 
-How to check whet 
+<!-- How to check whether an User input data is within an Array or not -->
+
+$(document).ready(function() {
+    var names = ['Alex','Billy','Dale'];
+
+    $('#check').click(function()
+    {
+        var name = $('#name').val();
+
+        //the name we are looking for, the array
+        if(jQuery.inArray(name, names) != '-1')
+        {
+            alert(name + ' is in the array');
+        }
+        else
+        {
+            alert(name + ' is not in the array');
+        }
+    }
+)
+});
+
+-- use the jQuery.inArray(the element we are searching, the name of the array ) should not be equal to '-1'
+
+<!-- How to add user input data into an array and display it in a div-->
+
+$(document).ready(function() {
+    function display_array()
+    {
+        $('#names').text(' ');
+
+        //show all values in the array one by one
+        $.each(names,function(index, value )
+        {
+            $('#names').append(value + '<br>');
+        }
+    );
+    }
+
+    var names = ['Jatin','Dale','Billy'];
+
+    display_array();
+
+    $('#insert').click(function() {
+        var name = $('#name').val();
+
+        //we are passing the name entered by the user into the array
+        names.push(name);
+        display_array();
+    });
+});
+
+-- use names.push(name)
+-- for looping use, $.each(array_name,function(index, value )
+
+<!-- How to display timestamp on the screen -->
+
+$(document).ready(function() {
+
+    //this for refreshing the time every 1 second
+    setInterval(function()
+    {
+        //this is for retrieving the present time
+        var timestamp = jQuery.now();
+        $('#time').text(timestamp);
+    },1);
+});
+
+-- use "jQuery.now" function
