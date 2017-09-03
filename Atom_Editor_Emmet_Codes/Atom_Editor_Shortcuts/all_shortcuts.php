@@ -43,3 +43,11 @@ Alt+Shift+f2
 <!-- To view all bookmarks -->
 
 Ctrl + f2
+
+<!-- To move through bookmarks -->
+
+Press F2
+
+<!-- To move back through bookmarks -->
+
+Press Shift + F2

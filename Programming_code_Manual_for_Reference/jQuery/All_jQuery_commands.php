@@ -766,3 +766,5 @@ $(document).ready(function() {
     }
 );
 });
+
+How to check whet 

@@ -1,8 +1,23 @@
 <!-- To make the server run -->
 php artisan serve
 
+<!-- To see all commands available in "artisan" -->
+php artisan
+
+<!-- How to start a server in a new line -->
+php artisan serve --port="8888"
+
+<!-- How to create a model -->
+php artisan make:model home
+
 <!-- How to create a model along with a migration -->
 php artisan make:model Post --migration
+
+<!-- How to create a migration along with the table -->
+php artisan make:migration create_my_songs_table --create=songs
+
+<!-- How to open tinker -->
+php artisan tinker
 
 <!-- How to migrate the tables -->
 php artisan make:migrate
@@ -30,6 +45,43 @@ php artisan key:generate
 <!-- This is how we make the pagination links centered by using webkit -->
 
 <div style="text-align: -webkit-center;"> {{$leads->links()}} </div>
+
+<!-- How to implement DRY in views -->
+
+1. First extend from the blade that you want to copy most of the code
+
+    - @extends('layout/app')
+
+2. Inside the original blade put the following code for the part where you want things to be "Dynamic"
+
+    - <title>Laravel @yield('title')</title>
+    - @yield('body') or @section('body')
+                                    @show
+
+3. Inside the blade in which all the above is being copied, use the following
+
+    - @section('title','About')
+
+    - @section('body')
+    About
+    @endsection
+
+** Wherever @section('body') is found, the part of the original code will be replaced with the "specific" code
+
+<!-- This is how we access the variable data received using "get" in query on blade -->
+
+@extends('layout.app');
+
+@section('title','Songs')
+@section('body')
+    {{'Songs are everything'}}
+    @foreach($songs as $song)
+    {{
+        $song->title.' '.$song->artist."\n"
+    }}
+    @endforeach
+@endsection
+
 
 <!-- All routes are in web.php -->
 
@@ -110,8 +162,6 @@ Route::get('user/{id}'),function()
 }
 );
 
-------------------------------------------------------DONE--------------------------------------------------------
-
 <!-- We can define as many route parameters as we want -->
 
 Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
@@ -177,6 +227,40 @@ Route::get('user/{id}/profile', function ($id) {
 
 $url = route('profile',['id'=>1]);
 
+<!-- How to use dynamic values in a tag -->
+
+<input type="text" name="title" class="form-control" value="@yield('editTitle')" placeholder="Title" />
+
+@section('editTitle',$item->title)
+
+<!-- This is how we include "1 seconds ago functionality" in blade -->
+
+<span class="pull-right">{{$todo->created_at->diffForHumans()}}</span>
+
+<!-- This is how we pass a route in the href tag -->
+
+<a href="{{'/todo/'.$todo->id}}">{{$todo->title}}</a>
+
+<!-- This is how we include a route link and csrf token for DELETE method -->
+
+<form class="form-group pull-right" action="{{'/todo/'.$todo->id}}" method="post">
+    {{csrf_field()}}
+    {{method_field('DELETE')}}
+    <button type="submit" class="form-control" style="border:none;"><i class="fa fa-trash" aria-hidden="true"></i></button>
+</form>
+
+<!-- This is how we pass a dynamic "method=PUT" inside a blade -->
+
+@section('editMethod')
+    {{method_field('PUT')}}
+@endsection
+
+<form class="form-horizontal" action="/todo/@yield('editId')" method="post">
+    {{csrf_field()}}
+    @section('editMethod')
+    @show
+</form>
+
 <!-- What are route groups -->
 
 - allow one to share route attributes, such as middlewares or namespaces, across a large number of routes
@@ -219,7 +303,7 @@ Route::resource('posts','PostController');
     <li role="separator" class="divider"></li>
     <li><a href="{{ route('logout') }}">Logout</a></li>
 
-    - Auth::user()->name will access the column 'name' for the user table
+    - Auth::user()->name will access name for the user
 
     <!-- In case a guard has been applied -->
     - Auth::guard('admin')->user()->name
@@ -504,3 +588,5 @@ Route::resource('posts','PostController');
         - we also need to use the "use" function for this purpose
 
         <!-- Find out how to put all the routes under a middleware in laravel 5.4 -->
+
+----------------------------------------DONE-----------------------------------------------

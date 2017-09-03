@@ -1,3 +1,12 @@
+<!-- How to write a Basic insert DB query in tinker -->
+DB::table('songs')->insert(['title'=>'Closer','artist'=>'Chainsmokers','created_at'=>new DateTime,'updated_at'=>new DateTime])
+
+<!-- How to write a Basic data retrieval query in tinker -->
+DB::table('songs')->get();
+
+<!-- How to write a data retrieval query with "where" clause -->
+DB::table('songs')->where('id',1)->get();
+
 <!-- How to apply JOINS on the basis of foreign keys and use orderBy and pagination-->
 
 $leads=DB::table('leads')
@@ -45,3 +54,5 @@ $newcount = DB::table('services')
 ->wherein('ServiceType',$Servicesarray)
 ->orderBy('id', 'DESC')
 ->count();
+
+--------------------------------------------------------------------DONE------------------------------------------------------------------
