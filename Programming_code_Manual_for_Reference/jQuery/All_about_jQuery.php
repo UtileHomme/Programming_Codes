@@ -205,3 +205,6 @@ var scroll_height = textarea_height - $(this).innerHeight();
 
 <!-- How to display timestamp on the screen -->
 -- use "jQuery.now" function
+
+<!-- How to load a file -->
+-- use the "load" function

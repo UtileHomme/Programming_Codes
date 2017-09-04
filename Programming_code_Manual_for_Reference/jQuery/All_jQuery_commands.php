@@ -836,3 +836,186 @@ $(document).ready(function() {
 });
 
 -- use "jQuery.now" function
+
+<!-- How to retrieve days passed after current time -->
+
+$(document).ready(function() {
+    //divide by 1000 to get 'seconds'
+    eventTime = Date.parse('12 September 2017')/1000;
+    currentTime = Math.floor(jQuery.now()/1000);
+
+    seconds = eventTime - currentTime;
+
+    days = Math.floor(seconds/(60*60*24));
+
+    $('#days').text('Only ' +days + ' days until the event');
+});
+
+-- Date.parse('date') is used for converting the date into timestamp
+-- Math.floor() is used for removing the trailing decimals
+
+<!-- How to load a file -->
+
+$('#button').click(function()
+{
+    $('#content').load('page.html');
+}
+);
+
+-- use the "load" function
+
+<!-- How to add "AJAX" calls to jquery code -->
+
+$('#button').click(function()
+{
+    $.ajax(
+        {
+            url: 'page1.html',
+            success: function(data)
+            {
+                $('#content').html(data);
+            }
+        }
+    );
+}
+);
+
+-- "url" is the page where the content is
+-- "success" is the data which we wish to retrieve from the page
+
+<!-- How to send data through an "AJAX" call -->
+
+$('#button').click(function()
+{
+    var name = $('#name').val();
+    $.ajax(
+        {
+            url: 'php/page.php',
+            //sending the "name" variable to php file
+            data: 'name='+name,
+            success: function(data)
+            {
+                //retrieving that content
+                $('#content').html(data);
+            }
+        }
+    );
+}
+);
+
+<!-- What are the different "AJAX" callback events -->
+
+$('#button').click(function()
+{
+    var name = $('#name').val();
+    $.ajax(
+        {
+            url: 'php/page.ph',
+            //sending the "name" variable to php file
+            data: 'name='+name,
+            success: function(data)
+            {
+                //retrieving that content
+                $('#content').html(data);
+            }
+        }
+    ).fail(function() {
+        alert('An error occured');
+    }).success(function()
+    {
+
+    }
+).complete(function()
+{
+
+}
+);
+}
+);
+
+-- complete means may or may not have executed correctly but ajax request is completed
+-- success means all went well
+
+<!-- How to change the data type being sent in AJAX -->
+
+$('#button').click(function()
+{
+    var name = $('#name').val();
+    $.ajax(
+        {
+            //the variable which was being sent as "GET" earlier, will now be sent as "POST"
+            type: 'POST',
+            url: 'php/page.php',
+            //sending the "name" variable to php file
+            data: 'name='+name,
+            success: function(data)
+            {
+                //retrieving that content
+                $('#content').html(data);
+            }
+        }
+    );
+}
+);
+
+<!-- How to send "Status Codes" in AJAX -->
+
+$('#button').click(function()
+{
+    $.ajax(
+        {
+            url: 'pag.html',
+            statusCode:
+            {
+                    404: function()
+                    {
+                        $('#content').text('Page not found');
+                    }
+            },
+            success: function(data)
+            {
+                $('#content').html(data);
+            }
+        }
+    );
+}
+);
+
+<!-- How to validate email  -->
+
+function validate_email(email)
+{
+    $.post('php/email.php ',{ email: email },function(data)
+    {
+        $('#email_feedback').text(data);
+    });
+
+}
+
+$('#email').focusin(function()
+{
+    //if the email id has not been entered
+    if($('#email').val()==='')
+    {
+        //when the user focuses in the text field
+        $('#email_feedback').text('Go on, enter a valid email address...');
+    }
+    else
+    {
+        //if the user has entered into the field, revalidate it
+        //validating the email from the above function as soon as the user presses a button
+        validate_email($('#email').val());
+
+    }
+}
+).blur(function()
+{
+    //when the user focuses out of the text field , remove the email message
+    $('#email_feedback').text(' ');
+}
+).keyup(function()
+{
+    //validating the email from the above function as soon as the user presses a button
+    validate_email($('#email').val());
+}
+);
