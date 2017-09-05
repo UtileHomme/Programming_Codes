@@ -208,3 +208,11 @@ var scroll_height = textarea_height - $(this).innerHeight();
 
 <!-- How to load a file -->
 -- use the "load" function
+
+** Do not use Too many plugins -- causes page load delay problem
+
+<!-- This is the order of including plugins -->
+
+<script type="text/javascript" src="js/jquery.js"> </script>
+<script type="text/javascript" src="js/showpassword.js"> </script>
+<script type="text/javascript" src="js/password.js"> </script>

@@ -1019,3 +1019,47 @@ $('#email').focusin(function()
     validate_email($('#email').val());
 }
 );
+
+<!-- How to update data in a Database -->
+
+$('#save_button').click(function() {
+
+    var name = $('#name').val();
+    var email = $('#email').val();
+
+    $('#save_status').text('Loading...');
+
+    $.post('php/settings.php', { name: name , email:email},function(data)
+    {
+        $('#save_status').text(data);
+    }
+);
+
+});
+
+<!-- How to create a basic plugin -->
+
+//How to make a plugin
+
+(function($)
+{
+    //Name of the function after "fn"
+    $.fn.targetBlank = function()
+    {
+        //if the target is already one of values by default, no need to change it
+        var targetArray = ['_blank','_self ', '_parent','_top'];
+        var target = jQuery.trim($(this).attr('target'));
+
+        // alert(target);
+        if(target == undefined || target=='' || jQuery.inArray(target, targetArray) == false)
+        {
+            $(this).attr('target','_self');
+        }
+    }
+})(jQuery);
+
+<!-- How to call a plugin -->
+
+$(document).ready(function() {
+    $('a').targetBlank();
+});
