@@ -10,7 +10,15 @@
 </head>
 <body>
 
+    <h3>Settings</h3>
 
+    <p>Name: <input type="text" name="" value="" id="name"></p>
+    <p>Email: <input type="email" name="" value="" id="email"></p>
+
+    <p>
+        <input type="button" name="" value="Save" id="save_button">
+        <span id="save_status"></span>
+    </p>
 
     <script type="text/javascript" src="js/jquery.js"> </script>
     <script type="text/javascript" src="js/ajax8.js"> </script>
