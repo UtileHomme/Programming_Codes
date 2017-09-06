@@ -16,3 +16,5 @@ Full form - UTF-8 (U from Universal Character Set + Transformation Format—8-bi
 -- use "<em></em>" tag
 -- use "<strong></strong>" tag
 -- use "<u></u>" tag
+
+** Heading elements (h1....h6) should be used for headings only. They should not be used just to make text bold or big.

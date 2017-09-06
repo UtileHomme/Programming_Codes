@@ -9,6 +9,21 @@ Ctrl + A / Home
 // Move to the beginning of a line
 Ctrl + E / End
 
+// How to kill a process
+Ctrl + C
+
+// How to send the current process in the background
+Ctrl + Z
+
+// How to log out
+Ctrl + D
+
+// How to autocomplete commands
+Type a letter of the command and keep pressing tab
+
+// How to move "backward" by 1 word
+Alt + B
+
 //How to remove word from current cursor to end
 Ctrl + K
 
@@ -33,6 +48,10 @@ echo "Where's Lindsey Stirling?" && echo "Here she is!" && cd /home/user/Music/L
 
 // How to get root access by default
 sudo + su
+
+// How to scroll through the terminal output
+Shift + PageUp/PageDown
+
 
 
 

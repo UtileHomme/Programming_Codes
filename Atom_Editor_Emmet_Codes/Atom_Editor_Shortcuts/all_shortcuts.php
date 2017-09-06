@@ -51,3 +51,39 @@ Press F2
 <!-- To move back through bookmarks -->
 
 Press Shift + F2
+
+<!-- How to join the next line to the end of the line -->
+
+Ctrl + J
+
+<!-- How to Move the current line up or down -->
+
+Ctrl + Up/Down
+
+<!-- Uppercase the current word -->
+
+Ctrl + K then Ctrl + U
+
+<!-- Lowercase the current word -->
+
+Ctrl + K then Ctrl + L
+
+<!-- Delete to the beginning of the word -->
+
+Ctrl + Backspace
+
+<!-- Delete to the end of the word -->
+
+Ctrl + Delete
+
+<!-- Select all matching words with the current selected word -->
+
+Alt + F3
+
+<!-- Selecting all the text in the present bracket -->
+
+Alt + Ctrl + ,
+
+<!-- Close the current XML and HTML tag -->
+
+Alt + Ctrl + .

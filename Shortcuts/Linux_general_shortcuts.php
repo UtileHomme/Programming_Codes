@@ -31,6 +31,10 @@ Ctrl + H
 // How to go to the Home folder in directory
 Alt + Home
 
+// How to close the current document
+Ctrl + Q
+
+
 
 
 
