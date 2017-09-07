@@ -11,14 +11,42 @@
 </body>
 </html>
 
+<!-- How to move up a directory -->
+
+<!-- move back from the current directory and from there move to "pdfs/project.pdf" -->
+<p>A link to my <a href="../pdfs/project-brief.pdf">project brief</a>.</p>
+
 <!-- This is how we add a hyperlink -->
 
 <a href="http://www.google.com" title="Google" target="_blank"><p>A link to my favourite website.</p></a>
 
 - "target" attribute is for opening the link in a new tab
+- "title" will come as a tooltip
 - An unvisited link is displayed underlined and blue.
 - A visited link displayed underlined and purple.
 - An active link is underlined and red.
+
+<!-- How to link to a particular part of the webpage rather than the top -->
+
+<h2 id="Mailing_address">Mailing address</h2>
+
+Hello <a href="contacts.html#Mailing_address">Mailing address</a>
+
+<!-- How to add link for downloading -->
+
+<a href="https://download.mozilla.org/?product=firefox-39.0-SSL&os=win&lang=en-US"
+   download="firefox-39-installer.exe">
+  Download Firefox 39 for Windows
+</a>
+
+<!-- How to send a mail through a link -->
+
+<a href="mailto:nowhere@mozilla.org">Send email to nowhere</a>
+
+<!-- Along with parameters -->
+<a href="mailto:nowhere@mozilla.org?cc=name2@rapidtables.com&bcc=name3@rapidtables.com&amp;subject=The%20subject%20of%20the%20email &amp;body=The%20body%20of%20the%20email">
+  Send mail with cc, bcc, subject and body
+</a>
 
 <!-- This is how we add an image  -->
 

@@ -587,6 +587,20 @@ Route::resource('posts','PostController');
         - the 2nd argument is the list of "values" that we want to send along the view page in the first argument
         - we also need to use the "use" function for this purpose
 
-        <!-- Find out how to put all the routes under a middleware in laravel 5.4 -->
+<!-- How to put Download CSV functionality in PHP  -->
 
-----------------------------------------DONE-----------------------------------------------
+$filename = "download.csv";
+
+$fp = fopen('download.csv', 'w');
+
+fputcsv($fp, $array );
+foreach ($leads as $fields) {
+    fputcsv($fp, $fields);
+}
+
+fclose($fp);
+
+$headers = array(
+    'Content-Type' => 'text/csv',
+);
+return Response::download($filename, 'download.csv', $headers);
