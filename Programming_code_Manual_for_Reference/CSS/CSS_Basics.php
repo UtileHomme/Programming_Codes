@@ -39,5 +39,3 @@ An Analogy
 ** a percentage value is the font size of the element multiplied by the percentage
 
 -- Sometimes "unitless" values are given so that "child" elements can inherit from the parent thus computing their own sizes
-
---------------------------------------------DONE------------------------------------------------------
