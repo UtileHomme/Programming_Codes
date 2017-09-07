@@ -1,4 +1,4 @@
-<!-- Type Hinting 1234 -->
+<!-- Type Hinting 12345 -->
 
 <?php
 
