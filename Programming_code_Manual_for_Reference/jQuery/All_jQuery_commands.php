@@ -1063,3 +1063,140 @@ $('#save_button').click(function() {
 $(document).ready(function() {
     $('a').targetBlank();
 });
+
+<!-- How to add "draggable" jquery UI -->
+
+$(document).ready(function() {
+    $('#drag').draggable();
+});
+
+<!-- How to constrain a draggable to a particular axis -->
+
+$(document).ready(function() {
+    $('#drag').draggable({ axis: "x" } );
+});
+
+<!-- How to constrain a draggable inside the window itself -->
+
+$(document).ready(function() {
+    //will constrain the drag space only to the inside of all scrolls not beyond that
+    $('#drag').draggable({ containment: 'document' } );
+});
+
+<!-- How to constrain a draggable beyond the window -->
+
+$(document).ready(function() {
+    $('#drag').draggable({ containment: 'window' } );
+});
+
+<!-- How to restrict a draggable inside the parent of the element -->
+
+$(document).ready(function() {
+    $('#drag').draggable({ containment: 'parent' } );
+});
+
+<!-- How to restrict a draggable inside particular dimensions -->
+
+$(document).ready(function() {
+    $('#drag').draggable({ containment: [0,0,200,200] } );
+});
+
+<!-- How to change the pointer type of the draggable -->
+
+$(document).ready(function() {
+
+    //we can choose "pointer" cursor too
+    //"opacity" is for choosing the visibility
+    //"grid" will snap to particular areas in a grid
+    $('#drag').draggable({ cursor: 'crosshair' , opacity: 0.60, grid: [20,20] } );
+});
+
+<!-- How to set up events for every drag action -->
+
+$(document).ready(function() {
+
+    //we can choose "pointer" cursor too
+    //"opacity" is for choosing the visibility
+    //"revert" will cause the element to go back to its original position
+    $('#drag').draggable({ cursor: 'crosshair' , opacity: 0.60, revert: true, revertDuration: 5000,
+    start: function()
+    {
+            $('#event').text('Dragging started');
+    },
+    drag: function()
+    {
+        $('#event').text('Dragging');
+    },
+    stop: function()
+    {
+        $('#event').text('Dragging stopped');
+    }
+} );
+});
+
+<!-- How to initiate something when an element is dropped -->
+
+$(document).ready(function() {
+
+$('#drag').draggable({ containment: 'document', revert: true });
+
+//whenever we drop something inside the "div" we get an alert
+$('#drop').droppable({ drop: function()
+    {
+        alert('Dropped');
+    }
+    })
+
+});
+
+<!-- How to set a border when an element is dropped inside the div -->
+
+$(document).ready(function()
+{
+$('#drag').draggable({ containment: 'document', revert: true });
+
+//whenever we drop something inside the "div" , "border" class will be added to it
+
+//"tolerance" is for applying the border only when the entire span is inside the border,
+// will the color change
+
+//intersect is by default, which takes 50% into consideration
+
+//tolerance: "touch" is when the span touches the border
+$('#drop').droppable({ hoverClass: 'border', tolerance: 'fit' });
+});
+
+<!-- How to create events for every instance of a drop -->
+
+$(document).ready(function()
+{
+    $('.name,.place').draggable({ containment: 'document', revert: true });
+
+    //whenever we drop something inside the "div" , "border" class will be added to it
+
+    //"tolerance" is for applying the border only when the entire span is inside the border,
+    // will the color change
+
+    //intersect is by default, which takes 50% into consideration
+
+    //tolerance: "touch" is when the span touches the border
+
+    //Inside, "accept", we can mention the "classes" we want to be allowed to drop
+    //we don't wish to drop london
+    //"over" function is when we are inside and we hover
+    $('#drop').droppable({ hoverClass: 'border', tolerance: 'pointer', accept: '.name', over: function()
+    {
+        $('#drop').text('Something has hover over me');
+    },
+    //"out" function is when we hover inside and take it out
+    out: function()
+    {
+        $('#drop').text('Something has been dragged out');
+    },
+    //"drop" function
+    drop:function()
+    {
+        $('#drop').text('Something dropped');
+    }
+});
+});
