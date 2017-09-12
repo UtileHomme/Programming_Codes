@@ -47,3 +47,43 @@ git pull
 <!-- How to set "email" for Git -->
 
 - git config --global user.email "Your Git email name here"
+
+<!-- How to undo the "files" added using "git add" -->
+
+<!-- - To undo "individual" files , do this -->
+
+- git reset <file_name>
+
+<!-- - To unstage all the changes , do this -->
+
+- git reset
+
+<!-- How to check the names of files which are getting added -->
+
+- git add -n .
+
+<!-- How to unstage changes just before the first commit -->
+
+- git rm --cached <file_names>
+
+<!-- How to check which files have been staged -->
+
+- git diff --cached (this will show the changes along with the names)
+
+- git diff --cached --name-only(this will show the names of the files only)
+
+- git diff --cached --name-status(this will show the statuses like newly added as well as the ones)
+
+*** "cached" gives the difference in respect to the HEAD
+
+<!-- How to remove git tracking from a folder -->
+
+rm -rf .git
+
+- "r" is for recursive
+- it will delete the entire content without erroring out because the folder is not empty
+- "f" is not to ask for deleting the stuff
+
+<!-- How to check the various remotes -->
+
+- git remote -v
