@@ -1200,3 +1200,93 @@ $(document).ready(function()
     }
 });
 });
+
+<!-- How to sort a list of items -->
+
+//this is for making a list sortable: by default the list will also be draggable
+//containment ensures that the list item doesn't go outside the list
+//tolerance ensures that the list gets sorted as soon as the pointer of the second element reaches the first
+//cursor changes the pointer type
+//revert moves the element to original state
+//connectWith ensures that we can sort from one list to another
+//update allows us to raise an event once we try to sort some list
+
+//connectWith is used for adding items from one list to another
+$('#names, #places').sortable({ containment: 'document', tolerance: 'pointer',cursor: 'pointer',revert: true, opacity:0.6, connectWith: "#names, #places", update: function()
+    {
+        content = $(this).text();
+        $('#sort_status').text(content);
+    }
+
+});
+
+<!-- How to resize an element -->
+
+<!-- Attributes 1 -->
+//ghost will show a shadow for the resizing
+//animateDuration gives the speed
+//animateEasing decides whether the speed is uniform or distributed
+//use aspectRatio without animate attributes
+//use grid alone
+
+$('#box').resizable({ animate: true, animateDuration: 'slow', animateEasing: 'swing', aspectRatio: 9/10,ghost: true, grid: [20,20]});
+
+<!-- Attributes 2 -->
+//ghost will show a shadow for the resizing
+//animateDuration gives the speed
+//animateEasing decides whether the speed is uniform or distributed
+//use aspectRatio without animate attributes
+//use grid alone
+//handles ensures that we can only resize from specific directions - default is "all" - allows resizing from end of document too
+
+$('#box').resizable({handles: 'e,se', maxHeight: 200, minHeight: 100, maxWidth: 200, minWidth: 100});
+
+<!-- How to enable accordion or dropdowns -->
+
+$('#content').accordion({ fillSpace : true, icons: {'header': ' ui-icon-plus', 'headerSelected' : 'ui-icon-minus'},
+    event: 'mouseover'
+});
+
+//collapsible ensures that when we open any div in the accordion we are able close it to
+//active ensures that the specfied number of the element is opened by default - "false" will keep all closed
+
+$('#content').accordion({ fillSpace : true, collapsible: true, active: 2 });
+
+<!-- How to add "datepicker" functionality -->
+
+//dateFormat will help us apply the type of format that we want
+//minDate helps us choose the point from which we wish to start the date
+// "0" starts from the present date
+//showButtonPanel shows two buttons "Today" and "Done" to be clicked by the user
+//showAnim is for modifying the animation (bounce, fadeIn, empty quotes, show(default))
+
+$('#date').datepicker({dateFormat: 'dd-mm-yy' , minDate: 0, maxDate: '+1m + 2d'
+, showButtonPanel: true, showAnim: 'fadeIn'
+});
+
+<!-- How to add "dialog" box  -->
+
+$('#save').click(function()
+{
+    $('#dialog').attr('title','Saved').text('Settings were saved').dialog({ buttons:
+        {
+            //when the button defined "Ok" is clicked , run this function
+            'Ok': function()
+            {
+                //close the dialog
+                $(this).dialog('close');
+            }
+            //closeonEscape will close the dialog when "Esc" key is pressed
+            //draggable is set to false if we don't want it to be dragged all through the page
+            //resizable makes the dialog box static
+            //show helps apply animations
+            //modal ensures that the background things are disabled and the dialog box is to closed first
+            //positions sets the position for the dialog box - 'top/bottom',
+
+
+
+        }, closeonEscape: true, draggable: false, resizable:false, show: 'fade', modal: true,
+        position: ['left','top']
+    });
+}
+);

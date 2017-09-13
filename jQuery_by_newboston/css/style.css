@@ -40,6 +40,7 @@ body
 {
     margin-top: 0px;
     margin: 0px;
+    font-size: 10px;
 }
 
 #top_message
@@ -94,4 +95,25 @@ background-color: #000;
 .border
 {
     border: 1px solid #000;
+}
+
+#box
+{
+    width: 100px;
+    height: 100px;
+    background-color: #999;
+    border: 1px solid #000;
+}
+
+#bigger_box
+{
+    width: 400px;
+    height: 400px;
+    background-color: #f0f0f0;
+    border: 1px solid #000;
+}
+
+#main
+{
+    height: 300px;
 }

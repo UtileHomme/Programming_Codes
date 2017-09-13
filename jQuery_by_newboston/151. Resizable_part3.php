@@ -7,28 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>jQuery Example</title>
     <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/jquery-ui.css" type="text/css">
 </head>
 <body>
 
-    <ul id="names">
-        <li>Alex</li>
-        <li>Billy</li>
-        <li>Ashley</li>
-    </ul>
+        <div class="" id="box">
+        </div>
 
-    <br>
-    <ul id="places">
-        <li>London</li>
-        <li>Manchester</li>
-        <li>Delhi</li>
-    </ul>
-
-    <div class="" id="sort_status">
-        
-    </div>
 
     <script type="text/javascript" src="js/jquery.js"> </script>
     <script type="text/javascript" src="js/jquery-ui.js"> </script>
-    <script type="text/javascript" src="js/ui12.js"> </script>
+    <script type="text/javascript" src="js/ui15.js"> </script>
 </body>
 </html>
