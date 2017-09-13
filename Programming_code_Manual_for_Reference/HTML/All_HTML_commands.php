@@ -95,7 +95,7 @@ Hello <a href="contacts.html#Mailing_address">Mailing address</a>
 
 ** we can also use the "start=5" attribute which will start from the position depending on the "type" selected
 
-<!-- This is how we make a definition list -->
+<!-- This is how we make a definition/description list -->
 
 <dl>
     <dt>Aries</dt>
@@ -440,3 +440,54 @@ table#alter th {
     background-color: gray;
 }
 </style>
+
+<!-- How to add quotes to a webpage -->
+
+<blockquote cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+    <p>The <strong>HTML  <code>&lt;blockquote&gt;</code> Element </strong> indicates that the enclosed text is an extended quotation</p>
+
+</blockquote>
+
+<!-- How to add abbreviations in a webpage -->
+
+<p><abbr title="Hyper Text Markup Language">HTML</abbr></p>
+
+<!-- How to represent computer code -->
+
+-- for marking up generic pieces of code
+<code>
+    var para = document.querySelector('p');
+
+para.onclick = function() {
+  alert('Owww, stop poking me!');
+}
+</code>
+
+-- for including whitespaces and indentation
+
+<pre>
+    <code>var para = document.querySelector('p');
+
+para.onclick = function() {
+  alert('Owww, stop poking me!');
+}</code>
+</pre>
+
+--for marking up variable names
+
+<var>
+    $a
+</var>
+
+--for marking up keyboard keys
+
+<kbd>
+    Ctrl + A
+</kbd>
+
+--for marking up sample output
+
+<samp>
+    PING mozilla.org (63.245.215.20): 56 data bytes
+64 bytes from 63.245.215.20: icmp_seq=0 ttl=40 time=158.233 ms
+</samp>
