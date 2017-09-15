@@ -8,9 +8,27 @@
 - When a PHP page is accessed, the PHP code is read or parsed by the server the page resides on.
 - The output from the PHP functions are returned as HTML code which can be read by the browser
 
+<!-- How to open a server in php -->
+
+php -S localhost:8000
+
 <!-- What does Parsing in PHP mean -->
 
 - It means processing and analysis of data in PHP in order to output data structures in a certain way.
+
+<!-- Is PHP compiled or interpreted -->
+
+- the PHP language is interpreted
+- The binary (Zend Engine) that lets us interpret PHP is compiled
+
+- The PHP compiler's job is to parse the PHP code and convert it into a form suitable for the runtime engine. It's tasks are as follows:
+    - Ignore comments
+    - Resolve variables, function names, and so forth
+    - Construct the abstract syntax tree of the program
+    - Write the bytecode
+
+- If the script isn't changed, the compilation happens only the first time after which it is cached and reused.
+- if modified, compilation step happens again.
 
 <!-- What is php.ini  -->
 
@@ -354,3 +372,13 @@ session_destroy();
 <!-- What is the "implode" function -->
 
 -- converts an array into an "character" separated data
+
+<!-- How to check for browser type  -->
+
+$_SERVER["HTTP_USER_AGENT"]
+
+<!-- What is the use of "htmlspecialchars" -->
+
+- There is a possibility that some content might have "HTML" tags attached to them
+- To avoid storing HTML embedded code into a database, pass the data into "htmlspecialchars"
+- Protects from XSS protection

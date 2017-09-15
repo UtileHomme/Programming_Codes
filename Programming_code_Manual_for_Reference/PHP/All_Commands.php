@@ -703,3 +703,11 @@ $string = implode(', ', $names_array);
 echo $string;
 
  ?>
+
+<!-- How to convert date from one format to another -->
+
+$Fromdate = date('Y-m-d', strtotime($Fromdate));
+
+<!-- How to check for browser type  -->
+
+$_SERVER["HTTP_USER_AGENT"]
