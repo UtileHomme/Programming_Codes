@@ -711,3 +711,161 @@ $Fromdate = date('Y-m-d', strtotime($Fromdate));
 <!-- How to check for browser type  -->
 
 $_SERVER["HTTP_USER_AGENT"]
+
+<!-- How to loop through a directory and see the files that are present in it -->
+
+<?php
+// valid for video 82-83
+
+$directory = '/home/scrabbler/Jatin/Programming Codes/PHP_Newboston_codes';
+
+if($handle = opendir($directory.'/'))
+{
+  echo 'Looking inside '.$directory.': <br />';
+
+  while($file = readdir($handle))       //file is in string format
+  {
+    if($file!='.' && $file!='..')
+    {
+      echo '<a href=" '.$directory. '/'.$file.' ">'.$file.'</a><br />';
+    }
+  }
+
+}
+
+?>
+
+<!-- This is how we specifiy the form part for uploading files -->
+
+<!-- enctype helps enable file upload-->
+<form action="87. Uploading_Files.php" method="POST" enctype="multipart/form-data">
+  <input type="file" name="file" /><br /><br />
+  <input type="submit" value="Submit" />
+</form>
+
+
+<!-- How to upload a file with limits on type and size -->
+
+<?php
+//valid for video 87-88, then 90-91, then 89
+
+//shows the file name of the file the user has uploaded
+$name = $_FILES['file']['name'];
+//size is measured in bytes
+$size = $_FILES['file']['size'];    //not required for uploading file
+$type = $_FILES['file']['type'];    //not required for uploading file
+
+//Will help in extracting the extension of the file name
+$extension = strtolower(substr($name, strpos($name, '.')+1));
+$max_size = 2097152;
+//This file is stored in a temporary folder which an alias
+echo $temp_name = $_FILES['file']['tmp_name'];
+
+
+if(isset($name))
+{
+  if(!empty($name))
+  {
+    if(($extension=='jpg' || $extension=='jpeg') && ($type=='image/jpeg')  && $size<=$max_size)
+    {
+    //now we need to move the temporary file from temp location to its actual location
+    $location = '/home/scrabbler/Jatin/Programming Codes/PHP_Newboston_codes/uploads/';
+    if(move_uploaded_file($temp_name, $location.$name))
+    {
+      echo 'Uploaded';
+    }
+    else
+    {
+      echo 'There was an error';
+    }
+  }
+  else {
+    echo 'File must be jpeg / jpg and must be 2mb or less';
+  }
+  }
+  else {
+    echo 'Please choose a file';
+  }
+}
+?>
+<!-- enctype helps enable file upload-->
+<form action="87. Uploading_Files.php" method="POST" enctype="multipart/form-data">
+  <input type="file" name="file" /><br /><br />
+  <input type="submit" value="Submit" />
+</form>
+
+<!-- How to check if the file_exists or not -->
+
+$filename = 'file.txt';
+if(file_exists($filename))
+//returns true if file exists else false and create a new one
+{
+  echo 'File already exists';
+}
+else
+{
+  $handle = fopen($filename, 'w');
+  fwrite($handle, 'Nothing');
+  fclose($handle);
+}
+ ?>
+
+ <!-- This is how we delete a file -->
+
+ //how to delete an uploaded file
+ $filename = 'video85(filedelete).txt';
+
+ if(unlink($filename))
+ {
+   echo 'File <strong>'.$filename.'</strong> has been deleted.';
+ }
+ else
+ {
+   echo 'File cannot be deleted';
+ }
+
+ <!-- How to rename a file -->
+
+ $filename = 'video85(filerename).txt';
+ $rand = rand(10000,99999);
+
+ //how to rename an uploaded file
+ if(rename($filename, $rand.'.txt'))
+ {
+   echo 'File '.$filename.' has been renamed to <strong>'.$rand.'.txt</strong>';
+ }
+ else
+ {
+   echo 'Error renaming';
+ }
+
+ <!-- How to read a password from a file and check it with the entered password -->
+
+ $filename = 'video96(hash).txt';
+ if(isset($_POST['user_password']) && !empty($_POST['user_password']))
+ {
+   $user_password = sha1($_POST['user_password']);
+
+   $handle = fopen($filename, 'r');
+   $file_password = fread($handle, filesize($filename));
+   $file_password = trim($file_password);
+
+   if($user_password==$file_password)
+   {
+     echo 'Password ok';
+   }
+   else
+   {
+     echo 'Incorrect Password';
+   }
+ }
+ else
+ {
+   echo 'Please enter a password';
+ }
+ ?>
+
+ <form action="video96.php" method="POST">
+   Password: <input type="password" name="user_password" /><br /><br />
+   <input type="submit" value="Submit" />
+ </form>

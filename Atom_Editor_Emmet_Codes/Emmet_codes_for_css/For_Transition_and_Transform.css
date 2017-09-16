@@ -1,0 +1,79 @@
+trf
+   transform:;
+trf:r
+   transform: rotate(angle);
+trf:rx
+   transform: rotateX(angle);
+trf:ry
+   transform: rotateY(angle);
+trf:rz
+   transform: rotateZ(angle);
+trf:sc
+   transform: scale(x, y);
+trf:sc3
+   transform: scale3d(x, y, z);
+trf:scx
+   transform: scaleX(x);
+trf:scy
+   transform: scaleY(y);
+trf:scz
+   transform: scaleZ(z);
+trf:skx
+   transform: skewX(angle);
+trf:sky
+   transform: skewY(angle);
+trf:t
+   transform: translate(x, y);
+trf:t3
+   transform: translate3d(tx, ty,
+tz);
+trf:tx
+   transform: translateX(x);
+trf:ty
+   transform: translateY(y);
+trf:tz
+   transform: translateZ(z);
+trfo
+   transform-origin:;
+trfs
+   transform-style:preserve-3d;
+trs
+   transition:prop time;
+trsde
+   transition-delay:time;
+   trsdu
+      transition-duration:time;
+   trsp
+      transition-property:prop;
+   trstf
+      transition-timing-function:tfunc;
+   us
+      user-select:${none};
+   wfsm
+      -webkit-font-
+   smoothing:${antialiased};
+   wfsm:a
+      -webkit-font-smoothing:antialiased;
+   wfsm:n
+      -webkit-font-smoothing:none;
+   wfsm:s, wfsm:sa
+      -webkit-font-smoothing:subpixel-
+   antialiased;
+   wm
+      writing-mode:lr-tb;
+   wm:btl
+      writing-mode:bt-lr;
+   wm:btr
+      writing-mode:bt-rl;
+   wm:lrb
+      writing-mode:lr-bt;
+   wm:lrt
+      writing-mode:lr-tb;
+   wm:rlb
+      writing-mode:rl-bt;
+   wm:rlt
+      writing-mode:rl-tb;
+   wm:tbl
+      writing-mode:tb-lr;
+   wm:tbr
+      writing-mode:tb-rl;

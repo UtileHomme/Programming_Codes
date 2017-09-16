@@ -382,3 +382,45 @@ $_SERVER["HTTP_USER_AGENT"]
 - There is a possibility that some content might have "HTML" tags attached to them
 - To avoid storing HTML embedded code into a database, pass the data into "htmlspecialchars"
 - Protects from XSS protection
+
+<!-- How to show the name of the files which we are uploading -->
+
+$name = $_FILES['file']['name'];
+
+<!-- How to get the size of the files being uploaded -->
+
+$size = $_FILES['file']['size'];
+
+<!-- How to get the format of the file being uploaded -->
+
+$type = $_FILES['file']['type'];
+
+<!-- How to find the temporary location of the uploaded file -->
+
+$temp_name = $_FILES['file']['tmp_name'];
+
+<!-- This is how we store a file in a particular location -->
+
+$location = '/home/scrabbler/Jatin/Programming Codes/PHP_Newboston_codes/uploads/';
+if(move_uploaded_file($temp_name, $location.$name))
+{
+  echo 'Uploaded';
+}
+else
+{
+  echo 'There was an error';
+}
+
+<!-- How to extract the extension of a filename -->
+
+//Will help in extracting the extension of the file name
+$extension = strtolower(substr($name, strpos($name, '.')+1));
+
+<!-- How to delete a file -->
+
+unlink($file_name)
+
+<!-- How to rename a file -->
+
+//first argument is filename , second is the one to rename to
+rename($filename, $rand.'.txt')

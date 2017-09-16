@@ -1290,3 +1290,107 @@ $('#save').click(function()
     });
 }
 );
+
+<!-- How to add "Progressbar" functionality to a page -->
+
+$('#upload').click(function()
+{
+    var val = 0;
+    //the variable "val" keeps increasing every 50 ms by 1
+    var interval = setInterval(function()
+    {
+        val = val + 1;
+        $('#pb').progressbar({ value: val});
+
+        //percentage will go beyond if we don't break it
+        $('#percent').text(val + '%');
+
+        if(val == 100)
+        {
+            clearInterval(interval);
+        }
+    }, 50
+    );
+}
+);
+
+<!-- How to add "Slider" functionality -->
+
+var min_value = 1;
+var max_value = 200;
+
+$('#slider').slider({
+
+    min: min_value,
+    max: max_value,
+    range: true,
+    values: [20,40],
+
+    //step:5  (will mean that the slider will increment by 5 pounds)
+    slide: function(event, ui)
+    {
+        //we are placing the "value" from the "ui" into the "slider" value
+        $('#slider_value').html('&pound;' + ui.values[0] + ' to  &pound' + ui.values[1]);
+    }
+});
+
+
+<!-- How to add Slider for vertical orientation -->
+
+var min_value = 1;
+var max_value = 100;
+
+$('#slider').slider({
+
+    min: min_value,
+    max: max_value,
+    //this makes the orientation top to bottom
+    orientation: 'vertical',
+
+    // step:5  (will mean that the slider will increment by 5 pounds)
+    slide: function(event, ui)
+    {
+        //we are placing the "value" from the "ui" into the "slider" value
+        $('#slider_value').html(ui.value);
+    },
+    stop: function(event, ui)
+    {
+        alert(ui.value);
+    }
+});
+
+<!-- How to add "tabs" on a page and make the user select them "on hover" -->
+
+$('#tabs').tabs({ ajaxOptions: {error: function(xhr, index, status, anchor)
+{
+    $(anchor.hash).text('Could not load page')
+}
+// Hovering over the tab displays its content
+}, event:'mouseover'});
+
+<!-- How to add "tabs" on a page and collapse them on click-->
+
+$('#tabs').tabs({ ajaxOptions: {error: function(xhr, index, status, anchor)
+{
+    $(anchor.hash).text('Could not load page')
+}
+}, collapsible: true });
+
+
+<!-- // How to make the tabs sortable -->
+
+$('#tabs').tabs({ ajaxOptions: {error: function(xhr, index, status, anchor)
+{
+    $(anchor.hash).text('Could not load page')
+}
+}}).find('.ui-tabs-nav').sortable({ axis: 'x'});
+
+<!-- How to set cookies that expire after some time -->
+
+
+$('#tabs').tabs({ ajaxOptions: {error: function(xhr, index, status, anchor)
+{
+    $(anchor.hash).text('Could not load page')
+}
+//to set the expiry time (in days)
+}, cookie: { expires: 2 }});

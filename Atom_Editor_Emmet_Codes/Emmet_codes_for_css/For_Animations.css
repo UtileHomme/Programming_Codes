@@ -1,0 +1,109 @@
+anim
+   animation:;
+anim-
+   animation:name duration timing-
+function delay iteration-count
+direction fill-mode;
+animdel
+   animation-delay:time;
+animdir
+   animation-direction:normal;
+animdir:a
+   animation-direction:alternate;
+animdir:ar
+   animation-direction:alternate-
+reverse;
+animdir:n
+   animation-direction:normal;
+animdir:r
+   animation-direction:reverse;
+animdur
+   animation-duration:0s;
+animfm
+   animation-fill-mode:both;
+animfm:b
+   animation-fill-mode:backwards;
+animfm:bt, animfm:bh
+   animation-fill-mode:both;
+animfm:f
+   animation-fill-mode:forwards;
+animic
+   animation-iteration-count:1;
+animic:i
+   animation-iteration-count:infinite;
+animn
+   animation-name:none;
+animps
+   animation-play-state:running;
+animps:p
+   animation-play-state:paused;
+animps:r
+   animation-play-state:running;
+animtf
+   animation-timing-function:linear;
+   animtf:cb
+   animation-timing-function:cubic-
+bezier(0.1, 0.7, 1.0, 0.1);
+animtf:e
+   animation-timing-function:ease;
+animtf:ei
+   animation-timing-function:ease-in;
+animtf:eio
+   animation-timing-function:ease-in-
+out;
+animtf:eo
+   animation-timing-function:ease-out;
+animtf:l
+   animation-timing-function:linear;
+ap
+   appearance:${none};
+as
+   align-self:;
+as:a
+   align-self:auto;
+as:b
+   align-self:baseline;
+as:c
+   align-self:center;
+as:fe
+   align-self:flex-end;
+as:fs
+   align-self:flex-start;
+as:s
+   align-self:stretch;
+bfv
+   backface-visibility:;
+bfv:h
+   backface-visibility:hidden;
+bfv:v
+   backface-visibility:visible;
+bg:ie
+   filter:progid:DXImageTransform.
+Microsoft.AlphaImageLoader(src=‘x.
+png‘,sizingMethod=‘crop‘);
+cm
+   /* ${child} */
+colm
+   columns:;
+colmc
+   column-count:;
+   colmf
+   column-fill:;
+colmg
+   column-gap:;
+colmr
+   column-rule:;
+colmrc
+   column-rule-color:;
+colmrs
+   column-rule-style:;
+colmrw
+   column-rule-width:;
+colms
+   column-span:;
+colmw
+   column-width:;
+d:ib+
+   display: inline-block;
+   *display: inline;
+   *zoom: 1;

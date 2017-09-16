@@ -40,7 +40,17 @@ body
 {
     margin-top: 0px;
     margin: 0px;
-    font-size: 10px;
+    font-size: 12px;
+}
+
+#tabs
+{
+    width: 400px;
+}
+
+#pb
+{
+    width: 400px;
 }
 
 #top_message

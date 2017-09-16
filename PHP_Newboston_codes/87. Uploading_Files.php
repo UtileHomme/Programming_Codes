@@ -41,7 +41,7 @@ if(isset($name))
 }
 ?>
 <!-- enctype helps enable file upload-->
-<form action="video87.php" method="POST" enctype="multipart/form-data">
+<form action="87. Uploading_Files.php" method="POST" enctype="multipart/form-data">
   <input type="file" name="file" /><br /><br />
   <input type="submit" value="Submit" />
 </form>
