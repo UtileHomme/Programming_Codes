@@ -39,3 +39,23 @@ An Analogy
 ** a percentage value is the font size of the element multiplied by the percentage
 
 -- Sometimes "unitless" values are given so that "child" elements can inherit from the parent thus computing their own sizes
+
+<!-- What is the use of -webkit or -moz before an css element -->
+
+- it is used for browser support
+
+<!-- What is the "static" positioning   -->
+
+- If we have three statically positioned elements in the code, they will stack one over the other
+- We can't change the "top", "left", "right","bottom" properties in this positioning
+
+<!-- What is relative positioning -->
+
+- The element will be positioned relative to the element it is inside or to the element just before it
+- The element that follows after the "relative" positioned element won't be affected
+
+<!-- What is absolute positioning -->
+
+- The element is taken out of the normal flow of the page
+- All the elements are made to shift from the window margin
+- might overlap other elements too

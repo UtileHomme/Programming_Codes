@@ -66,3 +66,19 @@ $leads=DB::table('leads')
 ->whereBetween('created_at',[$Fromdate,$Todate])
 ->orderBy('leads.id', 'DESC')
 ->paginate(50);
+
+<!-- How to apply "orwhere" in a query -->
+
+$processingcount1= DB::table('leads')
+->select('products.*','pharmacies.*','addresses.*','leads.*','orders.*','prodleads.*')
+->join('prodleads', 'leads.id', '=', 'prodleads.Leadid')
+->join('addresses', 'leads.id', '=', 'addresses.leadid')
+->join('products', 'prodleads.Prodid', '=', 'products.id')
+->join('pharmacies', 'prodleads.PharmacyId', '=', 'pharmacies.id')
+->join('orders', 'prodleads.orderid', '=', 'orders.id')
+->where('prodleads.empid',$log_id)
+->where('OrderStatus',$status1)
+->orwhere('OrderStatusrent',$status1)
+->orwhere('pharmacies.pOrderStatus',$status1)
+->orderBy('prodleads.id', 'DESC')
+->count();

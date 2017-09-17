@@ -495,203 +495,203 @@ if(isset($_POST['user_input']) && !empty($_POST['user_input']))
 
     if(isset($_POST['password']))
     {
-      $password = $_POST['password'];
-      if(!empty($password))
-      {
-        if($password==$match)
+        $password = $_POST['password'];
+        if(!empty($password))
         {
-          echo 'This is correct';
+            if($password==$match)
+            {
+                echo 'This is correct';
+            }
+            else
+            {
+                echo 'This is incorrect';
+            }
         }
         else
         {
-          echo 'This is incorrect';
+            echo 'Please fill in the details';
         }
-      }
-      else
-      {
-        echo 'Please fill in the details';
-      }
     }
 
 
     ?>
 
-<!-- This is how we store sessions in PHP -->
+    <!-- This is how we store sessions in PHP -->
 
-<!-- Here we are setting the session -->
+    <!-- Here we are setting the session -->
 
-<?php
+    <?php
 
-//sessions store info about the user that is currently visiting the website
-//sessions are stored on the server
-//useful for user login - to keep them logged in
+    //sessions store info about the user that is currently visiting the website
+    //sessions are stored on the server
+    //useful for user login - to keep them logged in
 
-session_start();    //this is to be declared before doing anything using sessions
+    session_start();    //this is to be declared before doing anything using sessions
 
-$_SESSION['username'] = 'Alex';     //this will be available in all pages of the website
- ?>
+    $_SESSION['username'] = 'Alex';     //this will be available in all pages of the website
+    ?>
 
-<!-- Here we are accessing a session here. We won't need to include a file just to access variables from that file. Sessions will suffice -->
-<?php
+    <!-- Here we are accessing a session here. We won't need to include a file just to access variables from that file. Sessions will suffice -->
+    <?php
 
-session_start();      //we won't need to include the other php file because a session is active
+    session_start();      //we won't need to include the other php file because a session is active
 
-//echo $_SESSION['name'];
+    //echo $_SESSION['name'];
 
-if(isset($_SESSION['username']))
-{
-  echo 'Welcome '.$_SESSION['username'];      //to make this run, we have to call the .php file once
-}
-else {
-  echo 'Please log in';
-}
- ?>
+    if(isset($_SESSION['username']))
+    {
+        echo 'Welcome '.$_SESSION['username'];      //to make this run, we have to call the .php file once
+    }
+    else {
+        echo 'Please log in';
+    }
+    ?>
 
-<!-- How to set a cookie and unset it -->
+    <!-- How to set a cookie and unset it -->
 
-<?php
-/*
-a cookie is a piece of data/file that is stores some info which is unique to the website / user is viewing.
-depending on the expiration time of the cookie , the info will be relayed from user's computer to website
-can be stored on the user's computer for later purposes
-session is closed as soon as browser is closed
-we can use cookies for years
-not good for sensitive data
-*/
+    <?php
+    /*
+    a cookie is a piece of data/file that is stores some info which is unique to the website / user is viewing.
+    depending on the expiration time of the cookie , the info will be relayed from user's computer to website
+    can be stored on the user's computer for later purposes
+    session is closed as soon as browser is closed
+    we can use cookies for years
+    not good for sensitive data
+    */
 
-//valid for video 75-76
-$time = time();
+    //valid for video 75-76
+    $time = time();
 
-//variable, value, time of expiration(in seconds)
-setcookie('username' , 'alex', $time+15);
+    //variable, value, time of expiration(in seconds)
+    setcookie('username' , 'alex', $time+15);
 
-//this will unset the cookie
-setcookie('username' , 'alex', $time-1000);
+    //this will unset the cookie
+    setcookie('username' , 'alex', $time-1000);
 
-/*
-we need to unset to log the user out -> done while clicking LOG OUT button
-*/
+    /*
+    we need to unset to log the user out -> done while clicking LOG OUT button
+    */
 
- ?>
+    ?>
 
- <!-- How to access a cookie -->
+    <!-- How to access a cookie -->
 
- <?php
+    <?php
 
- echo $_COOKIE['username'];    //this will be displayed only for 1000 seconds
+    echo $_COOKIE['username'];    //this will be displayed only for 1000 seconds
 
-  ?>
+    ?>
 
-<!-- This is how we write data into a file -->
+    <!-- This is how we write data into a file -->
 
-<?php
+    <?php
 
-/*
-w - for writing
-r  - for reading
-a - appending
-*/
+    /*
+    w - for writing
+    r  - for reading
+    a - appending
+    */
 
-//name of the file, type of operation on file
-$handle = fopen('names.txt', 'w ');
+    //name of the file, type of operation on file
+    $handle = fopen('names.txt', 'w ');
 
-//handle, data
-fwrite($handle, 'Alex'."\n");      //write the data to file 'names.txt'
-fwrite($handle, 'Billy');
+    //handle, data
+    fwrite($handle, 'Alex'."\n");      //write the data to file 'names.txt'
+    fwrite($handle, 'Billy');
 
-//closes the connection with the file
-fclose($handle);
- ?>
-
- <!-- How to read a data on a line by line basis -->
-
- <?php
-
- if(isset($_POST['name']))
- {
-   $name = $_POST['name'];
-   if(!empty($name))
-   {
-     $handle = fopen('names.txt', 'a');
-     fwrite($handle,$name."\n");
-     fclose($handle);
-
-     echo 'Current names in file'.'<br />';
-     //this is used for reading purposes
-     $count = 1;
-     $readin = file('names.txt');
-     $readin_count = count($readin);
-
-     foreach($readin as $fname)
-     {
-       echo trim($fname);
-       if($count<$readin_count)
-       {
-         echo ', ';
-       }
-       $count++;
-     }
-     echo '<br /><br /><br />';
-     foreach($readin as $fname)
-     {
-       echo trim($fname).',  ';
-     }
-   }
-   else
-   {
-     echo 'Please type a name';
-   }
- }
- ?>
-
-<!-- How to append data to a file -->
-
-<?php
-/*
-$handle = fopen('names1.txt', 'a');
-fwrite($handle,'Alex'."\n");
-fclose($handle);
-echo 'Written';
-*/
-
-if(isset($_POST['name']))
-{
-  $name = $_POST['name'];
-  if(!empty($name))
-  {
-    $handle = fopen('names1.txt', 'a');
-    fwrite($handle,$name."\n");
+    //closes the connection with the file
     fclose($handle);
-  }
-  else
-  {
-      echo 'Please type a name';
-  }
-}
+    ?>
 
- ?>
+    <!-- How to read a data on a line by line basis -->
 
- <!-- How to retrieve data from a file -- second way
-Also, contains the explode function code
+    <?php
+
+    if(isset($_POST['name']))
+    {
+        $name = $_POST['name'];
+        if(!empty($name))
+        {
+            $handle = fopen('names.txt', 'a');
+            fwrite($handle,$name."\n");
+            fclose($handle);
+
+            echo 'Current names in file'.'<br />';
+            //this is used for reading purposes
+            $count = 1;
+            $readin = file('names.txt');
+            $readin_count = count($readin);
+
+            foreach($readin as $fname)
+            {
+                echo trim($fname);
+                if($count<$readin_count)
+                {
+                    echo ', ';
+                }
+                $count++;
+            }
+            echo '<br /><br /><br />';
+            foreach($readin as $fname)
+            {
+                echo trim($fname).',  ';
+            }
+        }
+        else
+        {
+            echo 'Please type a name';
+        }
+    }
+    ?>
+
+    <!-- How to append data to a file -->
+
+    <?php
+    /*
+    $handle = fopen('names1.txt', 'a');
+    fwrite($handle,'Alex'."\n");
+    fclose($handle);
+    echo 'Written';
+    */
+
+    if(isset($_POST['name']))
+    {
+        $name = $_POST['name'];
+        if(!empty($name))
+        {
+            $handle = fopen('names1.txt', 'a');
+            fwrite($handle,$name."\n");
+            fclose($handle);
+        }
+        else
+        {
+            echo 'Please type a name';
+        }
+    }
+
+    ?>
+
+    <!-- How to retrieve data from a file -- second way
+    Also, contains the explode function code
 -->
 
- <?php
- /*The file may have comma separated values
- We wish to output data without the comma
- */
- $filename = 'names1.txt';
- $handle = fopen($filename, 'r');
- $datain = fread($handle, filesize($filename));    //This will read the data depending on the number of Characters
+<?php
+/*The file may have comma separated values
+We wish to output data without the comma
+*/
+$filename = 'names1.txt';
+$handle = fopen($filename, 'r');
+$datain = fread($handle, filesize($filename));    //This will read the data depending on the number of Characters
 
- //explode function will convert all character separated data in arrays
+//explode function will convert all character separated data in arrays
 
- $names_array = explode(',' , $datain );
- foreach($names_array as $name)
- echo $name.'<br />';
- echo '<br />';
+$names_array = explode(',' , $datain );
+foreach($names_array as $name)
+echo $name.'<br />';
+echo '<br />';
 
- //echo $names_array[1];
-  ?>
+//echo $names_array[1];
+?>
 
 <!-- How to use "implode" -->
 
@@ -702,7 +702,7 @@ $string = implode(', ', $names_array);
 
 echo $string;
 
- ?>
+?>
 
 <!-- How to convert date from one format to another -->
 
@@ -721,15 +721,15 @@ $directory = '/home/scrabbler/Jatin/Programming Codes/PHP_Newboston_codes';
 
 if($handle = opendir($directory.'/'))
 {
-  echo 'Looking inside '.$directory.': <br />';
+    echo 'Looking inside '.$directory.': <br />';
 
-  while($file = readdir($handle))       //file is in string format
-  {
-    if($file!='.' && $file!='..')
+    while($file = readdir($handle))       //file is in string format
     {
-      echo '<a href=" '.$directory. '/'.$file.' ">'.$file.'</a><br />';
+        if($file!='.' && $file!='..')
+        {
+            echo '<a href=" '.$directory. '/'.$file.' ">'.$file.'</a><br />';
+        }
     }
-  }
 
 }
 
@@ -739,8 +739,8 @@ if($handle = opendir($directory.'/'))
 
 <!-- enctype helps enable file upload-->
 <form action="87. Uploading_Files.php" method="POST" enctype="multipart/form-data">
-  <input type="file" name="file" /><br /><br />
-  <input type="submit" value="Submit" />
+    <input type="file" name="file" /><br /><br />
+    <input type="submit" value="Submit" />
 </form>
 
 
@@ -764,34 +764,34 @@ echo $temp_name = $_FILES['file']['tmp_name'];
 
 if(isset($name))
 {
-  if(!empty($name))
-  {
-    if(($extension=='jpg' || $extension=='jpeg') && ($type=='image/jpeg')  && $size<=$max_size)
+    if(!empty($name))
     {
-    //now we need to move the temporary file from temp location to its actual location
-    $location = '/home/scrabbler/Jatin/Programming Codes/PHP_Newboston_codes/uploads/';
-    if(move_uploaded_file($temp_name, $location.$name))
-    {
-      echo 'Uploaded';
+        if(($extension=='jpg' || $extension=='jpeg') && ($type=='image/jpeg')  && $size<=$max_size)
+        {
+            //now we need to move the temporary file from temp location to its actual location
+            $location = '/home/scrabbler/Jatin/Programming Codes/PHP_Newboston_codes/uploads/';
+            if(move_uploaded_file($temp_name, $location.$name))
+            {
+                echo 'Uploaded';
+            }
+            else
+            {
+                echo 'There was an error';
+            }
+        }
+        else {
+            echo 'File must be jpeg / jpg and must be 2mb or less';
+        }
     }
-    else
-    {
-      echo 'There was an error';
+    else {
+        echo 'Please choose a file';
     }
-  }
-  else {
-    echo 'File must be jpeg / jpg and must be 2mb or less';
-  }
-  }
-  else {
-    echo 'Please choose a file';
-  }
 }
 ?>
 <!-- enctype helps enable file upload-->
 <form action="87. Uploading_Files.php" method="POST" enctype="multipart/form-data">
-  <input type="file" name="file" /><br /><br />
-  <input type="submit" value="Submit" />
+    <input type="file" name="file" /><br /><br />
+    <input type="submit" value="Submit" />
 </form>
 
 <!-- How to check if the file_exists or not -->
@@ -800,72 +800,79 @@ $filename = 'file.txt';
 if(file_exists($filename))
 //returns true if file exists else false and create a new one
 {
-  echo 'File already exists';
+    echo 'File already exists';
 }
 else
 {
-  $handle = fopen($filename, 'w');
-  fwrite($handle, 'Nothing');
-  fclose($handle);
+    $handle = fopen($filename, 'w');
+    fwrite($handle, 'Nothing');
+    fclose($handle);
 }
- ?>
+?>
 
- <!-- This is how we delete a file -->
+<!-- This is how we delete a file -->
 
- //how to delete an uploaded file
- $filename = 'video85(filedelete).txt';
+//how to delete an uploaded file
+$filename = 'video85(filedelete).txt';
 
- if(unlink($filename))
- {
-   echo 'File <strong>'.$filename.'</strong> has been deleted.';
- }
- else
- {
-   echo 'File cannot be deleted';
- }
+if(unlink($filename))
+{
+    echo 'File <strong>'.$filename.'</strong> has been deleted.';
+}
+else
+{
+    echo 'File cannot be deleted';
+}
 
- <!-- How to rename a file -->
+<!-- How to rename a file -->
 
- $filename = 'video85(filerename).txt';
- $rand = rand(10000,99999);
+$filename = 'video85(filerename).txt';
+$rand = rand(10000,99999);
 
- //how to rename an uploaded file
- if(rename($filename, $rand.'.txt'))
- {
-   echo 'File '.$filename.' has been renamed to <strong>'.$rand.'.txt</strong>';
- }
- else
- {
-   echo 'Error renaming';
- }
+//how to rename an uploaded file
+if(rename($filename, $rand.'.txt'))
+{
+    echo 'File '.$filename.' has been renamed to <strong>'.$rand.'.txt</strong>';
+}
+else
+{
+    echo 'Error renaming';
+}
 
- <!-- How to read a password from a file and check it with the entered password -->
+<!-- How to read a password from a file and check it with the entered password -->
 
- $filename = 'video96(hash).txt';
- if(isset($_POST['user_password']) && !empty($_POST['user_password']))
- {
-   $user_password = sha1($_POST['user_password']);
+$filename = 'video96(hash).txt';
+if(isset($_POST['user_password']) && !empty($_POST['user_password']))
+{
+    $user_password = sha1($_POST['user_password']);
 
-   $handle = fopen($filename, 'r');
-   $file_password = fread($handle, filesize($filename));
-   $file_password = trim($file_password);
+    $handle = fopen($filename, 'r');
+    $file_password = fread($handle, filesize($filename));
+    $file_password = trim($file_password);
 
-   if($user_password==$file_password)
-   {
-     echo 'Password ok';
-   }
-   else
-   {
-     echo 'Incorrect Password';
-   }
- }
- else
- {
-   echo 'Please enter a password';
- }
- ?>
+    if($user_password==$file_password)
+    {
+        echo 'Password ok';
+    }
+    else
+    {
+        echo 'Incorrect Password';
+    }
+}
+else
+{
+    echo 'Please enter a password';
+}
+?>
 
- <form action="video96.php" method="POST">
-   Password: <input type="password" name="user_password" /><br /><br />
-   <input type="submit" value="Submit" />
- </form>
+<form action="video96.php" method="POST">
+    Password: <input type="password" name="user_password" /><br /><br />
+    <input type="submit" value="Submit" />
+</form>
+
+<!-- How to make a 2D - array in php when we have all the values and know the keys -->
+
+$statuscounts[] = array
+(
+"0" => $newcount2,"1"=>$inprogresscount2, "2" =>$convertedcount2,"3"=>$droppedcount2,"4"=>$deferredcount2
+);

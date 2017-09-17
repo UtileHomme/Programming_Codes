@@ -124,6 +124,12 @@ Route::get('about', function () {
     return view('about');
 });
 
+<!-- How to set a route if the Controller directory has further file structure -->
+
+- If the Directory structure is App\Http\Controllers\Photos\AdminController then the "route" should look like
+
+Route::get('foo', 'Photos\AdminController@method');
+
 <!-- This is how we set a route which responds to multiple HTTP verbs -->
 
 Route::match(['get', 'post'], '/', function () {
@@ -292,6 +298,56 @@ Route::post('auth/login','Auth\LoginController@login')->name('login');      //na
 
 Route::resource('posts','PostController');
 
+<!-- How to define partial resource routes -- which means that some functions will be handled not all -->
+
+Route::resource('photo','PostController',['only'=> ['show','index']]);
+
+OR
+
+Route::resource('photo','PostController',['except'=> ['show','index']]);
+
+<!-- How to override the names of default functions given by the resource routes -->
+
+Route::resource('photo','PhotoController', ['names']=>['create'=>'photo.build']);
+
+<!-- If we want some actions to occur before the predefined functions in the resource Controller, we need to define the route before the resource controller  -->
+
+Route::get('photos/popular','PhotoController@method');
+
+Route::resource('photos','PhotoController');
+
+<!-- What is "method injection" in routes -->
+
+- There is a possibility that we have a form which is submitting some data and that is going through a "route" to some particular Controller function
+- That function should have an argument connecting those values
+
+One of the methods is "Illuminate\Http\Request"
+
+public function store(Request $request)
+{
+    $name = $request->name;
+}
+
+- If our route is defined like this
+    Route::put('user/{id}', 'UserController@update');
+
+then pass the "id" parameter inside the controller function
+
+public function update(Request $request, id)
+{
+
+}
+
+<!-- How to generate Route cache -->
+
+- Route cache is for loading the repetitive requests as fast as possible
+
+php artisan route:cache
+
+<!-- How to clear the Route cache -->
+
+php artisan route:clear
+
 <!-- This is how we display the person's name on the navbar after they have logged in  -->
 
 <!-- Auth::user pulls out the present details and we can manipulate it -->
@@ -416,13 +472,25 @@ Route::resource('posts','PostController');
     });
 
 
-
     <!-- How do we represent a middleware -->
 
     http://imgur.com/a/WjE0C
 
     - A request will be made to the app. First it goes to the Session Middleware, checks for the Authentication layer
     and then accordingly responds.
+
+    <!-- How to assign a specific middleware to a Controller inside the "construct" function -->
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->middleware('log')->only('index');
+
+        $this->middleware('subscribed')->except('store');
+
+
+    }
 
     <!-- What does the "web" middleware do -->
 
@@ -589,18 +657,44 @@ Route::resource('posts','PostController');
 
 <!-- How to put Download CSV functionality in PHP  -->
 
-$filename = "download.csv";
+$leads = DB::table('leads')
+        ->select('leads.id','leads.created_at','leads.createdby','leads.fName','leads.mName','leads.lName','leads.MobileNumber','leads.Alternatenumber','leads.EmailId','services.Branch','leads.Source','services.ServiceType','services.requested_service','services.ServiceStatus','services.Remarks','leads.AssesmentReq','services.GeneralCondition','services.RequestDateTime','services.AssignedTo','services.QuotedPrice','services.ExpectedPrice','services.PreferedGender','services.PreferedLanguage','personneldetails.PtfName','personneldetails.PtmName','personneldetails.PtlName','personneldetails.age','personneldetails.Gender','personneldetails.Relationship','personneldetails.Occupation','personneldetails.AadharNum','personneldetails.AlternateUHIDType','personneldetails.AlternateUHIDNumber','personneldetails.PTAwareofDisease','addresses.Address1','addresses.Address2','addresses.City','addresses.District','addresses.State','addresses.PinCode','addresses.PAddress1','addresses.PAddress2','addresses.PCity','addresses.PDistrict','addresses.PState','addresses.PPinCode','addresses.EAddress1','addresses.EAddress2','addresses.ECity','addresses.EDistrict','addresses.EState','addresses.EPinCode')
+        ->join('personneldetails', 'leads.id', '=', 'personneldetails.Leadid')
+        ->join('addresses', 'leads.id', '=', 'addresses.leadid')
+        ->join('services', 'leads.id', '=', 'services.LeadId')
+        ->where('ServiceStatus',$status)
+        ->orderBy('leads.id','DESC')
+        ->get();
 
-$fp = fopen('download.csv', 'w');
+        $leads = json_decode($leads,true);
 
-fputcsv($fp, $array );
-foreach ($leads as $fields) {
-    fputcsv($fp, $fields);
-}
+        $array = array( 'Lead Id', 'Created At' , 'Created By', 'Customer First Name', 'Customer Middle Name', 'Customer Middle Name', 'Customer Mobile', 'Customer Alternate Mobile Number',  'Email Id', 'City', 'Source', 'Service Type','Requested Service', 'Lead Status','Comments','Assessment Required','General Condition','Requested DateTime', 'Assigned To','Quoted Price', 'Expected Price','Preferred Gender', 'Preferred Language','Patient First Name'
+        ,'Patient Middle Name','Patient Last Name','Patient Age','Patient Gender','Relationship','Occupation','Aadhar Number','Alternate UHID Type','Alternate UHID Number', 'Patient Aware of Disease', 'Address1', 'Address2', 'City','District','State','PinCode', 'Present Address1', 'Present Address2', 'Present City','Present District','Present State','Present PinCode', 'Emergency Address1', 'Emergency Address2', 'Emergency City'
+        ,'Emergency District','Emergency State','Emergency PinCode');
+        // $list = array (
+        //     $leads
+        // );
+        //
+        //         $lists = array (
+        // array('aaa', 'bbb', 'ccc', 'dddd'),
+        // array('123', '456', '789'),
+        // array('aaa', 'bbb')
+        // );
+        // dd($list);
 
-fclose($fp);
+        $filename = "download.csv";
 
-$headers = array(
-    'Content-Type' => 'text/csv',
-);
-return Response::download($filename, 'download.csv', $headers);
+        $fp = fopen('download.csv', 'w');
+
+        fputcsv($fp, $array );
+        foreach ($leads as $fields) {
+            fputcsv($fp, $fields);
+        }
+
+        fclose($fp);
+
+        $headers = array(
+            'Content-Type' => 'text/csv',
+        );
+        return Response::download($filename, 'download.csv', $headers);
+    }

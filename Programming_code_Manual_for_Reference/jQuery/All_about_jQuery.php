@@ -3,6 +3,10 @@
 jQuery is a Javascript library for document traversing, event handling
 , animating and AJAX interactions
 
+<!-- How to include a JS file -->
+
+<script src="/js/bootstrap-datepicker.js" type="text/javascript"></script>
+
 <!-- Why do we put the script just before body -->
 
 - We wish to load all the elements before we actually start checking for elements using jQuery

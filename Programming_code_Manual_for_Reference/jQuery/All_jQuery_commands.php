@@ -1394,3 +1394,21 @@ $('#tabs').tabs({ ajaxOptions: {error: function(xhr, index, status, anchor)
 }
 //to set the expiry time (in days)
 }, cookie: { expires: 2 }});
+
+<!-- How to show date in a particular format using jQuery -->
+
+$('#FromDate').datepicker({
+    format: "yyyy-mm-dd"
+});
+$('#ToDate').datepicker({
+    format: "yyyy-mm-dd"
+});
+
+<!-- How to hide the date after it has been selected using the datepicker -->
+
+$('#FromDate').on('changeDate', function(ev){
+        $(this).datepicker('hide');
+    });
+    $('#ToDate').on('changeDate', function(ev){
+        $(this).datepicker('hide');
+    });
