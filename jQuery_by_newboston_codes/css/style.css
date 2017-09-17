@@ -1,6 +1,6 @@
 .table,tr, td
 {
-  border: 1px solid #000;
+    border: 1px solid #000;
 }
 
 .big
@@ -21,19 +21,37 @@
 
 .highlight
 {
-  background-color: red;
+    background-color: red;
 }
 
 ul
 {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    width: 100px;
+    padding: 0px;
+    list-style: none;
+    margin: 0px;
+
+}
+
+#list
+{
+    width: 120px;
+    height: 180px;
+    background-color: #f0f0f0;
+    border: 1px solid #000;
+
+    /*for adding a scroll when we run out of space*/
+    overflow: auto;
+}
+
+#list.border
+{
+    border-width: 2px;
 }
 
 .bold
 {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 body
@@ -83,10 +101,10 @@ body
 
 #verycenter
 {
-position: absolute;;
-height: 150px;
-width: 250px;
-background-color: #000;
+    position: absolute;;
+    height: 150px;
+    width: 250px;
+    background-color: #000;
 }
 
 #terms
@@ -126,4 +144,24 @@ background-color: #000;
 #main
 {
     height: 300px;
+}
+
+#slideNotice
+{
+    display: none;
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    top: 0;
+    left: 0;
+     background-color: #f0f0f0;
+     text-align: center;
+}
+
+#slideNotice h3
+{
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    top: 25%;
 }

@@ -1412,3 +1412,161 @@ $('#FromDate').on('changeDate', function(ev){
     $('#ToDate').on('changeDate', function(ev){
         $(this).datepicker('hide');
     });
+
+<!-- How to drag and drop some items from a list into another element -->
+
+$(document).ready(function() {
+    $('li').draggable({ containment: 'document', revert: true,
+    start: function()
+    {
+        //the name of the currently being dragged element
+        contents = $(this).text();
+        // alert()
+    }
+
+});
+
+    //only "accept" the "li" elements or "class=item" element
+    $('#list').droppable({hoverClass: 'border', accept: '.item',
+    drop: function()
+    {
+        //pick the element that is picked , and drop it inside the box
+        $('#list').append(contents + '<br>');
+    }
+ });
+});
+
+<!-- How to check if the username that the person is trying to register is available or already used in a database -->
+
+<!-- .js file -->
+
+$('#username').keyup(function()
+{
+    //getting the value of what is typed inside the input field
+    var username = $(this).val();
+
+    $('#username_status').text('Searching....');
+
+    if(username!='')
+    {
+        $.post('php/username_check.php', { username: username}, function(data)
+        {
+            $('#username_status').text(data);
+        }
+    );
+    }
+    else
+    {
+        $('#username_status').text('');
+    }
+}
+);
+
+<!-- the query -->
+
+<?php
+
+require 'init.php';
+
+if(isset($_POST['username']))
+{
+    $username = $_POST['username'];
+    // echo $username;
+    if(!empty($username))
+    {
+        $query = "SELECT `user_id` FROM `users` WHERE `name`=:username";
+
+        $result = $conn->prepare($query); //helps avoid sql injection
+        $result->bindParam(':username', $username, PDO::PARAM_STR); //putting parameters in place of actual data
+        $result->execute();
+
+        // echo $result->execute();
+        $num_of_rows = $result->rowCount(); //this will count the rows affected in the last execution of the query
+        //which are returned after executing the sql statement
+
+        if($num_of_rows ==1)
+        {
+            echo "Sorry the username is taken";
+        }
+        else if($num_of_rows == 0)
+        {
+            echo "The username is available";
+        }
+        // var_dump($num_of_rows);
+
+    }
+}
+
+?>
+
+<!-- How to show a slide down message when a buton is clicked giving some information about the action performed -->
+
+$('#save').click(function()
+{
+//update user settings
+//call slideNotice
+
+    slideNotice('Your settings have been saved');
+}
+);
+
+$('#delete_account').click(function()
+{
+//update user settings
+//call slideNotice
+
+    slideNotice('Your account has been deleted');
+}
+);
+
+<!-- function -->
+
+function slideNotice(text)
+{
+    $('#slideNotice').html('<h3>' + text  + '</h3>').slideDown().delay(1500).slideUp();
+}
+
+<!-- How to redirect a user to a url after the countdown timer reaches a particular point -->
+
+function counter(time, url)
+{
+    //after every 1 second, we are going to append "a" to our counter span
+    var interval = setInterval(function()
+    {
+        $('#counter').text(time);
+        time = time -1;
+
+        if(time==0)
+        {
+            //we wish to stop the interval as soon as time =0
+            clearInterval(interval);
+        window.location = url;
+        }
+    }, 1000);
+
+}
+
+$(document).ready(function() {
+    counter(5, 'http://www.google.com');
+});
+
+<!-- How to load a link on the same page without redirecting to the PHP file -->
+
+
+$(document).ready(function() {
+        //load the first links content by default
+        $('#content_area').load($('.menu_top:first').attr('href'));
+});
+
+$('.menu_top').click(function()
+{
+    //take the attribute associated with the link
+    var href = $(this).attr('href');
+
+    //first hide the previous href content and then fade in the one that is clicked
+    $('#content_area').hide().load(href).fadeIn('normal');
+
+    //this will not redirect the user to the page for which the link is clicked
+    return false;
+}
+);
