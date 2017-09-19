@@ -30,3 +30,7 @@ var myArray = ["Jatin", 44];
 <!-- This is how a nested array is created -->
 
 var ourArray = [["the universe", 42], ["everything", 101010]];
+
+<!-- How to prompt the user to enter something inside a field -->
+
+var user_name = prompt('Please enter your name');

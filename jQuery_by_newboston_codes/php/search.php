@@ -1,15 +1,15 @@
-<!-- How to write an update query in core PHP -->
+<?php
 
-UPDATE `table_name`
- SET `first_name` =:firstname, `surname` =:surname, `email`=:email
- WHERE `user_id`=:user_id
+require 'init.php';
 
-<!-- How to write SELECT Query using "LIKE" -->
+if(isset($_POST['search_term']))
+{
+    $search_term = $_POST['search_term'];
 
-SELECT `place` , `description` FROM `places` WHERE `place` LIKE ?
 
-<!-- How to retrieve result from query and display all results -->
-
+    //only if the field is not empty , run this
+    if(!empty($search_term))
+    {
         $query = "SELECT `place` , `description` FROM `places` WHERE `place` LIKE ?  ";
 
         $result = $conn->prepare($query); //helps avoid sql injection
@@ -31,3 +31,6 @@ SELECT `place` , `description` FROM `places` WHERE `place` LIKE ?
         {
             echo '<strong>'.$row['place'].'</strong><br /><br />';
         }
+    }
+}
+?>
