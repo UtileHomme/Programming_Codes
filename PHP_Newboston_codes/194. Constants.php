@@ -9,6 +9,7 @@
 
       public function Area($radius)
       {
+          //to access the constant inside any function
         return self::pi * ($radius*$radius);
       }
     }
