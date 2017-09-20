@@ -903,6 +903,19 @@ $('#button').click(function()
 }
 );
 
+<!-- Another way -->
+
+$.ajax({
+      type: "GET",
+      // this is the route
+      url:'allleadc' ,
+      data: {'keyword1' : keyword , 'status1':status , 'filter1' : filter,'_token':$('input[name=_token]').val() },
+      // This is coming from alldata view page
+      success: function(data){
+        $('#result').html(data);
+      }
+    });
+
 <!-- What are the different "AJAX" callback events -->
 
 $('#button').click(function()

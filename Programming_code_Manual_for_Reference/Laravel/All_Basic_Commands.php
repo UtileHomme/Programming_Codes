@@ -50,21 +50,21 @@ php artisan key:generate
 
 1. First extend from the blade that you want to copy most of the code
 
-    - @extends('layout/app')
+- @extends('layout/app')
 
 2. Inside the original blade put the following code for the part where you want things to be "Dynamic"
 
-    - <title>Laravel @yield('title')</title>
-    - @yield('body') or @section('body')
-                                    @show
+- <title>Laravel @yield('title')</title>
+- @yield('body') or @section('body')
+@show
 
 3. Inside the blade in which all the above is being copied, use the following
 
-    - @section('title','About')
+- @section('title','About')
 
-    - @section('body')
-    About
-    @endsection
+- @section('body')
+About
+@endsection
 
 ** Wherever @section('body') is found, the part of the original code will be replaced with the "specific" code
 
@@ -74,12 +74,12 @@ php artisan key:generate
 
 @section('title','Songs')
 @section('body')
-    {{'Songs are everything'}}
-    @foreach($songs as $song)
-    {{
-        $song->title.' '.$song->artist."\n"
-    }}
-    @endforeach
+{{'Songs are everything'}}
+@foreach($songs as $song)
+{{
+    $song->title.' '.$song->artist."\n"
+}}
+@endforeach
 @endsection
 
 
@@ -108,6 +108,14 @@ $posts = Post::orderBy('id','desc');
 <li><a href="{{ route('logout') }}">Logout</a></li>
 
 <p><a href="{{ url('password/reset')}}">Forgot My Password</a></p>
+
+<!-- How to find the row of a particular id and update a particular column-->
+
+//this is for finding the "row" where this product id exists
+$product = product::find($productid);
+
+//this will update the "OrderStatus" column with the status mentioned above
+$product->OrderStatus=$status;
 
 <!-- What are the available Route methods -->
 
@@ -258,7 +266,7 @@ $url = route('profile',['id'=>1]);
 <!-- This is how we pass a dynamic "method=PUT" inside a blade -->
 
 @section('editMethod')
-    {{method_field('PUT')}}
+{{method_field('PUT')}}
 @endsection
 
 <form class="form-horizontal" action="/todo/@yield('editId')" method="post">
@@ -329,7 +337,7 @@ public function store(Request $request)
 }
 
 - If our route is defined like this
-    Route::put('user/{id}', 'UserController@update');
+Route::put('user/{id}', 'UserController@update');
 
 then pass the "id" parameter inside the controller function
 
@@ -337,6 +345,14 @@ public function update(Request $request, id)
 {
 
 }
+
+<!-- How to add a Logout button on the navbar (blade code) -->
+
+<a href="{{ route('logout') }}" style=" font-family: myFirstFont;"
+onclick="event.preventDefault();
+document.getElementById('logout-form').submit();">
+Logout
+</a>
 
 <!-- How to generate Route cache -->
 
@@ -655,9 +671,9 @@ php artisan route:clear
         - the 2nd argument is the list of "values" that we want to send along the view page in the first argument
         - we also need to use the "use" function for this purpose
 
-<!-- How to put Download CSV functionality in PHP  -->
+        <!-- How to put Download CSV functionality in PHP  -->
 
-$leads = DB::table('leads')
+        $leads = DB::table('leads')
         ->select('leads.id','leads.created_at','leads.createdby','leads.fName','leads.mName','leads.lName','leads.MobileNumber','leads.Alternatenumber','leads.EmailId','services.Branch','leads.Source','services.ServiceType','services.requested_service','services.ServiceStatus','services.Remarks','leads.AssesmentReq','services.GeneralCondition','services.RequestDateTime','services.AssignedTo','services.QuotedPrice','services.ExpectedPrice','services.PreferedGender','services.PreferedLanguage','personneldetails.PtfName','personneldetails.PtmName','personneldetails.PtlName','personneldetails.age','personneldetails.Gender','personneldetails.Relationship','personneldetails.Occupation','personneldetails.AadharNum','personneldetails.AlternateUHIDType','personneldetails.AlternateUHIDNumber','personneldetails.PTAwareofDisease','addresses.Address1','addresses.Address2','addresses.City','addresses.District','addresses.State','addresses.PinCode','addresses.PAddress1','addresses.PAddress2','addresses.PCity','addresses.PDistrict','addresses.PState','addresses.PPinCode','addresses.EAddress1','addresses.EAddress2','addresses.ECity','addresses.EDistrict','addresses.EState','addresses.EPinCode')
         ->join('personneldetails', 'leads.id', '=', 'personneldetails.Leadid')
         ->join('addresses', 'leads.id', '=', 'addresses.leadid')
@@ -694,7 +710,7 @@ $leads = DB::table('leads')
         fclose($fp);
 
         $headers = array(
-            'Content-Type' => 'text/csv',
+        'Content-Type' => 'text/csv',
         );
         return Response::download($filename, 'download.csv', $headers);
     }
