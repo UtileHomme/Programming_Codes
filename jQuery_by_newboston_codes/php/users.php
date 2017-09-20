@@ -2,7 +2,8 @@
 
 require 'init.php';
 
-var_dump($_POST['user_name']);
+var_dump($_POST['action']);
+var_dump($_POST['username']);
 function user_joined($user_name, $conn)
 {
     $user_name = htmlentities($user_name);
@@ -13,12 +14,12 @@ function user_joined($user_name, $conn)
     $result->bindParam(':username', $user_name, PDO::PARAM_STR); //putting parameters in place of actual data
     $result->execute();
 }
-
-function user_left($user_name, $conn)
-{
-
-}
-
+//
+// function user_left($user_name, $conn)
+// {
+//
+// }
+//
 function user_list($conn)
 {
     $user_list = array();
@@ -41,14 +42,14 @@ function user_list($conn)
 
     return $user_list;
 }
-
-// first action is for joined, second action is for list
-if(isset($_POST['user_name'] ,  $_POST['action']) || isset($_POST['action']) )
+//
+// // first action is for joined, second action is for list
+if(isset($_POST['user_name'] ,  $_POST['action']) || isset($_POST['action1']) )
 {
     var_dump($_POST['user_name']);
     $user_name = $_POST['user_name'];
     $action = $_POST['action'];
-
+$action = $_POST['action1'];
     if($action == 'joined')
     {
         user_joined($user_name, $conn);

@@ -154,8 +154,8 @@ body
     width: 100%;
     top: 0;
     left: 0;
-     background-color: #f0f0f0;
-     text-align: center;
+    background-color: #f0f0f0;
+    text-align: center;
 }
 
 #slideNotice h3
@@ -164,4 +164,23 @@ body
     padding: 0px;
     margin: 0px;
     top: 25%;
+}
+
+#follow
+{
+    display: none;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 300px;
+    width: 180px;
+    background-color: #f0f0f0;
+    border: 1px solid #404040;
+    padding: 8px;
+}
+
+#comment
+{
+    height: 90px;
+    width: 360 px;
 }

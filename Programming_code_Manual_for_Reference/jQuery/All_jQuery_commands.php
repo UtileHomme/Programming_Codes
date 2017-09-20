@@ -1641,3 +1641,108 @@ $(document).ready(function() {
     }
 );
 });
+
+<!-- How to allow an image/div to scroll over a page of text -->
+
+
+$(document).ready(function() {
+
+    //to take away the "px" part of the attribute value
+    var current_top = parseInt($('#follow').css('top'));
+
+    var speed = 1000;
+
+    $('#follow').fadeIn(speed).click(function()
+    {
+        $(this).fadeOut(speed);
+    }
+
+);
+
+
+
+    $(window).scroll(function()
+    {
+        var top = $(window).scrollTop();
+
+        $('#follow').css('top', top + current_top);
+    }
+);
+});
+
+<!-- How to add emoticons to text in a textarea -->
+
+$(document).ready(function() {
+    $('.emoticon').click(function()
+    {
+        //get the value of the textarea content
+
+        //this is the scenario when the person doesn't type anything and puts an emoticon
+        var textarea_val = jQuery.trim($('#comment').val());
+
+        //get the value of the emoticon button that is clicked
+        var emoticon_val = $(this).attr('value');
+
+        //if there is no content, then do no add a space before the emoticon
+        if(textarea_val == '')
+        {
+            var sp = '';
+        }else
+        {
+            var sp = ' ';
+        }
+
+        //remove all content and append it along with the emoticon
+        //focus ensures that after clicking on the emoticon, the person doesn't have to click
+        // inside the textarea to get the cursor
+        $('#comment').focus().val(textarea_val + sp + emoticon_val + sp);
+    }
+);
+});
+
+<!-- How to show password by the conventional method -->
+
+$(document).ready(function() {
+
+    //append the checkbox to the password input type
+    $('input[type="password"]').after('<input type="checkbox" class="sp_checkbox" /> Show password');
+
+    //check if the status of the checkbox has been changed or not
+    $('.sp_checkbox').change(function()
+    {
+            // this variable represents every input "password" field on the page
+            var prev = $(this).prev();
+
+            var value = prev.val();
+
+            var type = prev.attr('type');
+
+            var name = prev.attr('name');
+
+            var id = prev.attr('id');
+
+            var class1 = prev.attr('class');
+
+            //if type is already password make it text else vice versa
+            var new_type = (type== 'password') ? 'text' : 'password';
+
+            //this will remove the input type = "text" field
+            prev.remove();
+
+            $(this).before('<input type="' + new_type + '" value="' + value +  '" name="' + name + '" id = "' + id +'" class = "' + class1 +'"/>');
+
+
+    }
+);
+});
+
+<!-- How to submit a form without a submit button -->
+
+$(document).ready(function() {
+    $('input[type="file"]').change(function()
+    {
+        //whenever input type is changed, the parent is the form and it will be submitted
+        $(this).parent().submit();
+    }
+);
+});
