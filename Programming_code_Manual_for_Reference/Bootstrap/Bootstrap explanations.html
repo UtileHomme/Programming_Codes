@@ -764,6 +764,25 @@ we can define divs as follows -->
             </div>
         </nav>
 
+        - To fix the navbar at the top without scrolling use class 'navbar-fixed-top'
+
+        - To make the navbar dark colored use class 'navbar-inverse'
+
+        - To make some tab on the navbar move to the left use the class 'navbar-left'
+
+        - To make some tab on the navbar move to the right use the class 'navbar-right'
+
+        - data-target attribute is required for targetting an 'id' or a 'class'
+
+        - data-spy="scroll" ensures that as we scroll the corresspoing button becomes active
+
+        - data-offset attribute is required for determining how soon or how late will the button activeness change when scrolled
+
+        - To get the navbar in the form of a stack on the left hand side use the classes 'nav-pills nav-stacked'
+
+        - data-spy="affix" is used when we want to scroll through some point but after that we want the rest of the elements to be fixed
+        use the data-offset-top property along with it
+
         <!-- What are breadcrumbs and how to use it -->
 
         - breadcrumbs tell the user the page they are currently on
@@ -804,22 +823,312 @@ we can define divs as follows -->
             <li><a href="#">&raquo;</a></li>
         </ul>
 
-        - To fix the navbar at the top without scrolling use class 'navbar-fixed-top'
+        <!-- How to create a panel  -->
 
-        - To make the navbar dark colored use class 'navbar-inverse'
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">What is Bootstrap</h3>
+            </div>
+            <div class="panel-body">
+                Bootstrap is a free, open source and is the most popular HTML, CSS and JavaScript framework developed by twin.
+                Bootstrap is a free, open source and is the most popular HTML, CSS and JavaScript framework developed by twin.
+                Bootstrap is a free, open source and is the most popular HTML, CSS and JavaScript framework developed by twin.
+                Bootstrap is a free, open source and is the most popular HTML, CSS and JavaScript framework developed by twin.
+                Bootstrap is a free, open source and is the most popular HTML, CSS and JavaScript framework developed by twin.
+                Bootstrap is a free, open source and is the most popular HTML, CSS and JavaScript framework developed by twin.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mary</td>
+                        <td>Kay</td>
+                        <td>Mary@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Msdfary</td>
+                        <td>Kaydsf</td>
+                        <td>Mary@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Msdfary</td>
+                        <td>Kay</td>
+                        <td>Mary@gmail.com</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="panel-footer">
+                PraginTech
+            </div>
+        </div>
 
-        - To make some tab on the navbar move to the left use the class 'navbar-left'
+        - "panel-body" class will give some padding between the body and the border
 
-        - To make some tab on the navbar move to the right use the class 'navbar-right'
+        <!-- What is the use of "well" -->
+
+        - It is used when we want some content to stand out in the page
+
+        <!-- How to implement Bootstrap well -->
+
+        <div class="col-xs-12">
+
+            <div class="well">
+                Bootstrap is a free, open source and is the most popular HTML, CSS and JavaScript framework developed by twin.
+            </div>
+            <div class="well well-lg">
+                Bootstrap is a free, open source and is the most popular HTML, CSS and JavaScript framework developed by twin.
+            </div>
+            <div class="well well-sm">
+                Bootstrap is a free, open source and is the most popular HTML, CSS and JavaScript framework developed by twin.
+            </div>
+        </div>
+
+        <!-- How to add labels and badges using Bootstrap -->
+
+        - Labels are used for naming any fields
+        - Badges are used for appending some extra information like a number or small information to that label
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="well">
+                        <h3>Dot Net Courses from PragimTech</h3>
+                        <hr />
+                        <h4>C#<span class="label label-default">Beginner</span></h4>
+                        <h4>ASP.NET<span class="label label-default">Beginner</span></h4>
+                        <h4>ADO.NET<span class="label label-default">Intermediate</span></h4>
+                        <h4>WCF<span class="label label-default">Advanced</span></h4>
+                        <h4>Bootstrap<span class="label label-default">New Course</span></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <a href="#">Inbox<span class="badge">10</span></a><br />
+                    <a href="#">Sent<span class="badge">2</span></a><br />
+                    <a href="#">Spam<span class="badge">3</span></a><br />
+                    <a href="#">Trash<span class="badge">5</span></a><br />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <br />
+                    <button class="btn btn-primary">Inbox<span class="badge">10</span></a>
+                        <button class="btn btn-primary">Sent<span class="badge">2</span></a>
+                            <button class="btn btn-primary">Spam<span class="badge">3</span></a>
+                                <button class="btn btn-primary">Trash<span class="badge">5</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- How to get static and animated progress bars on a page -->
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-5">
+
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped" style="width:80%">
+                                            80%
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-5">
+
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-info active progress-bar-striped" style="width:80%; min-width:20px">
+                                            80%
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-5">
+
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped" style="width:1%; min-width:20px">
+                                            1%
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="progress">
 
 
-        - data-target attribute is required for targetting an 'id' or a 'class'
+                                <div class="row">
+                                    <div class="col-xs-5">
 
-        - data-spy="scroll" ensures that as we scroll the corresspoing button becomes active
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-success" style="width:25%; min-width:20px">
+                                                Login
+                                            </div>
+                                            <div class="progress-bar progress-bar-striped progress-bar-danger" style="width:25%; min-width:20px">
+                                                Shipping
+                                            </div>
+                                            <div class="progress-bar progress-bar-striped progress-bar-warning" style="width:25%; min-width:20px">
+                                                Payment
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-        - data-offset attribute is required for determining how soon or how late will the button activeness change when scrolled
+                        <!-- What is jumbotron and how is it used -->
 
-        - To get the navbar in the form of a stack on the left hand side use the classes 'nav-pills nav-stacked'
+                        - jumbotron is used for showing any key content with rounded corners on a page
 
-        - data-spy="affix" is used when we want to scroll through some point but after that we want the rest of the elements to be fixed
-        use the data-offset-top property along with it
+                        <div class="jumbotron">
+                            <div class="container">
+
+                                <h1>Bootstrap Tutorial</h1>
+                                <p>Bootstrap is a free, open source and is the most popular HTML, CSS and JS framework</p>
+                                <p><a class="btn btn-lg btn-primary" href="http://www.youtube.com">Get Started</a></p>
+                            </div>
+                        </div>
+
+                        <!-- How to add images alongside a text  -->
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-7">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img src="images/med1.jpg" class="media-object" alt="meditation" style="width:100px; height:100px;" />
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Jatin <small><i>July 20, 2016</i></small></h4>
+                                            <p>
+                                                Bootstrap is a free, open source framework.
+                                                Bootstrap is a free, open source framework.
+                                                Bootstrap is a free, open source framework.
+                                                Bootstrap is a free, open source framework.
+                                                Bootstrap is a free, open source framework.
+                                                Bootstrap is a free, open source framework.
+                                            </p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="media">
+                                        <div class="media-left media-middle">
+                                            <a href="#">
+                                                <img src="images/med1.jpg" class="media-object" alt="meditation" style="width:100px; height:100px;" />
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Jatin <small><i>July 20, 2016</i></small></h4>
+                                            <p>
+                                                Bootstrap is a free, open source framework.
+                                                Bootstrap is a free, open source framework.
+                                                Bootstrap is a free, open source framework.
+                                                Bootstrap is a free, open source framework.
+                                                Bootstrap is a free, open source framework.
+                                                Bootstrap is a free, open source framework.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="media">
+                                        <div class="media-left media-bottom">
+                                            <a href="#">
+                                                <img src="images/med1.jpg" class="media-object" alt="meditation" style="width:100px; height:100px;" />
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Jatin <small><i>July 20, 2016</i></small></h4>
+                                            <p>
+                                                Bootstrap is a free, open source framework.
+                                                Bootstrap is a free, open source framework.
+                                                Bootstrap is a free, open source framework.
+                                                Bootstrap is a free, open source framework.
+                                                Bootstrap is a free, open source framework.
+                                                Bootstrap is a free, open source framework.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <br /><br /><br />
+                                    <ul class="media-list">
+
+
+                                        <li class="media">
+                                            <div class="media-left">
+                                                <a href="#">
+                                                    <img src="images/med1.jpg" class="media-object" alt="meditation" style="width:100px; height:100px;" />
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h4 class="media-heading">Jatin <small><i>July 20, 2016</i></small></h4>
+                                                <p>
+                                                    Bootstrap is a free, open source framework.
+                                                    Bootstrap is a free, open source framework.
+                                                    Bootstrap is a free, open source framework.
+                                                    Bootstrap is a free, open source framework.
+                                                    Bootstrap is a free, open source framework.
+                                                    Bootstrap is a free, open source framework.
+                                                </p>
+
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <a href="#">
+                                                            <img src="images/med5.jpg" class="media-object" alt="meditation" style="width:100px; height:100px;" />
+                                                        </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading">Sam <small><i>July 20, 2016</i></small></h4>
+                                                        <p>
+                                                            Bootstrap is a free, open source framework.
+                                                            Bootstrap is a free, open source framework.
+                                                            Bootstrap is a free, open source framework.
+                                                            Bootstrap is a free, open source framework.
+                                                            Bootstrap is a free, open source framework.
+                                                            Bootstrap is a free, open source framework.
+                                                        </p>
+                                                        <div class="media">
+                                                            <div class="media-left media-middle">
+                                                                <a href="#">
+                                                                    <img src="images/med1.jpg" class="media-object" alt="meditation" style="width:100px; height:100px;" />
+                                                                </a>
+                                                            </div>
+                                                            <div class="media-body">
+                                                                <h4 class="media-heading">Jatin <small><i>July 20, 2016</i></small></h4>
+                                                                <p>
+                                                                    Bootstrap is a free, open source framework.
+                                                                    Bootstrap is a free, open source framework.
+                                                                    Bootstrap is a free, open source framework.
+                                                                    Bootstrap is a free, open source framework.
+                                                                    Bootstrap is a free, open source framework.
+                                                                    Bootstrap is a free, open source framework.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>

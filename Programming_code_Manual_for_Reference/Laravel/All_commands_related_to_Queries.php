@@ -82,3 +82,32 @@ $processingcount1= DB::table('leads')
 ->orwhere('pharmacies.pOrderStatus',$status1)
 ->orderBy('prodleads.id', 'DESC')
 ->count();
+
+<!-- How to add data from "Submit" form to db -->
+
+$lead = new lead;
+
+$lead->fName=$request->clientfname;
+$lead->mName=$request->clientmname;
+$lead->lName=$request->clientlname;
+$lead->EmailId=$request->clientemail;
+$lead->Source=$source;
+$lead->MobileNumber=$request->clientmob;
+$lead->Alternatenumber=$request->clientalternateno;
+$lead->EmergencyContact =$request->EmergencyContact;
+$lead->AssesmentReq=$request->assesmentreq;
+$lead->createdby=$request->loginname;
+$lead->Referenceid=$ref;
+$lead->empid=$empid;
+$lead->save();
+
+<!-- How to find the "max" id from the table -->
+
+$leadid=DB::table('leads')->max('id');
+
+<!-- How to update a particular field in the table -->
+
+DB::table('provisionalleads')->where('id',$pid)->update(['active'=>'0']);
+
+// retrieve all the column and the corresponding details from the particular row
+$lead = lead::find($leadid);

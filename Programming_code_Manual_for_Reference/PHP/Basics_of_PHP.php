@@ -3,10 +3,22 @@
 - It stands for PHP(Personal Home Page) Hypertext Preprocessor.
 - It is a server side programming language
 - It is used to create dynamic content on a website
-- PHP is a case sensitive language.
+- PHP is a case sensitive language (all variable names are case-sensitive but not the keywords).
+- is a loosely typed language, .i.e., we do not have to tell which data type the variable is
 
 - When a PHP page is accessed, the PHP code is read or parsed by the server the page resides on.
 - The output from the PHP functions are returned as HTML code which can be read by the browser
+
+<!-- What can PHP do -->
+
+- It can generate dynamic page content
+- It can create, open, read, write, delete and close files on the server
+- can collect form data
+- can send and receive cookies
+- can add, delete and modify data in a database
+- can be used to control user-access
+- can encrypt data
+
 
 <!-- How to open a server in php -->
 
@@ -178,6 +190,73 @@ echo $$a;     // $(test)  --> hello world
 **** $_SERVER['REMOTE_ADDR']; returns the server IP address
 
 *** use "global $variable_name" inside the function to use the global variable
+
+Eg -
+
+<?php
+$x = 5;
+$y = 10;
+
+function myTest() {
+   global $x, $y;
+   $y = $x + $y;
+}
+
+myTest();
+echo $y; // outputs 15
+?>
+
+*** PHP stores all global variables inside an array called $GLOBALS [index].
+- the "index" holds the name of the variable
+
+Eg -
+
+<?php
+$x = 5;
+$y = 10;
+
+function myTest() {
+   $GLOBALS['y'] = $GLOBALS['x'] + $GLOBALS['y'];
+}
+
+myTest();
+echo $y; // outputs 15
+?>
+
+<!-- What is global and local scope -->
+
+- A variable declared outside a function has "global" scope and can be accessed outside a function
+
+Eg -
+
+<?php
+$x = 5; // global scope
+
+function myTest() {
+   // using x inside this function will generate an error
+   echo "<p>Variable x inside function is: $x</p>";
+}
+myTest();
+
+echo "<p>Variable x outside function is: $x</p>";
+?>
+
+- A variable declared within a function has "local" scope and can be accessed "inside" a function
+
+Eg -
+
+<?php
+function myTest() {
+   $x = 5; // local scope
+   echo "<p>Variable x inside function is: $x</p>";
+}
+myTest();
+
+// using x outside the function will generate an error
+echo "<p>Variable x outside function is: $x</p>";
+?>
+
+- We can have "local variables" with the same name in different functions
 
 <!-- How to use "str_word_count" for counting letters in a string -->
 
@@ -382,6 +461,7 @@ $_SERVER["HTTP_USER_AGENT"]
 - There is a possibility that some content might have "HTML" tags attached to them
 - To avoid storing HTML embedded code into a database, pass the data into "htmlspecialchars"
 - Protects from XSS protection
+- it will replace "<" with &lt
 
 <!-- How to show the name of the files which we are uploading -->
 
@@ -424,3 +504,51 @@ unlink($file_name)
 
 //first argument is filename , second is the one to rename to
 rename($filename, $rand.'.txt')
+
+<!-- How to define constants -->
+
+define(name, value, case-sensitivity)
+
+<!-- How to find the no of elements in an array -->
+
+$a = count(array_name);
+
+<!-- How to create an "associative array" -->
+
+$age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+
+<!-- How to return the filename of a currently executing script -->
+
+- use "$_SERVER['PHP_SELF']"
+
+<!-- How to return the IP address of the host server -->
+
+- use "$_SERVER['SERVER_ADDR']"
+
+<!-- How to return the name of the host server like www.youtube.com-->
+
+- use "$_SERVER['SERVER_NAME']"
+
+<!-- How to return the name of the information protocol like HTTP/1.1 -->
+
+- use "$_SERVER['SERVER_PROTOCOL']"
+
+<!-- How to return the kind of HTTP method used to access the page -->
+
+- use "$_SERVER['REQUEST_METHOD']"
+
+<!-- how to return the complete URL of the current page -->
+
+- use "$_SERVER['HTTP_REFERER']"
+
+<!-- how to return the IP address from where the user is viewing the current page -->
+
+- use "$_SERVER['REMOTE_ADDR']"
+
+<!-- how to return the Host name from where the user is viewing the current page -->
+
+- use "$_SERVER['REMOTE_HOST']"
+
+<!-- how to return the path of the current script -->
+
+- use "$_SERVER['SCRIPT_NAME']"

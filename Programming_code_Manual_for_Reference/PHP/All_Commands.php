@@ -301,6 +301,64 @@ if(isset($_POST['user_input']) && !empty($_POST['user_input']))
     <input type="submit" value="submit" />
 </form>
 
+<!-- How to use "foreach" loop -->
+
+- it is used to loop through each key/value pair in an array
+
+Eg -
+
+<?php
+$colors = array("red", "green", "blue", "yellow");
+
+foreach ($colors as $value) {
+    echo "$value <br>";
+}
+?>
+
+<!-- How to loop through an associative array -->
+
+<?php
+$age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+
+foreach($age as $x => $x_value) {
+    echo "Key=" . $x . ", Value=" . $x_value;
+    echo "<br>";
+}
+?>
+
+<!-- How to sort an array in ascending order on the basis of values -->
+
+<?php
+$cars = array("Volvo", "BMW", "Toyota");
+sort($cars);
+?>
+
+** for descending order, use "rsort"
+
+<!-- How to sort an associative array in ascending order on the basis of values -->
+
+<?php
+$age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+asort($age);
+?>
+
+<!-- How to sort an associative array in ascending order on the basis of keys -->
+
+<?php
+$age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+ksort($age);
+?>
+
+<!-- How to sort an associative array in descending order on the basis of values -->
+
+<?php
+$age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+arsort($age);
+?>
+
+**krsort for descending on the basis of keys
+
+
 <!-- This is how we check for a GET variable in PHP -->
 
 if(isset($_POST['user_input']) && !empty($_POST['user_input']))
@@ -644,6 +702,14 @@ if(isset($_POST['user_input']) && !empty($_POST['user_input']))
     }
     ?>
 
+    <!-- How to read data from a file using "readfile" function -->
+
+    <?php
+    echo readfile("webdictionary.txt");
+    ?>
+
+    -- "webdictionary.txt" is the file name
+
     <!-- How to append data to a file -->
 
     <?php
@@ -702,6 +768,36 @@ $string = implode(', ', $names_array);
 
 echo $string;
 
+?>
+
+<!-- How to read a single line from a file -->
+
+<?php
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+echo fgets($myfile);
+fclose($myfile);
+?>
+
+<!-- How to check for "end of file" -->
+
+<?php
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+// Output one line until end-of-file
+while(!feof($myfile)) {
+  echo fgets($myfile) . "<br>";
+}
+fclose($myfile);
+?>
+
+<!-- How to read a single character from a file -->
+
+<?php
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+// Output one line until end-of-file
+while(!feof($myfile)) {
+  echo fgets($myfile) . "<br>";
+}
+fclose($myfile);
 ?>
 
 <!-- How to convert date from one format to another -->
@@ -881,36 +977,177 @@ $statuscounts[] = array
 
 function divide($num1, $num2)
 {
-  if($num2==0)
-  {
-    throw new Exception('Cannot divide by zero. ');
-  }
-  else
-  {
-    return ($num1/$num2);
-  }
+    if($num2==0)
+    {
+        throw new Exception('Cannot divide by zero. ');
+    }
+    else
+    {
+        return ($num1/$num2);
+    }
 }
 
 echo divide(10,0);
- ?>
+?>
 
- <!-- //How to use try, throw and catch while throwing an exception -->
+<!-- //How to use try, throw and catch while throwing an exception -->
 
- try
- {
-   if($age>18)
-   {
-     echo 'You are old enough';
-   }
-   else
-   {
-     throw new Exception('Not old enough');    //if something goes wrong, throw the message
-   }
- } catch (Exception $e)
- {
-     echo 'Error: '.$e->getMessage();
- }
+try
+{
+    if($age>18)
+    {
+        echo 'You are old enough';
+    }
+    else
+    {
+        throw new Exception('Not old enough');    //if something goes wrong, throw the message
+    }
+} catch (Exception $e)
+{
+    echo 'Error: '.$e->getMessage();
+}
 
 -- try is used to check whether the Exception occured or not
 -- throw generates the exception message if the try part comes out true
 -- catch takes action for the Exception thrown
+
+<!-- How to define "constants" in PHP -->
+
+<!-- defaults case sensitivity is "false", this means that only the defined "sensitivity" can be used  -->
+<?php
+define("GREETING", "Welcome to W3Schools.com!");
+echo GREETING;
+?>
+
+<?php
+define("GREETING", "Welcome to W3Schools.com!", true);
+echo greeting;
+?>
+
+** constants are global. They can be accessed inside any function
+
+<!-- How to validate "names" in INPUT fields -->
+
+$name = test_input($_POST["name"]);
+if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+    $nameErr = "Only letters and white space allowed";
+}
+
+<!-- How to validate "emails" in INPUT fields -->
+
+$email = test_input($_POST["email"]);
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $emailErr = "Invalid email format";
+}
+
+<!-- How to validate "URL" in INPUT fields -->
+
+$website = test_input($_POST["website"]);
+if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+    $websiteErr = "Invalid URL";
+}
+
+<!-- How to keep some values inside the form even after it has been submitted -->
+
+Name: <input type="text" name="name" value="<?php echo $name;?>">
+
+<!-- How to define Multi-dimensional arrays -->
+
+$cars = array
+(
+array("Volvo",22,18),
+array("BMW",15,13),
+array("Saab",5,2),
+array("Land Rover",17,15)
+);
+
+<!-- How to access Multi-dimensional arrays -->
+
+<?php
+for ($row = 0; $row < 4; $row++) {
+    echo "<p><b>Row number $row</b></p>";
+    echo "<ul>";
+    for ($col = 0; $col < 3; $col++) {
+        echo "<li>".$cars[$row][$col]."</li>";
+    }
+    echo "</ul>";
+}
+?>
+
+<!-- What is the format for dates in PHP -->
+
+date(format,timestamp)
+
+<!-- How to represent timestamp in the form of dates -->
+
+<?php
+echo "Today is " . date("Y/m/d") . "<br>";
+echo "Today is " . date("Y.m.d") . "<br>";
+echo "Today is " . date("Y-m-d") . "<br>";
+echo "Today is " . date("l");
+?>
+
+- "l" is the day of the week
+
+<?php
+echo "The time is " . date("h:i:sa");
+?>
+
+- "h" is in 12 hour format
+- "i" from 00 to 59
+- "s" from 00 to 59
+- "a" is lowercase a.m. or p.m.
+
+<!-- This is how we set a default timezone -->
+
+<?php
+date_default_timezone_set("America/New_York");
+echo "The time is " . date("h:i:sa");
+?>
+
+<!-- How to use "mktime" to generate a date based on parameters -->
+
+mktime(hour,minute,second,month,day,year)
+
+<?php
+$d=mktime(11, 14, 54, 8, 12, 2014);
+echo "Created date is " . date("Y-m-d h:i:sa", $d);
+?>
+
+<!-- How to use "strtotime" to generate a date -->
+
+<?php
+$d=strtotime("10:30pm April 15 2014");
+echo "Created date is " . date("Y-m-d h:i:sa", $d);
+?>
+
+<!-- How to generate time based on the string values -->
+
+<?php
+$d=strtotime("tomorrow");
+echo date("Y-m-d h:i:sa", $d) . "<br>";
+
+$d=strtotime("next Saturday");
+echo date("Y-m-d h:i:sa", $d) . "<br>";
+
+$d=strtotime("+3 Months");
+echo date("Y-m-d h:i:sa", $d) . "<br>";
+?>
+
+<?php
+$startdate = strtotime("Saturday");
+$enddate = strtotime("+6 weeks", $startdate);
+
+while ($startdate < $enddate) {
+    echo date("M d", $startdate) . "<br>";
+    $startdate = strtotime("+1 week", $startdate);
+}
+?>
+
+<!-- How to output days until a given day -->
+
+<?php
+$d1=strtotime("July 04");
+$d2=ceil(($d1-time())/60/60/24);
+echo "There are " . $d2 ." days until 4th of July.";
+?>

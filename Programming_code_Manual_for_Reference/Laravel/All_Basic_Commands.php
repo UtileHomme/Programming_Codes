@@ -68,6 +68,15 @@ About
 
 ** Wherever @section('body') is found, the part of the original code will be replaced with the "specific" code
 
+<!-- How to show tabular view fields in mobile using "+" sign  -->
+
+<th  data-hide="phone,tablet"><b> Created At </b></th>
+<th  data-hide="phone,tablet"><b> Assigned To </b></th>
+
+<!-- How to add a create route on a button functionality -->
+
+<a href="/cc/create?name={{ Auth::guard('admin')->user()->name }}">  <img src="/img/NewCreateLead.png" class="img-responsive" alt="add" style="    display: -webkit-inline-box;"></a>
+
 <!-- This is how we access the variable data received using "get" in query on blade -->
 
 @extends('layout.app');
