@@ -617,6 +617,10 @@ if(isset($_POST['user_input']) && !empty($_POST['user_input']))
     not good for sensitive data
     */
 
+    // syntax
+
+    setcookie(name, value, expire, path, domain, secure, httponly);
+
     //valid for video 75-76
     $time = time();
 
@@ -625,6 +629,18 @@ if(isset($_POST['user_input']) && !empty($_POST['user_input']))
 
     //this will unset the cookie
     setcookie('username' , 'alex', $time-1000);
+
+*** the setcookie function must appear before the "html" tag
+
+// How to check if "cookies" are enabled or not
+
+<?php
+if(count($_COOKIE) > 0) {
+    echo "Cookies are enabled.";
+} else {
+    echo "Cookies are disabled.";
+}
+?>
 
     /*
     we need to unset to log the user out -> done while clicking LOG OUT button
@@ -660,6 +676,8 @@ if(isset($_POST['user_input']) && !empty($_POST['user_input']))
     //closes the connection with the file
     fclose($handle);
     ?>
+
+    ** if we close the file after writing once, open it again, and try to write into it, the previous data will be overwritten
 
     <!-- How to read a data on a line by line basis -->
 

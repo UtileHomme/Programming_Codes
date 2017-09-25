@@ -1132,3 +1132,213 @@ we can define divs as follows -->
                                 </div>
                             </div>
                         </div>
+
+<!-- How to add a button which toggles images on click of a button without jquery -->
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <button data-target="#imageGallery" class="btn btn-primary" data-toggle="collapse">
+      Toggle Image Gallery
+    </button>
+  </div>
+  <div class="panel-body collapse" id="imageGallery">
+    <div class="col-xs-4">
+      <a href="images/med1.jpg" class="thumbnail">
+        <p>Meditation</p>
+        <img src="images/med1.jpg">
+      </a>
+    </div>
+
+    <div class="col-xs-4">
+      <a href="images/med3.jpg" class="thumbnail">
+        <p>Meditation 2</p>
+        <img src="images/med2.jpg">
+      </a>
+    </div>
+
+    <div class="col-xs-4"><a href="images/med2.jpg" class="thumbnail">
+      <p>Meditation 3</p>
+      <img src="images/med3.jpeg" alt="">
+    </a>
+  </div>
+</div>
+</div>
+
+
+<!-- How to add a button which toggles images on click of a button with jquery -->
+
+<!-- bootstrap code -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <button id=toggleButton class="btn btn-primary">
+      Toggle Image Gallery
+    </button>
+    <button id=hideButton class="btn btn-primary">
+      Hide Image Gallery
+    </button>
+    <button id=showButton class="btn btn-primary">
+      Show Image Gallery
+    </button>
+
+  </div>
+  <div class="panel-body collapse" id="imageGallery">
+    <div class="col-xs-4">
+      <a href="images/med1.jpg" class="thumbnail">
+        <p>Meditation</p>
+        <img src="images/med1.jpg">
+      </a>
+    </div>
+
+    <div class="col-xs-4">
+      <a href="images/med3.jpg" class="thumbnail">
+        <p>Meditation 2</p>
+        <img src="images/med2.jpg">
+      </a>
+    </div>
+
+    <div class="col-xs-4"><a href="images/med2.jpg" class="thumbnail">
+      <p>Meditation 3</p>
+      <img src="images/med3.jpeg" alt="">
+    </a>
+  </div>
+</div>
+</div>
+
+<!-- jquery code -->
+<script type="text/javascript">
+$(document).ready(function()
+{
+  $('#toggleButton').click(function()
+  {
+    $('#imageGallery').collapse('toggle');
+  }
+);
+$('#hideButton').click(function()
+{
+  $('#imageGallery').collapse('hide');
+}
+);
+$('#showButton').click(function()
+{
+  $('#imageGallery').collapse('show');
+}
+);
+}
+);
+</script>
+
+<!-- How to add a bootstrap accordion on the page -->
+
+<div class="col-xs-7">
+  <div id="accordion" class="panel-group">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a href="#panelBodyOne" data-toggle="collapse" data-parent="#accordion">
+            Asia
+          </a>
+        </h4>
+      </div>
+      <div id="panelBodyOne" class="panel-collapse collapse">
+        <div class="panel-body">
+          <ul>
+            <li>India</li>
+            <li>China</li>
+            <li>Japan</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a href="#panelBodyTwo" data-toggle="collapse" data-parent="#accordion">
+            Europe
+          </a>
+        </h4>
+      </div>
+      <!-- collapse in to keep this one expaned -->
+      <div id="panelBodyTwo" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <ul>
+            <li>UK</li>
+            <li>France</li>
+            <li>Germany</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a href="#panelBodyThree" data-toggle="collapse" data-parent="#accordion">
+            North America
+          </a>
+        </h4>
+      </div>
+      <div id="panelBodyThree" class="panel-collapse collapse">
+        <div class="panel-body">
+          <ul>
+            <li>USA</li>
+            <li>Canada</li>
+            <li>Mexico</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- How to use "accordion" with images -->
+
+<div class="col-xs-12">
+  <div id="accordion" class="panel-group">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a href="#panelBodyOne" data-toggle="collapse" data-parent="#accordion">
+            Asia
+          </a>
+        </h4>
+      </div>
+      <div id="panelBodyOne" class="panel-collapse collapse">
+        <div class="panel-body">
+          <img src="images/med1.jpg" class="img-responsive" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a href="#panelBodyTwo" data-toggle="collapse" data-parent="#accordion">
+            Europe
+          </a>
+        </h4>
+      </div>
+      <!-- collapse in to keep this one expaned -->
+      <div id="panelBodyTwo" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <img src="images/med2.jpg" class="img-responsive" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a href="#panelBodyThree" data-toggle="collapse" data-parent="#accordion">
+            North America
+          </a>
+        </h4>
+      </div>
+      <div id="panelBodyThree" class="panel-collapse collapse">
+        <div class="panel-body">
+          <img src="images/med3.jpeg" class="img-responsive" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

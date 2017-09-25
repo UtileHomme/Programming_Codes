@@ -552,3 +552,73 @@ $age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
 <!-- how to return the path of the current script -->
 
 - use "$_SERVER['SCRIPT_NAME']"
+
+<!-- Difference between "sanitizing" and "validating" -->
+
+- Validating = Determine if the data is in proper form
+- Sanitizing = Remove any illegal character from the data
+
+<!-- How to sanitize a "string" -->
+
+- this will remove all HTML tags
+
+<?php
+$str = "<h1>Hello World!</h1>";
+$newstr = filter_var($str, FILTER_SANITIZE_STRING);
+echo $newstr;
+?>
+
+<!-- How to validate an "integer" -->
+
+<?php
+$int = 0;
+
+if (filter_var($int, FILTER_VALIDATE_INT) === 0 || !filter_var($int, FILTER_VALIDATE_INT) === false) {
+    echo("Integer is valid");
+} else {
+    echo("Integer is not valid");
+}
+?>
+
+<!-- How to validate an IP address -->
+
+$ip = "127.0.0.1";
+
+if (!filter_var($ip, FILTER_VALIDATE_IP) === false) {
+    echo("$ip is a valid IP address");
+} else {
+    echo("$ip is not a valid IP address");
+}
+?>
+
+<!-- How to sanitize and validate an email address -->
+
+<?php
+$email = "john.doe@example.com";
+
+// Remove all illegal characters from email
+$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+// Validate e-mail
+if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+    echo("$email is a valid email address");
+} else {
+    echo("$email is not a valid email address");
+}
+?>
+
+<!-- How to sanitize and validate an URL -->
+
+<?php
+$url = "https://www.w3schools.com";
+
+// Remove all illegal characters from a url
+$url = filter_var($url, FILTER_SANITIZE_URL);
+
+// Validate url
+if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
+    echo("$url is a valid URL");
+} else {
+    echo("$url is not a valid URL");
+}
+?>
