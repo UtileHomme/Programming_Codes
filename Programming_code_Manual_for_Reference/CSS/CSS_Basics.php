@@ -19,7 +19,7 @@ An Analogy
   - they will appear in a new line from whatever content went before it and any content
    that goes after it will also begin on a new line
 
-  Eg - paragraphs, list, navigation menus, footers etc.
+  Eg - paragraphs, list, navigation menus, footers,headers etc.
 
 2. Inline level elements
   - are contained within block-level elements and surround only small parts of the document's content
@@ -59,3 +59,8 @@ An Analogy
 - The element is taken out of the normal flow of the page
 - All the elements are made to shift from the window margin
 - might overlap other elements too
+
+<!-- How to add link to access font-awesome icons -->
+
+<link rel="stylesheet" href=""https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"">
+</head>

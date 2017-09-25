@@ -492,6 +492,10 @@ para.onclick = function() {
 64 bytes from 63.245.215.20: icmp_seq=0 ttl=40 time=158.233 ms
 </samp>
 
-<!-- How to add slider button in HTML -->
+<!-- How to make an image float to the "right" or "left" of some text -->
 
-  <span class="slider round"></span>
+<p><img src="smiley.gif" alt="Smiley face" style="float:right;width:42px;height:42px;">
+The image will float to the right of the text.</p>
+
+<p><img src="smiley.gif" alt="Smiley face" style="float:left;width:42px;height:42px;">
+The image will float to the left of the text.</p>

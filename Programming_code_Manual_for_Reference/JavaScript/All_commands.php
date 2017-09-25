@@ -34,3 +34,7 @@ var ourArray = [["the universe", 42], ["everything", 101010]];
 <!-- How to prompt the user to enter something inside a field -->
 
 var user_name = prompt('Please enter your name');
+
+<!-- How to select all elements with a particular "class name" -->
+
+var acc = document.getElementsByClassName("accordion");

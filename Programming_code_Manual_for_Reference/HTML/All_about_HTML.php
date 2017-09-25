@@ -31,3 +31,26 @@ Full form - UTF-8 (U from Universal Character Set + Transformation Format—8-bi
  - points to a location "relative" to the file you are linking from
 
  Eg - If we wanted to link from the file in www.example.com/projects/index.html to a PDF file in the same directory, the URL will be just the filename
+
+<!-- What are the different file paths -->
+
+1. <img src="picture.jpg">
+    - picture.jpg is located in the same folder as the current page
+
+2. <img src="images/picture.jpg">
+    - picture.jpg is located in the images folder in the current folder
+
+3. <img src="/images/picture.jpg">
+    - picture.jpg is located in the images folder at the root of the current web
+
+4. <img src="../picture.jpg">
+    - picture.jpg is located in the folder one level up from the current folder
+
+<!-- What is viewport in HTML5 -->
+
+- the viewport is the user's visible area of a web page
+
+Eg-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+- it varies from device to device and will be smaller on a phone than on a computer
