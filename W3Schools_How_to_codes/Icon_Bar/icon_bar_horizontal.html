@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- adding font awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+    .icon-bar
+    {
+        width: 100%;
+        background-color: #555;
+        overflow: auto;
+    }
+
+    .icon-bar a
+    {
+        /*Float links side by side*/
+        float: left;
+
+        /*center align text*/
+        text-align: center;
+
+        /*Equal width(5 icons with 20% width)*/
+        width: 20%;
+
+        /*top and bottom padding*/
+        padding: 12px 0;
+
+        /*add transition hover effects*/
+        transition: all 0.3s ease;
+
+        /*white text color*/
+        color: white;
+
+        /*increased font size*/
+        font-size: 36px;
+    }
+
+    /*add a hover color*/
+    .icon-bar a:hover
+    {
+        background-color: #000;
+    }
+
+    .active
+    {
+        background-color: #4CAF50;
+    }
+}
+</style>
+
+
+
+
+</head>
+<body>
+
+    <div class="icon-bar">
+        <a href="#" class="active"><i class="fa fa-home"></i></a>
+
+        <a href="#"><i class="fa fa-search"></i></a>
+        <a href="#"><i class="fa fa-envelope"></i></a>
+        <a href="#"><i class="fa fa-globe"></i></a>
+        <a href="#"><i class="fa fa-trash"></i></a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style >
+
+    button.accordion
+    {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+    }
+
+    /*Add a background color to the button if it is clicked on (add the .active class with JS), and
+    when you move the mouse over it*/
+    button.accordion.active, button.accordion:hover
+    {
+        background-color: #ddd;
+    }
+
+    div.panel
+    {
+        padding: 0 18px;
+        background-color: white;
+        display: none;
+    }
+
+    button.accordion:after
+    {
+        /*Unicode character for "plus" sign (+)*/
+        content: '\02795';
+        font-size: 13px;
+        float: right;
+        margin-left: 5px;
+    }
+
+    button.accordion.active:after
+    {
+        /*Unicode character for "minus" sign (-)*/
+        content: "\2796";
+    }
+
+    </style>
+</head>
+<body>
+
+    <button type="button" name="button" class="accordion">Section 1</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <button type="button" name="button" class="accordion">Section 2</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <button type="button" name="button" class="accordion">Section 3</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+
+</body>
+
+<script type="text/javascript">
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+// Find the number of elements with the class "Accordion"
+for(i=0;i<acc.length;i++)
+{
+    // Toggle between adding and removing the "active" class to highlight the button that
+    // control the panel
+    acc[i].onclick = function()
+    {
+        this.classList.toggle("active");
+
+        // Toggle between hiding and showing the active panel
+
+        var panel = this.nextElementSibling;
+        if(panel.style.display==="block")
+        {
+            panel.style.display = "none";
+        }
+        else
+        {
+            panel.style.display = "block";
+        }
+    }
+}
+</script>
+</html>
