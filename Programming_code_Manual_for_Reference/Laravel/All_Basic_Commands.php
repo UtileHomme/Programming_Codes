@@ -15,6 +15,11 @@ composer create-project --prefer-dist laravel/laravel blog
 <!-- To make the server run -->
 php artisan serve
 
+<!-- How to change the name showing on the application -->
+
+Go to config/app.php , change the name there Go to .env, change the name there
+(if spaces are there, surround the names in Quotes)
+
 <!-- To see all commands available in "artisan" -->
 php artisan
 
@@ -603,6 +608,29 @@ php artisan route:clear
 
     {{ Form::hidden('token', $token) }}
     - This is for sending the token along with the rest of the url
+
+    <!-- How to check if there is an error in a particular "field" and display it in red -->
+
+    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+        <label for="password" class="col-md-4 control-label">Password</label>
+
+        <div class="col-md-6">
+            <input id="password" type="password" class="form-control" name="password" required>
+
+            @if ($errors->has('password'))
+            <span class="help-block">
+                <strong>{{ $errors->first('password') }}</strong>
+            </span>
+            @endif
+        </div>
+    </div>
+
+        <!-- How to get the "old" user entered data in case of an error -->
+
+        - The scenario is that the user enters a wrong email id . We would want to show the user what he/she has entered wrong after "submit" button is clicked
+
+        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+
 
     <!-- This is how the .env file looks like -->
 
