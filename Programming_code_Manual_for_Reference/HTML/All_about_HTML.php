@@ -54,3 +54,15 @@ Eg-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 - it varies from device to device and will be smaller on a phone than on a computer
+
+<!-- What are HTML entities -->
+
+- if we use "<" in the text, the browser might interpret them as tags
+- To display these elements, we use another method
+
+<!-- What is URL encoding -->
+
+- URLs can be sent over the internet using the ASCII character set
+- If the URL contains characters outside the ASCII set, the URL has to be converted
+
+Eg - URLs cannot contain spaces. URL encoding normally replaces a space with a plus (+) sign, or %20.
