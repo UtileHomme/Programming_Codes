@@ -32,6 +32,10 @@ php artisan make:model home
 <!-- How to create a model along with a migration -->
 php artisan make:model Post --migration
 
+OR
+
+php artisan make:model role -m
+
 <!-- How to create a migration along with the table -->
 php artisan make:migration create_my_songs_table --create=songs
 

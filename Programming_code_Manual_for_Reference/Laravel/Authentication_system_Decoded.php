@@ -336,23 +336,23 @@ public function __construct($token)
 From "CanResetPassword.php" copy the following
 
 /**
- * Send the password reset notification.
- *
- * @param  string  $token
- * @return void
- */
+* Send the password reset notification.
+*
+* @param  string  $token
+* @return void
+*/
 
- public function sendPasswordResetNotification($token)
- {
-     $this->notify(new AdminResetPasswordNotification($token));
- }
+public function sendPasswordResetNotification($token)
+{
+    $this->notify(new AdminResetPasswordNotification($token));
+}
 
- - and paste it into "Admin.php" (model)
+- and paste it into "Admin.php" (model)
 
- - Finally go to "SendsPasswordResetEmails.php"
- - copy the following function and paste it into "ForgotPasswordController.php"
+- Finally go to "SendsPasswordResetEmails.php"
+- copy the following function and paste it into "ForgotPasswordController.php"
 
- public function broker()
+public function broker()
 {
     return Password::broker('admins');
 }
@@ -377,7 +377,7 @@ use App\Notifications\AdminResetPasswordNotification;
 */
 public function broker()
 {
-   return Password::broker('admins');
+    return Password::broker('admins');
 }
 
 - Apply the corresponding service provider
@@ -385,13 +385,82 @@ public function broker()
 - Also copy the guard function and paste it inside the ForgotPasswordController
 
 /**
- * Get the guard to be used during password reset.
- *
- * @return \Illuminate\Contracts\Auth\StatefulGuard
- */
+* Get the guard to be used during password reset.
+*
+* @return \Illuminate\Contracts\Auth\StatefulGuard
+*/
 protected function guard()
 {
     return Auth::guard('admin');
 }
+
+// How to add new roles to the admin (Entire process)
+
+- After we have created the "roles" and "role_admins" table , do the following
+
+- From "AuthenticatesUsers.php" , copy this function and change it as below
+
+protected function sendLoginResponse(Request $request)
+{
+    $request->session()->regenerate();
+
+    $this->clearLoginAttempts($request);
+
+    foreach($this->guard('admin')->user()->role as $role)
+    {
+        if($role->name == 'admin')
+        {
+            return redirect('admin/home');
+        }
+        else if($role->name == 'editor')
+        {
+            return redirect('admin/editor');
+        }
+    }
+}
+
+** Whenever we want to ensure that the role is authenticated add the following constructor function
+
+public function _construct()
+{
+    $this->middleware('auth:admin');
+}
+
+/*
+Scenario : We are on the admin home page but we are also able to access the editor home page through url
+How to avoid that
+*/
+
+- use Middlewares
+
+- create the middleware for that role
+- put the following function in the Middleware
+
+public function handle($request, Closure $next)
+{
+    foreach(Auth::user()->role as $role)
+    {
+        //if the role is editor , proceed with the requested page , else
+        if($role->name == 'editor')
+        {
+                    return $next($request);
+        }
+    }
+        return redirect('/')
+}
+
+- Inside "Kernel.php", register the middleware
+
+'editor' => \Illuminate\Routing\Middleware\EditorMiddleware::class,
+
+- Inside the "EditorController.php", add the following to the constructor
+
+$this->middleware('editor');
+
+- Do the same for Admin Middleware
+
+--- if we want to make some function accessible to any other middleware , use this for middleware
+
+$this->middleware('editor',['except'=>'test']);
 
 ?>
