@@ -143,22 +143,22 @@ protected $fillable = [
 Route::get('admin/home','AdminController@index');
 
 //Route for showing the Login form
-Route::get('login','Admin\LoginController@showLoginForm')->name('login');
+Route::get('admin','Admin\LoginController@showLoginForm')->name('admin.login');
 
 //Route for submitting the Login form
-Route::post('login','Admin\LoginController@login');
+Route::post('admin','Admin\LoginController@login');
 
 // Route for showing the Email the link  request form
-Route::get('admin-password/reset','Admin\ForgotPasswordController@showLinkRequestForm')->name('admin.password.reset');
+Route::get('admin-password/reset','Admin\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
 
 // Rooute for submitting the send link page
 Route::post('admin-password/email','Admin\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
 
 // Route for showing the reset password form along with the token
-Route::get('admin-password/reset/{token}','Admin\ResetPasswordController@showResetForm');
+Route::get('admin-password/reset/{token}','Admin\ResetPasswordController@showResetForm')->name('admin.password.reset');
 
 //Route ofr submitting the Reset password form
-Route::post('admin-password/reset','Admin\ResetPasswordController@reset')->name('admin.password.reset');
+Route::post('admin-password/reset','Admin\ResetPasswordController@reset');
 
 - After the move to "auth.php" inside 'config folder'
 
@@ -234,39 +234,164 @@ protected function guard()
 - Inside RedirectIfAuthenticated Middleware , paste the following
 
 //this is ensuring that if we try to access "admin dashboard" , we are redirected to the home page of the user(if that user is logged in)
-        switch ($guard)
-        {
-            case 'admin':
+switch ($guard)
+{
+    case 'admin':
 
-                if(Auth::guard($guard)->check())
-                {
-                return redirect()->guest(route('admin.login'));
-                }
-                break;
+    if(Auth::guard($guard)->check())
+    {
+        return redirect()->guest(route('admin.login'));
+    }
+    break;
 
-            default:
-            if(Auth::guard($guard)->check())
-            {
-            return redirect()->guest(route('/home'));
-            }
-            break;
+    default:
+    if(Auth::guard($guard)->check())
+    {
+        return redirect()->guest(route('/home'));
+    }
+    break;
 
-        }
+}
 
 // Inside Handler.php, do this
 
 $guard= array_get($exception->guards(),0);
 
-        switch ($guard)
-        {
-            //if it is the admin dashboard we are trying to access redirect to admin login page
-            case 'admin':
-                return redirect()->guest(route('admin.login'));
-                break;
+switch ($guard)
+{
+    //if it is the admin dashboard we are trying to access redirect to admin login page
+    case 'admin':
+    return redirect()->guest(route('admin.login'));
+    break;
 
-            default:
-                return redirect()->guest(route('login'));
-                break;
-        }
+    default:
+    return redirect()->guest(route('login'));
+    break;
+}
+
+// How to code the Passwords reset email part for "Admin"
+
+- Go to the "ForgotPasswordController" under the Admin folder we created
+- go to the trait "SendsPasswordResetEmails"
+- copy the following function inside the controller
+
+public function showLinkRequestForm()
+{
+    return view('auth.passwords.email');
+}
+- change the view from "auth to admin"
+
+- To show the "Admin" Request Password form do the following
+
+- Go to the "ResetPasswordController" under the admin folder
+- go to the trait "ResetsPasswords"
+- copy the following function inside the controller
+
+public function showResetForm(Request $request, $token = null)
+{
+    return view('auth.passwords.reset')->with(
+        ['token' => $token, 'email' => $request->email]
+    );
+}
+
+- change "auth" to "admin"
+
+Copy the following namespaces too
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
+
+// How to ensure that the correct route link is being sent to the user for Reset Password
+
+- Go to ResetPassword.php
+- Have a look at this function
+
+public function toMail($notifiable)
+{
+    return (new MailMessage)
+    ->line('You are receiving this email because we received a password reset request for your account.')
+    ->action('Admin Reset Password', url(route('admin.password.reset', $this->token)))
+    ->line('If you did not request a password reset, no further action is required.');
+}
+
+- This is a notification
+- we have to create a new notification for our Admin
+
+- use this
+php artisan make:notification AdminResetPasswordNotification
+
+- a new notification will be created
+
+- Copy the notification message from "ResetPassword" to the newly created notification and replace the old message
+- change the route
+
+- Also change the construct function to this
+
+public function __construct($token)
+{
+    $this->token = $token;
+}
+
+From "CanResetPassword.php" copy the following
+
+/**
+ * Send the password reset notification.
+ *
+ * @param  string  $token
+ * @return void
+ */
+
+ public function sendPasswordResetNotification($token)
+ {
+     $this->notify(new AdminResetPasswordNotification($token));
+ }
+
+ - and paste it into "Admin.php" (model)
+
+ - Finally go to "SendsPasswordResetEmails.php"
+ - copy the following function and paste it into "ForgotPasswordController.php"
+
+ public function broker()
+{
+    return Password::broker('admins');
+}
+
+- Also copy the following namespaces and paste them too
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
+
+- Also use the following namespace in Admin.php
+
+use App\Notifications\AdminResetPasswordNotification;
+
+// How to ensure that after password reset the user gets logged in automatically
+
+- Go to "ResetPassword" trait
+- Copy the following function
+
+* Get the broker to be used during password reset.
+*
+* @return \Illuminate\Contracts\Auth\PasswordBroker
+*/
+public function broker()
+{
+   return Password::broker('admins');
+}
+
+- Apply the corresponding service provider
+
+- Also copy the guard function and paste it inside the ForgotPasswordController
+
+/**
+ * Get the guard to be used during password reset.
+ *
+ * @return \Illuminate\Contracts\Auth\StatefulGuard
+ */
+protected function guard()
+{
+    return Auth::guard('admin');
+}
 
 ?>

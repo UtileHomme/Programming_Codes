@@ -374,6 +374,10 @@ public function update(Request $request, id)
 
 }
 
+<!-- How to retrieve the session id of the currently Logged in user -->
+
+- Use "session()->getId()"
+
 <!-- How to add a Logout button on the navbar (blade code) -->
 
 <a href="{{ route('logout') }}" style=" font-family: myFirstFont;"
