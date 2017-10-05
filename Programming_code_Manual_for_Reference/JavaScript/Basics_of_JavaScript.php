@@ -1,6 +1,7 @@
 <!-- What is Javascript -->
 
 - It is a client side scripting language that runs in a web browser
+- it is used to program the "behaviour" of the webpages
 
 1. It is a high level language
   - doesn't need to know the suble details of the underlying computer
@@ -78,4 +79,89 @@ myStr = "Job";
 
 - it doesn't have to go inside the "head" of the document
 - it is better to put it at the bottom of the body (just before closing the "body" tag)
-    - make sure that all the HTML content has been read by the browser before it applies JS to it 
+    - make sure that all the HTML content has been read by the browser before it applies JS to it
+
+- Placing scripts at the bottom of the <body> element improves the display speed, because script compilation slows down the display.
+
+<!-- What is a function in Javascript -->
+
+- a block of Javascript code that runs when an "event" happens
+
+<!-- What is an "event" -->
+
+- an action taken by the user like a "click"
+
+<!-- Different methods of displaying output -->
+
+1. Writing into an HTML element using "innerHTML"
+
+<!-- Eg- -->
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Web Page</h1>
+<p>My First Paragraph</p>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = 5 + 6;
+</script>
+
+</body>
+</html>
+
+2. Using "document.write()"
+
+- to be used only for testing purposes
+- if used after entire HTML load, it will delete all the existing HTML
+
+<!-- Eg -  -->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Web Page</h1>
+<p>My first paragraph.</p>
+
+<script>
+document.write(5 + 6);
+</script>
+
+</body>
+</html>
+
+3. Using "window.alert()"
+
+- gives an alert box to display data
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Web Page</h1>
+<p>My first paragraph.</p>
+
+<script>
+window.alert(5 + 6);
+</script>
+
+</body>
+</html>
+
+4. Using "console.log()"
+
+- used for debugging process
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+console.log(5 + 6);
+</script>
+
+</body>
+</html>
