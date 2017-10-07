@@ -1,5 +1,5 @@
 <?php
-// <!-- How to initialize a folder with "git" -->
+// <!-- How to initialize a folderssssss with "git" -->
 
 git init
 - initializes a new Git repository
