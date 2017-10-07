@@ -165,3 +165,10 @@ console.log(5 + 6);
 
 </body>
 </html>
+
+<!-- How to define variables in JS -->
+
+var x, y, z;
+x = 5;
+y = 6;
+z = x + y;

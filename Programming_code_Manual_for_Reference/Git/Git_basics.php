@@ -67,3 +67,13 @@ Eg - git push origin branchname
 - "git fetch" gathers all the commits from the "target branch" that do not exist in the current branch and stores them in a local repository
 - it doesn't merge them into the current branch
 - this is important if we wish to keep our repository up to date, but are working on something that we do not wish to break if we update the files
+
+<!-- What is the HEAD -->
+- a reference to the last commit in the branch currently in use
+
+<!-- What is a tag -->
+- pointer to a specific commit which uniquely identifies a repository version.
+- are used to revert to old versions when in need
+
+<!-- What is index -->
+- staging area

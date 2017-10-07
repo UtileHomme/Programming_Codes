@@ -184,3 +184,37 @@ Let us say we have accidently added a commit message. We wish to change the word
 
     --conflicts may come up here
     ?>
+
+// How to delete a branch
+git branch -d branch_name
+
+** if any unmerged changes are there, the above command will show a prompt to merge the changes into "main" branch
+
+// How to delete a branch forcefully without taking the unmerged changes into consideration
+git branch -D branch_name
+
+// How to rename the current branch
+git branch -m new_branch_name
+
+// How to create and checkout to a new branch simultaneously
+git checkout -b branch_name
+
+// How to check the present git configuration changes
+git config --list
+
+// How to check a specific setting
+git config user.name / email
+
+// How to change the default editor for git user prompts
+git config --global core.editor vim/gedit
+
+// How to open the help for any particular command
+
+1. git help <verb>
+2. git <verb> --help
+3. man git-<verb>
+
+Eg -
+1. git help clone
+2. git clone --help
+3. man git-clone
