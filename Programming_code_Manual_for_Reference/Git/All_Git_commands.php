@@ -218,3 +218,22 @@ Eg -
 1. git help clone
 2. git clone --help
 3. man git-clone
+
+// How to create aliases for git commands
+
+git config --global alias.st status
+
+// How to clone to a particular repository
+
+git clone <repo> <directory>
+
+// How to create a shallow clone
+
+git clone -depth=1 <repo>
+
+"1" means the most recent commit
+- we can define depths in similar manner and get only particular commits
+
+// How to clone only a particular branch
+
+git clone -b <branch> <remote_repo>

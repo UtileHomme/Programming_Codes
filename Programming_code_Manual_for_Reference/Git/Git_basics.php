@@ -19,6 +19,8 @@
 <!-- How it looks -->
 http://imgur.com/a/4ufqC
 
+https://imgur.com/a/kKF70
+
 -- The Git directory is where Git stores the metadata and object db for the projects
 
 <!-- Difference between Git and Github -->
@@ -77,3 +79,14 @@ Eg - git push origin branchname
 
 <!-- What is index -->
 - staging area
+
+<!-- Where are all the configuration files stored -->
+
+1.     <repo>/.git/config
+    – Repository-specific settings.
+
+    2.     ~/.gitconfig
+    – User-specific settings. This is where options set with the --global flag are stored.
+
+    3.   $(prefix)/etc/gitconfig
+    – System-wide settings.
