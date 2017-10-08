@@ -1,3 +1,5 @@
+<!-- Jatin -->
+
 <?php
 // <!-- How to initialize a folder with "git" -->
 
@@ -76,6 +78,10 @@ Eg - "git help init"
 // How to only add updated files into staging area and not the new files
 
 - git add -u / -update
+
+// How to add tracked files with a single commit command
+
+- git commit -a
 
 // <!-- How to unstage changes just before the first commit -->
 
@@ -241,3 +247,32 @@ git clone -depth=1 <repo>
 // How to clone only a particular branch
 
 git clone -b <branch> <remote_repo>
+
+// How to stash some code when moving from one branch to another
+
+- git stash
+
+// How to see a list of stashes
+
+- git stash list
+
+Eg - They'll look like this
+
+stash@{0}: WIP on feature1: 8213b88 commands changed
+stash@{1}: WIP on master: 93ca2e3 Added Git commands
+
+// How to apply all stashes in one go
+
+- git stash apply
+
+// How to apply a particular stash
+
+- git stash apply stash@{0}
+
+// How to drop a particular stash
+
+- git stash drop stash@{1}
+
+// How to apply and drop stashes simultaneously
+
+- git stash pop
