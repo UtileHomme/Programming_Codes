@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style media="screen">
+
+        .vertical-menu
+        {
+            /*set a width*/
+            width: 200px;
+            height: 150px;
+            overflow-y: auto;
+        }
+
+        .vertical-menu a
+        {
+            background-color: #eee;
+            color: black;
+
+            /*make the links appear below each other*/
+            display: block;
+            padding: 12px;
+
+            /*remove underline from links*/
+            text-decoration: none;
+        }
+
+        .vertical-menu a:hover
+        {
+            background-color: #ccc;
+        }
+
+        .vertical-menu a.active
+        {
+            /*add a green color to the active link*/
+            background-color: #4CAF50;
+            color: white;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="vertical-menu">
+        <a href="#" class="active">Home</a>
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+        <a href="#">Link 4</a>
+    </div>
+
+</body>
+</html>
