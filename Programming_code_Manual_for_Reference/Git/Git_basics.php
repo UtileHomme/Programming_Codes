@@ -62,7 +62,7 @@ Eg - git push origin branchname
 - Remotes are alias that store the url of repositories
 - it avoids the user to have to type the whole URL when prompting to push
 
-<!-- Difference between "git fetch" and "git pull" -->
+<!-- Difference between "git fetch" and "git pull"  -->
 
 - git pull is a combination of git fetch and git merge
 
