@@ -172,3 +172,61 @@ var x, y, z;
 x = 5;
 y = 6;
 z = x + y;
+
+<!-- What will be the output of the following -->
+
+var x = 16 + 4 + "Volvo";
+
+Result:  20Volvo
+
+var x = "Volvo" + 16 + 4;
+
+Result: Volvo164
+
+** Javascript types are dynamic
+- this means that the same variable can hold different data types
+
+<!-- What is the use of "typeof" operator -->
+
+- it helps in finding the datatype of the Js variable
+
+Eg -
+typeof "John"              // Returns "string"
+
+typeof [1,2,3,4]             // Returns "object" (not "array")
+
+typeof null                  // Returns "object"
+
+typeof function myFunc(){}   // Returns "function"
+
+<!-- What are events -->
+
+- things that happen to HTML elements
+
+<!-- How to initiate an event for an element -->
+
+<element event="some JavaScript">
+
+Eg -
+<button onclick="document.getElementById('demo').innerHTML = Date()">The time is?</button>
+
+- It is common to see a function initiating the event
+
+Eg -  <button onclick="displayDate()">The time is?</button>
+
+<script>
+function displayDate() {
+    document.getElementById("demo").innerHTML = Date();
+}
+</script>
+
+<!-- How to calculate the length of a given string -->
+
+var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var sln = txt.length;
+
+<!-- How to create string of "Object" type -->
+
+var y = new String("John");
+
+** Comparing two JavaScript objects will always return false.

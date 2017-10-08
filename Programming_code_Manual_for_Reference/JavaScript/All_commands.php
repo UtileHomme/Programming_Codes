@@ -58,9 +58,35 @@ var secondToLastLetterOfLastName = lastName[lastName.length-2];
 
 var myArray = ["Jatin", 44];
 
+<!-- How to declare objects in JS -->
+
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+
+<!-- How to access the property of an object -->
+
+person.lastName;
+
+OR
+
+person["lastName"]
+
+<!-- How to access the function of an object -->
+
+person.fullName();
+
+<!-- How to set empty values in a variable -->
+
+var car = "";              // The value is "", the typeof is "string"
+
 <!-- This is how a nested array is created -->
 
 var ourArray = [["the universe", 42], ["everything", 101010]];
+
+<!-- How to declare a functtion in Javascript -->
+
+function myFunction(p1, p2) {
+    return p1 * p2;              // The function returns the product of p1 and p2
+}
 
 <!-- How to prompt the user to enter something inside a field -->
 
@@ -177,3 +203,26 @@ document.getElementById("demo").innerHTML = "Hello JavaScript";
 
 </body>
 </html>
+
+<!-- How to calculate the length of a given string -->
+
+var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var sln = txt.length;
+
+<!-- How to find the position of the first occurence of a substring in a string -->
+
+var str = "Please locate where 'locate' occurs!"
+var pos = str.indexOf("locate");
+
+var str = "Please locate where 'locate' occurs!";
+var pos = str.search("locate");
+
+** if you want to start at a particular position , do this
+
+var str = "Please locate where 'locate' occurs!";
+var pos = str.indexOf("locate",15);
+
+<!-- How to find the position of the last occurence of a substring in a string -->
+
+var str = "Please locate where 'locate' occurs!"
+var pos = str.lastIndexOf("locate");

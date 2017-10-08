@@ -100,6 +100,9 @@ About
 
 <a href="/cc/create?name={{ Auth::guard('admin')->user()->name }}">  <img src="/img/NewCreateLead.png" class="img-responsive" alt="add" style="    display: -webkit-inline-box;"></a>
 
+<!-- How to add a flash message on the screen -->
+Session::flash('warning','The Mobile number is invalid');
+
 <!-- This is how we access the variable data received using "get" in query on blade -->
 
 @extends('layout.app');
