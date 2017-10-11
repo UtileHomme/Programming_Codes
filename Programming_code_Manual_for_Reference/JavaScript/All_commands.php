@@ -187,6 +187,10 @@ document.getElementById("demo").innerHTML = "Hello JavaScript";
 </body>
 </html>
 
+<!-- How to toggle between different classes -->
+
+document.getElementById("myDropdown").classList.toggle("show");
+
 <!-- How to display a hidden element -->
 
 <!DOCTYPE html>

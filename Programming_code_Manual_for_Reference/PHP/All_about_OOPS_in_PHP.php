@@ -164,3 +164,7 @@ class Example
 $example = new Example('Some text');
 
 ?>
+
+** Inheritance is for creating special versions of what already exists
+
+ 

@@ -36,6 +36,8 @@ OR
 
 php artisan make:model role -m
 
+*** Models are always in Singular form and we try and capitalize the First letter
+
 <!-- How to create a migration along with the table -->
 php artisan make:migration create_my_songs_table --create=songs
 
@@ -91,6 +93,15 @@ About
 
 ** Wherever @section('body') is found, the part of the original code will be replaced with the "specific" code
 
+<!-- What are namespaces -->
+
+- namespaces are like little containers
+- they say we belong in this folder and we cannot leave this folder
+
+Eg -
+namespace App\Http\Controllers;
+use App\Post;
+
 <!-- How to show tabular view fields in mobile using "+" sign  -->
 
 <th  data-hide="phone,tablet"><b> Created At </b></th>
@@ -133,6 +144,17 @@ return view('pages/welcome',compact('posts'));
 return view('auth.passwords.reset')->with(
 ['token' => $token, 'email' => $request->email]
 );
+
+OR
+
+return view('pages/about')->withFull($full)->withEmail($email);
+
+OR
+
+$data = [];
+$data['email']=$email;
+$data['fullname']=$fullname;
+return view('pages/about')->withData($data);
 
 <!-- This is how we retrieve 'db' data in the controller  -->
 

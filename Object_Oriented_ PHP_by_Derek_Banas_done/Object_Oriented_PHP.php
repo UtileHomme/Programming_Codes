@@ -28,6 +28,8 @@ class Animal implements Singable{
 		operations we are encapsulating or protecting it.
 	*/
 
+	//protected has same privileges as private
+	//the only difference is that if this variable type is inherited by another sub-class , it will also be able to change this variable's value
 	protected $name;
 	protected $favorite_food;
 	protected $sound;
@@ -58,7 +60,7 @@ class Animal implements Singable{
 
 	function __construct(){
 
-		// Generate a random id between 1 and 1000000
+		// Generate a random id between 100 and 1000000
 
 		$this->id = rand(100, 1000000);
 
@@ -191,7 +193,7 @@ class Dog extends Animal implements Singable{
 
 }
 
-// 5. PHP doesn't allow muliple inheritance
+// 5. PHP doesn't allow multiple inheritance
 // You need to use interfaces to get similar results
 // Interfaces allow you to define functions that must be implemented
 
@@ -219,7 +221,7 @@ echo $animal_one->name . " says " . $animal_one->sound .
 	"<br /><br />";
 
 // If we defined a constant in the class we would get its
-// value like this Class::CONTANT
+// value like this Class::CONSTANT
 
 echo "Favorite Number " . Animal::PI . "<br />";
 

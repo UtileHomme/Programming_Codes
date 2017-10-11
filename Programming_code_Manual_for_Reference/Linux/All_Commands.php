@@ -5,3 +5,7 @@
 - used before most commands
 
 sudo 'command'
+
+<!-- How to switch from zsh to bash or vice versa -->
+
+- exec bash / zsh
