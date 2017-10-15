@@ -1,5 +1,3 @@
-<!-- Jatin -->
-
 <?php
 // <!-- How to initialize a folder with "git" -->
 
@@ -23,6 +21,16 @@ Eg - "git help init"
 // git status
 - checks the status of the repository
 - see which files are inside it, which changes still need to be committed and which branch of the repository we are currently working on
+
+//git status --short
+- gives the simplified status output
+
+"M" - means the file has been modified
+        - if "M" is in the right hand column it has not been staged
+        - if "M" is in the left hand column it has been staged
+
+"A" - means that a new file has been staged
+"??" - means a new file has been created but not yet staged
 
 // git commit -m "Message"
 - helps create a "snapshot" of the repository
@@ -105,11 +113,59 @@ rm -rf .git
 - it will delete the entire content without erroring out because the folder is not empty
 - "f" is not to ask for deleting the stuff
 
-// <!-- How to check the various remotes -->
+// What are remote repositories
+
+- represent a copy of the repository that exists elsewhere (remotely)
+- we can have multiple repositories with different permissions on each one
+- some can be read-only and others can have read and write permission
+
+// How to check the remote repositories associated with the project
+- git remote
+
+** "origin" is the default name "Git" gives to the server you clone from
+
+// <!-- How to check the urls associated with the remotes -->
 
 - git remote -v
 
-// <!-- How to use git-rebase command -->
+** "-v" will show the URL used when both reading(merge or fetch) and writing(push) to that remote
+
+// How to add different remotes
+
+- git remote add "remote_name" "github repository https/ssh link"
+
+// How to get data from a remote
+
+- git fetch "remote_name"
+- this "updates" the repository in the local machine to match the history in the remote [copy of the] repository
+
+- we can also use "git clone" to get the entire project from the remote
+
+// How to merge the data which has been fetched
+
+- git merge [branch_name]
+
+// How do conflicts look
+
+<<<<<<< HEAD # the branch we are trying to merge into
+
+======= # the branch from which we are merging
+
+>>>>>>>>>>
+
+// How to check whether a merge conflict still remains or not
+
+- git status
+
+// How to push changes from local repository to remote server
+
+- git push [remote_name] [branch_name]
+
+// How to set the "upstream" for a particular branch and push changes to it
+
+- git push --set-upstream origin feature
+
+// How to use git-rebase command
 
 Scenario:
 

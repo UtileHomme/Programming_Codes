@@ -230,3 +230,95 @@ var sln = txt.length;
 var y = new String("John");
 
 ** Comparing two JavaScript objects will always return false.
+
+** Javascript numbers are always 64-bit floating point numbers
+
+** Integers are accurate upto 15 digits
+
+** Floating point is not always accurate
+
+<!-- Different results when "strings" and "integers" are added -->
+
+<!-- Eg 1 -->
+
+var x = 10;
+var y = 20;
+var z = x + y;           // z will be 30 (a number)
+
+<!-- Eg 2 -->
+
+var x = "10";
+var y = "20";
+var z = x + y;           // z will be 1020 (a string)
+
+<!-- Eg 3 -->
+
+var x = 10;
+var y = "20";
+var z = x + y;           // z will be 1020 (a string)
+
+<!-- Eg 4 -->
+
+var x = "10";
+var y = 20;
+var z = x + y;   // z will be 1020 (a string)
+
+<!-- Eg 5 -->
+
+var x = 10;
+var y = 20;
+var z = "30";
+var result = x + y + z; // result will be 3030
+
+<!-- Division and Product with string and integers -->
+
+<!-- Eg 1 -->
+
+var x = "100";
+var y = "10";
+var z = x / y;       // z will be 10
+
+<!-- Eg 2  -->
+
+var x = "100";
+var y = "10";
+var z = x * y;       // z will be 1000
+
+<!-- Eg 3  -->
+
+var x = "100";
+var y = "10";
+var z = x - y;       // z will be 90
+
+<!-- Eg 4 -->
+
+<!-- What is "NaN" -->
+
+- it is a JS reserved word indicating that a number is not a legal number
+
+<!-- Eg -  -->
+
+var x = 100 / "Apple";  // x will be NaN (Not a Number)
+
+<!-- Exception -->
+
+var x = 100 / "10";     // x will be 10
+
+<!-- Eg - -->
+
+typeof NaN;            // returns "number"
+
+<!-- How to output decimal numbers a hexa, octa and binary -->
+
+- use "toString" method
+
+<!-- Eg - -->
+
+var myNumber = 128;
+myNumber.toString(16);  // returns 80
+myNumber.toString(8);   // returns 200
+myNumber.toString(2);   // returns 10000000
+
+<!-- How to create a Object of numbers -->
+
+var y = new Number(123);

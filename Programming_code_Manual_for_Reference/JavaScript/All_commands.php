@@ -230,3 +230,91 @@ var pos = str.indexOf("locate",15);
 
 var str = "Please locate where 'locate' occurs!"
 var pos = str.lastIndexOf("locate");
+
+** both functions return "-1" if the string is not found
+
+<!-- How to extract a substring from start position to end position   -->
+
+var str = "Apple, Banana,  Kiwi";
+var res = str.slice(7,13);
+
+- start position and end position are passed as arguments
+
+** if the parameter is negative, the position is counted from the end of the string
+
+var str = "Apple, Banana, Kiwi";
+var res = str.slice(-12, -6);
+
+We can also omit any one of the two parameters to get complete strings
+
+** we use "substring" method for the same purpose
+- it doesn't accept negative arguments though
+
+<!-- How to extract a substring from the start position given the length to be extracted -->
+
+var str = "Apple, Banana, Kiwi";
+var res = str.substr(7, 6);
+
+** second parameter cannot be "negative" unlike the first parameter
+
+<!-- How to replace a particular string give the string and the one to replace it with -->
+
+str = "Please visit Microsoft!!";
+var n = str.replace("Microsoft", "W3Schools");
+
+** to replace all occurrences, add the "global" flag
+
+str = "Please visit Microsoft and Microsoft!";
+var n = str.replace(/Microsoft/g, "W3Schools");
+
+** To make it case insensitive, add the "i" flag
+
+str = "Please visit Microsoft!";
+var n = str.replace(/MICROSOFT/i, "W3Schools");
+
+<!-- How to convert a string to Lower or Upper case  -->
+
+var text1 = "Hello World!";       // String
+var text2 = text1.toUpperCase();  // text2 is text1 converted to upper
+
+
+var text1 = "Hello World!";       // String
+var text2 = text1.toLowerCase();  // text2 is text1 converted to lower
+
+<!-- How to concatinate two strings  -->
+
+var text1 = "Hello";
+var text2 = "World";
+var text3 = text1.concat(" ", text2);
+
+OR
+
+
+var text = "Hello" + " " + "World!";
+
+** All strings methods return a new string
+** Strings are immutable, they can be replaced but not changed
+
+<!-- How to return a character at a particular position in a string  -->
+
+var str = "HELLO WORLD";
+str.charAt(0);
+
+<!-- How to return the UNICODE of a character at a particular position -->
+
+var str = "HELLO WORLD";
+str.charCodeAt(0);         // returns 72
+
+** unicode is the integral value that character has
+
+<!-- How to convert string having separator into array -->
+
+var txt = "a,b,c,d,e";   // String
+txt.split(",");          // Split on commas
+txt.split(" ");          // Split on spaces
+txt.split("|");          // Split on pipe
+
+OR
+
+var txt = "Hello";       // String
+txt.split("");           // Split in characters

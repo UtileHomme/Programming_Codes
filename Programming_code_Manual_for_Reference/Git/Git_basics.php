@@ -90,3 +90,25 @@ Eg - git push origin branchname
 
     3.   $(prefix)/etc/gitconfig
     – System-wide settings.
+
+<!-- What are the different types of merges possible -->
+
+1. Fast - forward merge
+
+- When there is a linear path between the current branch and the one you want to merge into, Git can perform a fast-forward merge
+- The merge from the feature branch will not come as a new commit. Instead whatever commits were made in the feature branch will now be shown in the main branch
+
+2. No fast-forward
+
+- we can use the "--no-ff" flag to change the behaviour of merge
+- in this case, the history of feature branch will be retained and a "new commit" will be made on the main branch
+
+<!-- Pictorial explanation  -->
+
+https://imgur.com/a/0DNFL
+
+3. Three - way merge
+
+- when the branches diverge too much this happens
+- Git will combine the two histories of the merging branches into a new "snapshot" and then point to the new commit
+- conflicts are likely to arise in this case

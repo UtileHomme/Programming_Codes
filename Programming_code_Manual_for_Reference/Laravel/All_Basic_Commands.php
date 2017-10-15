@@ -658,11 +658,11 @@ php artisan route:clear
         </div>
     </div>
 
-        <!-- How to get the "old" user entered data in case of an error -->
+    <!-- How to get the "old" user entered data in case of an error -->
 
-        - The scenario is that the user enters a wrong email id . We would want to show the user what he/she has entered wrong after "submit" button is clicked
+    - The scenario is that the user enters a wrong email id . We would want to show the user what he/she has entered wrong after "submit" button is clicked
 
-        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
 
 
     <!-- This is how the .env file looks like -->
@@ -798,3 +798,18 @@ php artisan route:clear
         );
         return Response::download($filename, 'download.csv', $headers);
     }
+
+    <!-- How to send a Mail in Laravel -->
+
+    $data = array(
+    'email' => $request->email,
+    'subject' => $request->subject,
+    'bodyMessage'=> $request->message
+    );
+    
+    Mail::send('emails.contact',$data, function($message) use($data)
+    {
+        $message->from($data['email']);
+        $message->to('jatins368@gmail.com');
+        $message->subject($data['subject']);
+    });
