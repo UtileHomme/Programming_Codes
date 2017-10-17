@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style media="screen">
+
+    .btn-group button
+    {
+        /*Green background*/
+        background-color: ##4CAF50;
+
+        border: 1px solid green;
+
+        color: white;
+
+        padding: 10px 24px;
+
+        cursor: pointer;
+
+        /*float the buttons side by side*/
+        float: left;
+    }
+
+    /*preventing double borders*/
+    .btn-group button:not(:last-child)
+    {
+        border-right: none;
+    }
+
+    /*clear floats (clearfix hack)*/
+    .btn-group:after
+    {
+        content: " ";
+        clear:both;
+        display: table;
+    }
+
+    /*Add a background color on hover */
+    .btn-group button:hover
+    {
+        background-color: #3e8e41;
+    }
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="btn-group">
+        <button>Apple</button>
+        <button>Samsung</button>
+        <button>Sony</button>
+    </div>
+</body>
+</html>

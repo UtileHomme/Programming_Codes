@@ -21,3 +21,7 @@ https://jsfiddle.net/gr2cL128/
 // How to create a box which stays at the bottom using "fixed" positioning
 https://jsfiddle.net/gx79ex4v/5/
  ?>
+
+<!-- How to make a background image responsive -->
+
+https://codepen.io/theiwaz/pen/vybjc
