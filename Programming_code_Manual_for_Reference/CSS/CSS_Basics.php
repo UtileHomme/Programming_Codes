@@ -27,15 +27,41 @@ An Analogy
 
   Eg - paragraphs, list, navigation menus, footers,headers etc.
 
+  <!-- What characteristic does "block" element have -->
+
+  - always begins on a new line
+  - its height, line-height, top-margin and bottom-margin can be specified
+  - its width defaults to 100% of its containing element unless otherwise stated
+
 2. Inline level elements
   - are contained within block-level elements and surround only small parts of the document's content
   , not entire paragraphs and groupings of content
   - will not cause a new line to appear in the document
   - they would normally appear inside a "paragraph"
 
-  Eg - anchor, "em", "strong" etc.
+  Eg - anchor, "em", "strong", "span", "label", "input","img" etc.
 
   ** apply the property "float:left" whenever we want to stack to paragraphs("block" by default) side by side
+
+  <!-- What characteristic does 'inline" element have' -->
+
+  - begins on the same line as its sibling
+  - its height, line-height, top-margin and bottom-margin can't be changed
+  - its width is as wide as the content and can't be modified
+
+  <!-- What characteristic does 'inline-block' element have -->
+
+  - can fit on the same line as "inline" or "inline-block" elements
+  - its height, line-height,top-margin and bottom-margin can be specified
+  - its width defaults to 100% of its containing element, but can be changed
+
+<!-- Eg of useless CSS -->
+span
+{
+    <!-- won't have any effect -->
+    height: 20px;
+    top: 20px
+}
 
 <!-- What does the line-height property define -->
 
@@ -54,6 +80,7 @@ An Analogy
 
 - If we have three statically positioned elements in the code, they will stack one over the other
 - We can't change the "top", "left", "right","bottom" properties in this positioning
+- this is the default positioning
 
 <!-- What is relative positioning -->
 
@@ -306,4 +333,7 @@ d. "none"
     - the browser behaves as if the element does not exist in the document tree
     - the descendants of the element also have their display property turned off
 
-    
+<!-- How does the "float" property help -->
+
+- it positions elements to the left or right side of parent element
+- all other elements will float around the floated element 

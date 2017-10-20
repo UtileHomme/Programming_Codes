@@ -25,3 +25,7 @@ https://jsfiddle.net/gx79ex4v/5/
 <!-- How to make a background image responsive -->
 
 https://codepen.io/theiwaz/pen/vybjc
+
+<!-- How to place set of divs to the right and left and one set to the next line -->
+
+https://jsfiddle.net/yLzagkd5/
