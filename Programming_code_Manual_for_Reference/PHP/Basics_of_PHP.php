@@ -344,6 +344,8 @@ foreach($food as $element => $inner_array)
 include 'video42(header.inc).php';
 require 'video42(header.inc).php
 
+** include/require_once will check whether the file contents have been included beforehand. If yes , then don't include again
+
 <!-- How to search for a substring in a string -->
 
 -- use "preg_match" function
@@ -524,6 +526,7 @@ $age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
 <!-- How to return the IP address of the host server -->
 
 - use "$_SERVER['SERVER_ADDR']"
+- returns the IP address of the server the PHP code is running
 
 <!-- How to return the name of the host server like www.youtube.com-->
 
@@ -622,3 +625,167 @@ if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
     echo("$url is not a valid URL");
 }
 ?>
+
+<!-- Differences between PHP 5.6 and 7 -->
+
+1. New Zend Engine
+- Zend is an open-source execution engine written in C that interprets the PHP language
+- PHP 5.xx series used Zend Engine II that enhanced the functionality of the initial engine and added an object model and a significant performance enhancement to the language
+- PHP 7 received a new version called PHP#NG(Next Generation)
+
+2. Twice the speed
+- significant performance improvement
+- optimized memory usage
+- not only the code will be executed faster but we will also need fewer servers to serve the amount of users
+
+3. Facilitates Error Handling
+
+4. 64-Bit Windows Systems Support
+- PHP 5.xx series didn't provide support for 64-bit integer or large file support
+- PHP 7 does
+
+5. New Spaceship operator
+- looks like "<=>"
+- returns "0" if both operands are equal, "1" if the left is greater and "-1" if the right is greater
+- also called three-way comparison operator
+
+<!-- Implementation screenshot -->
+https://imgur.com/a/3zZd4
+
+6. Null Coalescing operator
+
+- denoted by two question marks (??)
+- used when we want to check if something exists and returns a default value, in case it doesn't
+- returns the result of the first operand if it exists and is not null, and the second operand in any other cases
+
+Eg -
+
+<!-- $username = isset($_GET['user']) ? $_GET['user']: 'nobody'  -->
+$username = $_GET['user'] ?? 'nobody';
+
+7. Enables accurate type declarations
+- we can now declare the type of value to be returned when declaring a function
+
+Eg-
+
+function foo(): array
+{
+    return [];
+}
+
+- allows for "int, float, string and bool"
+
+8. Support of ASP tags "<% %>" tags has been removed
+
+<!-- Why should one omit closing tags  -->
+
+- for avoiding blanks and other characters at the end of the file when using "include" and "require"
+- any character that is accidently added behind the closing tag would trigger an error when trying to modify header info
+
+- the actual production servers on which we will be deploying our code do not always follow the latest PHP trends
+
+- Inexplicable functionality loss
+- say, we are implementing a kind of payment gateway and redirect user to a specific URL after successful confirmation by the payment processor
+- If some kind of PHP error or warning or an excess line ending happens, the payment remains unprocessed and the user may still seemed unbilled
+
+- We may get "Page loading cancelled" type of errors in Internet Explorer even in the most recent versions
+- this is because the AJAX response/json include contains something that it shouldn't contain, because of excess line endings in some PHP files
+
+- If we have some file downloads in the app, they can break too
+
+- Many PHP frameworks require omission of the closing tag as a coding standard
+
+<!-- Do we need a trailing semicolon just before closing the PHP tags  -->
+
+- Not necessary, because the closing tag of the block of PHP code automatically implies a semi-colon
+
+<!-- What does exit(0) and exit(1) mean -->
+
+- exit(0) - success
+- exit(1) - fail
+
+<!-- Difference between functions and language constructs -->
+
+- both behave the same way
+- the difference lies in the way PHP engine interprets a language construct and a built-in function
+
+- Any computer language is made up of basic elements and these elements are known by their respective language parsers
+Eg - "if" is a basic element in PHP and the PHP parser is aware of it
+
+- So, when the PHP file is going through the parser, if it sees an "if" , it knows there should be a left parenthesis next to it
+- If not, the parser will through an error
+- Here, we call "if" a language construct bcz PHP parser knows what is without further analyzing it
+
+Eg - print(), isset(), empty(), require(), die(), include()
+
+** Language constructs are relatively faster
+
+** language constructs do not need parenthesis
+- we need parenthesis for built-in functions
+
+<!-- What is considered as "false" in boolean  -->
+
+- the boolean FALSE itself
+- the integer 0
+- the float 0.0
+- the empty string and the string "0"
+- an array with zero elements
+- an object with zero member variables
+- the special type NULL
+
+** everything else is considered as "TRUE"
+
+<!-- Why do we use "HEREDOCs" and how -->
+
+- we do not need to escape double quotes
+
+$sql = <<<"SQL" (without quotes)
+select *
+  from $tablename
+ where id in [$order_ids_list]
+   and product_name = "widgets"
+SQL;
+
+<!-- Difference between isset and empty -->
+
+- "empty" checks whether a variable is set and it checks for null, "", 0 etc.
+- "isset" just checks if it is set, it could be anything but null
+
+** With empty , the following are considered empty
+- "" (an empty string)
+- 0 (0 as an integer)
+- 0.0 (0 as a float)
+- "0" (0 as a string)
+- NULL
+- FALSE
+- array() (an empty array)
+
+<!-- What happens in PDO -->
+
+- The SQL statement that is passed to the "prepare" function is parsed and compiled by the db server
+- By specifying parameters (either a "?" or a named parameter like :name), we are tellling the db engine where we want to filter on
+- Then when we call the "execute" method, the prepared statement is combined with the parameter values we specify
+
+- We are sending the actual SQL separately from the parameters to limit the risk of sending malicious data
+- any data that is sent using a prepared statement is converted into a string
+
+- Another benefit is that if we execute the same statement many times in the same session , it will only be parsed and compiled once, giving some speed gains
+
+<!-- Difference between GET and POST -->
+
+- The HTTP protocol defines GET-type requests as being idempotent
+- this means that GET is used for viewing something without changing it while POST is used for changing something
+
+Eg - A search page should use GET , while a form that changes your password should use POST
+
+<!-- GET -->
+- parameters remain in browser history because they are part of the URL
+- can be bookmarked
+- GET method should not be used when sending passwords or other sensitive information
+- 7607 character max size
+
+<!-- POST -->
+- parameters are not saved in browser history
+- can not be bookmarked
+- POST method used when sending passwords or other sensitive information
+- 8 MB max size for POST method 

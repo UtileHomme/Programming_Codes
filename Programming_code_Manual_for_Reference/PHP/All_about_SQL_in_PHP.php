@@ -112,3 +112,13 @@ $result3->bindParam(':firstname1',$firstname,PDO::PARAM_STR);
 $result3->bindParam(':surname1',$surname,PDO::PARAM_STR);
 $a = $result3->execute();
 //var_dump($a);
+
+<!-- How to select data by passing the values later as an array -->
+
+$stmt = $pdo->prepare('SELECT * FROM employees WHERE name = :name');
+
+$stmt->execute(array('name' => $name));
+
+foreach ($stmt as $row) {
+    // do something with $row
+}

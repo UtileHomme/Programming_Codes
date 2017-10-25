@@ -1169,3 +1169,99 @@ $d1=strtotime("July 04");
 $d2=ceil(($d1-time())/60/60/24);
 echo "There are " . $d2 ." days until 4th of July.";
 ?>
+
+<!-- How to print "true" or "false" in text format -->
+
+$bool = false;
+echo $bool ? 'true' : 'false';
+
+or...
+
+echo $bool ? 'yes' : 'no';
+echo $bool ? '1' : '0';
+
+<!-- How to get integer value after division -->
+
+- use round()
+Eg - round(8/3) = 3
+
+- use floor()
+Eg - floor(8/3) = 2
+
+In PHP 7, use intdiv()
+Eg - intdiv(8, 3) = 2
+
+<!-- How to convert integer value to string  -->
+
+$var = 5;
+$items = string($var);
+$items = strval($var);
+
+<!-- How to compare two floats  -->
+
+$a = 0.17;
+$b = 1 - 0.83; //0.17
+
+if (abs(($a-$b)/$b) < 0.00001) {
+  echo "same";
+}
+
+<!-- How to convert float into int -->
+
+Eg - (int)$var or intval($var)
+
+Eg - floor($var) or ceil($var)
+
+Eg - round($var)
+
+<!-- How to echo this particular array using "foreach" loop -->
+
+Array
+(
+  [data] => Array
+    (
+      [0] => Array
+        (
+          [page_id] => 204725966262837
+          [type] => WEBSITE
+        )
+
+      [1] => Array
+        (
+          [page_id] => 163703342377960
+          [type] => COMMUNITY
+        )
+      )
+)
+
+foreach($results['data'] as $result) {
+    echo $result['type'], '<br>';
+}
+
+<!-- How to add elements to an empty array -->
+
+<?php
+$cart = array();
+$cart[] = 13;
+$cart[] = 14;
+// etc
+?>
+
+<?php
+$cart = array();
+array_push($cart, 13);
+array_push($cart, 14);
+
+// Or
+$cart = array();
+array_push($cart, 13, 14);
+?>
+
+<!-- How to add array elements from one array to another and then comma separate them -->
+
+$locations = [];
+foreach ($volunteer_panel_location as $plocations)
+{
+    $locations[] = $plocations->location;
+}
+echo implode(",",$locations);

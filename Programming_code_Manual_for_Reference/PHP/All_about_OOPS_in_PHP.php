@@ -167,4 +167,112 @@ $example = new Example('Some text');
 
 ** Inheritance is for creating special versions of what already exists
 
- 
+<!-- What is Object Oriented Programming  -->
+
+- here, it is customary to group all of the variables and functions of a particular topic into a single class
+- supports better code organization and reduces the need for us to repeat ourselves
+
+<!-- How to declare a class -->
+
+class Car {
+  public $comp;
+  public $color = 'beige';
+  public $hasSunRoof = true;
+}
+
+<!-- How to create an object of a class -->
+
+$bmw = new Car ();
+
+<!-- How are objects good -->
+
+- In the procedural programming style, all of the functions and variables sit together in the "global scope" in a way that
+allows their use just by calling their name, the use of classes makes anything inside the classes hidden from global scope
+
+- So, we need a way to allow the code from the global scope to use the code within the class, and we do this by creating
+objects from a class
+
+** A class holds the methods and properties that are shared by all of the objects that are created from it
+** Although the objects share the same code, they can behave differently becuase they have different values assigned to them
+
+<!-- How to get an object's properties -->
+
+echo $bmw -> color;
+
+<!-- How to set an object's properties -->
+
+$bmw -> comp = "BMW";
+
+<!-- How to add methods to a class -->
+
+class Car {
+
+  public $comp;
+  public $color = 'beige';
+  public $hasSunRoof = true;
+
+  public function hello()
+  {
+    return "beep";
+  }
+}
+
+<!-- How to call a method using an object -->
+
+echo $bmw -> hello();
+
+<!-- What is the "$this" keyword -->
+
+- indicates that we can use the class's own methods and properties and allows us to have access to them within the class's scope
+
+$this -> propertyName;
+$this -> methodName();
+
+Eg -
+
+class Car {
+
+    // The properties
+    public $comp;
+    public $color = 'beige';
+    public $hasSunRoof = true;
+
+    // The method can now approach the class properties
+    // with the $this keyword
+    public function hello()
+    {
+      return "Beep I am a <i>" . $this -> comp . "</i>, and I am <i>" .
+        $this -> color;
+    }
+}
+
+<!-- What is method chaining -->
+
+- We are returning the result of one method as passing that result as input to another method
+- We need to return "$this"
+Eg -
+
+class Car {
+
+  public $tank;
+
+  // Add gallons of fuel to the tank when we fill it.
+  public function fill($float)
+  {
+    $this-> tank += $float;
+
+    return $this;
+  }
+
+  // Substract gallons of fuel from the tank as we ride the car.
+  public function ride($float)
+  {
+    $miles = $float;
+    $gallons = $miles/50;
+    $this-> tank -= ($gallons);
+
+    return $this;
+  }
+}
+
+$tank = $bmw -> fill(10) -> ride(40) -> tank;
