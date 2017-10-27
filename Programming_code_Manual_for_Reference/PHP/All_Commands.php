@@ -1162,6 +1162,27 @@ while ($startdate < $enddate) {
 }
 ?>
 
+<!-- Outputting time for today , yesterday and day before yesterday -->
+
+<?php
+
+$hour = 12;
+
+$today              = strtotime($hour . ':00:00');
+$yesterday          = strtotime('-1 day', $today);
+$dayBeforeYesterday = strtotime('-1 day', $yesterday);
+
+ ?>
+
+ <!-- Outputing date and time after 7 days -->
+
+<?php
+ echo "Today is ".date('Y-m-d H:i:s');
+echo "<br/>";
+echo "After 7 days: ".date('Y-m-d H:i:s',strtotime('+7 day'));
+
+ ?>
+
 <!-- How to output days until a given day -->
 
 <?php
@@ -1169,6 +1190,24 @@ $d1=strtotime("July 04");
 $d2=ceil(($d1-time())/60/60/24);
 echo "There are " . $d2 ." days until 4th of July.";
 ?>
+
+<!-- How to  convert date into timestamp -->
+
+<?php
+
+$timestamp = strtotime('22-09-2008');
+
+ ?>
+
+<!-- or  -->
+
+<?php
+
+$a = strptime('22-09-2008', '%d-%m-%Y');
+$timestamp = mktime(0, 0, 0, $a['tm_mon']+1, $a['tm_mday'], $a['tm_year']+1900);
+
+ ?>
+
 
 <!-- How to print "true" or "false" in text format -->
 
@@ -1259,9 +1298,156 @@ array_push($cart, 13, 14);
 
 <!-- How to add array elements from one array to another and then comma separate them -->
 
+<?php
 $locations = [];
 foreach ($volunteer_panel_location as $plocations)
 {
     $locations[] = $plocations->location;
 }
 echo implode(",",$locations);
+?>
+
+<!-- How to loop through the elements of the array defined below -->
+
+<!-- Array (
+  [0] => Array (
+           [fid] => 14
+           [list] => 1
+           [data] => Array (
+                       [alt] =>
+                       [title] =>
+                     )
+           [uid] => 1
+           [filename] => trucks_10785.jpg
+           [filepath] => sites/default/files/trucks_10785.jpg
+           [filemime] => image/jpeg
+           [filesize] => 143648
+           [status] => 1
+           [timestamp] => 1291424171
+           [nid] => 8
+         )
+  [1] => Array (
+           [fid] => 19
+           [list] => 1
+           [data] => Array (
+                       [alt] =>
+                       [title] =>
+                     )
+           [uid] => 1
+           [filename] => school.jpg
+           [filepath] => sites/default/files/school.jpg
+           [filemime] => image/jpeg
+           [filesize] => 115355
+           [status] => 1
+           [timestamp] => 1292029563
+           [nid] => 8
+         )
+  [2] => Array (
+           [fid] => 20
+           [list] => 1
+           [data] => Array (
+                       [alt] =>
+                       [title] =>
+                     )
+           [uid] => 1
+           [filename] => Life_is_wonderful_by_iNeedChemicalX.jpg
+           [filepath] => sites/default/files/Life_is_wonderful_by_iNeedChemicalX_0.jpg
+           [filemime] => image/jpeg
+           [filesize] => 82580
+           [status] => 1
+           [timestamp] => 1292029572
+           [nid] => 8
+         )
+  [3] => Array (
+           [fid] => 21
+           [list] => 1
+           [data] => Array (
+                       [alt] =>
+                       [title] =>
+                     )
+           [uid] => 1
+           [filename] => school_rural.jpg
+           [filepath] => sites/default/files/school_rural.jpg
+           [filemime] => image/jpeg
+           [filesize] => 375088
+           [status] => 1
+           [timestamp] => 1292029582
+           [nid] => 8
+         )
+) -->
+
+<?php
+
+foreach($array as $item) {
+    echo $item['filename'];
+    echo $item['filepath'];
+
+    // to know what's in $item
+    echo '<pre>'; var_dump($item);
+}
+
+ ?>
+
+<!-- OR  -->
+
+<?php
+
+foreach($array as $i => $item) {
+    echo $array[$i]['filename'];
+    echo $array[$i]['filepath'];
+
+    // $array[$i] is same as $item
+}
+
+?>
+
+<!-- OR -->
+
+<?php
+
+for ($i = 0; $i < count($array); $i++) {
+    echo $array[$i]['filename'];
+    echo $array[$i]['filepath'];
+}
+
+ ?>
+
+ <!-- How to extract a numerical value from a string -->
+
+<?php
+
+preg_match( '/\[#(\d+)\]/', '[#1234] Subject', $matches);
+echo $matches[1]; // 1234
+
+ ?>
+
+ <!-- How to check if a string contains a particular word or not  -->
+
+ <?php
+
+ $a = 'How are you?';
+
+ if (strpos($a, 'are') !== false) {
+     echo 'true';
+ }
+
+  ?>
+
+<!-- How to count the number of elements in an array -->
+
+$a = array('jatin', 'Sharma','kritika');
+$b = count($a);
+
+<!-- How to count the number of elements in a multi-dimensional array -->
+
+$families = array
+(
+"Test"=>array
+(
+  "test1",
+  "test2",
+  "test3"
+)
+);
+
+echo count($families["Test"]);

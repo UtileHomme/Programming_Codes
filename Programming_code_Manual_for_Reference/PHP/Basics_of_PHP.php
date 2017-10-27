@@ -454,6 +454,10 @@ session_destroy();
 
 -- converts an array into an "character" separated data
 
+Eg - $arr = Array ("A","E","I","O","U");
+
+$str = implode("-", $arr);
+
 <!-- How to check for browser type  -->
 
 $_SERVER["HTTP_USER_AGENT"]
@@ -788,4 +792,196 @@ Eg - A search page should use GET , while a form that changes your password shou
 - parameters are not saved in browser history
 - can not be bookmarked
 - POST method used when sending passwords or other sensitive information
-- 8 MB max size for POST method 
+- 8 MB max size for POST method
+
+<!-- When to use "foreach" and when to use "for" -->
+
+- If we just need to walk through all the elements of an object or array, use "foreach"
+
+* Cases where we need to include "for" loop
+- When we explicitly need to do things with the numeric index
+- When we need to use previous or next elements from within an iteration
+- When we need to change the counter during an iteration
+
+<!-- What is the header function used for -->
+
+- it is used for changing the page location
+- it is used for setting the timezone
+- it is used for setting the caching control
+
+<!-- How to use the "header" function -->
+
+1. allows you to send many messages to the browser,
+
+Eg -
+
+<?php
+
+header("Location: http://kirupa.com");
+
+ ?>
+
+ - This will send a new location to the browser and it will immediately redirect
+
+ 2. allows us to control the content type that the browser will treat the document as:
+
+ <?php
+
+header("Content-Type: text/css");
+
+  ?>
+
+3. can also force the browser to display the download prompt and have a recommended filename for the download
+
+<?php
+
+header("Content-Type: image/jpeg");
+header("Content-Disposition: attachment; filename=file.jpg");
+ ?>
+
+ 4. can send specific errors to the browser using the header function.
+
+ <?php
+
+header("HTTP/1.0 404 Not found");
+
+  ?>
+
+  <!-- What is the use of "Content-Type" in headers -->
+
+  - it tells the browser what kind of file we are sending it
+  - if we say "text/html", it will try to display what we give to the webpage
+  - if we say "application/pdf", it'll try to display or download it as a PDF file
+
+<!-- What is the reason for "headers already sent" error in php   -->
+
+- whitespaces before <?php  or after ?>
+- print , echo and other functions producing some output
+- raw "html" sections prior to the "PHP" code
+
+<!-- Typical HTTP response looks like this -->
+HTTP/1.1 200 OK
+Powered-By: PHP/5.3.7
+Vary: Accept-Encoding
+Content-Type: text/html; charset=utf-8
+
+<html><head><title>PHP page output page</title></head>
+<body><h1>Content</h1> <p>Some more output follows...</p>
+and <a href="/"> <img src=internal-icon-delayed> </a>
+
+- PHP scripts mainly generates HTML content, but it also passes a set of HTTP/CGI headers to the webserver
+
+- the page/output always follows the headers
+- PHP has to pass the headers to the webserver first
+- it can only do that once
+
+- When PHP receives the first output(print, echo, <html>), it will flush all the collected headers
+- Afterwards it will send all the output it wants.
+- But sending further HTTP headers is impossible then
+
+<!-- What is JSON and How to extract data from a JSON in php -->
+
+- JSON is not an array, an object or a data structure
+- JSON is a text-based serialization format
+
+- we can decode it using json_decode($json)
+
+Eg - How to access object elements
+
+<?php
+
+$json = '
+{
+    "type": "donut",
+    "name": "Cake"
+}';
+
+$yummy = json_decode($json);
+
+echo $yummy->type;
+?>
+
+Eg- How to access array elements
+
+<?php
+$json = '
+[
+    "Glazed",
+    "Chocolate with Sprinkles",
+    "Maple"
+]';
+
+$toppings = json_decode($json);
+
+echo $toppings[1];
+
+ ?>
+
+ Eg- Accessing nested items
+
+ <?php
+
+ $json = '
+ {
+     "type": "donut",
+     "name": "Cake",
+     "toppings": [
+         { "id": "5002", "type": "Glazed" },
+         { "id": "5006", "type": "Chocolate with Sprinkles" },
+         { "id": "5004", "type": "Maple" }
+     ]
+ }';
+
+ $yummy = json_decode($json);
+
+ echo $yummy->toppings[2]->id;
+
+  ?>
+
+- When we pass "true" as the second argument to "json_decode", we get associative arrays
+
+<?php
+
+$json = '
+{
+    "type": "donut",
+    "name": "Cake",
+    "toppings": [
+        { "id": "5002", "type": "Glazed" },
+        { "id": "5006", "type": "Chocolate with Sprinkles" },
+        { "id": "5004", "type": "Maple" }
+    ]
+}';
+
+$yummy = json_decode($json, true);
+
+echo $yummy['toppings'][2]['type']; //Maple
+
+ ?>
+
+ <!-- Difference between "==" and "===" -->
+
+ - The operator "==" casts between two different types if they are different, while the "===" operator is a 'typesafe comparison'
+ - This means it will only return "true" if both the operands have the same type and the same value
+
+ Eg -
+<?php
+ 1 === 1: true
+1 == 1: true
+1 === "1": false // 1 is an integer, "1" is a string
+1 == "1": true // "1" gets casted to an integer, which is 1
+"foo" === "foo": true // both operands are strings and have the same value
+ ?>
+
+ <!-- Difference between "$a" and "$$a" in php -->
+
+ "$a" represents a variable
+ "$$a" represents a variable with the content of $a
+
+ Eg -
+
+<?php
+ $test = "hello world";
+ $a = "test";
+ echo $$a; //hello world
+ ?>

@@ -29,3 +29,7 @@ https://codepen.io/theiwaz/pen/vybjc
 <!-- How to place set of divs to the right and left and one set to the next line -->
 
 https://jsfiddle.net/yLzagkd5/
+
+<!-- How to create a stack of cards with animation -->
+
+https://codepen.io/akhil_001/pen/zoQdaO?editors=0110

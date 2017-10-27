@@ -276,3 +276,246 @@ class Car {
 }
 
 $tank = $bmw -> fill(10) -> ride(40) -> tank;
+
+<!-- What are the different access modifiers -->
+
+1. public
+2. private
+3. protected
+
+* the public access modifier allows a code from outside or inside the class to access the class's methods and properties
+- the private modifier prevents access to a class's methods or properties from any code that is outside the class
+
+1. Public access modifier
+
+<?php
+
+class Car {
+
+  // public methods and properties.
+  public $model;
+
+  public function getModel()
+  {
+    return "The car model is " . $this -> model;
+  }
+}
+
+$mercedes = new Car();
+//Here we access a property from outside the class
+$mercedes -> model = "Mercedes";
+//Here we access a method from outside the class
+echo $mercedes -> getModel();
+
+?>
+
+2. Private access modifier
+
+<?php
+
+class Car {
+
+  //private
+  private $model;
+
+  public function getModel()
+  {
+    return "The car model is " . $this -> model;
+  }
+}
+
+$mercedes = new Car();
+
+// We try to access a private property from outside the class.
+$mercedes -> model = "Mercedes benz";
+echo $mercedes -> getModel();
+
+?>
+
+
+Result:
+
+Fatal error: Cannot access private property Car::$model
+
+<!-- How to access a private property -->
+
+- we used public methods because they can interact with both the code outside of the class's scope as well as the code inside the class
+- called setters and getters
+
+Eg -
+
+<?php
+
+class Car {
+
+  //the private access modifier denies access to the method from outside the class’s scope
+  private $model;
+
+  //the public access modifier allows the access to the method from outside the class
+  public function setModel($model)
+  {
+    $this -> model = $model;
+  }
+
+  public function getModel()
+  {
+    return "The car model is  " . $this -> model;
+  }
+}
+
+$mercedes = new Car();
+//Sets the car’s model
+$mercedes -> setModel("Mercedes benz");
+//Gets the car’s model
+echo $mercedes -> getModel();
+
+?>
+
+<!-- What is the __construct magic method -->
+
+- acts as a constructor
+
+Eg -
+
+<?php
+class Car{
+  private $model;
+
+  // A constructor method.
+  public function __construct($model)
+  {
+    $this -> model = $model;
+  }
+}
+
+$car1 = new Car("mercedes")
+?>
+
+<!-- What is the use of Inheritance -->
+
+- We are creating a reusable piece of code that we write only once in the parent class, and use again as much as we need in the child classes
+
+<!-- How to inherit from the parent class -->
+
+<?php
+class Parent {
+  // The parent’s class code
+}
+
+class Child extends Parent {
+  // The  child can use the parent's class code
+}
+?>
+
+- the child class can make use of all the non-private methods and properties that it inherits from the parent class
+
+Eg -
+
+<?php
+
+//The parent class
+class Car {
+  // Private property inside the class
+  private $model;
+
+  //Public setter method
+  public function setModel($model)
+  {
+    $this -> model = $model;
+  }
+
+  public function hello()
+  {
+    return "beep! I am a <i>" . $this -> model . "</i><br />";
+  }
+}
+
+
+//The child class inherits the code from the parent class
+class SportsCar extends Car {
+  //No code in the child class
+}
+
+
+//Create an instance from the child class
+$sportsCar1 = new SportsCar();
+
+// Set the value of the class’ property.
+// For this aim, we use a method that we created in the parent
+$sportsCar1 -> setModel('Mercedes Benz');
+
+//Use another method that the child class inherited from the parent class
+echo $sportsCar1 -> hello();
+
+ ?>
+
+<!-- Protected Modifier -->
+
+- we are not able to access the private variables of a parent class using the object of a child class
+
+- this can be solved by making the variable "protected"
+
+<?php
+
+// The parent class
+class Car {
+  //The $model property is now protected, so it can be accessed
+  // from within the class and its child classes
+  protected $model;
+
+  //Public setter method
+  public function setModel($model)
+  {
+    $this -> model = $model;
+  }
+}
+
+// The child class
+class SportsCar extends Car {
+  //Has no problem to get a protected property that belongs to the parent
+  public function hello()
+  {
+    return "beep! I am a <i>" . $this -> model . "</i><br />";
+  }
+}
+
+//Create an instance from the child class
+$sportsCar1 = new SportsCar();
+
+//Set the class model name
+$sportsCar1 -> setModel('Mercedes Benz');
+
+//Get the class model name
+echo $sportsCar1 -> hello();
+
+ ?>
+
+<!-- How to override parent class methods with that of child class -->
+
+<?php
+
+// The parent class has hello method that returns "beep".
+class Car {
+  public function hello()
+  {
+    return "beep";
+  }
+}
+
+//The child class has hello method that returns "Halllo"
+class SportsCar extends Car {
+  public function hello()
+  {
+    return "Hallo";
+  }
+}
+
+//Create a new object
+$sportsCar1 = new SportsCar();
+
+//Get the result of the hello method
+echo $sportsCar1 -> hello();
+
+ ?>
+
+** To avoid the parent class method from being overriden, declare it with the "final" keyword
