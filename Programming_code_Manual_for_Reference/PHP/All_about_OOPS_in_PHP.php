@@ -519,3 +519,339 @@ echo $sportsCar1 -> hello();
  ?>
 
 ** To avoid the parent class method from being overriden, declare it with the "final" keyword
+
+<!-- What are abstract classes and methods -->
+
+- We use "abstract classes" when we want to commit the programmer to write a certain class method, but we are only sure about the name of the method
+and not the details of how it should be written
+- We use "abstract classes"and methods when we need to commit the child classes to certain methods that they inherit from the parent class but we cannot commit about the
+code that should be written inside the methods
+
+- An abstract class is a class that has at least one abstract method
+- abstract methods can only have names and arguments and no other code
+- We cannot create objects out of abstract classes
+- We need to create child classes that add the code into the bodies of the methods and use these child classes to create objects
+
+<!-- How to declare abstract classes and methods -->
+
+<?php
+// Abstract classes are declared with the abstract keyword, and contain abstract methods.
+abstract class Car {
+  abstract public function calcNumMilesOnFullTank();
+}
+ ?>
+
+** an abstract class can have non-abstract methods too
+
+<?php
+abstract class Car {
+  // Abstract classes can have properties
+  protected $tankVolume;
+
+  // Abstract classes can have non abstract methods
+  public function setTankVolume($volume)
+  {
+    $this -> tankVolume = $volume;
+  }
+
+  // Abstract method
+  abstract public function calcNumMilesOnFullTank();
+}
+ ?>
+
+** The child classes that inherit from abstract classes must add bodies to the abstract methods
+
+<?php
+
+class Honda extends Car {
+  // Since we inherited abstract method, we need to define it in the child class,
+  // by adding code to the method's body.
+  public function calcNumMilesOnFullTank()
+  {
+    $miles = $this -> tankVolume*30;
+    return $miles;
+  }
+}
+
+class Toyota extends Car {
+  // Since we inherited abstract method, we need to define it in the child class,
+  // by adding code to the method's body.
+  public function calcNumMilesOnFullTank()
+  {
+    return $miles = $this -> tankVolume*33;
+  }
+
+  public function getColor()
+  {
+    return "beige";
+  }
+}
+
+$toyota1 = new Toyota();
+$toyota1 -> setTankVolume(10);
+echo $toyota1 -> calcNumMilesOnFullTank();//330
+echo $toyota1 -> getColor();//beige
+ ?>
+
+ <!-- What are interfaces -->
+
+ - they resemble "abstract classes" in that they include abstract methods that the programmer must define
+ in the classes that inherit from the interface
+
+ - it commits its child classes to abstract methods that they should implement
+
+ <!-- How to declare and implement an interface -->
+
+<?php
+
+interface interfaceName
+{
+    //abstract methods
+}
+
+class Child implements interfaceName
+{
+    // defines the interface methods and may have its own code
+}
+
+ ?>
+
+*** Interfaces, like abstract classes, include abstract methods and constants.
+However, unlike abstract classes, interfaces can only have public methods and cannot have variables
+
+*** The classes that implement the interfaces must define all the methods that they inherit
+from the interfaces, including all the parameters
+
+Eg -
+
+<?php
+
+interface Car {
+  public function setModel($name);
+
+  public function getModel();
+}
+
+class miniCar implements Car {
+  private $model;
+
+  public function setModel($name)
+  {
+    $this -> model = $name;
+  }
+
+  public function getModel()
+  {
+    return $this -> model;
+  }
+}
+ ?>
+
+** we can implement more than one interface in the same class
+
+<!-- Differences between abstract classes and interfaces -->
+
+1. Interfaces can include abstract methods and constants, but cannot contain concrete methods and variables
+2. all the methods in the interface must be in the public visibility scope
+3. A class can implement more than one interface, while it can inherit from only one abstract class
+
+Pictorial representation
+https://imgur.com/a/aiyOu
+
+<!-- Polymorphism in PHP -->
+
+- methods in different classes that do similar things should have the same name
+
+Eg -
+Geometric shapes have different properties and their own method of calculating area but the names of the methods should be same
+
+** To implement it ,we can choose between abstract classes and interfaces
+
+Eg -
+
+<?php
+
+interface Shape {
+  public function calcArea();
+}
+
+class Circle implements Shape {
+  private $radius;
+
+  public function __construct($radius)
+  {
+    $this -> radius = $radius;
+  }
+
+  // calcArea calculates the area of circles
+  public function calcArea()
+  {
+    return $this -> radius * $this -> radius * pi();
+  }
+}
+
+class Rectangle implements Shape {
+  private $width;
+  private $height;
+
+  public function __construct($width, $height)
+  {
+    $this -> width = $width;
+    $this -> height = $height;
+  }
+
+  // calcArea calculates the area of rectangles
+  public function calcArea()
+  {
+    return $this -> width * $this -> height;
+  }
+}
+ ?>
+
+<!-- What is type hinting in PHP -->
+
+- We can specify the expected data type (Arrays, objects, interface etc.) for an argument in a function declaration
+- this helps in better code organization and improved error message
+
+<!-- How to do array type hinting  -->
+
+Eg -
+
+<?php
+function fnName(array $argumentName)
+{
+    //code
+}
+ ?>
+
+<!-- How to do object type hinting -->
+
+Eg -
+
+<?php
+
+class Car {
+  protected $driver;
+
+  // The constructor can only get Driver objects as arguments.
+  public function __construct(Driver $driver)
+  {
+    $this -> driver = $driver;
+  }
+}
+
+class Driver {}
+
+
+$driver1 = new Driver();
+$car1    = new Car($driver1);
+ ?>
+
+** PHP 7 supports scalar type hinting
+
+** The following code can only work in PHP 7
+
+<?php
+
+class car {
+  protected $model;
+  protected $hasSunRoof;
+  protected $numberOfDoors;
+  protected $price;
+
+  // string type hinting
+  public function setModel(string $model)
+  {
+    $this->model = $model;
+  }
+
+  // boolean type hinting
+  public function setHasSunRoof(bool $value)
+  {
+    $this->hasSunRoof = $value;
+  }
+
+  // integer type hinting
+  public function setNumberOfDoors(int $value)
+  {
+    $this->numberOfDoors = $value;
+  }
+
+  // float type hinting
+  public function setPrice(float $value)
+  {
+    $this->price = $value;
+  }
+}
+ ?>
+
+ <!-- What are static methods and properties -->
+
+ - To approach methods and properties of a class without the need to create an object out of the class
+
+ <!-- How to define static methods and properties -->
+
+ <?php
+
+ class Utilis
+ {
+   // static methods and properties are defined with the static keyword.
+   static public $numCars = 0;
+ }
+
+ // set the number of cars
+ Utilis::$numCars = 3;
+
+ // get the number of cars
+ echo Utilis::$numCars;
+
+  ?>
+
+<!-- How to approach the static methods from within the class -->
+
+- we use the "self" keyword for that
+
+Eg -
+
+<?php
+
+class Utilis {
+  static public $numCars = 0;
+
+  static public function addToNumCars($int)
+  {
+    $int = (int)$int;
+    self::$numCars += $int;
+  }
+}
+
+echo Utilis::$numCars;
+
+Utilis::addToNumCars(3);
+echo Utilis::$numCars;
+
+Utilis::addToNumCars(-1);
+echo Utilis::$numCars;
+
+ ?>
+
+<!-- How to call a function in the parent class(with some safety) in the public method of child classes  -->
+
+<?php
+    class dog {
+        public $Name;
+        protected function getName() {
+            return $this->Name;
+        }
+    }
+
+    class poodle extends dog {
+        public function bark() {
+            print "'Woof', says " . $this->getName();
+        }
+    }
+
+    $poppy = new poodle;
+    $poppy->Name = "Poppy";
+    $poppy->bark();
+?>
