@@ -111,3 +111,214 @@ DB::table('provisionalleads')->where('id',$pid)->update(['active'=>'0']);
 
 // retrieve all the column and the corresponding details from the particular row
 $lead = lead::find($leadid);
+
+<!-- How to access a Request generated from a page -->
+
+- To obtain an instance of the current HTTP request, via dependency injection, we should type-hint the
+"Illuminate\Http\Request" class on the controller method
+
+Eg -
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    /**
+     * Store a new user.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        $name = $request->input('name');
+
+        //
+    }
+}
+
+?>
+
+** If the controller method is also expecting input from a route parameter, we should list the route parameters after other dependencies
+
+Eg -
+
+Route::put('user/{id}', 'UserController@update');
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    /**
+     * Update the specified user.
+     *
+     * @param  Request  $request
+     * @param  string  $id
+     * @return Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+}
+
+ ?>
+
+<!-- How to access the Request via Closures -->
+
+<?php
+
+use Illuminate\Http\Request;
+
+Route::get('/', function (Request $request) {
+    //
+});
+
+ ?>
+
+<!-- How to display the request path's information -->
+
+$uri = $request->path();
+
+<!-- How to display the request URL -->
+
+// Without Query String...
+$url = $request->url();
+
+// With Query String...
+$url = $request->fullUrl();
+
+<!-- How to retrieve the Request Method type -->
+
+<?php
+
+$method = $request->method();
+
+if ($request->isMethod('post')) {
+    //
+}
+
+ ?>
+
+<!-- How to retrieve all the request data in the form of an array -->
+
+$input = $request->all();
+
+<!-- How to access all user inputs without worrying about the HTTP verb used -->
+
+$name = $request->input('name');
+
+** In case, the input value doesn't exist and we wish to supply a default value, use this
+
+$name = $request->input('name', 'Sally');
+
+** If the field has a name, use this
+
+$name = $request->name;
+
+<!-- How to retrieve JSON input values -->
+
+- As long as the "Content/Type" header of the request is properly set to "application/json", we use this
+
+$name = $request->input('user.name');
+
+<!-- How to retrieve a subset of the input data -->
+
+$input = $request->only(['username', 'password']);
+
+$input = $request->only('username', 'password');
+
+$input = $request->except(['credit_card']);
+
+$input = $request->except('credit_card');
+
+- the "only" method  returns all the key/value pairs that you request, even if the key is not present on the incoming request
+- When the key is not present on the request, the value will be "null"
+
+- To retrieve a portion of the input data that is actually present on the request, use the "intersect method"
+
+$input = $request->intersect(['username', 'password']);
+
+<!-- How to check whether the input value is present or not -->
+
+if($request->has('name'))
+{
+
+}
+
+OR
+
+if ($request->has(['name', 'email'])) {
+    //
+}
+
+<!-- How to flash input to a session -->
+
+$request->flash();
+- it will flash the current input to the session so that it is available during the user's next request to the application
+
+$request->flashOnly(['username', 'email']);
+
+$request->flashExcept('password');
+
+<!-- How to flash input then redirect -->
+
+return redirect('form')->withInput();
+
+return redirect('form')->withInput(
+    $request->except('password')
+);
+
+<!-- How to retrieve old input  -->
+
+$username = $request->old('username');
+
+** In blade, to retrieve an old data which is correct after validation on submission do this:
+
+<input type="text" name="username" value="{{ old('username') }}">
+
+<!-- How to retrieve cookies from requests -->
+
+- All cookies created by the Laravel framework are encrypted and signed with an authentication code, meaning they will be considered invalid
+if they have been changed by the client
+
+$value = $request->cookie('name');
+
+<!-- How to attach cookies to responses -->
+
+return response('Hello World')->cookie(
+    'name', 'value', $minutes
+);
+
+<!-- How to retrieve uploaded files -->
+
+$file = $request->file('photo');
+
+
+$file = $request->photo;
+
+** To determine, if a file is present on the request, do this:
+
+if ($request->hasFile('photo')) {
+    //
+}
+
+<!-- How to check if the file was uploaded successfully or not -->
+
+if ($request->file('photo')->isValid()) {
+    //
+}
+
+<!-- How to access the full path and extension name of the file -->
+
+$path = $request->photo->path();
+
+$extension = $request->photo->extension();
