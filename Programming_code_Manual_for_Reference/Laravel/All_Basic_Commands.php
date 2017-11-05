@@ -93,6 +93,13 @@ About
 
 ** Wherever @section('body') is found, the part of the original code will be replaced with the "specific" code
 
+<!-- How to add partials in blade -->
+
+@include('partials/_head')
+- include all the code that comes in the header out here and simply call the file using the above statement
+
+** name of the file is "_head.blade.php"
+
 <!-- What are namespaces -->
 
 - namespaces are like little containers
@@ -806,10 +813,459 @@ php artisan route:clear
     'subject' => $request->subject,
     'bodyMessage'=> $request->message
     );
-    
+
     Mail::send('emails.contact',$data, function($message) use($data)
     {
         $message->from($data['email']);
         $message->to('jatins368@gmail.com');
         $message->subject($data['subject']);
     });
+
+    <!-- How to access a Request generated from a page -->
+
+    - To obtain an instance of the current HTTP request, via dependency injection, we should type-hint the
+    "Illuminate\Http\Request" class on the controller method
+
+    Eg -
+
+    <?php
+
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+
+    class UserController extends Controller
+    {
+        /**
+         * Store a new user.
+         *
+         * @param  Request  $request
+         * @return Response
+         */
+        public function store(Request $request)
+        {
+            $name = $request->input('name');
+
+            //
+        }
+    }
+
+    ?>
+
+    ** If the controller method is also expecting input from a route parameter, we should list the route parameters after other dependencies
+
+    Eg -
+
+    Route::put('user/{id}', 'UserController@update');
+
+    <?php
+
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+
+    class UserController extends Controller
+    {
+        /**
+         * Update the specified user.
+         *
+         * @param  Request  $request
+         * @param  string  $id
+         * @return Response
+         */
+        public function update(Request $request, $id)
+        {
+            //
+        }
+    }
+
+     ?>
+
+    <!-- How to access the Request via Closures -->
+
+    <?php
+
+    use Illuminate\Http\Request;
+
+    Route::get('/', function (Request $request) {
+        //
+    });
+
+     ?>
+
+    <!-- How to display the request path's information -->
+
+    $uri = $request->path();
+
+    <!-- How to display the request URL -->
+
+    // Without Query String...
+    $url = $request->url();
+
+    // With Query String...
+    $url = $request->fullUrl();
+
+    <!-- How to retrieve the Request Method type -->
+
+    <?php
+
+    $method = $request->method();
+
+    if ($request->isMethod('post')) {
+        //
+    }
+
+     ?>
+
+    <!-- How to retrieve all the request data in the form of an array -->
+
+    $input = $request->all();
+
+    <!-- How to access all user inputs without worrying about the HTTP verb used -->
+
+    $name = $request->input('name');
+
+    ** In case, the input value doesn't exist and we wish to supply a default value, use this
+
+    $name = $request->input('name', 'Sally');
+
+    ** If the field has a name, use this
+
+    $name = $request->name;
+
+    <!-- How to retrieve JSON input values -->
+
+    - As long as the "Content/Type" header of the request is properly set to "application/json", we use this
+
+    $name = $request->input('user.name');
+
+    <!-- How to retrieve a subset of the input data -->
+
+    $input = $request->only(['username', 'password']);
+
+    $input = $request->only('username', 'password');
+
+    $input = $request->except(['credit_card']);
+
+    $input = $request->except('credit_card');
+
+    - the "only" method  returns all the key/value pairs that you request, even if the key is not present on the incoming request
+    - When the key is not present on the request, the value will be "null"
+
+    - To retrieve a portion of the input data that is actually present on the request, use the "intersect method"
+
+    $input = $request->intersect(['username', 'password']);
+
+    <!-- How to check whether the input value is present or not -->
+
+    if($request->has('name'))
+    {
+
+    }
+
+    OR
+
+    if ($request->has(['name', 'email'])) {
+        //
+    }
+
+    <!-- How to flash input to a session -->
+
+    $request->flash();
+    - it will flash the current input to the session so that it is available during the user's next request to the application
+
+    $request->flashOnly(['username', 'email']);
+
+    $request->flashExcept('password');
+
+    <!-- How to flash input then redirect -->
+
+    return redirect('form')->withInput();
+
+    return redirect('form')->withInput(
+        $request->except('password')
+    );
+
+    <!-- How to retrieve old input  -->
+
+    $username = $request->old('username');
+
+    ** In blade, to retrieve an old data which is correct after validation on submission do this:
+
+    <input type="text" name="username" value="{{ old('username') }}">
+
+    <!-- How to retrieve cookies from requests -->
+
+    - All cookies created by the Laravel framework are encrypted and signed with an authentication code, meaning they will be considered invalid
+    if they have been changed by the client
+
+    $value = $request->cookie('name');
+
+    <!-- How to attach cookies to responses -->
+
+    return response('Hello World')->cookie(
+        'name', 'value', $minutes
+    );
+
+    <!-- How to retrieve uploaded files -->
+
+    $file = $request->file('photo');
+
+
+    $file = $request->photo;
+
+    ** To determine, if a file is present on the request, do this:
+
+    if ($request->hasFile('photo')) {
+        //
+    }
+
+    <!-- How to check if the file was uploaded successfully or not -->
+
+    if ($request->file('photo')->isValid()) {
+        //
+    }
+
+    <!-- How to access the full path and extension name of the file -->
+
+    $path = $request->photo->path();
+
+    $extension = $request->photo->extension();
+
+    <!-- How to create responses using strings and arrays -->
+
+    - All routes and controllers should return a response to be sent to the user's browser
+    - The most basic way is to return a string from a route or controller
+    - the framework will automatically convert the string into a full HTTP response:
+
+    <?php
+
+    Route::get('/',function()
+    {
+        return 'Hello world';
+    }
+    );
+     ?>
+
+    ** In addition to returning strings from your routes and controllers, we may also return arrays
+    - the framework will automatically convert the array into a JSON response.
+
+    <?php
+
+    Route::get('/',function()
+    {
+        return [1,2,3]
+    }
+    );
+     ?>
+
+    <!-- What are Response objects -->
+
+    - Mostly, we won't be returning simple strings or arrays from route actions.
+    - we would be returning full "Illuminate\Http\Response" instances or views
+
+    - Returning a full Response instance allows us to customize the response's HTTP status code and headers.
+    - A "Response" instance inherits from the "Symfony\Component\HttpFoundation\Response" class, which provides a variety of methods for building HTTP responses
+
+    Route::get('home',function()
+    {
+        return response('Hello World', 200)->header('Content-Type','text/plain');
+    }
+    );
+
+    <!-- How to attach "Headers" to Responses -->
+
+    - we can add a series of headers to the response before sending it back to the user
+
+    return response($content)->header('Content-Type',$type)->header('X-Header-One', 'Header Value')->header('X-Header-Two','Header Value');
+
+    OR
+
+    return response($content)->withHeaders([
+                'Content-Type' => $type,
+                'X-Header-One' => 'Header Value',
+                'X-Header-Two' => 'Header Value',
+            ]);
+
+<!-- How to attach cookies to the responses -->
+
+- the "cookie" method on "response instances" allows us to easily attach cookies to the response
+
+return response($content)->header('Content-Type',$type)->cookies('name','value','$minutes');
+
+- the cookie function can have the following parameters
+
+cookie($name, $value, $minutes, $path, $domain, $secure, $httpOnly)
+
+<!-- How to disable encryption of cookies -->
+
+- by default, all cookies generated by the Laravel are encrypted and signed so that they can't be modified or read by the client
+- To disable encryption for a subset of cookies, we use the "$except" property of the "App\Http\Middleware\EncryptCookies" which is located in the "app\Http\Middleware" directory
+
+<?php
+
+/**
+ * The names of the cookies that should not be encrypted.
+ *
+ * @var array
+ */
+protected $except = [
+    'cookie_name',
+];
+
+ ?>
+
+<!-- How to perform "redirects" -->
+
+- Redirect responses are instances of the "Illuminate\Http\RedirectResponse" class and contain the proper headers needed to redirect the user to another URL
+
+<?php
+
+Route::get('dashboard',function()
+{
+    return redirect('home/dashboard');
+}
+);
+ ?>
+
+- Sometimes, we wish to redirect the user to their previous location, such as when the submit form is invalid
+
+- since this feature utilizes the "session", make sure the route calling the "back" function is using the "web" middleware group
+
+<?php
+
+Route::post('user/profile', function()
+{
+        return back()->withInput();
+}
+);
+
+ ?>
+
+<!-- How to redirect to "named routes" -->
+
+- When we call the "redirect" helper with no parameters, an instance of "Illuminate\Routing\Redirector" is returned, allowing us to call any method on the "Redirector" instance
+
+<?php
+
+return redirect()->route('login');
+ ?>
+
+- if the route has parameters, pass them as a second parameter
+
+<?php
+
+return redirect()->route('profile', ['id'=>1]);
+
+OR
+
+return redirect()->route('posts.show', $post->id);
+
+ ?>
+
+ <!-- How to populate parameters via eloquent models -->
+
+ - if we are redirecting to a route with an "ID" parameter that is being populated from an Eloquent model, we may simply pass the model itself
+ - the ID will be extracted automatically
+
+ <?php
+
+return redirect()->route('profile', [$user])
+  ?>
+
+  <!-- How to redirect to the controllers actions -->
+
+  ** We don't need to pass the "full namespace" to the controller since Laravel's "RouteServiceProvider" automatically sets the base controller namespace
+
+<?php
+  return redirect()->action('HomeController@index');
+ ?>
+
+  - to pass second parameter, do this
+
+  <?php
+
+  return redirect()->action(
+      'UserController@profile', ['id' => 1]
+  );
+
+   ?>
+
+<!-- How to redirect with a flashed session data -->
+
+<?php
+
+Route::post('user/profile', function()
+{
+    return redirect('dashboard')->with('status', 'Profile Updated');
+}
+);
+
+ ?>
+
+In the Blade, put the following
+
+@if(session('status'))
+    <div class="alert alert-success">
+        {{  session('status')   }}
+    </div>
+@endif
+
+<!-- How to return view as the response's content -->
+
+- if we need control over the response's status and headers but also need to return a "view" as the response's content , do this:
+
+<?php
+
+return response()->view('hello', $data, 200)
+                           ->header('Content-Type', $type);
+ ?>
+
+<!-- How to generate JSON responses -->
+
+- the "json" method automatically sets the "Content-Type" header to "application/json", as well as converts the given array to JSON
+using the "json_encode" PHP function
+
+<?php
+return response()->json(['name'=>'Abigail','state'=>'CA']);
+ ?>
+
+ <!-- How to initiate "file downloads" for a file at a given path -->
+
+ - the "download" method accepts a file name as the second argument to the method, which will determine the file name that is seen by the user downloading the file
+- we can pass an array of HTTP headers as the third argument to the method
+
+<?php
+
+return response()->download($pathToFile);
+
+OR
+
+return response()->download($pathToFile, $name, $headers);
+
+OR
+
+return response()->download($pathToFile)->deleteFileAfterSend(true);
+ ?>
+
+<!-- How to display file content in the user's browser initiating a download -->
+
+<?php
+
+return response()->file($pathToFile);
+
+OR
+
+return response()->file($pathToFile, $headers);
+
+ ?>
+
+<!-- How to validate the data from a form -->
+
+$this->validate($request,
+array(
+  'title' => 'required|max:255',
+  'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
+  'category_id' => 'required|integer',
+  'body' => 'required'
+));

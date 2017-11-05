@@ -655,7 +655,94 @@ class miniCar implements Car {
 2. all the methods in the interface must be in the public visibility scope
 3. A class can implement more than one interface, while it can inherit from only one abstract class
 
-Pictorial representation
+4. Abstract class focuses on a kind of things similarity
+
+Eg - People are considered type of "mammal" and as such would not be considered of type "vehicle"
+
+<?php
+abstract class Mammal {
+      protected $age_;
+      //below are functions I think all mammals will have,including people
+      abstract public function setAge($age);
+      abstract public function getAge();
+      abstract public function eat($food);
+}
+class Person extends Mammal {
+      protected $job_; //Person's feature
+      public function setAge($age){
+        $this->age_ = $age;
+      }
+
+      public function getAge(){
+        return $this->age_;
+      }
+
+      public function eat($food){
+        echo 'I eat ' ,$food ,'today';
+      }
+
+      //People only attribute
+      public function setJob($job){
+         $this->job_ = $job;
+      }
+      public function getJob(){
+         echo 'My job is ' , $this->job_;
+      }
+
+}
+ ?>
+
+** Interface focuses on collation of similar functions
+Eg - We are a human being and are of type "mammal".
+- If we want to fly then we will need to implement the "flying Interface"
+- if we want to shoot while flying, we will also need to implement the "gun interface"
+
+<?php
+
+//Now a person wants to fly, but they are typically not able to do so.
+//So we implement an interface
+interface Plane{
+  public function Fly();
+}
+
+//I also want shoot enemy
+interface Gun{
+  public function shoot();
+}
+
+class Person2 extends Mammal implements Plane,Gun{
+
+      protected $job_;//Person feature
+      public function setAge($age){
+        $this->age_ = $age;
+      }
+      public function getAge(){
+        return $this->age_;
+      }
+      public function eat($food){
+        echo '<br/>I eat ' ,$food ,' today<br/>';
+      }
+      //Only a person has this feature.
+      public function setJob($job){
+         $this->job_ = $job;
+      }
+      public function getJob(){
+         echo 'My job is ' , $this->job_;
+      }
+
+      //-----------------------------------------
+      //below implementations from interfaces function. (features that humans do not have).
+      //Person implements from other class
+      public function fly(){
+        echo '<br/>I use plane,so I can fly<br/>';
+      }
+      public function shoot(){
+        echo 'I use gun,so I can shoot<br/>';
+      }
+}
+
+ ?>
+<!-- Pictorial representation -->
 https://imgur.com/a/aiyOu
 
 <!-- Polymorphism in PHP -->

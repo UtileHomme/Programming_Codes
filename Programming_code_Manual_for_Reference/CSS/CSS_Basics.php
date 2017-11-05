@@ -336,4 +336,109 @@ d. "none"
 <!-- How does the "float" property help -->
 
 - it positions elements to the left or right side of parent element
-- all other elements will float around the floated element 
+- all other elements will float around the floated element
+
+
+<!-- What is the shorthand for the "border" property -->
+
+border: 5px solid red;
+- border-width, border-style , border-color
+
+<!-- What is the shorthand for the "margin" property -->
+
+<!-- When 4 values are mentioned -->
+margin: 25px 50px 75px 100px;
+top margin is 25px
+right margin is 50px
+bottom margin is 75px
+left margin is 100px
+
+<!-- When 3 values are mentioned -->
+
+margin: 25px 50px 75px;
+top margin is 25px
+right and left margins are 50px
+bottom margin is 75px
+
+<!-- When 2 values are mentioned -->
+
+margin: 25px 50px;
+top and bottom margins are 25px
+right and left margins are 50px
+
+<!-- What is the use of "auto" as an property for "margin" -->
+
+- it is used to center an element along with its container.
+
+https://jsfiddle.net/oktukqbh/
+
+<!-- What is "margin-collapse" -->
+
+- Top and bottom margins of an element are sometimes collapsed into a single margin that is equal to the largest of the two margins
+- doesn't apply to left and right margins
+
+https://jsfiddle.net/6d9d49sk/
+
+<!-- Understanding padding and width -->
+
+- the "width" property specifies the width of an element's content area
+- the content area is the portion inside the padding , border and margin of the element
+
+- if the element has a specified width, the padding added to that element will be added to the total width of the element
+
+- To keep the width intact, and decrease the other attributes use "box-sizing"
+
+https://jsfiddle.net/x894gzeu/
+
+<!-- Understanding height and width -->
+
+** The height and width properties do not include padding, borders, or margins; they set the height/width of the area inside the padding, border, and margin of the element!
+
+<!-- Understanding "outline" attribute -->
+- an outline is a line that is drawn around elements, OUTSIDE the borders, to make the element "stand out"
+
+** Outline differs from borders!! Unlike border, the outline is drawn outside the element's border and may overlap other elements
+    - the outline is NOT a part of the element's dimensions; the element's total width and height is not affected by the width of the outline
+
+<!-- Different outline styles -->
+https://jsfiddle.net/brremgyy/
+
+*** None of the other outline properties will have any effect, unless the "outline-style" property is set
+
+<!-- Understanding "outline-offset" property -->
+
+- it adds space between an outline and the "edge/border" of an element
+- the space between an element and its outline is transparent
+
+https://jsfiddle.net/m66dz75u/
+
+<!-- Understanding the "text-align: justify" property -->
+
+- each line is stretched so that every line has equal width, and the left and right margins are straight
+
+https://jsfiddle.net/eh9wuudg/
+
+<!-- Understanding the text-decoration property -->
+
+- is used to decorate the text
+
+https://jsfiddle.net/hpkbt5qL/
+
+<!-- Understanding the "text-transform" property -->
+
+- is used to specify the uppercase and lowercase letters in a text
+- can also be used to capitalize every first letter of every word
+
+https://jsfiddle.net/ggeLkdux/
+
+<!-- Understanding the "text-indent" property -->
+
+- is used to specify the indentation of the first line of a text
+
+https://jsfiddle.net/8yzcs1v8/
+
+<!-- Understanding the "text-shadow" property -->
+
+- is used to add shadow to the text
+
+https://jsfiddle.net/pvo6z5pd/

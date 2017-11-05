@@ -5,10 +5,10 @@
 <!-- Inside head -->
 
 <style type="text/css">
-  p
-  {
+p
+{
     color:red;
-  }
+}
 </style>
 
 <!-- How to import Google Web Font in a CSS file -->
@@ -31,7 +31,7 @@
 <!-- In CSS -->
 p.blue
 {
-  color:blue;
+    color:blue;
 }
 
 <!-- This is how we use child selectors -->
@@ -39,9 +39,9 @@ p.blue
 <!-- In HTML -->
 
 <body>
-  <p>
-    Para 1
-  </p>
+    <p>
+        Para 1
+    </p>
 </body>
 
 <!-- In CSS -->
@@ -50,7 +50,7 @@ p.blue
 <!-- This is CSS inheritance -->
 body>p
 {
-  color:orange;
+    color:orange;
 }
 
 <!-- This is how we select the element with a particular class -->
@@ -65,8 +65,8 @@ p.center {
 <!-- How to make use of a "universal" selector -->
 
 * {
-   color: green;
-   font-size: 20px;
+    color: green;
+    font-size: 20px;
 }
 
 *** There should be "no space" between the property value and its unit
@@ -79,15 +79,15 @@ p.center {
 <!-- In CSS -->
 input[type="text"]
 {
-  color:orange;
+    color:orange;
 }
 
 <!-- If we wish to use modify mutiple elemnts with same style use this -->
 
 p,h1
 {
-  color:blue;
-  font-family:garamond;
+    color:blue;
+    font-family:garamond;
 }
 
 <!-- To apply inline styles i.e. to the particular element use : -->
@@ -112,20 +112,20 @@ https://fonts.google.com/
 
 p
 {
-  line-height: 2px;
-  font-size: 2in/2pt;
-  border:2px solid black
+    line-height: 2px;
+    font-size: 2in/2pt;
+    border:2px solid black
 }
 
 Let's assume "body" has "h1"
 
 body
 {
-  font-size: 25px;
+    font-size: 25px;
 }
 h1
 {
-  font-size:150%
+    font-size:150%
 }
 
 - Since "h1" has been inherited from "body" , the font-size of "h1" will be 150% of "body = 25 px"
@@ -149,20 +149,20 @@ background-attachment: fixed;
 
 p
 {
-<!-- For the size -->
-font-size: 22pt/px;
+    <!-- For the size -->
+    font-size: 22pt/px;
 
-<!-- For the type of font -->
-font-family: calibri;
+    <!-- For the type of font -->
+    font-family: calibri;
 
-<!-- Whether all text should be capitalized or not -->
-font-variant: small-caps;
+    <!-- Whether all text should be capitalized or not -->
+    font-variant: small-caps;
 
-<!-- Whether it should be bold -->
-font-weight:bold;
+    <!-- Whether it should be bold -->
+    font-weight:bold;
 
-<!-- Whether it should be italics -->
-font-style:italics;
+    <!-- Whether it should be italics -->
+    font-style:italics;
 
 }
 
@@ -171,41 +171,41 @@ font-style:italics;
 
 p
 {
-  <!-- For showing the text from right to left of the page -->
-  direction:rtl;
+    <!-- For showing the text from right to left of the page -->
+    direction:rtl;
 
-  <!-- For giving spacing between individual letters -->
-  letter-spacing:5px;
+    <!-- For giving spacing between individual letters -->
+    letter-spacing:5px;
 
-  <!-- For spacing between words  -->
-  word-spacing: 10px;
+    <!-- For spacing between words  -->
+    word-spacing: 10px;
 }
 
 h4
 {
-  <!-- To indent or shift the text by some amount -->
-  text-indent: 1in;
+    <!-- To indent or shift the text by some amount -->
+    text-indent: 1in;
 
-  <!-- To align the text  -->
-  text-align: left/center/right;
+    <!-- To align the text  -->
+    text-align: left/center/right;
 
-  <!-- To decorate the text in some manner -->
-  text-decoration: line-through/underline;
+    <!-- To decorate the text in some manner -->
+    text-decoration: line-through/underline;
 
-  <!-- To capitalize the text -->
-  text-transform: lowercase/uppercase/capitalize;
+    <!-- To capitalize the text -->
+    text-transform: lowercase/uppercase/capitalize;
 }
 
 <!-- For images use the following properties -->
 
 img
 {
-  <!-- height by default will also change the width -->
-  height:10px;
-  width:20px;
+    <!-- height by default will also change the width -->
+    height:10px;
+    width:20px;
 
-  <!-- for transparent , 1 for completely opaque, for other between 0 or 1  -->
-  opacity:0
+    <!-- for transparent , 1 for completely opaque, for other between 0 or 1  -->
+    opacity:0
 }
 
 <!-- For href links -->
@@ -213,36 +213,36 @@ img
 <!-- This will make the link orange -->
 a:link
 {
-  color:orange;
+    color:orange;
 }
 
 <!-- This will make the color blue after it has been visited -->
 a:visited
 {
-  color:blue;
+    color:blue;
 }
 
 <!-- This will make the color black when we hover on it -->
 a:hover
 {
-  color:black;
+    color:black;
 }
 
 <!-- This is when the user clicks on it but doesn't release the click, change color to red -->
 a:active
 {
-  color:red;
+    color:red;
 }
 
 <!-- How to modify the borders -->
 
 p
 {
-  border-color: red;
+    border-color: red;
 
-  border-style: dotted;
+    border-style: dotted;
 
-  border-width 2 px:
+    border-width 2 px:
 }
 
 <!-- How to set the margins and paddings of a page -->
@@ -272,13 +272,13 @@ ul
 
 p
 {
-  cursor:default;
-  cursor:crosshair;
-  cursor:pointer;
-  cursor:move;
-  cursor:wait;
-  cursor:text;
-  cursor:help;
+    cursor:default;
+    cursor:crosshair;
+    cursor:pointer;
+    cursor:move;
+    cursor:wait;
+    cursor:text;
+    cursor:help;
 
 }
 
@@ -295,13 +295,13 @@ float:left;
 
 p
 {
-  border: 2px solid black;
+    border: 2px solid black;
 
-  <!-- Hidden is when whatever text is going outside the border can be hidden
-  Auto is the normal state
-  scroll is when we want the text to be scrollable -->
-  overflow:scroll / auto / hidden ;
-  float:left;
+    <!-- Hidden is when whatever text is going outside the border can be hidden
+    Auto is the normal state
+    scroll is when we want the text to be scrollable -->
+    overflow:scroll / auto / hidden ;
+    float:left;
 }
 
 <!-- To make some element visible or hidden-->
@@ -309,34 +309,34 @@ p
 <!-- Used mainly when we want some element to hide when the page is reloaded or in some other scenario using JS -->
 p
 {
-  visibility:hidden/visible;
+    visibility:hidden/visible;
 }
 
 <!-- How to position an element -->
 
 div
 {
-  <!-- In case of 'fixed', even if we have some other elements before 'div', it will be aligned according to below
-  dimensions from left and top  -->
-  position:fixed;
-  left:300px;
-  top:300px;
+    <!-- In case of 'fixed', even if we have some other elements before 'div', it will be aligned according to below
+    dimensions from left and top  -->
+    position:fixed;
+    left:300px;
+    top:300px;
 
-  <!-- In case of 'relative', everything will be done relative to other elements  -->
-  position:relative;
-  left:300px;
-  top:300px;
+    <!-- In case of 'relative', everything will be done relative to other elements  -->
+    position:relative;
+    left:300px;
+    top:300px;
 }
 
 <!-- If we wish to create layers of images on top of each other but in some order of precedence use this -->
 
 div >img
 {
-  z-index:4;
+    z-index:4;
 }
 duv>img1
 {
-  z-index:3
+    z-index:3
 }
 
 <!-- Pseudo elements are used for applying styles to a particular part of the element -->
@@ -344,25 +344,25 @@ duv>img1
 <!-- Style will be applied to only first line of paragraph -->
 p.para1:first-line
 {
-  color:blue;
+    color:blue;
 }
 
 p.para1:first-letter
 {
-  font-size: bold;
+    font-size: bold;
 }
 
 <!-- Anytime we want something to proceed with the content define below, do this -->
 p.para1:before
 {
-  content: "hello, ";
-  font-style:bold;
+    content: "hello, ";
+    font-style:bold;
 }
 
 p.para1:after
 {
-  content: "bye.";
-  color:blue;
+    content: "bye.";
+    color:blue;
 }
 
 - If we want an element not to be displayed but still occupying some space, use the property "display: none;"
@@ -387,7 +387,7 @@ https://jsfiddle.net/7870mb2j/4/
 -- but all boxes will still be stack under one another
 
 <!-- How does "absolute" positioning work
-  -->
+-->
 
 https://jsfiddle.net/bf06bvas/2/
 
@@ -422,16 +422,16 @@ https://jsfiddle.net/gx79ex4v/5/
     color:    #909;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #909;
-   opacity:  1;
+    color:    #909;
+    opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #909;
-   opacity:  1;
+    color:    #909;
+    opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #909;
+    color:    #909;
 }
 ::-ms-input-placeholder { /* Microsoft Edge */
-   color:    #909;
+    color:    #909;
 }
