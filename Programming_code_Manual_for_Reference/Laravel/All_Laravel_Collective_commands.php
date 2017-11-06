@@ -49,3 +49,7 @@ echo Form::open(['url' => 'foo/bar', 'files' => true])
 <!-- How to add scripts -->
 
 {!! Html::script('js/parsley.min.js') !!}
+
+<!-- How to link routes from the view page using laravel collective -->
+
+{!! Html::linkRoute('posts.edit','Edit',array($post->id),array('class'=>'btn btn-primary btn-block')) !!}

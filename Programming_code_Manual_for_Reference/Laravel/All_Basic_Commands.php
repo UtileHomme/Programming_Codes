@@ -121,6 +121,29 @@ use App\Post;
 <!-- How to add a flash message on the screen -->
 Session::flash('warning','The Mobile number is invalid');
 
+<!-- How to show the flash message through the view page -->
+@if(Session::has('success'))
+<div class="alert alert-success" role="alert">
+  <strong>Success:</strong> {{Session::get('success')}}
+</div>
+
+@endif
+
+<!-- How to check if errors are present through the view page -->
+
+@if(count($errors)>0)
+<div class="alert alert-danger">
+  <strong>Errors:</strong>
+  <ul>
+    @foreach($errors->all() as $error)
+    <li>
+      {{$error}}
+    </li>
+    @endforeach
+  </ul>
+</div>
+@endif
+
 <!-- This is how we access the variable data received using "get" in query on blade -->
 
 @extends('layout.app');
@@ -1269,3 +1292,57 @@ array(
   'category_id' => 'required|integer',
   'body' => 'required'
 ));
+
+<!-- How to determine whether a view exists or not  -->
+
+- use the "View" facade
+- the "exists" method will return "true" if the view exists
+
+<?php
+use Illuminate\Support\Facades\View;
+
+if(View::exists('emails.customer'))
+{
+
+}
+ ?>
+
+<!-- How to get the most recent created and updated times on the view -->
+
+<dl class="dl-horizontal">
+  <label>Created At:</label>
+  <p>{{ date('M j, Y H:ia',strtotime($post->created_at))}}</p>
+</dl>
+
+<!-- How to show a part of a text and replace the rest by "...." -->
+
+@foreach($posts as $post)
+  <tr>
+    <td>{{$post->id}}</td>
+    <td>{{$post->title}}</td>
+    <td>{{ substr(strip_tags($post->body),0,50) }}
+      {{ strlen(strip_tags($post->body))>50 ? "..." : "" }}
+    </td>
+    <td>{{ date('M j, Y',strtotime($post->created_at))}}</td>
+    <td><a href="{{ route('posts.show', $post->id)}}" class="btn btn-default btn-sm">View</a>
+        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-default btn-sm">Edit</a>
+    </td>
+  </tr>
+@endforeach
+
+<!-- How to ensure that the button that is click is highlighted on the navbar -->
+
+<ul class="nav navbar-nav">
+  <li class="{{ Request::is('/') ? 'active':' ' }}"><a href="/">Home</a></li>
+  <li class="{{ Request::is('blog') ? 'active':' ' }}"><a href="/blog">Blog</a></li>
+  <li class="{{ Request::is('about') ? 'active':' ' }}"><a href="/about">About</a></li>
+  <li class="{{ Request::is('contact') ? 'active':' ' }}"><a href="/contact">Contact</a></li>
+</ul>
+
+<!-- How to edit a form using Model-form binding -->
+
+<!-- This post is a model object -->
+<!-- We send the editted data to the PostController update function using this form  -->
+<!-- We are connecting the form to a model -->
+<!-- We have to manually tell the form which method to use since by default a POST request is going -->
+{!! Form::model($post, ['route' => ['posts.update', $post->id], 'method'=>'PUT']) !!}
