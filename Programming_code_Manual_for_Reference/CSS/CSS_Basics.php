@@ -1,8 +1,8 @@
 ** There are three ways in which files can be separated on a website
 
- - structure (HTML)
- - presentation (CSS)
- - behaviour (Javascript)
+- structure (HTML)
+- presentation (CSS)
+- behaviour (Javascript)
 
 <!-- What is CSS -->
 
@@ -12,48 +12,48 @@ written in a markup language
 - can completely control how the web pages look without changing your HTML
 
 An Analogy
-  - Imagine a fence has been built using HTML
-  - The painting etc. is done using CSS
+- Imagine a fence has been built using HTML
+- The painting etc. is done using CSS
 
 - If the fonts mentioned in the font-family selector are not found, then the browser will upload its default font-family
 
 <!-- What are block level and inline level elements -->
 
 1. Block level elements
-  - form a visible block on the page
-  - have a definable width and height
-  - they will appear in a new line from whatever content went before it and any content
-   that goes after it will also begin on a new line
+- form a visible block on the page
+- have a definable width and height
+- they will appear in a new line from whatever content went before it and any content
+that goes after it will also begin on a new line
 
-  Eg - paragraphs, list, navigation menus, footers,headers etc.
+Eg - paragraphs, list, navigation menus, footers,headers etc.
 
-  <!-- What characteristic does "block" element have -->
+<!-- What characteristic does "block" element have -->
 
-  - always begins on a new line
-  - its height, line-height, top-margin and bottom-margin can be specified
-  - its width defaults to 100% of its containing element unless otherwise stated
+- always begins on a new line
+- its height, line-height, top-margin and bottom-margin can be specified
+- its width defaults to 100% of its containing element unless otherwise stated
 
 2. Inline level elements
-  - are contained within block-level elements and surround only small parts of the document's content
-  , not entire paragraphs and groupings of content
-  - will not cause a new line to appear in the document
-  - they would normally appear inside a "paragraph"
+- are contained within block-level elements and surround only small parts of the document's content
+, not entire paragraphs and groupings of content
+- will not cause a new line to appear in the document
+- they would normally appear inside a "paragraph"
 
-  Eg - anchor, "em", "strong", "span", "label", "input","img" etc.
+Eg - anchor, "em", "strong", "span", "label", "input","img" etc.
 
-  ** apply the property "float:left" whenever we want to stack to paragraphs("block" by default) side by side
+** apply the property "float:left" whenever we want to stack to paragraphs("block" by default) side by side
 
-  <!-- What characteristic does 'inline" element have' -->
+<!-- What characteristic does 'inline" element have' -->
 
-  - begins on the same line as its sibling
-  - its height, line-height, top-margin and bottom-margin can't be changed
-  - its width is as wide as the content and can't be modified
+- begins on the same line as its sibling
+- its height, line-height, top-margin and bottom-margin can't be changed
+- its width is as wide as the content and can't be modified
 
-  <!-- What characteristic does 'inline-block' element have -->
+<!-- What characteristic does 'inline-block' element have -->
 
-  - can fit on the same line as "inline" or "inline-block" elements
-  - its height, line-height,top-margin and bottom-margin can be specified
-  - its width defaults to 100% of its containing element, but can be changed
+- can fit on the same line as "inline" or "inline-block" elements
+- its height, line-height,top-margin and bottom-margin can be specified
+- its width defaults to 100% of its containing element, but can be changed
 
 <!-- Eg of useless CSS -->
 span
@@ -80,18 +80,57 @@ span
 
 - If we have three statically positioned elements in the code, they will stack one over the other
 - We can't change the "top", "left", "right","bottom" properties in this positioning
-- this is the default positioning
+- this is the default positioning according to normal flow of the page
+
+<style media="screen">
+
+div.static {
+position: static;
+border: 3px solid #73AD21;
+}
+
+</style>
 
 <!-- What is relative positioning -->
 
 - The element will be positioned relative to the element it is inside or to the element just before it
 - The element that follows after the "relative" positioned element won't be affected
+- Other content will not be adjusted to fit into any gap left by the element
+
+<style media="screen">
+
+div.relative {
+   position: relative;
+   left: 30px;
+   border: 3px solid #73AD21;
+}
+
+</style>
 
 <!-- What is absolute positioning -->
 
 - The element is taken out of the normal flow of the page
 - All the elements are made to shift from the window margin
 - might overlap other elements too
+
+<!-- What is fixed positioning -->
+
+- the element is positioned relative to the viewport
+- it always stays in the same place even if the page is scrolled
+- the top, right, bottom and left are used to position the element
+- it doesn't leave a gap in the page where it would normally have been located
+
+<style media="screen">
+
+div.fixed {
+position: fixed;
+bottom: 0;
+right: 0;
+width: 300px;
+border: 3px solid #73AD21;
+}
+
+</style>
 
 <!-- How to add link to access font-awesome icons -->
 
@@ -130,7 +169,7 @@ p
 
 - percentages depend on the size of the container
 - the width here depends on the container size too
-    - if container or parent size is 500px, then the width will be 20% of that which is 100px;
+- if container or parent size is 500px, then the width will be 20% of that which is 100px;
 
 <!-- Understanding "em" in size -->
 
@@ -319,19 +358,19 @@ div
 - can have the following values : "block", "inline", "inline-block", "none"
 
 a. "block"
-    - occupies the whole width of the page ad no other element is allowed to be place to the left and right of it
+- occupies the whole width of the page ad no other element is allowed to be place to the left and right of it
 
 b. "inline"
-    - can be part of the "block" element and more "inline" elements can exist on the same line
-    - do not accept "top and bottom" margin and padding
+- can be part of the "block" element and more "inline" elements can exist on the same line
+- do not accept "top and bottom" margin and padding
 
 c. "inline-block"
-    - elements are somewhere in the middle
-    - creates a block element, that can be surrounded by other elements , as if "inline"
+- elements are somewhere in the middle
+- creates a block element, that can be surrounded by other elements , as if "inline"
 
 d. "none"
-    - the browser behaves as if the element does not exist in the document tree
-    - the descendants of the element also have their display property turned off
+- the browser behaves as if the element does not exist in the document tree
+- the descendants of the element also have their display property turned off
 
 <!-- How does the "float" property help -->
 
@@ -398,7 +437,7 @@ https://jsfiddle.net/x894gzeu/
 - an outline is a line that is drawn around elements, OUTSIDE the borders, to make the element "stand out"
 
 ** Outline differs from borders!! Unlike border, the outline is drawn outside the element's border and may overlap other elements
-    - the outline is NOT a part of the element's dimensions; the element's total width and height is not affected by the width of the outline
+- the outline is NOT a part of the element's dimensions; the element's total width and height is not affected by the width of the outline
 
 <!-- Different outline styles -->
 https://jsfiddle.net/brremgyy/
@@ -442,3 +481,556 @@ https://jsfiddle.net/8yzcs1v8/
 - is used to add shadow to the text
 
 https://jsfiddle.net/pvo6z5pd/
+
+<!-- Difference between "serif" and "sans-serif" fonts -->
+
+- There are 2 types of font family names
+
+a. Generic family
+- a group of font families with a similar look (like "Serif" or "Monospace")
+
+b. Font family
+- a specific font family (like "Times New Roman" or "Arial")
+
+Serif
+- have small lines at the ends on some characters
+
+Sans-serif
+- "sans" means "without"
+- doesn't have lines at the ends of characters
+
+Monospace
+- have the same width
+
+** On computer screens, "sans-serif" fonts are easier to read than "serif" fonts
+
+<!-- Understanding font-family property -->
+
+- should have several font names as a fallback system
+- if the browser doesn't support the first font, it tries the next font and so on
+
+Eg -
+
+<style media="screen">
+p
+{
+    font-family: "Times New Roman", Times, serif;
+}
+
+</style>
+
+<!-- Understanding font-style property -->
+
+<style media="screen">
+
+p.normal {
+    font-style: normal;
+}
+
+p.italic {
+    font-style: italic;
+}
+
+p.oblique {
+    font-style: oblique;
+}
+
+</style>
+
+?>
+
+<!-- Understanding font-size property -->
+
+<style media="screen">
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+p {
+    font-size: 14px;
+}
+
+</style>
+
+
+<!-- Understanding "em" in font size -->
+
+- allows user to resize the text (in the browser menu)
+
+1 em = 16px
+
+Eg -
+
+<style media="screen">
+h1 {
+    font-size: 2.5em; /* 40px/16=2.5em */
+}
+
+h2 {
+    font-size: 1.875em; /* 30px/16=1.875em */
+}
+
+p {
+    font-size: 0.875em; /* 14px/16=0.875em */
+}
+
+
+</style>
+
+<!-- How to make the font-size work in all browsers -->
+
+<style media="screen">
+body {
+    font-size: 100%;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.875em;
+}
+
+p {
+    font-size: 0.875em;
+}
+
+</style>
+
+<!-- Understanding font-weight property -->
+
+- specifies the weight of the font
+
+<style media="screen">
+p.normal {
+    font-weight: normal;
+}
+
+p.thick {
+    font-weight: bold;
+}
+</style>
+
+<!-- Understanding the font-variant property -->
+
+- specifies whether or not a text should be displayed in a "small-caps" font
+- all lowercase letters are converted to uppercase letters
+- the converted "uppercase" letters appears in a smaller font size than the original uppercase letters in the text
+
+Eg -
+
+<style media="screen">
+
+p.normal {
+    font-variant: normal;
+}
+
+p.small {
+    font-variant: small-caps;
+}
+
+</style>
+
+<!-- Different ways of adding icons on the website -->
+
+- Add the name of the specified icon class to any inline HTML element like <i></i> or <span></span>
+
+<!-- Font-Awesome icons  -->
+
+Eg -
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <i class="fa fa-cloud"></i>
+    <i class="fa fa-heart"></i>
+    <i class="fa fa-car"></i>
+    <i class="fa fa-file"></i>
+    <i class="fa fa-bars"></i>
+</body>
+
+<!-- Bootstrap icons -->
+
+Eg -
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <i class="glyphicon glyphicon-cloud"></i>
+    <i class="glyphicon glyphicon-remove"></i>
+    <i class="glyphicon glyphicon-user"></i>
+    <i class="glyphicon glyphicon-envelope"></i>
+    <i class="glyphicon glyphicon-thumbs-up"></i>
+</body>
+
+<!-- Google icons -->
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    <i class="material-icons">cloud</i>
+    <i class="material-icons">favorite</i>
+    <i class="material-icons">attachment</i>
+    <i class="material-icons">computer</i>
+    <i class="material-icons">traffic</i>
+</body>
+
+<!-- CSS links -->
+
+- Different link states
+
+a:link - a normal, unvisited link
+a:visited - a link the user has visited
+a:hover - a link when the user mouses over it
+a:active - a link the moment it is clicked
+
+<style media="screen">
+
+/* unvisited link */
+a:link {
+    color: red;
+}
+
+/* visited link */
+a:visited {
+    color: green;
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
+</style>
+
+
+** a:hover MUST come after a:link and a:visited
+** a:active MUST come after a:hover
+
+Understanding text-decoration property
+
+<style media="screen">
+
+a:link
+{
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+</style>
+
+<!-- How to specify background color for links -->
+
+<style media="screen">
+
+a:link {
+background-color: yellow;
+}
+
+a:visited {
+background-color: cyan;
+}
+
+a:hover {
+background-color: lightgreen;
+}
+
+a:active {
+background-color: hotpink;
+}
+
+</style>
+
+<!-- How to set different list item markers in list  -->
+
+<style media="screen">
+
+ul.a {
+list-style-type: circle;
+}
+
+ul.b {
+list-style-type: square;
+}
+
+ol.c {
+list-style-type: upper-roman;
+}
+
+ol.d {
+list-style-type: lower-alpha;
+}
+
+</style>
+
+<!-- How to set an image as a list item marker -->
+
+<style media="screen">
+ul
+{
+list-style-image: url('sqpurple.gif');
+}
+</style>
+
+<!-- How to position list item markers -->
+
+<style media="screen">
+
+ul
+{
+list-style-position: inside;
+}
+
+</style>
+
+<!-- How to remove default list settings  -->
+
+<style media="screen">
+
+ul
+{
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+
+</style>
+
+** shorthand for above
+
+<style media="screen">
+
+ul
+{
+    list-style: square inside url("sqpurple.gif");
+}
+
+</style>
+
+<!-- How to specify table borders -->
+
+<style media="screen">
+
+table, th, td
+{
+        border: 1px solid black;
+}
+
+</style>
+
+<!-- How to collapse borders into a single border  -->
+
+<style media="screen">
+
+table
+{
+border-collapse: collapse;
+}
+
+table, th, td {
+border: 1px solid black;
+}
+
+</style>
+
+<!-- How to get a single border around the table without any for the rows and columns -->
+
+<style media="screen">
+
+table
+{
+border: 1px solid black;
+}
+
+</style>
+
+<!-- How to set height and width of the table -->
+
+<style media="screen">
+
+table {
+    width: 100%;
+}
+
+th {
+    height: 50px;
+}
+
+</style>
+
+<!-- How to horizontally and vertically align text in a table -->
+
+<style media="screen">
+
+th
+{
+text-align: left;
+}
+
+td
+{
+    height: 50px;
+    vertical-align: bottom;
+}
+
+</style>
+
+<!-- How to control the padding inside a table -->
+
+<style media="screen">
+
+th, td
+{
+padding: 15px;
+text-align: left;
+}
+
+</style>
+
+<!-- How to set horizontal dividers between rows -->
+
+<style media="screen">
+
+th, td
+{
+    border-bottom: 1px solid #ddd;
+}
+
+</style>
+
+<!-- How to create a hoverable table( highlight table rows on mouse over) -->
+
+- use the ":hover" selector on "<tr>"
+
+<style media="screen">
+
+    tr:hover
+    {
+        background-color: #f5f5f5;
+    }
+
+</style>
+
+<!-- How to create a striped table  -->
+
+- use the "nth-child()" selector
+
+<style media="screen">
+
+    tr:nth-child(even)
+    {
+        background-color: #f2f2f2;
+    }
+
+</style>
+
+<!-- How to create a responsive table -->
+
+- a horizontal bar will be displayed in such a case
+
+<?php
+
+<div style="overflow-x:auto;">
+
+<table>
+... table content ...
+</table>
+
+</div>
+
+ ?>
+
+<!-- Understanding the display property -->
+
+- specifies if/how an element is displayed
+
+"display:none" is commonly used with JS to hide and show elements without deleting and recreating them
+
+<style media="screen">
+
+li
+{
+display: inline;
+}
+
+</style>
+
+- this will display the links side by side
+
+<style media="screen">
+
+a
+{
+display: inline;
+}
+
+</style>
+
+- this will display the links one after the other
+
+<!-- Difference between "display:none" and "visibility:hidden" -->
+
+a. display:none
+- hides an element
+- it is as if the element was never there
+
+b. visibility:hidden
+- hides the element but takes up the element space
+
+<!-- Understanding CSS width and max-width -->
+
+** a block level element always takes up the full width available
+- setting the width of a block level element will prevent it from stretching out to the edge of its container
+- we can set the margins to auto, to horizontally center the element within its container
+
+** the problem with "div" occurs when the browser window is smaller than the width of the element
+- the browser then adds a horizontal scrollbar to the page
+
+- Using "max-width" will improve the browser's handling of small windows
+
+Eg (with and without max-width)
+
+<style media="screen">
+
+div.ex1 {
+width: 500px;
+margin: auto;
+border: 3px solid #73AD21;
+}
+
+div.ex2 {
+max-width: 500px;
+margin: auto;
+border: 3px solid #73AD21;
+}
+
+</style>

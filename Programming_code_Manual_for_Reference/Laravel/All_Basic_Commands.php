@@ -59,6 +59,8 @@ php artisan route:list
 <!-- How to rollback to an original table schema -->
 php artisan migrate:refresh
 
+-- undo all migrations and redo them
+
 <!-- How to generate a key  -->
 
 - This is for setting the application key to a random string
@@ -288,6 +290,13 @@ Route::get('usr/{name}'),function()
     //
 }
 )->where('name', '[A-Za-z]+');
+
+Eg -
+
+Route::get('blog/{slug}',['as'=>'blog.single', 'uses'=>'BlogController@getSingle' ])
+          ->where('slug','[\w\d\-\_]+');
+
+ <!-- for regex , w = alphabets, d = number, - = dash, _ = underscore are allowed -->
 
 <!-- The id should be numerical in value -->
 Route::get('user/{id}', function ($id) {
@@ -1339,10 +1348,10 @@ if(View::exists('emails.customer'))
   <li class="{{ Request::is('contact') ? 'active':' ' }}"><a href="/contact">Contact</a></li>
 </ul>
 
-<!-- How to edit a form using Model-form binding -->
+<!-- How to directly access a url with parameters -->
 
-<!-- This post is a model object -->
-<!-- We send the editted data to the PostController update function using this form  -->
-<!-- We are connecting the form to a model -->
-<!-- We have to manually tell the form which method to use since by default a POST request is going -->
-{!! Form::model($post, ['route' => ['posts.update', $post->id], 'method'=>'PUT']) !!}
+<p><a href="{{ url('blog/'.$post->slug)}}">{{url('blog/'.$post->slug)}}</a></p>
+
+OR
+
+{{route('blog.single', $post->slug)}}

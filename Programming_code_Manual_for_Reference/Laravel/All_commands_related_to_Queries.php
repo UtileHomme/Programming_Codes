@@ -131,3 +131,42 @@ public function up()
 <!-- How to use "where" with Models -->
 
 - Post::where('title' => 'My First Title')->get();
+
+
+<!-- How to update a particular row in the database -->
+
+$post = Post::find($id);
+$user = User::find($id);
+
+$post->title = $request->input('title');
+$post->slug = $request->input('slug');
+$post->category_id = $request->input('category_id');
+$post->body = Purifier::clean($request->input('body'));
+
+$post->save();
+
+<!-- How to delete a particular row in the database -->
+
+$post = Post::find($id);
+$post->tags()->detach();
+
+$post->delete();
+
+Session::flash('success','The Post was Successfully Deleted');
+return redirect()->route('posts.index');
+
+<!-- What does "Post::" mean when retrieving a query -->
+
+- it is same as writing "DB::select(*)"
+
+<!-- How to add indexes in tables for faster retrieval -->
+
+$table->string('slug')->unique()->after('body');
+
+OR
+
+$table->index(['slug','title']);
+
+<!-- How to write where clause to test "equality" -->
+
+$post = Post::where('slug','=',$slug)->first();
