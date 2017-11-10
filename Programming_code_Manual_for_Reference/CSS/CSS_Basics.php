@@ -85,8 +85,8 @@ span
 <style media="screen">
 
 div.static {
-position: static;
-border: 3px solid #73AD21;
+    position: static;
+    border: 3px solid #73AD21;
 }
 
 </style>
@@ -100,9 +100,9 @@ border: 3px solid #73AD21;
 <style media="screen">
 
 div.relative {
-   position: relative;
-   left: 30px;
-   border: 3px solid #73AD21;
+    position: relative;
+    left: 30px;
+    border: 3px solid #73AD21;
 }
 
 </style>
@@ -112,6 +112,10 @@ div.relative {
 - The element is taken out of the normal flow of the page
 - All the elements are made to shift from the window margin
 - might overlap other elements too
+
+<!-- Difference between relative and absolute positioning pictorially -->
+
+https://imgur.com/a/VinNy
 
 <!-- What is fixed positioning -->
 
@@ -123,14 +127,43 @@ div.relative {
 <style media="screen">
 
 div.fixed {
-position: fixed;
-bottom: 0;
-right: 0;
-width: 300px;
-border: 3px solid #73AD21;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    border: 3px solid #73AD21;
 }
 
 </style>
+
+<!-- What is sticky positioning -->
+
+- here, the element is positioned based on the user's scroll position
+- it toggles between "relative" and "fixed" depending on the scroll position
+- it is positioned relative until a given offset position is met in the viewport - then it sticks in the place like "position:fixed"
+
+<style media="screen">
+
+div.sticky {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    background-color: green;
+    border: 2px solid #4CAF50;
+}
+
+</style>
+
+<!-- How to overlapp elements in a particular order -->
+
+- the "z-index" specifies the stack order of an element (Which element should be placed in front of , or behind, the others)
+- an element can have positive or negative stack order
+- the element with greater stack order is always in front of an element with a lower stack order
+
+*** if two positioned elements overlap without a "z-index" specified, the element positioned last in the HTML code will be shown on top
+
+
+
 
 <!-- How to add link to access font-awesome icons -->
 
@@ -753,19 +786,19 @@ a:active {
 <style media="screen">
 
 a:link {
-background-color: yellow;
+    background-color: yellow;
 }
 
 a:visited {
-background-color: cyan;
+    background-color: cyan;
 }
 
 a:hover {
-background-color: lightgreen;
+    background-color: lightgreen;
 }
 
 a:active {
-background-color: hotpink;
+    background-color: hotpink;
 }
 
 </style>
@@ -775,19 +808,19 @@ background-color: hotpink;
 <style media="screen">
 
 ul.a {
-list-style-type: circle;
+    list-style-type: circle;
 }
 
 ul.b {
-list-style-type: square;
+    list-style-type: square;
 }
 
 ol.c {
-list-style-type: upper-roman;
+    list-style-type: upper-roman;
 }
 
 ol.d {
-list-style-type: lower-alpha;
+    list-style-type: lower-alpha;
 }
 
 </style>
@@ -797,7 +830,7 @@ list-style-type: lower-alpha;
 <style media="screen">
 ul
 {
-list-style-image: url('sqpurple.gif');
+    list-style-image: url('sqpurple.gif');
 }
 </style>
 
@@ -807,7 +840,7 @@ list-style-image: url('sqpurple.gif');
 
 ul
 {
-list-style-position: inside;
+    list-style-position: inside;
 }
 
 </style>
@@ -818,9 +851,9 @@ list-style-position: inside;
 
 ul
 {
-list-style-type: none;
-margin: 0;
-padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 </style>
@@ -842,7 +875,7 @@ ul
 
 table, th, td
 {
-        border: 1px solid black;
+    border: 1px solid black;
 }
 
 </style>
@@ -853,11 +886,11 @@ table, th, td
 
 table
 {
-border-collapse: collapse;
+    border-collapse: collapse;
 }
 
 table, th, td {
-border: 1px solid black;
+    border: 1px solid black;
 }
 
 </style>
@@ -868,7 +901,7 @@ border: 1px solid black;
 
 table
 {
-border: 1px solid black;
+    border: 1px solid black;
 }
 
 </style>
@@ -893,7 +926,7 @@ th {
 
 th
 {
-text-align: left;
+    text-align: left;
 }
 
 td
@@ -910,8 +943,8 @@ td
 
 th, td
 {
-padding: 15px;
-text-align: left;
+    padding: 15px;
+    text-align: left;
 }
 
 </style>
@@ -933,10 +966,10 @@ th, td
 
 <style media="screen">
 
-    tr:hover
-    {
-        background-color: #f5f5f5;
-    }
+tr:hover
+{
+    background-color: #f5f5f5;
+}
 
 </style>
 
@@ -946,10 +979,10 @@ th, td
 
 <style media="screen">
 
-    tr:nth-child(even)
-    {
-        background-color: #f2f2f2;
-    }
+tr:nth-child(even)
+{
+    background-color: #f2f2f2;
+}
 
 </style>
 
@@ -967,7 +1000,7 @@ th, td
 
 </div>
 
- ?>
+?>
 
 <!-- Understanding the display property -->
 
@@ -979,7 +1012,7 @@ th, td
 
 li
 {
-display: inline;
+    display: inline;
 }
 
 </style>
@@ -990,7 +1023,7 @@ display: inline;
 
 a
 {
-display: inline;
+    display: inline;
 }
 
 </style>
@@ -1022,15 +1055,129 @@ Eg (with and without max-width)
 <style media="screen">
 
 div.ex1 {
-width: 500px;
-margin: auto;
-border: 3px solid #73AD21;
+    width: 500px;
+    margin: auto;
+    border: 3px solid #73AD21;
 }
 
 div.ex2 {
-max-width: 500px;
-margin: auto;
-border: 3px solid #73AD21;
+    max-width: 500px;
+    margin: auto;
+    border: 3px solid #73AD21;
 }
 
 </style>
+
+<!-- Understanding the "overflow" property -->
+
+- it controls what happens to the content that is too big to fit into an area
+- specifies whether to clip content or to add scrollbards when the content of an element is too big to fit in a specified area
+
+** the overflow element only works for block elements with a specified height
+
+a. overflow:visible
+- the content is not clipped and it renders outside the element box
+
+<style media="screen">
+
+div {
+    width: 200px;
+    height: 50px;
+    background-color: #eee;
+    overflow: visible;
+}
+
+</style>
+
+b. overflow:hidden
+- here, the overflow is clipped and the rest of the content is hidden
+
+<style media="screen">
+
+div {
+    overflow: hidden;
+}
+
+</style>
+
+c. overflow:scroll
+- here, the overflow is clipped and the scrollbar is added to scroll inside the box
+** it adds the scrollbar both horizontally and vertically
+
+<style media="screen">
+
+div {
+overflow: scroll;
+}
+
+</style>
+
+d. overflow: auto
+- it is similar to scroll, only it adds scrollbards when necessary
+
+<style media="screen">
+
+div {
+    overflow: auto;
+}
+
+</style>
+
+e. overflow-x / overflow-y
+
+- specifies whether to change the overflow of content just horizontally or vertically
+
+<style media="screen">
+
+div {
+overflow-x: hidden; /* Hide horizontal scrollbar */
+overflow-y: scroll; /* Add vertical scrollbar */
+}
+
+</style>
+
+<!-- Understanding the "float" and "clear" property -->
+
+- "float" specifies how an element should float
+- "clear" specifies what elements can float beside the cleared element and on which side
+
+a. float
+- is used for positioning and layout on web pages
+
+1. float:right
+ - floats some element to the right
+
+ https://jsfiddle.net/5eeexgvh/
+
+2. float:left
+- floats some element to the left
+
+https://jsfiddle.net/x9ubzj6x/
+
+3. float:none
+- no floating takes place
+
+https://jsfiddle.net/m01zuf9z/
+
+b. clear
+- specifies which elements can float beside the cleared element and on which side
+
+** the most common way is to use the "clear" property after we have used the "float" property
+
+** when clearing floats, we should match the clear to the float
+- if an element is floated to the left, then we should clear to the left
+- our floated element will continue to float, but the cleared element will appear below it on the web page
+
+- Without using "clear"
+https://jsfiddle.net/gf5uwt0L/
+
+- using "clear"
+https://jsfiddle.net/97y6hu3r/
+
+<!-- How to insert an image inside a border along with text -->
+
+https://jsfiddle.net/nv0hxv6e/
+
+<!-- An example web layout using float and clear -->
+
+https://jsfiddle.net/zsn4krf3/
