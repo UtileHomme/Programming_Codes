@@ -170,3 +170,36 @@ $table->index(['slug','title']);
 <!-- How to write where clause to test "equality" -->
 
 $post = Post::where('slug','=',$slug)->first();
+
+<!-- How to create one to many relationships -->
+
+- Suppose one category can be assigned to many posts
+
+class Category extends Model
+{
+    //we are telling laravel to use the 'categories' table when working with this model
+    protected $table = 'categories';
+
+    // One to many relationship - one category belongs to many posts
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
+}
+
+class Post extends Model
+{
+    // Post belongs to one category
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
+}
+
+<!-- How to access the category for a post -->
+
+<!-- Post model then category method and its name -->
+<p>Posted In: {{ $post->category->name }}</p>
+
+<!-- If we do not want to do a particular function from a controller, we make the route this way -->
+Route::resource('categories','CategoryController',['except'=>'create']);

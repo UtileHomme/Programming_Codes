@@ -84,3 +84,7 @@ echo Form::open(['url' => 'foo/bar', 'files' => true])
 
 {{ Form::checkbox('remember') }}
 {{Form::label('remember',"Remember Me")}}
+
+<!-- How to send a hidden field in a form -->
+
+{{ Form::hidden('token', $token) }}

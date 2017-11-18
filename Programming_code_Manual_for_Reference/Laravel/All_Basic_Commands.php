@@ -1355,3 +1355,14 @@ if(View::exists('emails.customer'))
 OR
 
 {{route('blog.single', $post->slug)}}
+
+<!-- How to pass some values returned by Eloquent ORM query as an array -->
+
+$categories = Category::all();
+
+$cats = array();
+
+foreach($categories as $category)
+{
+  $cats[$category->id] = $category->name;
+}
