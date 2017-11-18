@@ -173,6 +173,7 @@ $post = Post::where('slug','=',$slug)->first();
 
 <!-- How to create one to many relationships -->
 
+- Each category belongs to many posts
 - Suppose one category can be assigned to many posts
 
 class Category extends Model
@@ -203,3 +204,97 @@ class Post extends Model
 
 <!-- If we do not want to do a particular function from a controller, we make the route this way -->
 Route::resource('categories','CategoryController',['except'=>'create']);
+
+<!-- How to create a situation in which many tags can belong to many posts -->
+
+***** naming of table is done alphabetically (post_tag)
+
+class Post extends Model
+{
+
+  //for getting the column names of a particular table
+  public function getTableColumns()
+  {
+    return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
+  }
+
+  //for Many to Many relation
+  public function tags()
+  {
+    return $this->belongsToMany('App\Tag');
+  }
+}
+
+
+class Tag extends Model
+{
+    public function posts()
+    {
+      return $this->belongsToMany('App\Post');
+    }
+}
+
+<!-- How to create a migration for the above set up -->
+
+public function up()
+{
+  Schema::create('post_tag', function (Blueprint $table) {
+      $table->increments('id');
+      $table->integer('post_id')->unsigned();
+      // Now we are telling the table that the next field is a foreign key
+      $table->foreign('post_id')->references('id')->on('posts');
+
+      $table->integer('tag_id')->unsigned();
+      $table->foreign('tag_id')->references('id')->on('tags');
+
+  });
+}
+
+<!-- How to store the tags for the post in the database -->
+
+$post->save();
+
+// This is for sending the data of tags to db
+//this is for creating the many to many relationship
+//second parameter is to not allow laravel to override the associations which have been set with posts
+$post->tags()->sync($request->tags,false);
+
+<script type="text/javascript">
+$('.select2-multi').select2();
+
+// This is for ensuring that the edit field has all the pre selected tags
+$('.select2-multi').select2().val({!! json_encode($post->tags()->pluck('tags.id')) !!}).trigger('change')
+</script>
+
+<!-- How to get the count for number of posts associated with a tag -->
+
+<h1>{{ $tag->name }} Tag <small>{{$tag->posts()->count()}} Posts</small></h1>
+
+<!-- How to delete tags and posts associations -->
+
+Inside PostController
+
+public function destroy($id)
+{
+  $post = Post::find($id);
+  $post->tags()->detach();
+
+  $post->delete();
+
+  Session::flash('success','The Post was Successfully Deleted');
+  return redirect()->route('posts.index');
+
+
+Inside Tags Controller
+
+public function destroy($id)
+{
+    $tag = Tag::find($id);
+    $tag->posts()->detach();
+
+    $tag->delete();
+
+    Session::flash('success', 'Tag was deleted successfully');
+
+    return redirect()->route('tags.index');
+}

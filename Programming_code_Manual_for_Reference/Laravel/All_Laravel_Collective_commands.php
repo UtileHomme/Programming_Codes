@@ -88,3 +88,9 @@ echo Form::open(['url' => 'foo/bar', 'files' => true])
 <!-- How to send a hidden field in a form -->
 
 {{ Form::hidden('token', $token) }}
+
+<!-- How to add a delete button with route and appropriate method -->
+
+{{ Form::open(['route' => ['tags.destroy', $tag->id], 'method'=>'DELETE']) }}
+{{ Form::submit('Delete', ['class'=> 'btn btn-danger btn-block', 'style'=>'margin-top:20px;'])}}
+{{ Form::close()}}
