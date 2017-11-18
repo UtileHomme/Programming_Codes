@@ -69,3 +69,18 @@ echo Form::open(['url' => 'foo/bar', 'files' => true])
 <!-- How to make a form submit button -->
 
 {{ Form::submit('Save Changes',['class'=>'btn btn-block btn-success'])}}
+
+<!-- How to add an email field -->
+
+{{ Form::label('email', 'Email:') }}
+{{ Form::email('email',null,['class'=>'form-control']) }}
+
+<!-- How to add a passwords field -->
+
+{{ Form::label('password', "Password:")}}
+{{ Form::password('password', ['class' => 'form-control']) }}
+
+<!-- How to add a "remember me" field -->
+
+{{ Form::checkbox('remember') }}
+{{Form::label('remember',"Remember Me")}}
