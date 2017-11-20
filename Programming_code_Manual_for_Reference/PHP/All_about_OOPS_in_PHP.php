@@ -172,6 +172,16 @@ $example = new Example('Some text');
 - here, it is customary to group all of the variables and functions of a particular topic into a single class
 - supports better code organization and reduces the need for us to repeat ourselves
 
+<!-- What are classes and objects -->
+
+- a class is what we use to "define" the properties, methods and behaviour of objects
+- objects are the "things we create" out of a class
+
+- Class is like a blueprint of a building
+- Object is the actual building you build by following the blueprint (class)
+
+
+
 <!-- How to declare a class -->
 
 class Car {
@@ -285,9 +295,16 @@ $tank = $bmw -> fill(10) -> ride(40) -> tank;
 
 * the public access modifier allows a code from outside or inside the class to access the class's methods and properties
 - the private modifier prevents access to a class's methods or properties from any code that is outside the class
+- protected is used when we want to make the variable/function visible in all classes that extend the current class including the parent class
 
 1. Public access modifier
 
+- when we declare a method(function) or a property (variable) as public, these methods and properties can be accessed by :
+ - the same class that declared it
+ - the classes that inherit the above declared class
+ - any foreign elements outside the class
+
+Eg 1 -
 <?php
 
 class Car {
@@ -306,6 +323,33 @@ $mercedes = new Car();
 $mercedes -> model = "Mercedes";
 //Here we access a method from outside the class
 echo $mercedes -> getModel();
+
+?>
+
+Eg 2-
+<?php
+
+class GrandPa
+{
+    public $name='Mark Henry';  // A public variable
+}
+
+class Daddy extends GrandPa // Inherited class
+{
+    function displayGrandPaName()
+    {
+        return $this->name; // The public variable will be available to the inherited class
+    }
+
+}
+
+// Inherited class Daddy wants to know Grandpas Name
+$daddy = new Daddy;
+echo $daddy->displayGrandPaName(); // Prints 'Mark Henry'
+
+// Public variables can also be accessed outside of the class!
+$outsiderWantstoKnowGrandpasName = new GrandPa;
+echo $outsiderWantstoKnowGrandpasName->name; // Prints 'Mark Henry'
 
 ?>
 
@@ -455,6 +499,11 @@ echo $sportsCar1 -> hello();
 
 - this can be solved by making the variable "protected"
 
+- When we declare a method or a property as "protected", those methods and properties can be accessed by:
+ - the same class that declared it
+ - the classes that inherit the above declared class
+
+ <!-- Eg 1 - -->
 <?php
 
 // The parent class
@@ -489,6 +538,31 @@ $sportsCar1 -> setModel('Mercedes Benz');
 echo $sportsCar1 -> hello();
 
  ?>
+
+ <!-- Eg 2 -->
+
+ <?php
+
+class GrandPa
+{
+    protected $name = 'Mark Henry';
+}
+
+class Daddy extends GrandPa
+{
+    function displayGrandPaName()
+    {
+        return $this->name;
+    }
+
+}
+
+$daddy = new Daddy;
+echo $daddy->displayGrandPaName(); // Prints 'Mark Henry'
+
+$outsiderWantstoKnowGrandpasName = new GrandPa;
+echo $outsiderWantstoKnowGrandpasName->name; // Results in a Fatal Error
+?>
 
 <!-- How to override parent class methods with that of child class -->
 
@@ -744,6 +818,62 @@ class Person2 extends Mammal implements Plane,Gun{
  ?>
 <!-- Pictorial representation -->
 https://imgur.com/a/aiyOu
+
+<!-- What are traits in PHP -->
+
+- In traits, we can group the methods we need to redeclare in varoius classes
+
+Eg -
+
+<?php
+
+trait my_first_trait
+{
+    public function traitFunction()
+    {
+        echo "This is callable by our class object"
+    }
+}
+
+    class helloWorld
+    {
+        use my_first_trait;
+    }
+
+    $objTest = new Helloworld();
+    $objTest->traitFunction();
+
+ ?>
+
+ <!-- How to use multiple traits in a class -->
+
+ <?php
+
+ trait trait1 //declaration of first trait
+ {
+ public function hello1()
+ {
+ echo 1;
+ }
+ }
+ trait trait2 //second trait
+ {
+ function hello2()
+ {
+ echo 1;
+ }
+ }
+ class cls_class
+ {
+ use trait1 , trait2;
+ }
+
+  ?>
+
+<!-- When the use traits -->
+
+- only when multiple classes share the same functionality
+
 
 <!-- Polymorphism in PHP -->
 
