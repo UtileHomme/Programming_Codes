@@ -126,7 +126,7 @@ Session::flash('warning','The Mobile number is invalid');
 <!-- How to show the flash message through the view page -->
 @if(Session::has('success'))
 <div class="alert alert-success" role="alert">
-  <strong>Success:</strong> {{Session::get('success')}}
+    <strong>Success:</strong> {{Session::get('success')}}
 </div>
 
 @endif
@@ -135,14 +135,14 @@ Session::flash('warning','The Mobile number is invalid');
 
 @if(count($errors)>0)
 <div class="alert alert-danger">
-  <strong>Errors:</strong>
-  <ul>
-    @foreach($errors->all() as $error)
-    <li>
-      {{$error}}
-    </li>
-    @endforeach
-  </ul>
+    <strong>Errors:</strong>
+    <ul>
+        @foreach($errors->all() as $error)
+        <li>
+            {{$error}}
+        </li>
+        @endforeach
+    </ul>
 </div>
 @endif
 
@@ -294,9 +294,9 @@ Route::get('usr/{name}'),function()
 Eg -
 
 Route::get('blog/{slug}',['as'=>'blog.single', 'uses'=>'BlogController@getSingle' ])
-          ->where('slug','[\w\d\-\_]+');
+->where('slug','[\w\d\-\_]+');
 
- <!-- for regex , w = alphabets, d = number, - = dash, _ = underscore are allowed -->
+<!-- for regex , w = alphabets, d = number, - = dash, _ = underscore are allowed -->
 
 <!-- The id should be numerical in value -->
 Route::get('user/{id}', function ($id) {
@@ -869,11 +869,11 @@ php artisan route:clear
     class UserController extends Controller
     {
         /**
-         * Store a new user.
-         *
-         * @param  Request  $request
-         * @return Response
-         */
+        * Store a new user.
+        *
+        * @param  Request  $request
+        * @return Response
+        */
         public function store(Request $request)
         {
             $name = $request->input('name');
@@ -899,19 +899,19 @@ php artisan route:clear
     class UserController extends Controller
     {
         /**
-         * Update the specified user.
-         *
-         * @param  Request  $request
-         * @param  string  $id
-         * @return Response
-         */
+        * Update the specified user.
+        *
+        * @param  Request  $request
+        * @param  string  $id
+        * @return Response
+        */
         public function update(Request $request, $id)
         {
             //
         }
     }
 
-     ?>
+    ?>
 
     <!-- How to access the Request via Closures -->
 
@@ -923,7 +923,7 @@ php artisan route:clear
         //
     });
 
-     ?>
+    ?>
 
     <!-- How to display the request path's information -->
 
@@ -947,7 +947,7 @@ php artisan route:clear
         //
     }
 
-     ?>
+    ?>
 
     <!-- How to retrieve all the request data in the form of an array -->
 
@@ -1015,7 +1015,7 @@ php artisan route:clear
     return redirect('form')->withInput();
 
     return redirect('form')->withInput(
-        $request->except('password')
+    $request->except('password')
     );
 
     <!-- How to retrieve old input  -->
@@ -1036,7 +1036,7 @@ php artisan route:clear
     <!-- How to attach cookies to responses -->
 
     return response('Hello World')->cookie(
-        'name', 'value', $minutes
+    'name', 'value', $minutes
     );
 
     <!-- How to retrieve uploaded files -->
@@ -1076,48 +1076,48 @@ php artisan route:clear
     {
         return 'Hello world';
     }
-    );
-     ?>
+);
+?>
 
-    ** In addition to returning strings from your routes and controllers, we may also return arrays
-    - the framework will automatically convert the array into a JSON response.
+** In addition to returning strings from your routes and controllers, we may also return arrays
+- the framework will automatically convert the array into a JSON response.
 
-    <?php
+<?php
 
-    Route::get('/',function()
-    {
-        return [1,2,3]
-    }
-    );
-     ?>
+Route::get('/',function()
+{
+    return [1,2,3]
+}
+);
+?>
 
-    <!-- What are Response objects -->
+<!-- What are Response objects -->
 
-    - Mostly, we won't be returning simple strings or arrays from route actions.
-    - we would be returning full "Illuminate\Http\Response" instances or views
+- Mostly, we won't be returning simple strings or arrays from route actions.
+- we would be returning full "Illuminate\Http\Response" instances or views
 
-    - Returning a full Response instance allows us to customize the response's HTTP status code and headers.
-    - A "Response" instance inherits from the "Symfony\Component\HttpFoundation\Response" class, which provides a variety of methods for building HTTP responses
+- Returning a full Response instance allows us to customize the response's HTTP status code and headers.
+- A "Response" instance inherits from the "Symfony\Component\HttpFoundation\Response" class, which provides a variety of methods for building HTTP responses
 
-    Route::get('home',function()
-    {
-        return response('Hello World', 200)->header('Content-Type','text/plain');
-    }
-    );
+Route::get('home',function()
+{
+    return response('Hello World', 200)->header('Content-Type','text/plain');
+}
+);
 
-    <!-- How to attach "Headers" to Responses -->
+<!-- How to attach "Headers" to Responses -->
 
-    - we can add a series of headers to the response before sending it back to the user
+- we can add a series of headers to the response before sending it back to the user
 
-    return response($content)->header('Content-Type',$type)->header('X-Header-One', 'Header Value')->header('X-Header-Two','Header Value');
+return response($content)->header('Content-Type',$type)->header('X-Header-One', 'Header Value')->header('X-Header-Two','Header Value');
 
-    OR
+OR
 
-    return response($content)->withHeaders([
-                'Content-Type' => $type,
-                'X-Header-One' => 'Header Value',
-                'X-Header-Two' => 'Header Value',
-            ]);
+return response($content)->withHeaders([
+'Content-Type' => $type,
+'X-Header-One' => 'Header Value',
+'X-Header-Two' => 'Header Value',
+]);
 
 <!-- How to attach cookies to the responses -->
 
@@ -1137,15 +1137,15 @@ cookie($name, $value, $minutes, $path, $domain, $secure, $httpOnly)
 <?php
 
 /**
- * The names of the cookies that should not be encrypted.
- *
- * @var array
- */
+* The names of the cookies that should not be encrypted.
+*
+* @var array
+*/
 protected $except = [
     'cookie_name',
 ];
 
- ?>
+?>
 
 <!-- How to perform "redirects" -->
 
@@ -1158,7 +1158,7 @@ Route::get('dashboard',function()
     return redirect('home/dashboard');
 }
 );
- ?>
+?>
 
 - Sometimes, we wish to redirect the user to their previous location, such as when the submit form is invalid
 
@@ -1168,11 +1168,11 @@ Route::get('dashboard',function()
 
 Route::post('user/profile', function()
 {
-        return back()->withInput();
+    return back()->withInput();
 }
 );
 
- ?>
+?>
 
 <!-- How to redirect to "named routes" -->
 
@@ -1181,7 +1181,7 @@ Route::post('user/profile', function()
 <?php
 
 return redirect()->route('login');
- ?>
+?>
 
 - if the route has parameters, pass them as a second parameter
 
@@ -1193,35 +1193,35 @@ OR
 
 return redirect()->route('posts.show', $post->id);
 
- ?>
+?>
 
- <!-- How to populate parameters via eloquent models -->
+<!-- How to populate parameters via eloquent models -->
 
- - if we are redirecting to a route with an "ID" parameter that is being populated from an Eloquent model, we may simply pass the model itself
- - the ID will be extracted automatically
-
- <?php
-
-return redirect()->route('profile', [$user])
-  ?>
-
-  <!-- How to redirect to the controllers actions -->
-
-  ** We don't need to pass the "full namespace" to the controller since Laravel's "RouteServiceProvider" automatically sets the base controller namespace
+- if we are redirecting to a route with an "ID" parameter that is being populated from an Eloquent model, we may simply pass the model itself
+- the ID will be extracted automatically
 
 <?php
-  return redirect()->action('HomeController@index');
- ?>
 
-  - to pass second parameter, do this
+return redirect()->route('profile', [$user])
+?>
 
-  <?php
+<!-- How to redirect to the controllers actions -->
 
-  return redirect()->action(
-      'UserController@profile', ['id' => 1]
-  );
+** We don't need to pass the "full namespace" to the controller since Laravel's "RouteServiceProvider" automatically sets the base controller namespace
 
-   ?>
+<?php
+return redirect()->action('HomeController@index');
+?>
+
+- to pass second parameter, do this
+
+<?php
+
+return redirect()->action(
+    'UserController@profile', ['id' => 1]
+);
+
+?>
 
 <!-- How to redirect with a flashed session data -->
 
@@ -1233,14 +1233,14 @@ Route::post('user/profile', function()
 }
 );
 
- ?>
+?>
 
 In the Blade, put the following
 
 @if(session('status'))
-    <div class="alert alert-success">
-        {{  session('status')   }}
-    </div>
+<div class="alert alert-success">
+    {{  session('status')   }}
+</div>
 @endif
 
 <!-- How to return view as the response's content -->
@@ -1250,8 +1250,8 @@ In the Blade, put the following
 <?php
 
 return response()->view('hello', $data, 200)
-                           ->header('Content-Type', $type);
- ?>
+->header('Content-Type', $type);
+?>
 
 <!-- How to generate JSON responses -->
 
@@ -1260,11 +1260,11 @@ using the "json_encode" PHP function
 
 <?php
 return response()->json(['name'=>'Abigail','state'=>'CA']);
- ?>
+?>
 
- <!-- How to initiate "file downloads" for a file at a given path -->
+<!-- How to initiate "file downloads" for a file at a given path -->
 
- - the "download" method accepts a file name as the second argument to the method, which will determine the file name that is seen by the user downloading the file
+- the "download" method accepts a file name as the second argument to the method, which will determine the file name that is seen by the user downloading the file
 - we can pass an array of HTTP headers as the third argument to the method
 
 <?php
@@ -1278,7 +1278,7 @@ return response()->download($pathToFile, $name, $headers);
 OR
 
 return response()->download($pathToFile)->deleteFileAfterSend(true);
- ?>
+?>
 
 <!-- How to display file content in the user's browser initiating a download -->
 
@@ -1290,16 +1290,16 @@ OR
 
 return response()->file($pathToFile, $headers);
 
- ?>
+?>
 
 <!-- How to validate the data from a form -->
 
 $this->validate($request,
 array(
-  'title' => 'required|max:255',
-  'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
-  'category_id' => 'required|integer',
-  'body' => 'required'
+'title' => 'required|max:255',
+'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
+'category_id' => 'required|integer',
+'body' => 'required'
 ));
 
 <!-- How to determine whether a view exists or not  -->
@@ -1314,38 +1314,38 @@ if(View::exists('emails.customer'))
 {
 
 }
- ?>
+?>
 
 <!-- How to get the most recent created and updated times on the view -->
 
 <dl class="dl-horizontal">
-  <label>Created At:</label>
-  <p>{{ date('M j, Y H:ia',strtotime($post->created_at))}}</p>
+    <label>Created At:</label>
+    <p>{{ date('M j, Y H:ia',strtotime($post->created_at))}}</p>
 </dl>
 
 <!-- How to show a part of a text and replace the rest by "...." -->
 
 @foreach($posts as $post)
-  <tr>
+<tr>
     <td>{{$post->id}}</td>
     <td>{{$post->title}}</td>
     <td>{{ substr(strip_tags($post->body),0,50) }}
-      {{ strlen(strip_tags($post->body))>50 ? "..." : "" }}
+        {{ strlen(strip_tags($post->body))>50 ? "..." : "" }}
     </td>
     <td>{{ date('M j, Y',strtotime($post->created_at))}}</td>
     <td><a href="{{ route('posts.show', $post->id)}}" class="btn btn-default btn-sm">View</a>
         <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-default btn-sm">Edit</a>
     </td>
-  </tr>
+</tr>
 @endforeach
 
 <!-- How to ensure that the button that is click is highlighted on the navbar -->
 
 <ul class="nav navbar-nav">
-  <li class="{{ Request::is('/') ? 'active':' ' }}"><a href="/">Home</a></li>
-  <li class="{{ Request::is('blog') ? 'active':' ' }}"><a href="/blog">Blog</a></li>
-  <li class="{{ Request::is('about') ? 'active':' ' }}"><a href="/about">About</a></li>
-  <li class="{{ Request::is('contact') ? 'active':' ' }}"><a href="/contact">Contact</a></li>
+    <li class="{{ Request::is('/') ? 'active':' ' }}"><a href="/">Home</a></li>
+    <li class="{{ Request::is('blog') ? 'active':' ' }}"><a href="/blog">Blog</a></li>
+    <li class="{{ Request::is('about') ? 'active':' ' }}"><a href="/about">About</a></li>
+    <li class="{{ Request::is('contact') ? 'active':' ' }}"><a href="/contact">Contact</a></li>
 </ul>
 
 <!-- How to directly access a url with parameters -->
@@ -1364,25 +1364,25 @@ $cats = array();
 
 foreach($categories as $category)
 {
-  $cats[$category->id] = $category->name;
+    $cats[$category->id] = $category->name;
 }
 
 <!-- How to store an image into the database -->
 
 if($request->hasFile('featured_image'))
 {
-  $image = $request->file('featured_image');
+    $image = $request->file('featured_image');
 
-  //this will get the file extension
-  //to rename the file and let them be of the same extension use $image->encode('.png')
-  $filename = time().'.'.$image->getClientOriginalExtension();
+    //this will get the file extension
+    //to rename the file and let them be of the same extension use $image->encode('.png')
+    $filename = time().'.'.$image->getClientOriginalExtension();
 
-//   dd($filename);
-//storage_path
-  $location = public_path('images/'.$filename);
-  Image::make($image)->resize(800,400)->save($location);
+    //   dd($filename);
+    //storage_path
+    $location = public_path('images/'.$filename);
+    Image::make($image)->resize(800,400)->save($location);
 
-  $post->image = $filename;
+    $post->image = $filename;
 }
 
 <!-- Displaying the image on the view page -->
@@ -1402,8 +1402,8 @@ if($request->hasFile('featured_image'))
     //to rename the file and let them be of the same extension use $image->encode('.png')
     $filename = time().'.'.$image->getClientOriginalExtension();
 
-  //   dd($filename);
-  //storage_path
+    //   dd($filename);
+    //storage_path
     $location = public_path('images/'.$filename);
     Image::make($image)->resize(800,400)->save($location);
 
@@ -1413,3 +1413,157 @@ if($request->hasFile('featured_image'))
 
     Storage::delete($old_filename);
 }
+
+<!-- How to link the "public" folder in "app" with that of "storage" -->
+
+php artisan storage:link
+
+<!-- Another way of uploading files in the public folder itself -->
+
+$request->file('image');
+
+if($request->hasFile('image'))
+{
+    $request->file('image');
+
+    //for getting the path
+    //$request->image->path();
+
+    //for getting the extension
+    //$request->image->extension()
+
+    // return $request->image->store('public');
+
+    return Storage::putFile('public',$request->file('image'));
+}
+else
+{
+    return 'No file selected';
+}
+
+
+<!-- How to store the file with a custom name -->
+
+$request->file('image');
+
+if($request->hasFile('image'))
+{
+    $request->file('image');
+
+    //for getting the path
+    //$request->image->path();
+
+    //for getting the extension
+    //$request->image->extension()
+
+    // return $request->image->store('public');
+
+    // return Storage::putFile('public/new',$request->file('image'));
+
+    return $request->image->storeAs('public','jatin.jpg');
+}
+else
+{
+    return 'No file selected';
+}
+
+<!-- How to display the image on the web browser -->
+
+$url = Storage::url('jatin.jpg');
+return "<img src=' ".$url." ' />";
+
+<!-- How to get the size, last modified, copy and move the image to another folder -->
+
+//size of the image
+return Storage::size('public/jatin.jpg');
+
+//time the image was last modified
+return Storage::lastModified('public/jatin.jpg');
+
+//how to copy a file from one folder to another
+return Storage::copy('public/jatin.jpg','jatin.jpg');
+
+// how to move a file from one folder to another
+return Storage::move('public/jatin.jpg','jatin.jpg');
+
+<!-- How to create a file from raw content and then delete any file  -->
+
+//gives the raw data of the image file
+$raw_content =  Storage::get('jatin.jpg');
+
+//how to create an image with the above raw data
+return Storage::put('public/newImage.jpg', $raw_content);
+
+// how to delete any files
+return Storage::delete('public/jatin.jpg');
+
+<!-- Another way to upload an image on db -->
+
+if($request->hasFile('file'))
+        {
+            //gives the path for the file
+            // $request->file->store('public/upload');
+
+            //gives the name of the file along with extension
+            // dd($request->file->getClientOriginalName());
+
+            $filename = $request->file->getClientOriginalName();
+
+            $filesize = $request->file->getClientSize();
+
+            $request->file->storeAs('public/upload',$filename);
+
+            $filename = "jatin.jpg";
+
+            $image = new Found;
+            $image->name = $filename;
+            $image->size =$filesize;
+
+            $image->save();
+
+            // dd($filename);
+            return view('jatin',compact('filename'));
+        }
+
+<!-- What are sessions in Laravel -->
+
+- Since HTTP driven applications are stateless, sessions provide a way to store information about the user across multiple requests
+
+<!-- How and where to configure them -->
+
+- the session configuration file is stored at "config/session.php"
+
+- by default it is set to "file"
+
+The following drivers are available -
+
+1. file
+- sessions are stored in "storage/framework/sessions"
+
+2. cookie
+- sessions are stored in secure, encrypted cookies
+
+3. database
+- sessions are stored in a relational database
+
+4. memcaches/redis
+- sessions are stored in one of the fast, cache based stores
+
+5. array
+- sessions are stored in a PHP array and will not persist
+
+<!-- How to create a session database -->
+
+Schema::create('sessions', function ($table) {
+    $table->string('id')->unique();
+    $table->unsignedInteger('user_id')->nullable();
+    $table->string('ip_address', 45)->nullable();
+    $table->text('user_agent')->nullable();
+    $table->text('payload');
+    $table->integer('last_activity');
+});
+
+<!-- to generate the table -->
+php artisan session:table
+
+php artisan migrate
