@@ -94,3 +94,12 @@ echo Form::open(['url' => 'foo/bar', 'files' => true])
 {{ Form::open(['route' => ['tags.destroy', $tag->id], 'method'=>'DELETE']) }}
 {{ Form::submit('Delete', ['class'=> 'btn btn-danger btn-block', 'style'=>'margin-top:20px;'])}}
 {{ Form::close()}}
+
+<!-- How to give an upload file button -->
+
+{!! Form::open(array('route'=>'posts.store','data-parsley-validate'=>'','files'=>true)) !!}
+
+{{ Form::label('featured_image','Upload Featured Image:')}}
+{{ Form::file('featured_image') }}
+
+{!! Form::close() !!}

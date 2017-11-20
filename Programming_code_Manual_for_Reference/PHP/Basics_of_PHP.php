@@ -34,10 +34,10 @@ php -S localhost:8000
 - The binary (Zend Engine) that lets us interpret PHP is compiled
 
 - The PHP compiler's job is to parse the PHP code and convert it into a form suitable for the runtime engine. It's tasks are as follows:
-    - Ignore comments
-    - Resolve variables, function names, and so forth
-    - Construct the abstract syntax tree of the program
-    - Write the bytecode
+- Ignore comments
+- Resolve variables, function names, and so forth
+- Construct the abstract syntax tree of the program
+- Write the bytecode
 
 - If the script isn't changed, the compilation happens only the first time after which it is cached and reused.
 - if modified, compilation step happens again.
@@ -133,10 +133,10 @@ echo "</table>";
 
 <?php /*Do some PHP calculation or something*/ ?>
 <table>
-  <tr>
-    <td>Name</td>
-    <td><?php echo $name;?></td>
-  </tr>
+    <tr>
+        <td>Name</td>
+        <td><?php echo $name;?></td>
+    </tr>
 </table>
 
 <!-- How to print a variable by putting it in { } braces -->
@@ -198,8 +198,8 @@ $x = 5;
 $y = 10;
 
 function myTest() {
-   global $x, $y;
-   $y = $x + $y;
+    global $x, $y;
+    $y = $x + $y;
 }
 
 myTest();
@@ -216,7 +216,7 @@ $x = 5;
 $y = 10;
 
 function myTest() {
-   $GLOBALS['y'] = $GLOBALS['x'] + $GLOBALS['y'];
+    $GLOBALS['y'] = $GLOBALS['x'] + $GLOBALS['y'];
 }
 
 myTest();
@@ -233,8 +233,8 @@ Eg -
 $x = 5; // global scope
 
 function myTest() {
-   // using x inside this function will generate an error
-   echo "<p>Variable x inside function is: $x</p>";
+    // using x inside this function will generate an error
+    echo "<p>Variable x inside function is: $x</p>";
 }
 myTest();
 
@@ -247,8 +247,8 @@ Eg -
 
 <?php
 function myTest() {
-   $x = 5; // local scope
-   echo "<p>Variable x inside function is: $x</p>";
+    $x = 5; // local scope
+    echo "<p>Variable x inside function is: $x</p>";
 }
 myTest();
 
@@ -260,7 +260,7 @@ echo "<p>Variable x outside function is: $x</p>";
 
 <!-- How to use "str_word_count" for counting letters in a string -->
 
- str_word_count($s, 'another argument for the way the data is returned', 'argument for an special characters to be considered');
+str_word_count($s, 'another argument for the way the data is returned', 'argument for an special characters to be considered');
 
 <!-- How to shuffle the letters of a string -->
 
@@ -301,13 +301,13 @@ $food = array('Pasta'=>300, 'Pizza'=>1000, 'Salad'=>150, 'Vegetable'=>50);
 <!-- What are Multi-dimensional arrays and how do we define them -->
 
 $food = array('Healthy'=>
-                                      array('Salad', 'Vegetables', 'Pasta'),
-                      'Unhealthy'=>
-                                      array('Pizza', 'Ice cream') );
+array('Salad', 'Vegetables', 'Pasta'),
+'Unhealthy'=>
+array('Pizza', 'Ice cream') );
 
 //This is how it looks
 
-                        0                1              2
+0                1              2
 Healthy       |  Salad  | Vegetables | Pasta
 Unhealty     |  Pizaa  |  Ice Cream
 
@@ -315,18 +315,18 @@ Unhealty     |  Pizaa  |  Ice Cream
 <!-- How to traverse through a Multi-dimensional array -->
 
 $food = array('Healthy'=>
-                                      array('Salad', 'Vegetables', 'Pasta'),
-                      'Unhealthy'=>
-                                      array('Pizza', 'Ice cream') );
+array('Salad', 'Vegetables', 'Pasta'),
+'Unhealthy'=>
+array('Pizza', 'Ice cream') );
 
 foreach($food as $element => $inner_array)
 {
-  echo '<br />';
-  echo '<strong>'.$element.'</strong><br />';
-  foreach($inner_array as $item)
-  {
-    echo $item.'<br />';
-  }
+    echo '<br />';
+    echo '<strong>'.$element.'</strong><br />';
+    foreach($inner_array as $item)
+    {
+        echo $item.'<br />';
+    }
 }
 
 - "$element" gives the index
@@ -389,7 +389,7 @@ require 'video42(header.inc).php
 
 <!-- How to display the current files name -->
 
- -- use $_SERVER['SCRIPT_NAME'];
+-- use $_SERVER['SCRIPT_NAME'];
 
 <!-- How to access the name of the server -->
 
@@ -484,17 +484,19 @@ $type = $_FILES['file']['type'];
 <!-- How to find the temporary location of the uploaded file -->
 
 $temp_name = $_FILES['file']['tmp_name'];
+- this will contain the temporary file name of the file on the server
+- it is a placeholder on the server until you process the file
 
 <!-- This is how we store a file in a particular location -->
 
 $location = '/home/scrabbler/Jatin/Programming Codes/PHP_Newboston_codes/uploads/';
 if(move_uploaded_file($temp_name, $location.$name))
 {
-  echo 'Uploaded';
+    echo 'Uploaded';
 }
 else
 {
-  echo 'There was an error';
+    echo 'There was an error';
 }
 
 <!-- How to extract the extension of a filename -->
@@ -745,9 +747,9 @@ Eg - print(), isset(), empty(), require(), die(), include()
 
 $sql = <<<"SQL" (without quotes)
 select *
-  from $tablename
- where id in [$order_ids_list]
-   and product_name = "widgets"
+from $tablename
+where id in [$order_ids_list]
+and product_name = "widgets"
 SQL;
 
 <!-- Difference between isset and empty -->
@@ -819,17 +821,17 @@ Eg -
 
 header("Location: http://kirupa.com");
 
- ?>
+?>
 
- - This will send a new location to the browser and it will immediately redirect
+- This will send a new location to the browser and it will immediately redirect
 
- 2. allows us to control the content type that the browser will treat the document as:
+2. allows us to control the content type that the browser will treat the document as:
 
- <?php
+<?php
 
 header("Content-Type: text/css");
 
-  ?>
+?>
 
 3. can also force the browser to display the download prompt and have a recommended filename for the download
 
@@ -837,21 +839,21 @@ header("Content-Type: text/css");
 
 header("Content-Type: image/jpeg");
 header("Content-Disposition: attachment; filename=file.jpg");
- ?>
+?>
 
- 4. can send specific errors to the browser using the header function.
+4. can send specific errors to the browser using the header function.
 
- <?php
+<?php
 
 header("HTTP/1.0 404 Not found");
 
-  ?>
+?>
 
-  <!-- What is the use of "Content-Type" in headers -->
+<!-- What is the use of "Content-Type" in headers -->
 
-  - it tells the browser what kind of file we are sending it
-  - if we say "text/html", it will try to display what we give to the webpage
-  - if we say "application/pdf", it'll try to display or download it as a PDF file
+- it tells the browser what kind of file we are sending it
+- if we say "text/html", it will try to display what we give to the webpage
+- if we say "application/pdf", it'll try to display or download it as a PDF file
 
 <!-- What is the reason for "headers already sent" error in php   -->
 
@@ -867,121 +869,195 @@ Content-Type: text/html; charset=utf-8
 
 <html><head><title>PHP page output page</title></head>
 <body><h1>Content</h1> <p>Some more output follows...</p>
-and <a href="/"> <img src=internal-icon-delayed> </a>
+    and <a href="/"> <img src=internal-icon-delayed> </a>
 
-- PHP scripts mainly generates HTML content, but it also passes a set of HTTP/CGI headers to the webserver
+    - PHP scripts mainly generates HTML content, but it also passes a set of HTTP/CGI headers to the webserver
 
-- the page/output always follows the headers
-- PHP has to pass the headers to the webserver first
-- it can only do that once
+    - the page/output always follows the headers
+    - PHP has to pass the headers to the webserver first
+    - it can only do that once
 
-- When PHP receives the first output(print, echo, <html>), it will flush all the collected headers
-- Afterwards it will send all the output it wants.
-- But sending further HTTP headers is impossible then
+    - When PHP receives the first output(print, echo, <html>), it will flush all the collected headers
+    - Afterwards it will send all the output it wants.
+    - But sending further HTTP headers is impossible then
 
-<!-- What is JSON and How to extract data from a JSON in php -->
+    <!-- What is JSON and How to extract data from a JSON in php -->
 
-- JSON is not an array, an object or a data structure
-- JSON is a text-based serialization format
+    - JSON is not an array, an object or a data structure
+    - JSON is a text-based serialization format
 
-- we can decode it using json_decode($json)
+    - we can decode it using json_decode($json)
 
-Eg - How to access object elements
+    Eg - How to access object elements
 
-<?php
+    <?php
 
-$json = '
-{
-    "type": "donut",
-    "name": "Cake"
-}';
+    $json = '
+    {
+        "type": "donut",
+        "name": "Cake"
+    }';
 
-$yummy = json_decode($json);
+    $yummy = json_decode($json);
 
-echo $yummy->type;
-?>
+    echo $yummy->type;
+    ?>
 
-Eg- How to access array elements
+    Eg- How to access array elements
 
-<?php
-$json = '
-[
-    "Glazed",
-    "Chocolate with Sprinkles",
-    "Maple"
-]';
+    <?php
+    $json = '
+    [
+        "Glazed",
+        "Chocolate with Sprinkles",
+        "Maple"
+        ]';
 
-$toppings = json_decode($json);
+        $toppings = json_decode($json);
 
-echo $toppings[1];
+        echo $toppings[1];
 
- ?>
+        ?>
 
- Eg- Accessing nested items
+        Eg- Accessing nested items
 
- <?php
+        <?php
 
- $json = '
- {
-     "type": "donut",
-     "name": "Cake",
-     "toppings": [
-         { "id": "5002", "type": "Glazed" },
-         { "id": "5006", "type": "Chocolate with Sprinkles" },
-         { "id": "5004", "type": "Maple" }
-     ]
- }';
+        $json = '
+        {
+            "type": "donut",
+            "name": "Cake",
+            "toppings": [
+                { "id": "5002", "type": "Glazed" },
+                { "id": "5006", "type": "Chocolate with Sprinkles" },
+                { "id": "5004", "type": "Maple" }
+            ]
+        }';
 
- $yummy = json_decode($json);
+        $yummy = json_decode($json);
 
- echo $yummy->toppings[2]->id;
+        echo $yummy->toppings[2]->id;
 
-  ?>
+        ?>
 
-- When we pass "true" as the second argument to "json_decode", we get associative arrays
+        - When we pass "true" as the second argument to "json_decode", we get associative arrays
 
-<?php
+        <?php
 
-$json = '
-{
-    "type": "donut",
-    "name": "Cake",
-    "toppings": [
-        { "id": "5002", "type": "Glazed" },
-        { "id": "5006", "type": "Chocolate with Sprinkles" },
-        { "id": "5004", "type": "Maple" }
-    ]
-}';
+        $json = '
+        {
+            "type": "donut",
+            "name": "Cake",
+            "toppings": [
+                { "id": "5002", "type": "Glazed" },
+                { "id": "5006", "type": "Chocolate with Sprinkles" },
+                { "id": "5004", "type": "Maple" }
+            ]
+        }';
 
-$yummy = json_decode($json, true);
+        $yummy = json_decode($json, true);
 
-echo $yummy['toppings'][2]['type']; //Maple
+        echo $yummy['toppings'][2]['type']; //Maple
 
- ?>
+        ?>
 
- <!-- Difference between "==" and "===" -->
+        <!-- Difference between "==" and "===" -->
 
- - The operator "==" casts between two different types if they are different, while the "===" operator is a 'typesafe comparison'
- - This means it will only return "true" if both the operands have the same type and the same value
+        - The operator "==" casts between two different types if they are different, while the "===" operator is a 'typesafe comparison'
+        - This means it will only return "true" if both the operands have the same type and the same value
 
- Eg -
-<?php
- 1 === 1: true
-1 == 1: true
-1 === "1": false // 1 is an integer, "1" is a string
-1 == "1": true // "1" gets casted to an integer, which is 1
-"foo" === "foo": true // both operands are strings and have the same value
- ?>
+        Eg -
+        <?php
+        1 === 1: true
+        1 == 1: true
+        1 === "1": false // 1 is an integer, "1" is a string
+        1 == "1": true // "1" gets casted to an integer, which is 1
+        "foo" === "foo": true // both operands are strings and have the same value
+        ?>
 
- <!-- Difference between "$a" and "$$a" in php -->
+        <!-- Difference between "$a" and "$$a" in php -->
 
- "$a" represents a variable
- "$$a" represents a variable with the content of $a
+        "$a" represents a variable
+        "$$a" represents a variable with the content of $a
 
- Eg -
+        Eg -
 
-<?php
- $test = "hello world";
- $a = "test";
- echo $$a; //hello world
- ?>
+        <?php
+        $test = "hello world";
+        $a = "test";
+        echo $$a; //hello world
+        ?>
+
+        <!-- What is output buffering -->
+
+        - Without output buffering, the HTML is sent to the browser in pieces as PHP processes through the script
+        - With output buffering , the HTML is stored in a variable and sent to the browser as one piece at the end of the script
+
+        Advantages of using output buffering
+        - Turning on output buffering alone decreases the amount of time it takes to download and render our HTML because it's not sent to the browser in pieces as PHP processes the HTML
+        - solves the "header already sent by (output)" error
+
+        - it gives some degree of control over how the output generated by a particular PHP script is handled
+
+        - According to HTTP standards, we cannot send headers to the browser after data has already been sent
+
+        <!-- How output buferring works -->
+
+        <?php
+
+        ob_start();
+
+        // content
+
+        ob_end_flush();
+        ?>
+
+        - Here, rather than having PHP send output directly to the standard output device (the browser) as the script gets executed, we have chosen to define a special output buffer which
+        stores all the output generated by the script during its lifetime
+        - When this is done, the output of the script is never seen by the user
+
+        - we use "ob_get_contents()" to extract the current contents of the output buffer to a PHP variable
+
+        <!-- How to echo HTML in PHP -->
+
+        <!-- Method 1 -->
+
+        <?php
+        if(condition)
+        {
+            ?>
+            <!-- HTML here     -->
+            <?php
+        }
+        ?>
+
+        <!-- Method 2 -->
+
+        <?php
+        if(condtion)
+        {
+            echo "HTML here";
+        }
+        ?>
+
+        <!-- Method 3 -->
+
+        <?php
+        echo '<input type="text" name="" value="">';
+
+        OR
+
+        echo "<input type=\"text\" name="" value="">"
+        ?>
+
+        <!-- Difference between PUT and POST -->
+
+        <!-- PUT -->
+        - PUT puts a file or resource at a specific URI and exactly at that URI
+        - if there is already a file or resource at the URI, PUT replaces that file or resource
+        - If there is no file or resource, PUT created one
+
+        <!-- POST -->
+        - sends data to a specific URI and expects the resource at that URI to handle the request
+        - the webserver can at this point determine what to do with the data in the context of the specified resource
+        

@@ -1366,3 +1366,50 @@ foreach($categories as $category)
 {
   $cats[$category->id] = $category->name;
 }
+
+<!-- How to store an image into the database -->
+
+if($request->hasFile('featured_image'))
+{
+  $image = $request->file('featured_image');
+
+  //this will get the file extension
+  //to rename the file and let them be of the same extension use $image->encode('.png')
+  $filename = time().'.'.$image->getClientOriginalExtension();
+
+//   dd($filename);
+//storage_path
+  $location = public_path('images/'.$filename);
+  Image::make($image)->resize(800,400)->save($location);
+
+  $post->image = $filename;
+}
+
+<!-- Displaying the image on the view page -->
+<img src="{{ asset('images/'.$post->image) }}" height="400" width="800" />
+
+<!-- How to edit , update and delete the previous image -->
+
+if($request->hasFile('featured_image'))
+{
+    //add the new photo
+    //add to database
+    //delete the previous photo
+
+    $image = $request->file('featured_image');
+
+    //this will get the file extension
+    //to rename the file and let them be of the same extension use $image->encode('.png')
+    $filename = time().'.'.$image->getClientOriginalExtension();
+
+  //   dd($filename);
+  //storage_path
+    $location = public_path('images/'.$filename);
+    Image::make($image)->resize(800,400)->save($location);
+
+    $old_filename = $post->image;
+
+    $post->image = $filename;
+
+    Storage::delete($old_filename);
+}

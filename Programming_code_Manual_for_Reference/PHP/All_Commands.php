@@ -1451,3 +1451,41 @@ $families = array
 );
 
 echo count($families["Test"]);
+
+<!-- How to print true or false for a boolean variable -->
+
+<?php
+
+$bool_val = (bool)false;
+
+echo $bool_val ? 'true':'false';
+
+
+ ?>
+
+<!-- How to get the key and value of the first element of the array -->
+
+Eg -
+
+array(4 => 'apple', 7 => 'orange' , 13 => 'plum')
+
+<?php
+
+reset($array)   //returns apple
+
+OR
+
+array_values($array)[0];
+
+OR
+
+$array[key($array)];
+
+
+key($array)    //returns 4
+
+ ?>
+
+<!-- How to remove double square brackets from a string -->
+
+$string = str_replace(array('[[',']]'),' ', $string);
