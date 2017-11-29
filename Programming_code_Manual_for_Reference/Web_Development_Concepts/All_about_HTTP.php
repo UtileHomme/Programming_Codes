@@ -181,7 +181,7 @@ The statelessness is required so that there is less traffic and the webpage load
 <!-- How is the stateful thing carried out using Sessions and Cookies -->
 
 - The server stores whatever info it cares about to maintain between requests and assigns that information an ID.
-- It then tells the browswer that session ID in such a way that it can hand the ID back when it's time to make another request
+- It then tells the browser that session ID in such a way that it can hand the ID back when it's time to make another request
 
 - If the browser plays its part and provides the session ID, then the stored info can be retrieved, updated with each request providing
 some degree of statefulness
@@ -189,6 +189,18 @@ some degree of statefulness
 - Sessions are implemented using cookies. The server hands over the browser a cookie with the session ID and the browser hands over the
 same cookies with each request until the cookie expires or is otherwise forgotten
    - Some cookies(session cookies) are forgotten as soon as the browswer closes
+
+  <!-- What is a cookie -->
+- it is like a bread crumb trail on the internet
+- saves user preferences for a particular website
+- only the website for which the cookie was saved can used it again
+- a unique id is stored on the local computer and the data for that id is stored on the server
+
+- they also ensure that whatever data has been accessed by you on the website is used for showing the website in a better way
+- they monitor the activity of the user
+
+<!-- Analogy -->
+  - subtitle language selection on subscene
 
 <!-- What does TCP do -->
 

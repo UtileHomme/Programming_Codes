@@ -56,3 +56,76 @@ Eg - PostGre SQL
     - Structured Query language
     - standard language for dealing with dbs
     - CRUD - Create , Read, Update and Delete
+
+<!-- What are DDL, DML, TCL and DCL commands -->
+
+1. Data Definition Language(DDL)
+- statements used to define the database structure or schema
+
+a. Create
+    - to create objects in db
+
+b. Alter
+    - to alter structure of db
+
+c. Drop
+    - delete objects from db
+
+d. Truncate
+    - remove all records from table
+
+2. Data Manipulation Language(DML)
+- statements used to manage data with schema objects
+
+a. Select
+- retrieve data from a db
+
+b. Insert
+- insert data into a table
+
+c. Update
+- update existing data within a table
+
+d. Delete
+- delete all records from a table
+
+3. Data Control Language
+
+a. Grant
+- gives user's access privileges to db
+
+b. Revoke
+- withdraw access privileges given with the GRANT command
+
+4. Transaction Control Language (TCL)
+- used to manage changes made by DML commands
+- allows statements to be grouped together into logical transactions
+
+a. Commit
+- save work done
+
+b. Savepoint
+- identify a point in the transaction to which we can roll back
+
+c. Rollback
+- undo the modification made since the last COMMIT
+
+<!-- Difference between Truncate, Delete and Drop commands -->
+
+<!-- Delete command -->
+- is used to remove some or all rows from the table
+- we can perform a COMMIT or ROLLBACK to make the change permanent or undo it
+- this operation causes all DELETE triggers on the table to fire
+- we can use "WHERE" with it 
+
+<!-- Truncate command -->
+- removes all rows from the table
+- the operation cannot be rolled back and no triggers will be fired
+- it is faster and doesn't use as much undo space as DELETE
+- we can't use "WHERE" with it
+
+<!-- Drop command -->
+- removes the table from the db
+- all the tables' rows, indexes and privileges will also be removed
+- no triggers will be fired
+- the operation cannot be rolled back
