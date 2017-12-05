@@ -155,6 +155,11 @@ $post->delete();
 Session::flash('success','The Post was Successfully Deleted');
 return redirect()->route('posts.index');
 
+OR
+
+post::where('id',$id)->delete();
+return redirect()->back();
+
 <!-- What does "Post::" mean when retrieving a query -->
 
 - it is same as writing "DB::select(*)"

@@ -1567,3 +1567,21 @@ Schema::create('sessions', function ($table) {
 php artisan session:table
 
 php artisan migrate
+
+<!-- How to delete an item by giving a confirmation to user -->
+
+<td>
+            <form id="delete-form-{{$post->id}}" class="" style="display:none" action="{{route('post.destroy', $post->id)}}" method="POST">
+                {{csrf_field()}}
+                {{method_field('DELETE')}}
+            </form>
+        <a href="" onclick="
+        if(confirm('Are you sure, You want to Delete this'))
+        {
+            event.preventDefault(); document.getElementById('delete-form-{{$post->id}}').submit();}
+        else
+        {
+            event.preventDefault();
+        }
+        "><span class="glyphicon glyphicon-trash"></span></a></td>
+  </tr>
