@@ -303,3 +303,123 @@ public function destroy($id)
 
     return redirect()->route('tags.index');
 }
+
+<!-- How to run raw SQL queries -->
+
+- the DB facade provides methods for each type of query: select, update, insert, delete and statement
+
+<?php
+
+$users = DB::select('select * from users where active = ?', [1]);
+
+return view('user.index', ['users'=>$users]);
+
+ ?>
+
+ - second argument is parameter binding
+ - it provides protection against SQL injection
+
+ ** the "select" method will always return an "array" of results
+
+<?php
+
+foreach ($users as $user) {
+    echo $user->name;
+}
+
+ ?>
+
+** We can also use "name bindings" instead of "?"
+
+<?php
+
+$results = DB::select('select * from users where id = :id', ['id' => 1]);
+
+ ?>
+
+<!-- How to run a "raw" insert query -->
+
+<?php
+
+DB::insert('insert into users(id,name) values(?,?)', [1,'Dayle']);
+
+ ?>
+
+<!-- How to run a "raw" update query -->
+
+<?php
+
+$affected = DB::update('update users set votes = 100 where name = ?', ['John']);
+
+ ?>
+
+<!-- How to run a "delete" query -->
+
+<?php
+
+$deleted = DB::delete('delete from users');
+
+ ?>
+
+<!-- How to run a general drop query -->
+
+<?php
+
+DB::statement('drop table users');
+
+ ?>
+
+<!-- What is the Laravel Database Query Builder -->
+
+- it uses PDO parameter binding to protect our application against SQL injection attacks
+
+<!-- How to retrieve all rows from a table -->
+
+<?php
+
+$users = DB::table('users')->get();
+
+ ?>
+
+** the "get" method returns an "Illuminate\Support\Collection" containing the results where each result is an instance of the PHP "StdClass" object
+
+<!-- How to retrieve a single row/column from a table -->
+
+** To retrieve a single row from the database
+
+<?php
+$user = DB::table('users')->where('name','John')->first();
+ ?>
+
+** to retrieve a single value from a single column
+
+<?php
+
+$email = DB::table('users')->where('name','John')->value('email');
+ ?>
+
+<!-- How to retrieve a list of column values -->
+
+<?php
+
+$titles = DB::table('roles')->pluck('title');
+
+foreach ($titles as $title) {
+    echo $title;
+}
+
+ ?>
+
+- retrieves all the values from the column mentioned in the "pluck" function and stores them in an array format
+
+<!-- How to use aggregates -->
+
+<?php
+
+$users = DB::table('users')->count();
+
+$price = DB::table('orders')->max('price');
+
+$price = DB::table('orders')->where('finalized',1)->avg('price');
+
+ ?>

@@ -1500,30 +1500,30 @@ return Storage::delete('public/jatin.jpg');
 <!-- Another way to upload an image on db -->
 
 if($request->hasFile('file'))
-        {
-            //gives the path for the file
-            // $request->file->store('public/upload');
+{
+    //gives the path for the file
+    // $request->file->store('public/upload');
 
-            //gives the name of the file along with extension
-            // dd($request->file->getClientOriginalName());
+    //gives the name of the file along with extension
+    // dd($request->file->getClientOriginalName());
 
-            $filename = $request->file->getClientOriginalName();
+    $filename = $request->file->getClientOriginalName();
 
-            $filesize = $request->file->getClientSize();
+    $filesize = $request->file->getClientSize();
 
-            $request->file->storeAs('public/upload',$filename);
+    $request->file->storeAs('public/upload',$filename);
 
-            $filename = "jatin.jpg";
+    $filename = "jatin.jpg";
 
-            $image = new Found;
-            $image->name = $filename;
-            $image->size =$filesize;
+    $image = new Found;
+    $image->name = $filename;
+    $image->size =$filesize;
 
-            $image->save();
+    $image->save();
 
-            // dd($filename);
-            return view('jatin',compact('filename'));
-        }
+    // dd($filename);
+    return view('jatin',compact('filename'));
+}
 
 <!-- What are sessions in Laravel -->
 
@@ -1571,17 +1571,606 @@ php artisan migrate
 <!-- How to delete an item by giving a confirmation to user -->
 
 <td>
-            <form id="delete-form-{{$post->id}}" class="" style="display:none" action="{{route('post.destroy', $post->id)}}" method="POST">
-                {{csrf_field()}}
-                {{method_field('DELETE')}}
-            </form>
-        <a href="" onclick="
-        if(confirm('Are you sure, You want to Delete this'))
-        {
-            event.preventDefault(); document.getElementById('delete-form-{{$post->id}}').submit();}
+    <form id="delete-form-{{$post->id}}" class="" style="display:none" action="{{route('post.destroy', $post->id)}}" method="POST">
+        {{csrf_field()}}
+        {{method_field('DELETE')}}
+    </form>
+    <a href="" onclick="
+    if(confirm('Are you sure, You want to Delete this'))
+    {
+        event.preventDefault(); document.getElementById('delete-form-{{$post->id}}').submit();}
         else
         {
             event.preventDefault();
         }
         "><span class="glyphicon glyphicon-trash"></span></a></td>
-  </tr>
+    </tr>
+
+    <!-- How to show a text full of html tags in normal format -->
+
+    {!! htmlspecialchars_decode($slug->body) !!}
+
+    <!-- How to add optional parameters in route -->
+    Route::get('post/{slug?}','PostController@post')->name('post');
+
+<!-- How does validation happen in Laravel -->
+
+- By default, Laravel's base controller class uses a "ValidatesRequests" trait which provides a convenient method to validate incoming HTTP requests
+
+- the "validate" method accepts an incoming HTTP request and a set of validation rules.
+- if the validation rules pass, the code will keep executing normally else an exception will be thrown and the proper error response will be automatically sent back to the user
+
+- In the case of a traditional HTTP request, a redirect response will be generated, while a JSON response will be sent for AJAX requests
+
+<?php
+$this->validate($request, [
+       'title' => 'required|unique:posts|max:255',
+       'body' => 'required',
+   ]);
+?>
+
+<!-- How to stop on the first validation failure -->
+
+- assign "bail" rule to the attribute
+
+<?php
+$this->validate($request, [
+    'title' => 'bail|unique:posts|max:255',
+    'body' => 'required',
+]);
+ ?>
+- if the "unique" rule fails, the "max" rule won't be checked
+
+
+ <!-- How to specify nested attributes -->
+
+If our HTTP request contains "nested" parameters, we may specify them in the validation rules using "dot" syntax
+
+<?php
+$this->validate($request, [
+    'title' => 'required|unique:posts|max:255',
+    'author.name' => 'required',
+    'author.description' => 'required',
+]);
+ ?>
+
+ <!-- How to display errors on the blade -->
+
+ - use the "errors" variable
+ - it is an instance of "Illuminate\Support\MessageBag"
+ - The "errors" variable is bound to the biew by "Illuminate\View\Middleware\ShareErrorsFromSession" middleware, which is provided by "web" middleware
+ - When this middleware is applied an "$errors" variable will always be available in our views, allowing use to conveniently assume the "$errors" variable is always defined and can be safely used
+
+<?php
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+ ?>
+
+ <!-- What to do in the case of optional fields -->
+
+ - By default, Laravel includes the "TrimStrings" and "ConvertEmptyStringsToNull" middleware in our application's global middleware stack
+ - these middleware are listed in the stack by the "App\Http\Kernel" class
+ - Because of this, we will need to mark the "optional" request fields as "nullalbe" if we do not want the validator to consider "null" values as invalid
+
+ <?php
+ $this->validate($request, [
+     'title' => 'required|unique:posts|max:255',
+     'body' => 'required',
+     'publish_at' => 'nullable|date',
+ ]);
+  ?>
+
+  - Here, we are specifying that the "publish_at" field may either be "null" or a valid date representation
+  - If the "nullable" modifier is not added to the rule definition, the validator would consider "null" as an invalid date
+
+<!-- How to create custom validation requests -->
+
+- Custom form requests are custom request classes that contain the validation logic
+- To create a form request class, use the "make:request" artisan command
+
+php artisan make:request StoreBlogPost
+
+- The generated class will be placed in the "app/Http/Requests" directory
+- if this directory does not exist, it will be created when we run the "make:request" command
+
+- We can add the validation rules to the "rules" method like this
+
+<?php
+
+public function rules()
+{
+    return [
+        'title' => 'required|unique:posts|max:255',
+        'body' => 'required',
+    ];
+}
+
+ ?>
+
+- After this, we need to "type-hint" the request on our controller method
+- The incoming form request is validated before the controller method is called
+
+<?php
+
+public function store(StoreBlogPost $request)
+{
+    // The incoming request is valid...
+}
+
+ ?>
+
+- If the validation fails, a redirect response will be generated to send the user back to their previous location
+- The errors will also be flashed to the session so that they are available for the display
+
+<!-- How to authorize form requests -->
+
+- The form request class also contains an "authorize" method
+- Within this method, we can check whether the authenticated user actually has the authority to update a given resource
+
+Eg- we can determine whether a user actually owns a blog comment they are attempting to update
+
+<?php
+
+public function authorize()
+{
+    $comment = Comment::find($this->route('comment'));
+
+    return $comment && $this->user()->can('update', $comment);
+}
+ ?>
+
+- Since all form requests extend the base Laravel request class, we may use the "user" method to access the currently
+authenticated user
+- the "route" method grants access to the URI parameters defined on the route being called, such as "{comment}" parameter
+
+<!-- Route::post('comment/{comment}') -->
+
+- if the "authorize" method returns "false", a HTTP response with a 403 status code will be automatically returned and the controller method will not execute
+
+<!-- How to manually create validators -->
+
+- This can be done using the "Validator" facade.
+- the "make" method on the facade generates a new validator instance
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Validator;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class PostController extends Controller
+{
+    /**
+     * Store a new blog post.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|unique:posts|max:255',
+            'body' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('post/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        // Store the blog post...
+    }
+}
+
+?>
+
+- the first argument passed to the "make" method is the data under validation
+- the second argument is the validation rules that should be applied to the data
+
+- After checking if the request validation failed, we may use the "withErrors" method to flash the error messages to the session
+- When using this method, the "$errors" variable will be automatically shared with the views after redirection, allowing us to easily display them back to the user
+- The "withErrors" method accepts a validator, a MessageBag, or a PHP array
+
+<!-- How to Automatically redirect in the above case -->
+
+- We can call the "validate" method on an existing validator instance
+- if the validation fails, the user will automatically be redirected or , in the case of an AJAX request, a JSON response will be returned
+
+<?php
+
+Validator::make($request->all(), [
+    'title' => 'required|unique:posts|max:255',
+    'body' => 'required',
+])->validate();
+
+ ?>
+
+<!-- What is the use of named error bags -->
+
+- If we have multiple forms on a single page, we may wish to name the MessageBag of errors, allowing us to retrieve the error messages for a specific form
+- To do this, simply pass a name as the second argument to withErrors:
+
+<?php
+
+return redirect('register')->withErrors($validator, 'login')
+ ?>
+
+- We may access the named "messageBag" instance from the "$errors" variable
+
+<?php
+{{$errors->login->first('email')}}
+  ?>
+
+  <!-- Different ways of working with error messages when using the custom "Validator"-->
+
+  - After calling the "errors" method on a "Validator" instance, we will receive an "Illuminate\Support\MessageBag" instance, which as a variety of convenient methods for working with error messages
+
+  <!-- 1. Retrieving the first error message for a field -->
+
+  - use the "first" method
+
+<?php
+  $errors = $validator->errors();
+
+  echo $errors->first('email');
+ ?>
+
+ <!-- 2. Retrieving all error messages for a field -->
+
+ - If we need to retrieve an array of all the messages for a given field, use the "get" method
+
+ <?php
+ foreach ($errors->get('email') as $message) {
+     //
+ }
+  ?>
+
+  - If we are validating an array form field, we may retrieve all the messages for each of the array elements using the "*" character
+
+  <?php
+  foreach ($errors->get('attachments.*') as $message) {
+      //
+  }
+   ?>
+
+   <!-- 3. Retrieving all error messages for all fields -->
+
+   - use the "all" method
+
+<?php
+foreach ($errors->all() as $message) {
+    //
+}
+ ?>
+
+<!-- 4. Determining if messages exist for a field -->
+
+- use the "has" method
+
+<?php
+if ($errors->has('email')) {
+    //
+}
+ ?>
+
+<!-- How to define custom error messages -->
+
+- we can use custom error messages for validation instead of the defaults
+
+- we can pass the custom messages as the third argument to the "Validator::make" method
+
+<?php
+
+$messages = [
+    'required' => 'The :attribute field is required.',
+];
+
+$validator = Validator::make($input, $rules, $messages);
+
+ ?>
+
+- The ":attribute" place-holder will be replaced by the actual name of the field under validation
+
+<?php
+$messages = [
+    'same'    => 'The :attribute and :other must match.',
+    'size'    => 'The :attribute must be exactly :size.',
+    'between' => 'The :attribute must be between :min - :max.',
+    'in'      => 'The :attribute must be one of the following types: :values',
+];
+ ?>
+
+<!-- Specifying a custom message for a given attribute -->
+- Sometimes we may wish to specify a custom error message only for a specific field
+- we can do this by using the "dot" notation
+- specify the attribute's name first, followed by the rule
+
+<?php
+$messages = [
+    'email.required' => 'We need to know your e-mail address!',
+];
+ ?>
+
+<!-- How to specify custom messages in the language file -->
+
+do this in "validation.php"
+
+<?php
+'custom' => [
+    'email' => [
+        'required' => 'We need to know your e-mail address!',
+    ],
+],
+ ?>
+
+<!-- Different validation rules -->
+
+1. accepted
+- the field under validation must be "yes", "on","1" or "true"
+- is useful for validating "Terms of Service" acceptance
+
+2. after:date
+- the field under validation must be a value after a given date
+- the dates will be passed into the "strtotime" function
+
+<?php
+'start_date' => 'required|date|after:tomorrow'
+ ?>
+
+** we can also compare another date using this method
+
+<?php
+'finish_date' => 'required|date|after:start_date'
+ ?>
+
+3. after_or_equal:date
+- the field under validation must be a value after or equal to the given date
+
+4. alpha
+- the field under validation must be entirely alphabetic characters
+
+5. alpha_dash
+- may have alpha-numeric characters, as well as dashes and underscores
+
+6. alpha_num
+- must be entirely alpha-numeric characters
+
+7. array
+- must be a PHP array
+
+8. before:date
+- must be a value preceding the given date
+
+9. before_or_equal:date
+- must be a value preceding or equal to a given date
+
+10. between: min,max
+- must have a size between the given "min" and "max"
+
+11. boolean
+- must be able to cast as a boolean
+- accepted input are "true","false", 1, 0, "1" and "0"
+
+12. confirmed
+- the field under validation must have a matching field of "foo_confirmation"
+- if the field under validation is "password", a matching "password_confirmation" field must be present in the input
+
+13. date
+- the field under validation must be a valid date
+
+14. date_format:format
+- the field must match the given format
+
+15. different:field
+- must have a different value than the given field
+
+16. digits:value
+- must be numeric and must have an exact length of value
+
+17. digits_between:min,max
+- must have a length between the given min and max
+
+18. dimensions
+- the field must be an image meeting the dimensions  constraints as specified by the rule's parameter
+
+<?php
+'avatar' => 'dimensions:min_width=100,min_height=200'
+ ?>
+
+Available constraints are: min_width, max_width, min_height, max_height, width, height, ratio.
+
+A ratio constraint should be represented as width divided by height. This can be specified either by a statement like 3/2 or a float like 1.5:
+
+<?php
+'avatar' => 'dimensions:ratio=3/2'
+ ?>
+
+ <?php
+ use Illuminate\Validation\Rule;
+
+ Validator::make($data, [
+     'avatar' => [
+         'required',
+         Rule::dimensions()->maxWidth(1000)->maxHeight(500)->ratio(3 / 2),
+     ],
+ ]);
+  ?>
+
+19. distinct
+- when working with arrays, the field under validation must not have any duplicate values
+
+<?php
+'foo.*.id' => 'distinct'
+ ?>
+
+ 20. email
+ - the field must be formatted as an email-address
+
+ 21. exists:table,column
+ - the field must exist on a given database table
+
+<?php
+'state' => 'exists:states'
+
+OR
+
+'state' => 'exists:states,abbreviation'
+
+OR
+
+'email' => 'exists:connection.staff,email'
+ ?>
+
+<?php
+use Illuminate\Validation\Rule;
+
+Validator::make($data, [
+    'email' => [
+        'required',
+        Rule::exists('staff')->where(function ($query) {
+            $query->where('account_id', 1);
+        }),
+    ],
+]);
+ ?>
+
+22. file
+- the field must be a successfully uploaded file
+
+23. filled
+- the field must not be empty when it is present
+
+24. in:foo,bar
+- the field must be included in the given list of values
+
+<?php
+use Illuminate\Validation\Rule;
+
+Validator::make($data, [
+    'zones' => [
+        'required',
+        Rule::in(['first-zone', 'second-zone']),
+    ],
+]);
+ ?>
+
+25. in_array:anotherfield
+- the field must exist in "anotherfield's" values
+
+26. integer
+- must be an integer
+
+27. ip
+- must be an IP address
+
+28. ipv4
+- must be an IPv4 address
+
+29. json
+- must be a valid JSON string
+
+30. max:value
+- must be less than or equal to a maximum value
+
+31. mimetypes: text/plain,;
+- must match the given MIME types
+
+<?php
+'video' => 'mimetypes:video/avi,video/mpeg,video/quicktime'
+ ?>
+
+32. mimes:foo,bar..
+
+<?php
+'photo' => 'mimes:jpeg,bmp,png'
+ ?>
+
+33. min:value
+- the field must have a minimum value
+
+34. nullable
+- the field under validation may be "null"
+- this is particularly useful when validating primitive such as strings and integers that contain null values
+
+35. not_in:foo,bar
+- the field must not be included in the given list of values
+
+<?php
+use Illuminate\Validation\Rule;
+
+Validator::make($data, [
+    'toppings' => [
+        'required',
+        Rule::notIn(['sprinkles', 'cherries']),
+    ],
+]);
+ ?>
+
+36. numeric
+- the field under validation must be numeric
+
+37. regex:pattern
+- the field must match the given regular expression
+- mention the rules in the form of an array
+
+38. required
+- the field must be present in the input data and not empty
+- the field is considered "empty" if one of the following conditions are true
+    - The value is "null"
+    - the value is an empty string
+    - the value is an empty array
+    - the value is an uploaded file with no path
+
+39. required_if:anotherfield, value
+- the field must be present and not empty if "anotherfield" is equal to any value
+
+40. required_unless:anotherfield, value
+- the field must be present and not empty unless "anotherfield" is equal to any value
+
+41. required_with:foo,bar,...
+
+- The field under validation must be present and not empty only if any of the other specified fields are present.
+
+42. required_with_all:foo,bar,...
+
+- The field under validation must be present and not empty only if all of the other specified fields are present.
+
+43. required_without:foo,bar,...
+
+- The field under validation must be present and not empty only when any of the other specified fields are not present.
+
+44. required_without_all:foo,bar,...
+
+- The field under validation must be present and not empty only when all of the other specified fields are not present.
+
+45. same:field
+- the given field must match the field under validation
+
+46. size:value
+- the field must have a size matching the given value
+- For string data, value corresponds to the number of characters
+- For numeric data, value corresponds to a given integer value
+- For an array, size corresponds to the "count" of the array
+- For files, size corresponds to the file size in kilobytes
+
+47. string
+- the field must be a string
+- if we want the field to be also null, we can assign the "nullable" rule to the field
+
+48. unique:table,column, except, id column
+- the field must be unique in the given database table
+- if the "column" option is not specified, the field name will be used
+
+49. url
+- the field must be a valid url
