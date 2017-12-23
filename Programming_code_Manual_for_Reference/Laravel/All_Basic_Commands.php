@@ -2174,3 +2174,7 @@ Validator::make($data, [
 
 49. url
 - the field must be a valid url
+
+<!-- Where are all the "Auth::routes" located -->
+
+Router.php
