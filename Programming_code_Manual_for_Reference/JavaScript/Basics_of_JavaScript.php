@@ -322,3 +322,260 @@ myNumber.toString(2);   // returns 10000000
 <!-- How to create a Object of numbers -->
 
 var y = new Number(123);
+
+<!-- What is the use of "toString" method -->
+
+- it returns a number as a string
+
+<!-- Eg -->
+
+var x = 123;
+x.toString();            // returns 123 from variable x
+(123).toString();        // returns 123 from literal 123
+(100 + 23).toString();   // returns 123 from expression 100 + 23
+
+<!-- What is the use of "toExponential" method -->
+
+- returns a string with a number rounded and written using exponential notation
+
+<!-- Eg -->
+
+var x = 9.656;
+x.toExponential(2);     // returns 9.66e+0
+x.toExponential(4);     // returns 9.6560e+0
+x.toExponential(6);     // returns 9.656000e+0
+
+<!-- What is the use of "toFixed" method -->
+
+- returns a string, with the number written with a specified number of decimals
+
+<!-- Eg -->
+
+var x = 9.656;
+x.toFixed(0);           // returns 10
+x.toFixed(2);           // returns 9.66
+x.toFixed(4);           // returns 9.6560
+x.toFixed(6);           // returns 9.656000
+
+<!-- What is the use of "toPrecision" method  -->
+
+- returns a string, with a number written with a specified length
+
+var x = 9.656;
+x.toPrecision();        // returns 9.656
+x.toPrecision(2);       // returns 9.7
+x.toPrecision(4);       // returns 9.656
+x.toPrecision(6);       // returns 9.65600
+
+<!-- What is the use of "valueof" method -->
+
+- returns a number as a number
+
+var x = 123;
+x.valueOf();            // returns 123 from variable x
+(123).valueOf();        // returns 123 from literal 123
+(100 + 23).valueOf();   // returns 123 from expression 100 + 23
+
+** In Javascript, a number can be a primitive value (typeof = number) or an object(type = object)
+
+- it is used internally to convert Number objects to primitive values
+
+<!-- What are 3 methods used to convert variables to numbers -->
+
+1. Number()
+- returns a number converted from its argument
+
+2. parseInt()
+- parses its argument and returns a float point number
+
+3. parseFloat()
+- parses its argument and returns an integer
+
+<!-- The Number() method -->
+- is used to convert Javascript variables to numbers
+
+<!-- Eg -->
+
+Number(true);          // returns 1
+Number(false);         // returns 0
+Number("10");          // returns 10
+Number("  10");        // returns 10
+Number("10  ");        // returns 10
+Number("10 20");       // returns NaN
+Number("John");        // returns NaN
+
+** if a number cannot be converted, NaN (Not a number) is returned
+
+** Number() can also be convert a date to a number
+
+Number(new Date(2017-09-30));   // returns 1506729600000
+
+<!-- The parseInt() Method -->
+
+- parses a string and returns a whole number
+- spaces are allowed
+- only the first number is returned
+
+<!-- Eg -->
+
+parseInt("10");         // returns 10
+parseInt("10.33");      // returns 10
+parseInt("10 20 30");   // returns 10
+parseInt("10 years");   // returns 10
+parseInt("years 10");   // returns NaN
+
+<!-- The parseFloat() method -->
+
+- parses a string and returns a number
+- spaces are allowed
+- Only the first number is returned
+
+<!-- Eg -->
+
+parseFloat("10");        // returns 10
+parseFloat("10.33");     // returns 10.33
+parseFloat("10 20 30");  // returns 10
+parseFloat("10 years");  // returns 10
+parseFloat("years 10");  // returns NaN
+
+<!-- What are some Number Properties -->
+
+1. MAX_VALUE
+- returns the largest number possible in JS
+
+2. MIN_VALUE
+- returns the smalles number possible in JS
+
+3. NEGATIVE_INFINITY
+- represents negative infinity (Returned on overflow)
+
+4. NaN
+- represents a "Not-a-Number" value
+
+5. POSITIVE_INFINITY
+- represents infinity (Returned on overflow)
+
+<!-- Eg -->
+
+var x = Number.MAX_VALUE;
+
+** We cannot use this
+var x = 6;
+var y = x.MAX_VALUE;    // y becomes undefined
+
+<!-- What is the JS Math object -->
+- allows one to perform mathematical tasks on numbers
+
+<!-- Eg -->
+1. Math.PI;            // returns 3.141592653589793
+
+2. Math.round(x)
+- returns the value of "x" rounded to its nearest integer
+
+<!-- Eg -->
+Math.round(4.7);    //returns 5
+Math.round(4.4);    //returns 4
+
+3. Math.pow()
+- Math.pow(x,y) returns the value of "x" to the power of "y"
+
+<!-- Eg -->
+Math.pow(8,2);     //returns 64
+
+4. Math.sqrt()
+- returns the square root of x
+
+<!-- Eg  -->
+Math.sqrt(64);      //returns 8
+
+5. Math.ceil()
+- returns the value of "x" rounded up to its nearest integer
+
+<!-- Eg -->
+Math.ceil(4.4);     //returns 5
+
+6. Math.floor()
+- returns the value of "x" rounded down to its nearest integer
+
+<!-- Eg -->
+Math.floor(4.7)     //returns 4
+
+7. Math.min() and Math.max()
+- returns the lowest or highest value in the list of arguments
+
+<!-- Eg -->
+Math.min(0,150,30,20,-8,-200)   //returns -200
+
+Math.max(0, 150, 30, 20, -8, -200);  // returns 150
+
+8. Math.random()
+- returns a random number between 0(inclusive) and 1(exclusive)
+
+Math.random();  //returns a random number
+
+<!-- How to get random numbers from 0 to highest 2 digit number -->
+
+<!-- Eg -->
+
+Math.floor(Math.random() * 10)          //returns a number between 0 and 9
+
+ Math.floor(Math.random() * 11);      // returns a number between 0 and 10
+
+ Math.floor(Math.random() * 101);     // returns a number between 0 and 100
+
+ Math.floor(Math.random() * 10) + 1;  // returns a number between 1 and 10
+
+ Math.floor(Math.random() * 100) + 1; // returns a number between 1 and 100
+
+<!-- A proper Random function to get a random number between min and max -->
+
+<!-- Eg -->
+
+function Rand(min, max)
+{
+    return Math.floor(Math.random() * (max-min)) + min;
+}
+
+* Highest value is excluded here
+
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+* both values are included here
+
+<!-- How to work with dates -->
+
+- The "Date" object lets us work with dates(years, months, days, hours, minutes, seconds and milliseconds)
+
+- A JS date can be written as a string as "Mon Jan 01 2018 13:12:34 GMT+0530 (IST)" or as a number as "1514792554661"
+
+<!-- How to create date objects -->
+- Date objects are created with the "new Date()" constructor
+
+- There are 4 ways of initiating a date
+1. new Date()
+2. new Date(milliseconds)
+3. new Date(dateString)
+4. new Date(year,month, day, hours, minutes, seconds, milliseconds)
+
+<!-- How to create a date using the "new" keyword -->
+
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+<script type="text/javascript">
+    var d = new Date();
+    document.getElementById("demo").innerHTML = d;
+</script>
+
+<script type="text/javascript">
+var d1 = new Date("October 13, 2014 11:13:00");
+document.getElementById("demo1").innerHTML = d1;
+</script>
+
+<script type="text/javascript">
+var d = new Date(99, 5, 24, 11, 33, 30, 0);
+document.getElementById("demo2").innerHTML = d;
+</script>
