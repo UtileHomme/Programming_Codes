@@ -579,3 +579,319 @@ document.getElementById("demo1").innerHTML = d1;
 var d = new Date(99, 5, 24, 11, 33, 30, 0);
 document.getElementById("demo2").innerHTML = d;
 </script>
+
+<!-- How to create a date in "YYYY-MM-DD" format -->
+
+var d = new Date("2015-03-25");
+
+<!-- How to include both date and time -->
+
+var d = new Date("2015-03-25T12:00:00Z");
+
+** Date and time is separated with a capital T
+** UTC time is defined with a capital letter Z
+
+** Dates are written with the "/" separator in "MM/DD/YYYY" format
+
+** Dates are written with the " " separator in "mar(March) 25 2015" or "25 Mar 2015" fomat
+
+<!-- What are Date Methods -->
+- they let one get and set date values
+
+a. getTime()
+- returns the number of milliseconds since Jan 1, 1970
+
+<!-- Eg -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="demo"></p>
+
+    <script type="text/javascript">
+        var d = new Date();
+        document.getElementById("demo").innerHTML = d.getTime();
+    </script>
+</body>
+</html>
+
+b. getFullYear
+- returns the year of a date as a four digit number
+
+<!-- Eg -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="demo"></p>
+
+    <script type="text/javascript">
+
+    var d = new Date();
+    document.getElementById("demo").innerHTML = d.getFullYear();
+
+    </script>
+</body>
+</html>
+
+c. getDay()
+- returns the weekday as a number (0-6)
+- Sunday is "0"
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="demo"></p>
+
+    <script type="text/javascript">
+        var d = new Date();
+        document.getElementById("demo").innerHTML = d.getDay();
+    </script>
+
+</body>
+</html>
+
+<!-- How to return the name of the day using the above function -->
+
+<script type="text/javascript">
+
+var d = new Date();
+var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+document.getElementById("demo").innerHTML = days[d.getDay()];
+
+</script>
+
+d. setFullYear
+- sets a date object to a specific date
+
+<!-- Eg -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="demo"></p>
+    <script type="text/javascript">
+
+        var d = new Date();
+        d.setFullYear(2020,0,14);
+        document.getElementById("demo").innerHTML = d;
+
+    </script>
+
+</body>
+</html>
+
+e. setDate()
+- sets the day of the month (1-31)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script type="text/javascript">
+
+        var d = new Date();
+        d.setDate(20);
+
+        document.getElementById("demo").innerHTML = d;
+
+    </script>
+
+
+</body>
+</html>
+
+<!-- How to  create an array -->
+
+var cars = ["Saab", "volvo", "bmw"]
+
+OR
+
+var cars = new Array("SAAB","Volvo", "BMW")
+
+<!-- How to create an associative array -->
+
+var person = {firstname:"John", lastName:"Doe",age:46};
+
+<!-- How to find the length of an array -->
+- use "length()"
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="demo"></p>
+
+    <script type="text/javascript">
+
+        var fruits = ["Bannana", "Orange","Apple", "Mango"];
+        document.getElementById("demo").innerHTML = fruits.length;
+
+    </script>
+
+</body>
+</html>
+
+<!-- How to loop through an array -->
+
+<!-- Eg -->
+
+var fruits, text, flen, i
+
+fruits = ["Banana", "Orange", "Apple", "Mango"];
+fLen = fruits.length;
+text = "<ul>";
+for(i=0;i<fLen;i++)
+{
+    text += "<li>" + fruits[i] + "</li>";
+}
+
+<!-- How to add elements to an array -->
+
+fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.push("Lemon");
+
+<!-- How to convert arrays into strings -->
+
+a. toString()
+- converts an array to a string of (comma separated) array values
+
+<!-- Eg -->
+
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.toString();
+
+//Banana,Orange,Apple,Mango
+
+b. join()
+- it allows one to specify the separator
+
+<!-- Eg -->
+
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.join(" * ");
+
+// Banana * Orange * Apple * Mango
+
+<!-- How to remove the last element of an array -->
+
+- use the "pop()" function
+
+<!-- Eg -->
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.pop();              // Removes the last element ("Mango") from fruits
+
+<!-- How to remove the first element of an array -->
+
+- use the "shift" method
+
+<!-- Eg -->
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.shift();            // Removes the first element "Banana" from fruits
+
+<!-- How to add an element at the beginning -->
+
+- use the "unshift" method
+
+<!-- Eg -->
+
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.unshift("Lemon");    // Adds a new element "Lemon" to fruits
+
+<!-- How to append an array using the "length" property -->
+
+<!-- Eg -->
+
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits[fruits.length] = "Kiwi";          // Appends "Kiwi" to fruit
+
+<!-- How to add an element at a particular location in the array -->
+
+- use the "splice" method
+
+<!-- Eg -->
+
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2, 0, "Lemon", "Kiwi");
+
+//Banana,Orange,Lemon,Kiwi,Apple,Mango
+
+** first parameter defines the position where the new elements should be added
+** second parameter defines how many elements need to be removed
+
+<!-- How to remove elements from a particular location -->
+
+<!-- Eg -->
+
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(0, 1);        // Removes the first element of fruits
+
+<!-- How to merge two arrays -->
+- use the "concat" method
+
+<!-- Eg -->
+
+var myGirls = ["Cecilie", "Lone"];
+var myBoys = ["Emil", "Tobias", "Linus"];
+var myChildren = myGirls.concat(myBoys);     // Concatenates (joins) myGirls and myBoys
+
+var arr1 = ["Cecilie", "Lone"];
+var arr2 = ["Emil", "Tobias", "Linus"];
+var arr3 = ["Robin", "Morgan"];
+var myChildren = arr1.concat(arr2, arr3);     // Concatenates arr1 with arr2 and arr3
+
+var arr1 = ["Cecilie", "Lone"];
+var myChildren = arr1.concat(["Emil", "Tobias", "Linus"]);
+
+<!-- How to create an new array starting from a particular array -->
+
+- use the "slice" method
+
+var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+var citrus = fruits.slice(1);
+
+** it does not remove any elements from the source array
+
+var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+var citrus = fruits.slice(1, 3); //Orange,Lemon
+
+** here ending argument is excluded
