@@ -1593,604 +1593,987 @@ php artisan migrate
     <!-- How to add optional parameters in route -->
     Route::get('post/{slug?}','PostController@post')->name('post');
 
-<!-- How does validation happen in Laravel -->
+    <!-- How does validation happen in Laravel -->
 
-- By default, Laravel's base controller class uses a "ValidatesRequests" trait which provides a convenient method to validate incoming HTTP requests
+    - By default, Laravel's base controller class uses a "ValidatesRequests" trait which provides a convenient method to validate incoming HTTP requests
 
-- the "validate" method accepts an incoming HTTP request and a set of validation rules.
-- if the validation rules pass, the code will keep executing normally else an exception will be thrown and the proper error response will be automatically sent back to the user
+    - the "validate" method accepts an incoming HTTP request and a set of validation rules.
+    - if the validation rules pass, the code will keep executing normally else an exception will be thrown and the proper error response will be automatically sent back to the user
 
-- In the case of a traditional HTTP request, a redirect response will be generated, while a JSON response will be sent for AJAX requests
+    - In the case of a traditional HTTP request, a redirect response will be generated, while a JSON response will be sent for AJAX requests
 
-<?php
-$this->validate($request, [
-       'title' => 'required|unique:posts|max:255',
-       'body' => 'required',
-   ]);
-?>
-
-<!-- How to stop on the first validation failure -->
-
-- assign "bail" rule to the attribute
-
-<?php
-$this->validate($request, [
-    'title' => 'bail|unique:posts|max:255',
-    'body' => 'required',
-]);
- ?>
-- if the "unique" rule fails, the "max" rule won't be checked
-
-
- <!-- How to specify nested attributes -->
-
-If our HTTP request contains "nested" parameters, we may specify them in the validation rules using "dot" syntax
-
-<?php
-$this->validate($request, [
-    'title' => 'required|unique:posts|max:255',
-    'author.name' => 'required',
-    'author.description' => 'required',
-]);
- ?>
-
- <!-- How to display errors on the blade -->
-
- - use the "errors" variable
- - it is an instance of "Illuminate\Support\MessageBag"
- - The "errors" variable is bound to the biew by "Illuminate\View\Middleware\ShareErrorsFromSession" middleware, which is provided by "web" middleware
- - When this middleware is applied an "$errors" variable will always be available in our views, allowing use to conveniently assume the "$errors" variable is always defined and can be safely used
-
-<?php
-
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
- ?>
-
- <!-- What to do in the case of optional fields -->
-
- - By default, Laravel includes the "TrimStrings" and "ConvertEmptyStringsToNull" middleware in our application's global middleware stack
- - these middleware are listed in the stack by the "App\Http\Kernel" class
- - Because of this, we will need to mark the "optional" request fields as "nullalbe" if we do not want the validator to consider "null" values as invalid
-
- <?php
- $this->validate($request, [
-     'title' => 'required|unique:posts|max:255',
-     'body' => 'required',
-     'publish_at' => 'nullable|date',
- ]);
-  ?>
-
-  - Here, we are specifying that the "publish_at" field may either be "null" or a valid date representation
-  - If the "nullable" modifier is not added to the rule definition, the validator would consider "null" as an invalid date
-
-<!-- How to create custom validation requests -->
-
-- Custom form requests are custom request classes that contain the validation logic
-- To create a form request class, use the "make:request" artisan command
-
-php artisan make:request StoreBlogPost
-
-- The generated class will be placed in the "app/Http/Requests" directory
-- if this directory does not exist, it will be created when we run the "make:request" command
-
-- We can add the validation rules to the "rules" method like this
-
-<?php
-
-public function rules()
-{
-    return [
+    <?php
+    $this->validate($request, [
         'title' => 'required|unique:posts|max:255',
         'body' => 'required',
-    ];
-}
+    ]);
+    ?>
 
- ?>
+    <!-- How to stop on the first validation failure -->
 
-- After this, we need to "type-hint" the request on our controller method
-- The incoming form request is validated before the controller method is called
+    - assign "bail" rule to the attribute
 
-<?php
+    <?php
+    $this->validate($request, [
+        'title' => 'bail|unique:posts|max:255',
+        'body' => 'required',
+    ]);
+    ?>
+    - if the "unique" rule fails, the "max" rule won't be checked
 
-public function store(StoreBlogPost $request)
-{
-    // The incoming request is valid...
-}
 
- ?>
+    <!-- How to specify nested attributes -->
 
-- If the validation fails, a redirect response will be generated to send the user back to their previous location
-- The errors will also be flashed to the session so that they are available for the display
+    If our HTTP request contains "nested" parameters, we may specify them in the validation rules using "dot" syntax
 
-<!-- How to authorize form requests -->
+    <?php
+    $this->validate($request, [
+        'title' => 'required|unique:posts|max:255',
+        'author.name' => 'required',
+        'author.description' => 'required',
+    ]);
+    ?>
 
-- The form request class also contains an "authorize" method
-- Within this method, we can check whether the authenticated user actually has the authority to update a given resource
+    <!-- How to display errors on the blade -->
 
-Eg- we can determine whether a user actually owns a blog comment they are attempting to update
+    - use the "errors" variable
+    - it is an instance of "Illuminate\Support\MessageBag"
+    - The "errors" variable is bound to the biew by "Illuminate\View\Middleware\ShareErrorsFromSession" middleware, which is provided by "web" middleware
+    - When this middleware is applied an "$errors" variable will always be available in our views, allowing use to conveniently assume the "$errors" variable is always defined and can be safely used
 
-<?php
+    <?php
 
-public function authorize()
-{
-    $comment = Comment::find($this->route('comment'));
+    @if ($errors->any())
+    <div class="alert alert-danger">
+    <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+    </ul>
+    </div>
+    @endif
+    ?>
 
-    return $comment && $this->user()->can('update', $comment);
-}
- ?>
+    <!-- What to do in the case of optional fields -->
 
-- Since all form requests extend the base Laravel request class, we may use the "user" method to access the currently
-authenticated user
-- the "route" method grants access to the URI parameters defined on the route being called, such as "{comment}" parameter
+    - By default, Laravel includes the "TrimStrings" and "ConvertEmptyStringsToNull" middleware in our application's global middleware stack
+    - these middleware are listed in the stack by the "App\Http\Kernel" class
+    - Because of this, we will need to mark the "optional" request fields as "nullalbe" if we do not want the validator to consider "null" values as invalid
 
-<!-- Route::post('comment/{comment}') -->
+    <?php
+    $this->validate($request, [
+        'title' => 'required|unique:posts|max:255',
+        'body' => 'required',
+        'publish_at' => 'nullable|date',
+    ]);
+    ?>
 
-- if the "authorize" method returns "false", a HTTP response with a 403 status code will be automatically returned and the controller method will not execute
+    - Here, we are specifying that the "publish_at" field may either be "null" or a valid date representation
+    - If the "nullable" modifier is not added to the rule definition, the validator would consider "null" as an invalid date
 
-<!-- How to manually create validators -->
+    <!-- How to create custom validation requests -->
 
-- This can be done using the "Validator" facade.
-- the "make" method on the facade generates a new validator instance
+    - Custom form requests are custom request classes that contain the validation logic
+    - To create a form request class, use the "make:request" artisan command
 
-<?php
+    php artisan make:request StoreBlogPost
 
-namespace App\Http\Controllers;
+    - The generated class will be placed in the "app/Http/Requests" directory
+    - if this directory does not exist, it will be created when we run the "make:request" command
 
-use Validator;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+    - We can add the validation rules to the "rules" method like this
 
-class PostController extends Controller
-{
-    /**
-     * Store a new blog post.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
+    <?php
+
+    public function rules()
     {
-        $validator = Validator::make($request->all(), [
+        return [
             'title' => 'required|unique:posts|max:255',
             'body' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect('post/create')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
-
-        // Store the blog post...
+        ];
     }
-}
 
-?>
+    ?>
 
-- the first argument passed to the "make" method is the data under validation
-- the second argument is the validation rules that should be applied to the data
+    - After this, we need to "type-hint" the request on our controller method
+    - The incoming form request is validated before the controller method is called
 
-- After checking if the request validation failed, we may use the "withErrors" method to flash the error messages to the session
-- When using this method, the "$errors" variable will be automatically shared with the views after redirection, allowing us to easily display them back to the user
-- The "withErrors" method accepts a validator, a MessageBag, or a PHP array
+    <?php
 
-<!-- How to Automatically redirect in the above case -->
+    public function store(StoreBlogPost $request)
+    {
+        // The incoming request is valid...
+    }
 
-- We can call the "validate" method on an existing validator instance
-- if the validation fails, the user will automatically be redirected or , in the case of an AJAX request, a JSON response will be returned
+    ?>
 
-<?php
+    - If the validation fails, a redirect response will be generated to send the user back to their previous location
+    - The errors will also be flashed to the session so that they are available for the display
 
-Validator::make($request->all(), [
-    'title' => 'required|unique:posts|max:255',
-    'body' => 'required',
-])->validate();
+    <!-- How to authorize form requests -->
 
- ?>
+    - The form request class also contains an "authorize" method
+    - Within this method, we can check whether the authenticated user actually has the authority to update a given resource
 
-<!-- What is the use of named error bags -->
+    Eg- we can determine whether a user actually owns a blog comment they are attempting to update
 
-- If we have multiple forms on a single page, we may wish to name the MessageBag of errors, allowing us to retrieve the error messages for a specific form
-- To do this, simply pass a name as the second argument to withErrors:
+    <?php
 
-<?php
+    public function authorize()
+    {
+        $comment = Comment::find($this->route('comment'));
 
-return redirect('register')->withErrors($validator, 'login')
- ?>
+        return $comment && $this->user()->can('update', $comment);
+    }
+    ?>
 
-- We may access the named "messageBag" instance from the "$errors" variable
+    - Since all form requests extend the base Laravel request class, we may use the "user" method to access the currently
+    authenticated user
+    - the "route" method grants access to the URI parameters defined on the route being called, such as "{comment}" parameter
 
-<?php
-{{$errors->login->first('email')}}
-  ?>
+    <!-- Route::post('comment/{comment}') -->
 
-  <!-- Different ways of working with error messages when using the custom "Validator"-->
+    - if the "authorize" method returns "false", a HTTP response with a 403 status code will be automatically returned and the controller method will not execute
 
-  - After calling the "errors" method on a "Validator" instance, we will receive an "Illuminate\Support\MessageBag" instance, which as a variety of convenient methods for working with error messages
+    <!-- How to manually create validators -->
 
-  <!-- 1. Retrieving the first error message for a field -->
+    - This can be done using the "Validator" facade.
+    - the "make" method on the facade generates a new validator instance
 
-  - use the "first" method
+    <?php
 
-<?php
-  $errors = $validator->errors();
+    namespace App\Http\Controllers;
 
-  echo $errors->first('email');
- ?>
+    use Validator;
+    use Illuminate\Http\Request;
+    use App\Http\Controllers\Controller;
 
- <!-- 2. Retrieving all error messages for a field -->
+    class PostController extends Controller
+    {
+        /**
+        * Store a new blog post.
+        *
+        * @param  Request  $request
+        * @return Response
+        */
+        public function store(Request $request)
+        {
+            $validator = Validator::make($request->all(), [
+                'title' => 'required|unique:posts|max:255',
+                'body' => 'required',
+            ]);
 
- - If we need to retrieve an array of all the messages for a given field, use the "get" method
+            if ($validator->fails()) {
+                return redirect('post/create')
+                ->withErrors($validator)
+                ->withInput();
+            }
 
- <?php
- foreach ($errors->get('email') as $message) {
-     //
- }
-  ?>
+            // Store the blog post...
+        }
+    }
 
-  - If we are validating an array form field, we may retrieve all the messages for each of the array elements using the "*" character
+    ?>
 
-  <?php
-  foreach ($errors->get('attachments.*') as $message) {
-      //
-  }
-   ?>
+    - the first argument passed to the "make" method is the data under validation
+    - the second argument is the validation rules that should be applied to the data
 
-   <!-- 3. Retrieving all error messages for all fields -->
+    - After checking if the request validation failed, we may use the "withErrors" method to flash the error messages to the session
+    - When using this method, the "$errors" variable will be automatically shared with the views after redirection, allowing us to easily display them back to the user
+    - The "withErrors" method accepts a validator, a MessageBag, or a PHP array
 
-   - use the "all" method
+    <!-- How to Automatically redirect in the above case -->
 
-<?php
-foreach ($errors->all() as $message) {
-    //
-}
- ?>
+    - We can call the "validate" method on an existing validator instance
+    - if the validation fails, the user will automatically be redirected or , in the case of an AJAX request, a JSON response will be returned
 
-<!-- 4. Determining if messages exist for a field -->
+    <?php
 
-- use the "has" method
+    Validator::make($request->all(), [
+        'title' => 'required|unique:posts|max:255',
+        'body' => 'required',
+        ])->validate();
 
-<?php
-if ($errors->has('email')) {
-    //
-}
- ?>
+        ?>
 
-<!-- How to define custom error messages -->
+        <!-- What is the use of named error bags -->
 
-- we can use custom error messages for validation instead of the defaults
+        - If we have multiple forms on a single page, we may wish to name the MessageBag of errors, allowing us to retrieve the error messages for a specific form
+        - To do this, simply pass a name as the second argument to withErrors:
 
-- we can pass the custom messages as the third argument to the "Validator::make" method
+        <?php
 
-<?php
+        return redirect('register')->withErrors($validator, 'login')
+        ?>
 
-$messages = [
-    'required' => 'The :attribute field is required.',
-];
+        - We may access the named "messageBag" instance from the "$errors" variable
 
-$validator = Validator::make($input, $rules, $messages);
+        <?php
+        {{$errors->login->first('email')}}
+        ?>
 
- ?>
+        <!-- Different ways of working with error messages when using the custom "Validator"-->
 
-- The ":attribute" place-holder will be replaced by the actual name of the field under validation
+        - After calling the "errors" method on a "Validator" instance, we will receive an "Illuminate\Support\MessageBag" instance, which as a variety of convenient methods for working with error messages
 
-<?php
-$messages = [
-    'same'    => 'The :attribute and :other must match.',
-    'size'    => 'The :attribute must be exactly :size.',
-    'between' => 'The :attribute must be between :min - :max.',
-    'in'      => 'The :attribute must be one of the following types: :values',
-];
- ?>
+        <!-- 1. Retrieving the first error message for a field -->
 
-<!-- Specifying a custom message for a given attribute -->
-- Sometimes we may wish to specify a custom error message only for a specific field
-- we can do this by using the "dot" notation
-- specify the attribute's name first, followed by the rule
+        - use the "first" method
 
-<?php
-$messages = [
-    'email.required' => 'We need to know your e-mail address!',
-];
- ?>
+        <?php
+        $errors = $validator->errors();
 
-<!-- How to specify custom messages in the language file -->
+        echo $errors->first('email');
+        ?>
 
-do this in "validation.php"
+        <!-- 2. Retrieving all error messages for a field -->
 
-<?php
-'custom' => [
-    'email' => [
-        'required' => 'We need to know your e-mail address!',
-    ],
-],
- ?>
+        - If we need to retrieve an array of all the messages for a given field, use the "get" method
 
-<!-- Different validation rules -->
+        <?php
+        foreach ($errors->get('email') as $message) {
+            //
+        }
+        ?>
 
-1. accepted
-- the field under validation must be "yes", "on","1" or "true"
-- is useful for validating "Terms of Service" acceptance
+        - If we are validating an array form field, we may retrieve all the messages for each of the array elements using the "*" character
 
-2. after:date
-- the field under validation must be a value after a given date
-- the dates will be passed into the "strtotime" function
+        <?php
+        foreach ($errors->get('attachments.*') as $message) {
+            //
+        }
+        ?>
 
-<?php
-'start_date' => 'required|date|after:tomorrow'
- ?>
+        <!-- 3. Retrieving all error messages for all fields -->
 
-** we can also compare another date using this method
+        - use the "all" method
 
-<?php
-'finish_date' => 'required|date|after:start_date'
- ?>
+        <?php
+        foreach ($errors->all() as $message) {
+            //
+        }
+        ?>
 
-3. after_or_equal:date
-- the field under validation must be a value after or equal to the given date
+        <!-- 4. Determining if messages exist for a field -->
 
-4. alpha
-- the field under validation must be entirely alphabetic characters
+        - use the "has" method
 
-5. alpha_dash
-- may have alpha-numeric characters, as well as dashes and underscores
+        <?php
+        if ($errors->has('email')) {
+            //
+        }
+        ?>
 
-6. alpha_num
-- must be entirely alpha-numeric characters
+        <!-- How to define custom error messages -->
 
-7. array
-- must be a PHP array
+        - we can use custom error messages for validation instead of the defaults
 
-8. before:date
-- must be a value preceding the given date
+        - we can pass the custom messages as the third argument to the "Validator::make" method
 
-9. before_or_equal:date
-- must be a value preceding or equal to a given date
+        <?php
 
-10. between: min,max
-- must have a size between the given "min" and "max"
+        $messages = [
+            'required' => 'The :attribute field is required.',
+        ];
 
-11. boolean
-- must be able to cast as a boolean
-- accepted input are "true","false", 1, 0, "1" and "0"
+        $validator = Validator::make($input, $rules, $messages);
 
-12. confirmed
-- the field under validation must have a matching field of "foo_confirmation"
-- if the field under validation is "password", a matching "password_confirmation" field must be present in the input
+        ?>
 
-13. date
-- the field under validation must be a valid date
+        - The ":attribute" place-holder will be replaced by the actual name of the field under validation
 
-14. date_format:format
-- the field must match the given format
+        <?php
+        $messages = [
+            'same'    => 'The :attribute and :other must match.',
+            'size'    => 'The :attribute must be exactly :size.',
+            'between' => 'The :attribute must be between :min - :max.',
+            'in'      => 'The :attribute must be one of the following types: :values',
+        ];
+        ?>
 
-15. different:field
-- must have a different value than the given field
+        <!-- Specifying a custom message for a given attribute -->
+        - Sometimes we may wish to specify a custom error message only for a specific field
+        - we can do this by using the "dot" notation
+        - specify the attribute's name first, followed by the rule
 
-16. digits:value
-- must be numeric and must have an exact length of value
+        <?php
+        $messages = [
+            'email.required' => 'We need to know your e-mail address!',
+        ];
+        ?>
 
-17. digits_between:min,max
-- must have a length between the given min and max
+        <!-- How to specify custom messages in the language file -->
 
-18. dimensions
-- the field must be an image meeting the dimensions  constraints as specified by the rule's parameter
+        do this in "validation.php"
 
-<?php
-'avatar' => 'dimensions:min_width=100,min_height=200'
- ?>
+        <?php
+        'custom' => [
+            'email' => [
+                'required' => 'We need to know your e-mail address!',
+            ],
+        ],
+        ?>
 
-Available constraints are: min_width, max_width, min_height, max_height, width, height, ratio.
+        <!-- Different validation rules -->
 
-A ratio constraint should be represented as width divided by height. This can be specified either by a statement like 3/2 or a float like 1.5:
+        1. accepted
+        - the field under validation must be "yes", "on","1" or "true"
+        - is useful for validating "Terms of Service" acceptance
 
-<?php
-'avatar' => 'dimensions:ratio=3/2'
- ?>
+        2. after:date
+        - the field under validation must be a value after a given date
+        - the dates will be passed into the "strtotime" function
 
- <?php
- use Illuminate\Validation\Rule;
+        <?php
+        'start_date' => 'required|date|after:tomorrow'
+        ?>
 
- Validator::make($data, [
-     'avatar' => [
-         'required',
-         Rule::dimensions()->maxWidth(1000)->maxHeight(500)->ratio(3 / 2),
-     ],
- ]);
-  ?>
+        ** we can also compare another date using this method
 
-19. distinct
-- when working with arrays, the field under validation must not have any duplicate values
+        <?php
+        'finish_date' => 'required|date|after:start_date'
+        ?>
 
-<?php
-'foo.*.id' => 'distinct'
- ?>
+        3. after_or_equal:date
+        - the field under validation must be a value after or equal to the given date
 
- 20. email
- - the field must be formatted as an email-address
+        4. alpha
+        - the field under validation must be entirely alphabetic characters
 
- 21. exists:table,column
- - the field must exist on a given database table
+        5. alpha_dash
+        - may have alpha-numeric characters, as well as dashes and underscores
 
-<?php
-'state' => 'exists:states'
+        6. alpha_num
+        - must be entirely alpha-numeric characters
 
-OR
+        7. array
+        - must be a PHP array
 
-'state' => 'exists:states,abbreviation'
+        8. before:date
+        - must be a value preceding the given date
 
-OR
+        9. before_or_equal:date
+        - must be a value preceding or equal to a given date
 
-'email' => 'exists:connection.staff,email'
- ?>
+        10. between: min,max
+        - must have a size between the given "min" and "max"
 
-<?php
-use Illuminate\Validation\Rule;
+        11. boolean
+        - must be able to cast as a boolean
+        - accepted input are "true","false", 1, 0, "1" and "0"
 
-Validator::make($data, [
-    'email' => [
-        'required',
-        Rule::exists('staff')->where(function ($query) {
-            $query->where('account_id', 1);
-        }),
-    ],
-]);
- ?>
+        12. confirmed
+        - the field under validation must have a matching field of "foo_confirmation"
+        - if the field under validation is "password", a matching "password_confirmation" field must be present in the input
 
-22. file
-- the field must be a successfully uploaded file
+        13. date
+        - the field under validation must be a valid date
 
-23. filled
-- the field must not be empty when it is present
+        14. date_format:format
+        - the field must match the given format
 
-24. in:foo,bar
-- the field must be included in the given list of values
+        15. different:field
+        - must have a different value than the given field
 
-<?php
-use Illuminate\Validation\Rule;
+        16. digits:value
+        - must be numeric and must have an exact length of value
 
-Validator::make($data, [
-    'zones' => [
-        'required',
-        Rule::in(['first-zone', 'second-zone']),
-    ],
-]);
- ?>
+        17. digits_between:min,max
+        - must have a length between the given min and max
 
-25. in_array:anotherfield
-- the field must exist in "anotherfield's" values
+        18. dimensions
+        - the field must be an image meeting the dimensions  constraints as specified by the rule's parameter
 
-26. integer
-- must be an integer
+        <?php
+        'avatar' => 'dimensions:min_width=100,min_height=200'
+        ?>
 
-27. ip
-- must be an IP address
+        Available constraints are: min_width, max_width, min_height, max_height, width, height, ratio.
 
-28. ipv4
-- must be an IPv4 address
+        A ratio constraint should be represented as width divided by height. This can be specified either by a statement like 3/2 or a float like 1.5:
 
-29. json
-- must be a valid JSON string
+        <?php
+        'avatar' => 'dimensions:ratio=3/2'
+        ?>
 
-30. max:value
-- must be less than or equal to a maximum value
+        <?php
+        use Illuminate\Validation\Rule;
 
-31. mimetypes: text/plain,;
-- must match the given MIME types
+        Validator::make($data, [
+            'avatar' => [
+                'required',
+                Rule::dimensions()->maxWidth(1000)->maxHeight(500)->ratio(3 / 2),
+            ],
+        ]);
+        ?>
 
-<?php
-'video' => 'mimetypes:video/avi,video/mpeg,video/quicktime'
- ?>
+        19. distinct
+        - when working with arrays, the field under validation must not have any duplicate values
 
-32. mimes:foo,bar..
+        <?php
+        'foo.*.id' => 'distinct'
+        ?>
 
-<?php
-'photo' => 'mimes:jpeg,bmp,png'
- ?>
+        20. email
+        - the field must be formatted as an email-address
 
-33. min:value
-- the field must have a minimum value
+        21. exists:table,column
+        - the field must exist on a given database table
 
-34. nullable
-- the field under validation may be "null"
-- this is particularly useful when validating primitive such as strings and integers that contain null values
+        <?php
+        'state' => 'exists:states'
 
-35. not_in:foo,bar
-- the field must not be included in the given list of values
+        OR
 
-<?php
-use Illuminate\Validation\Rule;
+        'state' => 'exists:states,abbreviation'
 
-Validator::make($data, [
-    'toppings' => [
-        'required',
-        Rule::notIn(['sprinkles', 'cherries']),
-    ],
-]);
- ?>
+        OR
 
-36. numeric
-- the field under validation must be numeric
+        'email' => 'exists:connection.staff,email'
+        ?>
 
-37. regex:pattern
-- the field must match the given regular expression
-- mention the rules in the form of an array
+        <?php
+        use Illuminate\Validation\Rule;
 
-38. required
-- the field must be present in the input data and not empty
-- the field is considered "empty" if one of the following conditions are true
-    - The value is "null"
-    - the value is an empty string
-    - the value is an empty array
-    - the value is an uploaded file with no path
+        Validator::make($data, [
+            'email' => [
+                'required',
+                Rule::exists('staff')->where(function ($query) {
+                    $query->where('account_id', 1);
+                }),
+            ],
+        ]);
+        ?>
 
-39. required_if:anotherfield, value
-- the field must be present and not empty if "anotherfield" is equal to any value
+        22. file
+        - the field must be a successfully uploaded file
 
-40. required_unless:anotherfield, value
-- the field must be present and not empty unless "anotherfield" is equal to any value
+        23. filled
+        - the field must not be empty when it is present
 
-41. required_with:foo,bar,...
+        24. in:foo,bar
+        - the field must be included in the given list of values
 
-- The field under validation must be present and not empty only if any of the other specified fields are present.
+        <?php
+        use Illuminate\Validation\Rule;
 
-42. required_with_all:foo,bar,...
+        Validator::make($data, [
+            'zones' => [
+                'required',
+                Rule::in(['first-zone', 'second-zone']),
+            ],
+        ]);
+        ?>
 
-- The field under validation must be present and not empty only if all of the other specified fields are present.
+        25. in_array:anotherfield
+        - the field must exist in "anotherfield's" values
 
-43. required_without:foo,bar,...
+        26. integer
+        - must be an integer
 
-- The field under validation must be present and not empty only when any of the other specified fields are not present.
+        27. ip
+        - must be an IP address
 
-44. required_without_all:foo,bar,...
+        28. ipv4
+        - must be an IPv4 address
 
-- The field under validation must be present and not empty only when all of the other specified fields are not present.
+        29. json
+        - must be a valid JSON string
 
-45. same:field
-- the given field must match the field under validation
+        30. max:value
+        - must be less than or equal to a maximum value
 
-46. size:value
-- the field must have a size matching the given value
-- For string data, value corresponds to the number of characters
-- For numeric data, value corresponds to a given integer value
-- For an array, size corresponds to the "count" of the array
-- For files, size corresponds to the file size in kilobytes
+        31. mimetypes: text/plain,;
+        - must match the given MIME types
 
-47. string
-- the field must be a string
-- if we want the field to be also null, we can assign the "nullable" rule to the field
+        <?php
+        'video' => 'mimetypes:video/avi,video/mpeg,video/quicktime'
+        ?>
 
-48. unique:table,column, except, id column
-- the field must be unique in the given database table
-- if the "column" option is not specified, the field name will be used
+        32. mimes:foo,bar..
 
-49. url
-- the field must be a valid url
+        <?php
+        'photo' => 'mimes:jpeg,bmp,png'
+        ?>
 
-<!-- Where are all the "Auth::routes" located -->
+        33. min:value
+        - the field must have a minimum value
 
-Router.php
+        34. nullable
+        - the field under validation may be "null"
+        - this is particularly useful when validating primitive such as strings and integers that contain null values
 
-<!-- How to add middleware in the route itself -->
+        35. not_in:foo,bar
+        - the field must not be included in the given list of values
 
-Route::group(['namespace' => 'Admin','middleware'=>'auth:admin'], function()
-{
+        <?php
+        use Illuminate\Validation\Rule;
 
-    Route::get('admin/home','HomeController@home')->name('admin.home');
-    Route::resource('admin/user','UserController');
-    Route::resource('admin/post','PostController');
-    Route::resource('admin/tag','TagController');
-    Route::resource('admin/category','CategoryController');
+        Validator::make($data, [
+            'toppings' => [
+                'required',
+                Rule::notIn(['sprinkles', 'cherries']),
+            ],
+        ]);
+        ?>
 
-    Route::get('admin-login', 'Auth\LoginController@showLoginForm')->name('admin.login');
+        36. numeric
+        - the field under validation must be numeric
 
-    Route::post('admin-login', 'Auth\LoginController@login');
-});
+        37. regex:pattern
+        - the field must match the given regular expression
+        - mention the rules in the form of an array
+
+        38. required
+        - the field must be present in the input data and not empty
+        - the field is considered "empty" if one of the following conditions are true
+        - The value is "null"
+        - the value is an empty string
+        - the value is an empty array
+        - the value is an uploaded file with no path
+
+        39. required_if:anotherfield, value
+        - the field must be present and not empty if "anotherfield" is equal to any value
+
+        40. required_unless:anotherfield, value
+        - the field must be present and not empty unless "anotherfield" is equal to any value
+
+        41. required_with:foo,bar,...
+
+        - The field under validation must be present and not empty only if any of the other specified fields are present.
+
+        42. required_with_all:foo,bar,...
+
+        - The field under validation must be present and not empty only if all of the other specified fields are present.
+
+        43. required_without:foo,bar,...
+
+        - The field under validation must be present and not empty only when any of the other specified fields are not present.
+
+        44. required_without_all:foo,bar,...
+
+        - The field under validation must be present and not empty only when all of the other specified fields are not present.
+
+        45. same:field
+        - the given field must match the field under validation
+
+        46. size:value
+        - the field must have a size matching the given value
+        - For string data, value corresponds to the number of characters
+        - For numeric data, value corresponds to a given integer value
+        - For an array, size corresponds to the "count" of the array
+        - For files, size corresponds to the file size in kilobytes
+
+        47. string
+        - the field must be a string
+        - if we want the field to be also null, we can assign the "nullable" rule to the field
+
+        48. unique:table,column, except, id column
+        - the field must be unique in the given database table
+        - if the "column" option is not specified, the field name will be used
+
+        49. url
+        - the field must be a valid url
+
+        <!-- Where are all the "Auth::routes" located -->
+
+        Router.php
+
+        <!-- How to add middleware in the route itself -->
+
+        Route::group(['namespace' => 'Admin','middleware'=>'auth:admin'], function()
+        {
+
+            Route::get('admin/home','HomeController@home')->name('admin.home');
+            Route::resource('admin/user','UserController');
+            Route::resource('admin/post','PostController');
+            Route::resource('admin/tag','TagController');
+            Route::resource('admin/category','CategoryController');
+
+            Route::get('admin-login', 'Auth\LoginController@showLoginForm')->name('admin.login');
+
+            Route::post('admin-login', 'Auth\LoginController@login');
+        });
+
+        <!-- What are Blades -->
+
+        - it is a simple templating engine provided with Laravel
+        - it does not restrict us from using plain PHP code in your views
+
+        ** Two of the primary benefits of using Blade are "template inheritance" and "sections"
+
+        - Let us define a "master layout"
+
+        <?php
+
+        <html>
+        <head>
+        <title>App Name - @yield('title')</title>
+        </head>
+        <body>
+        @section('sidebar')
+        This is the master sidebar.
+        @show
+
+        <div class="container">
+        @yield('content')
+        </div>
+        </body>
+        </html>
+
+        ?>
+
+        ** The "@section" directive defines a section of the content
+        ** The "@yield" directive is used to display the contents of a given section
+
+        ** When extending a child view, use the Blade "@extends" directive to specify which layout the child view should inherit
+
+        <?php
+
+        @extends('layouts.app')
+
+        @section('title', 'Page Title')
+
+        @section('sidebar')
+        @parent
+
+        <p>This is appended to the master sidebar.</p>
+        @endsection
+
+        @section('content')
+        <p>This is my body content.</p>
+        @endsection
+
+        ?>
+
+        ** The "@parent" directive is used to "append" (rather than overwriting) content to the layout's sidebar
+        - The "@parent" directive will be replaced by the content of the layout when the view is rendered
+
+        "@show" directive will define and immediately "yield" the section
+
+        <!-- How to return a view using routes -->
+
+        <?php
+
+        Route::get('blade', function () {
+            return view('child');
+        });
+
+        ?>
+
+        <!-- What is the use of components and slots -->
+
+        - Imagine a resuable "alert" componenet we would like to reuse throughout the application
+
+        <?php
+
+        <div class="alert alert-danger">
+        {{ $slot }}
+        </div>
+
+        ?>
+
+        - The "{{ $slot }}" variable will contain the content we wish to inject into the component
+
+        <?php
+
+        @component('alert')
+        <strong>Whoops!</strong> Something went wrong!
+        @endcomponent
+
+        ?>
+
+        - Sometimes it's helpful to define multiple slots for a component
+        - Named slots may be displayed by simply "echoing" the variable that matches their name
+
+        <?php
+
+
+        <div class="alert alert-danger">
+        <div class="alert-title">{{ $title }}</div>
+
+        {{ $slot }}
+        </div>
+
+        ?>
+
+        <?php
+
+        @component('alert')
+        @slot('title')
+        Forbidden
+        @endslot
+
+        You are not allowed to access this resource!
+        @endcomponent
+
+        ?>
+
+        <!-- How to pass additional data to the components -->
+
+        <?php
+        @component('alert', ['foo'=>'bar'])
+
+        @endcomponent
+        ?>
+
+        <!-- How to display data on a blade template -->
+
+        <?php
+        Route::get('greeting', function () {
+            return view('welcome', ['name' => 'Samantha']);
+        });
+        ?>
+
+        To display the above use
+
+        <?php
+
+        Hello, {{$name}}
+
+        ?>
+
+        - We can also echo the results of any PHP function
+
+        <?php
+
+        The current UNIX timestamp is {{ time() }}.
+
+        ?>
+
+        ** The Blade {{ }} statements are automatically sent through PHP's "htmlspecialchars" function to prevent XSS attacks
+
+        ** To display unescaped data in blade, do this
+
+        <?php
+        Hello, {!! $name !!}.
+        ?>
+
+        ** avoid this though
+
+        <!-- How to write "if" statements in blade -->
+
+        @if(count($records) ===1 )
+        I have one record!
+        @elseif(count($records)>1)
+        I have multiple records
+        @else
+        I don't have multiple records
+        @endif
+
+        <!-- How to use "unless" in blade -->
+
+        @unless (Auth::check())
+        You are not signed in
+        @endunless
+
+        <!-- How to use "isset" and "empty" in blade -->
+
+        @isset($records)
+        //records are defined and is not null
+        @endisset
+
+        @empty($records)
+        //records is empty
+        @endempty
+
+
+        <!-- How to run loops in blade -->
+
+        1. For loop
+
+        <?php
+
+        @for($i=0; $i<10;$i++)
+        The current vlaue is {{$i}}
+        @endfor
+
+        ?>
+
+        2. Foreach loop
+
+        <?php
+
+        @foreach($users as $user)
+
+        <p>This is user {{$user->id}}</p>
+
+        @endforeach
+
+        ?>
+
+        3. Forelse loop
+
+        <?php
+
+        @forelse ($users as $user)
+
+        <li>{{ $user->name}}</li>
+
+        @endforelse
+
+        ?>
+
+        4. While loop
+
+        @while(true)
+        <p>I'm looping forever</p>
+        @endwhile
+
+        <!-- How to skip and end a loop in blade -->
+
+        <?php
+
+        @foreach($users as $user)
+        @if($user->type==1)
+        @continue
+        @endif
+
+        <li>{{ $user->name}}</li>
+
+        @if($user->name ==5)
+        @break
+        @endif
+        @endforeach
+
+        ?>
+
+        An alternative for above is
+
+        <?php
+
+        @foreach ($users as $user)
+        @continue($user->type == 1)
+
+        <li>{{ $user->name }}</li>
+
+        @break($user->number == 5)
+        @endforeach
+
+        ?>
+
+        <!-- How to use the "loop" variable -->
+
+        - This variable provides access to the current looop index and whether this is the first or last ieration through the loop
+
+        <?php
+
+        @foreach($users as $user)
+        @if($loop->first)
+        This is the first iteration
+        @endif
+
+        @if($loop->last)
+        This is the last iteration
+        @endif
+
+        <p>This is user {{ $user->id}}</p>
+        @endforeach
+        ?>
+
+        ** If we are in the nested loop, we may access the parent's loop "$loop" variable via the "parent" property
+
+        <?php
+
+        @foreach($users as $user)
+        @foreach($user->posts as $post)
+        @if($loop->parent->first)
+        This is the first iteration of the parent loop
+        @endif
+        @endforeach
+        @endforeach
+
+        ?>
+
+        ** The loop variable has the following extra properties
+
+        1. $loop->index
+        - The index of the current loop iteration (starts at 0)
+
+        2. $loop->iteration
+        - The current loop iteration (starts at 1)
+
+        3. $loop->remaining
+        - The iteration remaining in the loop
+
+        4. $loop->count
+        - The total number of items in the array being iterated
+
+        5. $loop->first
+        - Whether this is the first iteration through the loop
+
+        6. $loop->last
+        - Whether this is the last iteration through the loop
+
+        7. $last->depth
+        - The nesting level of the current loop
+
+        8. $loop->parent
+        - When in a nested loop, the parent's loop variable
+
+        <!-- How to write comments in blades -->
+
+        <?php
+        {{-- This comment will not be present in the rendered HTML --}}
+        ?>
+
+        <!-- How to include "subviews" inside a blade -->
+
+        - "@include" directive allows one to include a Blade view within another view
+        - all variables which are available to the parent view will be made available to the included view
+
+        <?php
+
+        <div>
+        @include('shared.errors')
+
+        <form>
+        <!-- Form Contents -->
+        </form>
+        </div>
+
+        ?>
+
+        <!-- How to pass an array of extra data to the included view -->
+
+        <?php
+
+        @include('view.name', ['some'=>'data'])
+
+        ?>
+
+        <!-- How to include a view if one is not sure whether it exists or not -->
+
+        <?php
+
+        @includeIf('view.name', ['some'=>'data'])
+
+        ?>
+
+        <!-- How to include a view based on a boolean condition -->
+
+        <?php
+
+        @includeWhen($boolean, 'view.name', ['some' => 'data'])
+
+        ?>
+
+        <!-- How to push a javascript library from the parent view to the child view -->
+
+        <?php
+
+        @push('scripts')
+        <script src="/example.js"></script>
+        @endpush
+
+        ?>
+
+        <?php
+
+        <head>
+        <!-- Head Contents -->
+
+        @stack('scripts')
+        </head>
+        
+        ?>
