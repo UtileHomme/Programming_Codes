@@ -217,17 +217,17 @@ Route::resource('categories','CategoryController',['except'=>'create']);
 class Post extends Model
 {
 
-  //for getting the column names of a particular table
-  public function getTableColumns()
-  {
-    return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
-  }
+    //for getting the column names of a particular table
+    public function getTableColumns()
+    {
+        return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
+    }
 
-  //for Many to Many relation
-  public function tags()
-  {
-    return $this->belongsToMany('App\Tag');
-  }
+    //for Many to Many relation
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
+    }
 }
 
 
@@ -235,7 +235,7 @@ class Tag extends Model
 {
     public function posts()
     {
-      return $this->belongsToMany('App\Post');
+        return $this->belongsToMany('App\Post');
     }
 }
 
@@ -243,16 +243,16 @@ class Tag extends Model
 
 public function up()
 {
-  Schema::create('post_tag', function (Blueprint $table) {
-      $table->increments('id');
-      $table->integer('post_id')->unsigned();
-      // Now we are telling the table that the next field is a foreign key
-      $table->foreign('post_id')->references('id')->on('posts');
+    Schema::create('post_tag', function (Blueprint $table) {
+        $table->increments('id');
+        $table->integer('post_id')->unsigned();
+        // Now we are telling the table that the next field is a foreign key
+        $table->foreign('post_id')->references('id')->on('posts');
 
-      $table->integer('tag_id')->unsigned();
-      $table->foreign('tag_id')->references('id')->on('tags');
+        $table->integer('tag_id')->unsigned();
+        $table->foreign('tag_id')->references('id')->on('tags');
 
-  });
+    });
 }
 
 <!-- How to store the tags for the post in the database -->
@@ -281,145 +281,544 @@ Inside PostController
 
 public function destroy($id)
 {
-  $post = Post::find($id);
-  $post->tags()->detach();
+    $post = Post::find($id);
+    $post->tags()->detach();
 
-  $post->delete();
+    $post->delete();
 
-  Session::flash('success','The Post was Successfully Deleted');
-  return redirect()->route('posts.index');
+    Session::flash('success','The Post was Successfully Deleted');
+    return redirect()->route('posts.index');
 
 
-Inside Tags Controller
+    Inside Tags Controller
 
-public function destroy($id)
-{
-    $tag = Tag::find($id);
-    $tag->posts()->detach();
+    public function destroy($id)
+    {
+        $tag = Tag::find($id);
+        $tag->posts()->detach();
 
-    $tag->delete();
+        $tag->delete();
 
-    Session::flash('success', 'Tag was deleted successfully');
+        Session::flash('success', 'Tag was deleted successfully');
 
-    return redirect()->route('tags.index');
-}
+        return redirect()->route('tags.index');
+    }
 
-<!-- How to run raw SQL queries -->
+    <!-- How to run raw SQL queries -->
 
-- the DB facade provides methods for each type of query: select, update, insert, delete and statement
+    - the DB facade provides methods for each type of query: select, update, insert, delete and statement
 
-<?php
+    <?php
 
-$users = DB::select('select * from users where active = ?', [1]);
+    $users = DB::select('select * from users where active = ?', [1]);
 
-return view('user.index', ['users'=>$users]);
+    return view('user.index', ['users'=>$users]);
 
- ?>
+    ?>
 
- - second argument is parameter binding
- - it provides protection against SQL injection
+    - second argument is parameter binding
+    - it provides protection against SQL injection
 
- ** the "select" method will always return an "array" of results
+    ** the "select" method will always return an "array" of results
 
-<?php
+    <?php
 
-foreach ($users as $user) {
-    echo $user->name;
-}
+    foreach ($users as $user) {
+        echo $user->name;
+    }
 
- ?>
+    ?>
 
-** We can also use "name bindings" instead of "?"
+    ** We can also use "name bindings" instead of "?"
 
-<?php
+    <?php
 
-$results = DB::select('select * from users where id = :id', ['id' => 1]);
+    $results = DB::select('select * from users where id = :id', ['id' => 1]);
 
- ?>
+    ?>
 
-<!-- How to run a "raw" insert query -->
+    <!-- How to run a "raw" insert query -->
 
-<?php
+    <?php
 
-DB::insert('insert into users(id,name) values(?,?)', [1,'Dayle']);
+    DB::insert('insert into users(id,name) values(?,?)', [1,'Dayle']);
 
- ?>
+    ?>
 
-<!-- How to run a "raw" update query -->
+    <!-- How to run a "raw" update query -->
 
-<?php
+    <?php
 
-$affected = DB::update('update users set votes = 100 where name = ?', ['John']);
+    $affected = DB::update('update users set votes = 100 where name = ?', ['John']);
 
- ?>
+    ?>
 
-<!-- How to run a "delete" query -->
+    <!-- How to run a "delete" query -->
 
-<?php
+    <?php
 
-$deleted = DB::delete('delete from users');
+    $deleted = DB::delete('delete from users');
 
- ?>
+    ?>
 
-<!-- How to run a general drop query -->
+    <!-- How to run a general drop query -->
 
-<?php
+    <?php
 
-DB::statement('drop table users');
+    DB::statement('drop table users');
 
- ?>
+    ?>
 
-<!-- What is the Laravel Database Query Builder -->
+    <!-- What is the Laravel Database Query Builder -->
 
-- it uses PDO parameter binding to protect our application against SQL injection attacks
+    - it uses PDO parameter binding to protect our application against SQL injection attacks
 
-<!-- How to retrieve all rows from a table -->
+    <!-- How to retrieve all rows from a table -->
 
-<?php
+    <?php
 
-$users = DB::table('users')->get();
+    $users = DB::table('users')->get();
 
- ?>
+    ?>
 
-** the "get" method returns an "Illuminate\Support\Collection" containing the results where each result is an instance of the PHP "StdClass" object
+    ** the "get" method returns an "Illuminate\Support\Collection" containing the results where each result is an instance of the PHP "StdClass" object
 
-<!-- How to retrieve a single row/column from a table -->
+    <!-- How to retrieve a single row/column from a table -->
 
-** To retrieve a single row from the database
+    ** To retrieve a single row from the database
 
-<?php
-$user = DB::table('users')->where('name','John')->first();
- ?>
+    <?php
+    $user = DB::table('users')->where('name','John')->first();
+    ?>
 
-** to retrieve a single value from a single column
+    ** to retrieve a single value from a single column
 
-<?php
+    <?php
 
-$email = DB::table('users')->where('name','John')->value('email');
- ?>
+    $email = DB::table('users')->where('name','John')->value('email');
+    ?>
 
-<!-- How to retrieve a list of column values -->
+    <!-- How to retrieve a list of column values -->
 
-<?php
+    <?php
 
-$titles = DB::table('roles')->pluck('title');
+    $titles = DB::table('roles')->pluck('title');
 
-foreach ($titles as $title) {
-    echo $title;
-}
+    foreach ($titles as $title) {
+        echo $title;
+    }
 
- ?>
+    ?>
 
-- retrieves all the values from the column mentioned in the "pluck" function and stores them in an array format
+    - retrieves all the values from the column mentioned in the "pluck" function and stores them in an array format
 
-<!-- How to use aggregates -->
+    <!-- How to use aggregates -->
 
-<?php
+    <?php
 
-$users = DB::table('users')->count();
+    $users = DB::table('users')->count();
 
-$price = DB::table('orders')->max('price');
+    $price = DB::table('orders')->max('price');
 
-$price = DB::table('orders')->where('finalized',1)->avg('price');
+    $price = DB::table('orders')->where('finalized',1)->avg('price');
 
- ?>
+    ?>
+
+    <!-- How to use select statements -->
+
+    <?php
+
+    $users = DB::table('users')->select('name', 'email as user_email')->get();
+
+    ?>
+
+    <!-- How to use the "distinct" clause -->
+
+    <?php
+
+    $users = DB::table('users')->distinct()->get();
+
+    ?>
+
+    <!-- How to add a new column to a query builder instance -->
+
+    <?php
+
+    $query = DB::table('users')->select('name');
+
+    $users = $query->addSelect('age')->get();
+
+    ?>
+
+    <!-- How to use Raw Expressions -->
+
+    <?php
+
+    $users = DB::table('users')
+    ->select(DB::raw('count(*) as user_count, status'))
+    ->where('status', '<>', 1)
+    ->groupBy('status')
+    ->get();
+
+    ?>
+
+    <!-- How to use a join query -->
+
+    - The first argument passed to the "join" method is the name of the table we need to join to, while the remaining arguments specify the column
+    constraints for the join
+
+    <?php
+
+    $users = DB::table('users')
+    ->join('contacts', 'users.id', '=', 'contacts.user_id')
+    ->join('orders','users.id','=','orders.user_id')
+    ->select('users.*','contacts.phone','orders.price')
+    ->get();
+
+    ?>
+
+    <!-- Left Join Clause -->
+
+    <?php
+
+    $users = DB::table('users')
+    ->leftJoin('posts', 'users.id', '=','posts.user_id')
+    ->get();
+
+    ?>
+
+    <!-- Cross Join Clause -->
+
+    - To perform a "cross join" use the crossJoin method with the name of the table you wish to cross join to
+    - A cross join generates a cartesian product between the first and the joined table
+
+    <?php
+
+    $users = DB::table('sizes')
+    ->crossJoin('colours')
+    ->get();
+
+    ?>
+
+    <!-- How to write Unions -->
+
+    - It provides a "quick way" to union two queries together
+
+    <?php
+
+    $first = DB::table('users')
+    ->whereNull('first_name');
+
+    $users = DB::table('users')
+    ->whereNull('last_name')
+    ->union($first)
+    ->get();
+
+    ?>
+
+    <!-- How to use the "where" clauses -->
+
+    - The most basic call to "where" requires three arguments
+    - The first argument is the name of the column
+    - The second argument is an operator, which can be any db supported operator
+    - The third argument is the value to evaluate against the column
+
+    <?php
+
+    $users = DB::table('users')->where('votes','=',100)->get();
+
+    OR
+
+    $users = DB::table('users')->where('votes',100)->get();
+
+    ?>
+
+    <!-- Using other operators -->
+
+    <?php
+
+    $users = DB::table('users')
+    ->where('votes', '>=', 100)
+    ->get();
+
+    $users = DB::table('users')
+    ->where('votes', '>=', 100)
+    ->get();
+
+    $users = DB::table('users')
+    ->where('name', 'like', 'T%')
+    ->get();
+
+    ?>
+
+    <!-- How to pass array of parameters to where class -->
+
+    <?php
+
+    $users = DB::table('users')->where(['status'=>1], ['subscribed','<>',1])
+    ->get();
+
+    ?>
+
+    <!-- How to use where clause with OR -->
+
+    <?php
+
+    $users = DB::table('users')
+    ->where('votes', '>', 100)
+    ->orWhere('name', 'John')
+    ->get();
+
+    ?>
+
+    <!-- Additional Where clauses -->
+
+    a. whereBetween
+
+    <?php
+
+    $users = DB::table('users')
+    ->whereBetween('votes',[1,100])->get();
+
+    ?>
+
+    b. whereNotBetween
+
+    <?php
+
+    $users = DB::table('users')
+    ->whereNotBetween('votes', [1, 100])
+    ->get();
+
+    ?>
+
+    c. whereIn / whereNotIn
+
+    <?php
+
+    $users = DB::table('users')
+    ->whereIn('id',[1,2,3])
+    ->get();
+
+    $users = DB::table('users')
+    ->whereNotIn('id', [1, 2, 3])
+    ->get();
+
+    ?>
+
+    d. whereNull / whereNotNull
+
+    <?php
+
+    $users = DB::table('users')
+    ->whereNull('updated_at')
+    ->get();
+
+    ?>
+
+    e. whereDate / whereMonth / whereDay / whereYear
+
+    <?php
+
+    $users = DB::table('users')
+    ->whereDate('created_at', '2016-12-31')
+    ->get();
+
+    $users = DB::table('users')
+    ->whereMonth('created_at', '12')
+    ->get();
+
+    $users = DB::table('users')
+    ->whereDay('created_at', '31')
+    ->get();
+
+    $users = DB::table('users')
+    ->whereYear('created_at', '2016')
+    ->get();
+
+    ?>
+
+    f. whereColumn
+
+    <?php
+
+    $users = DB::table('users')
+    ->whereColumn('first_name', 'last_name')
+    ->get();
+
+    OR
+
+    $users = DB::table('users')
+    ->whereColumn('updated_at', '>', 'created_at')
+    ->get();
+
+    OR
+
+    $users = DB::table('users')
+    ->whereColumn([
+        ['first_name', '=', 'last_name'],
+        ['updated_at', '>', 'created_at']
+        ])->get();
+
+        ?>
+
+        <!-- How to reproduce the following query in Laravel -->
+
+        select * from users where name = 'John' or (votes > 100 and title <> 'Admin')
+
+        <?php
+
+        DB::table('users')
+        ->where('name','=','John')
+        ->orWhere(function ($query)
+        {
+            $query->where('votes','>',100)
+            ->where('title','>','Admin')
+        }
+        )->get();
+
+        ?>
+
+        <!-- How to sort the results of a column in a particular order -->
+
+        1. orderBy
+        - allows one to sort the result of the query by a given column
+        - the first argument should be the column we wish to sort by
+        - the second column controls the direction of the sort
+
+        <?php
+
+        $users = DB::table('users')
+        ->orderBy('name', 'desc')
+        ->get();
+
+        ?>
+
+        2. lastest/oldest
+        - These two methods allow one to easily order results by date
+        - By default, result be ordered by "created_at" column
+
+        <?php
+
+        $user = DB::table('users')
+        ->latest()
+        ->first();
+
+        ?>
+
+        3. inRandomOrder
+
+        <?php
+
+        $randomUser = DB::table('users')
+        ->inRandomOrder()
+        ->first();
+
+        ?>
+
+        4. groupBy / having
+
+        <?php
+
+        $users = DB::table('users')
+        ->groupBy('account_id')
+        ->having('account_id', '>', 100)
+        ->get();
+
+        ?>
+
+        5. skip/take
+        - To limit the number of results returned from the query or to skip a given number of results in the query
+
+        <?php
+
+        $users = DB::table('users')->skip(10)->take(5)->get();
+
+        OR
+
+        $users = DB::table('users')->offset(10)->limit(5)->get();
+
+        ?>
+
+        <!-- Conditional clauses -->
+
+        - Sometimes we may want clauses to apply to a query only when something else is true
+
+        <?php
+
+        $role = $request->input('role');
+
+        $users = DB::table('users')
+        ->when($role, function ($query) use ($role) {
+            return $query->where('role_id', $role);
+        })
+        ->get();
+
+        ?>
+
+        ** The "when" method only executes the given Closue when the first parameter is "true"
+
+        <!-- Insert queries -->
+
+        <?php
+
+        DB::table('users')->insert(['email'=>'jatins368@gmail.com','votes'=>0]);
+
+        OR
+
+        DB::table('users')->insert([
+            ['email' => 'taylor@example.com', 'votes' => 0],
+            ['email' => 'dayle@example.com', 'votes' => 0]
+        ]);
+
+        ?>
+
+        <!-- How to retrieve the Autoincremented ID  when a record is inserted  -->
+
+        <?php
+
+        $id = DB::table('users')->insertGetId(['email'=>'jatins368@gmail.com','votes'=>0])
+
+        ?>
+
+        <!-- How to write an update query -->
+
+        <?php
+
+        DB::table('users')
+        ->where('id', 1)
+        ->update(['votes' => 1]);
+
+        ?>
+
+        <!-- How to increment or decrement the value of a particular column -->
+
+        <?php
+
+        DB::table('users')->increment('votes');
+
+        DB::table('users')->increment('votes', 5);
+
+        DB::table('users')->decrement('votes');
+
+        DB::table('users')->decrement('votes', 5);
+
+        ?>
+
+        <!-- How to delete a particular record  -->
+
+        <?php
+
+        DB::table('users')->delete();
+
+        DB::table('users')->where('votes', '>', 100)->delete();
+
+        ?>
+
+        <!-- How to delete an entire table and reset the auto-incrementing to 0 -->
+
+        <?php
+
+        DB::table('users')->truncate();
+
+         ?>

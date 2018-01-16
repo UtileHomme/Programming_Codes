@@ -443,10 +443,10 @@ public function handle($request, Closure $next)
         //if the role is editor , proceed with the requested page , else
         if($role->name == 'editor')
         {
-                    return $next($request);
+            return $next($request);
         }
     }
-        return redirect('/')
+    return redirect('/')
 }
 
 - Inside "Kernel.php", register the middleware
@@ -464,3 +464,266 @@ $this->middleware('editor');
 $this->middleware('editor',['except'=>'test']);
 
 ?>
+
+
+<!-- All about authentiction concepts -->
+
+<!-- How to get the default authentication system -->
+- Run "php artisan make:auth" and "php artisan migrate"
+
+- The authentication configuration file is located at "config/auth.php"
+
+- The authentication facilities are made up of "guards" and "providers".
+- Guards define how users are authenticated at each request
+
+Eg-
+Laravel ships with a "session" guard which maintains state using session storage and cookies
+
+- Providers define how users are retrieved from the persistent storage
+- This is done using Eloquent and the database query builder
+
+<!-- How to retrieve the Authentication User details -->
+
+<?php
+
+use Illuminate\Support\Facades\Auth;
+
+// Get the currently authenticated user...
+$user = Auth::user();
+
+// Get the currently authenticated user's ID...
+$id = Auth::id();
+
+?>
+
+<!-- How to check if the current user is Authenticated -->
+
+<?php
+
+use Illuminate\Support\Facades\Auth;
+
+if (Auth::check()) {
+    // The user is logged in...
+}
+
+?>
+
+<!-- How to protect Routes -->
+
+- It will allow only authenticated users to have access to a given route
+
+<?php
+
+Route::get('profile', function () {
+    // Only authenticated users may enter...
+})->middleware('auth');
+
+?>
+
+OR
+
+<?php
+
+public function __construct()
+{
+    $this->middleware('auth');
+}
+
+?>
+
+<!-- How to specify a guard when authenticating a user -->
+
+<?php
+
+public function __construct()
+{
+    $this->middleware('auth:api');
+}
+
+?>
+
+<!-- How to Manually Authenticate Users -->
+
+<?php
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Auth;
+
+class LoginController extends Controller
+{
+    /**
+    * Handle an authentication attempt.
+    *
+    * @return Response
+    */
+    public function authenticate()
+    {
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            // Authentication passed...
+            return redirect()->intended('dashboard');
+        }
+    }
+}
+
+?>
+
+- The "attempt" method accepts an array of key/value pairs as its first argument
+- The values in the array will be used to find the user in the db
+
+- The "attempt" method will return "true" if authentication is successful
+- Else, it will return "false"
+
+- The "intended" method will redirect the user to the URL they were attempting to access before being intercepted by the authentication
+middleware
+
+** We can specify extra conditions as well
+
+<?php
+
+if (Auth::attempt(['email' => $email, 'password' => $password, 'active' => 1])) {
+    // The user is active, not suspended, and exists.
+}
+
+ ?>
+
+<!-- How to access specify guard instances -->
+
+- We can specify a guard instance we would like to utilize using the "guard" method on the "Auth" facade
+- this allows us to manage authentication for separate parts of our application using entirely separate authenticatable models or user tables
+
+<?php
+
+if (Auth::guard('admin')->attempt($credentials)) {
+    //
+}
+
+ ?>
+
+<!-- How to logout any users -->
+
+<?php
+
+Auth::logout();
+
+ ?>
+
+<!-- How to remember users -->
+
+<?php
+
+if (Auth::attempt(['email' => $email, 'password' => $password], $remember)) {
+    // The user is being remembered...
+}
+
+ ?>
+
+
+- To determine if the user was authenticated using the "remember me" cookie, use
+
+<?php
+
+if (Auth::viaRemember()) {
+    //
+}
+
+ ?>
+
+<!-- How to login an existing user -->
+
+<?php
+
+Auth::login($user);
+
+// Login and "remember" the given user...
+Auth::login($user, true);
+
+ ?>
+
+- With the guard instance
+
+<?php
+
+Auth::guard('admin')->login($user);
+
+ ?>
+
+<!-- How to login a user by using the ID -->
+
+<?php
+
+Auth::loginUsingId(1);
+
+// Login and "remember" the given user...
+Auth::loginUsingId(1, true);
+
+ ?>
+
+<!-- How to authenticate the user only once -->
+
+<?php
+
+if (Auth::once($credentials)) {
+    //
+}
+
+ ?>
+
+- this may be required when we wish to log the user for a single request
+- No sessions or cookies will be utilized, which means this method may be helpful when building a stateless API
+
+<!-- How to use Hashing -->
+
+- The "Hash" facade provides secure Bcrypt hashing for storing user passwords
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
+
+class UpdatePasswordController extends Controller
+{
+   /**
+    * Update the password for the user.
+    *
+    * @param  Request  $request
+    * @return Response
+    */
+   public function update(Request $request)
+   {
+       // Validate the new password length...
+
+       $request->user()->fill([
+           'password' => Hash::make($request->newPassword)
+       ])->save();
+   }
+}
+
+?>
+
+<!-- How to verify a password against a Hash -->
+
+- The "check" method allows you to verify that a given plain-text string corresponds to a given hash
+
+<?php
+
+if (Hash::check('plain-text', $hashedPassword)) {
+    // The passwords match...
+}
+
+ ?>
+
+ <!-- How to check whether the password needs to be rehashed -->
+
+ <?php
+
+ if (Hash::needsRehash($hashed)) {
+     $hashed = Hash::make('plain-text');
+ }
+
+  ?>
