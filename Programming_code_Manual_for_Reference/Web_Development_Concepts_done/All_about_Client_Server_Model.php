@@ -54,7 +54,7 @@ Eg - Javascript, HTML, CSS
 
 a. Browswer cache
 - this is the first place we go
-- Each browswer caches frequently requested Domanins.
+- Each browswer caches frequently requested Domains.
 - these domain caches are present for a fixed duration (2 -30 min)
 
 b. OS cache
@@ -87,7 +87,7 @@ Connection: Keep-Alive
 Host: facebook.com
 Cookie: datr=1265876274-[...]; locale=en_US; lsd=WW[...]; c_user=2101[...]
 
-- The User-Agent identifies the Browswer.
+- The User-Agent identifies the Browser.
 - The Accept and Accept-Encoding identify what kind of responses are expected.
 - The Connection header asks the server to keep the TCP connection open for further requests
 
@@ -128,7 +128,7 @@ Date: Fri, 12 Feb 2010 09:05:55 GMT
 
 5. The browser begins rendering the HTML
 
-6. The browswer sends requests for objects embedded in HTML
+6. The browser sends requests for objects embedded in HTML
 
 - As the browser renders the HTML, it will notice tags that require fetching of other URLs.
 - The browser will send a GET request to retrieve each of these files.

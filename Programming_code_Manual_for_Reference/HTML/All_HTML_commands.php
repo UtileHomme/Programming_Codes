@@ -810,5 +810,3 @@ table#alter th {
                                                 - mentions that the field is needed before submitting
 
                                                 Username: <input type="text" name="usrname" required>
-
-                                                

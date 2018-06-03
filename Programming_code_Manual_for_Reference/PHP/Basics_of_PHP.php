@@ -307,7 +307,7 @@ array('Pizza', 'Ice cream') );
 
 //This is how it looks
 
-0                1              2
+                       0                1              2
 Healthy       |  Salad  | Vegetables | Pasta
 Unhealty     |  Pizaa  |  Ice Cream
 
@@ -1060,4 +1060,3 @@ Content-Type: text/html; charset=utf-8
         <!-- POST -->
         - sends data to a specific URI and expects the resource at that URI to handle the request
         - the webserver can at this point determine what to do with the data in the context of the specified resource
-        

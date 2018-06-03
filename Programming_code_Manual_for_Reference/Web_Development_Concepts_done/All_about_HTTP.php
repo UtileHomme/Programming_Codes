@@ -33,33 +33,33 @@ www.domain.com = host
 - The client tells the host which actions to perform. They are as follows:
 
 a. GET
-  - fetch an existing resource
-  - The URL contains all the necessary information the server needs to locate and return the resource
+- fetch an existing resource
+- The URL contains all the necessary information the server needs to locate and return the resource
 
 b. POST
- - create a new resource
- - POST requests usually carry a payload that specifies the data for the new resource
+- create a new resource
+- POST requests usually carry a payload that specifies the data for the new resource
 
 c. PUT
-  - update an existing resource
-  - the payload may contain the updated data for the resource
+- update an existing resource
+- the payload may contain the updated data for the resource
 
 d. DELETE
-  - delete the existing resource
+- delete the existing resource
 
 * PUT and DELETE are considered specialized versions of the POST verb
 
 e. HEAD
-  - is similar to GET but without a message body
-  - is used to retrieve the server headers for a particular resource, generally to check if the resource has changed via timestamps
+- is similar to GET but without a message body
+- is used to retrieve the server headers for a particular resource, generally to check if the resource has changed via timestamps
 
-  <!-- What does a Typical HTTP message look like -->
+<!-- What does a Typical HTTP message look like -->
 
-  http://imgur.com/a/o9hDo
+http://imgur.com/a/o9hDo
 
-  1. Start line
-  2. Headers
-  3. Body
+1. Start line
+2. Headers
+3. Body
 
 -  The information in each section depends on the kind of HTTP message ,i.e., it's a request or a response.
 - They all contain plain text, unless the body contains binary data
@@ -69,95 +69,96 @@ e. HEAD
 http://imgur.com/a/VsILG
 
 1. Request message
-    - Start line contains
-        - the Method
-        - the URI
-        - the HTTP version
+- Start line contains
+- the Method
+- the URI
+- the HTTP version
 
-    Eg. - GET /products/myproducts.html HTTP/1.0
+Eg. - GET /products/myproducts.html HTTP/1.0
 
-    - Headers contain named value pairs
+- Headers contain named value pairs
 
-    Eg - Host :: www.website.com
-            Accept: text/html
-            Accept-language: en-us
+Eg - Host :: www.website.com
+Accept: text/html
+Accept-language: en-us
 
-    ** Methods tells the server what to do
-    ** URI is a set of readable characters to locate the resources we are requesting from the server
-    ** Headers tells about what type of file, in what format, from where etc.
+** Methods tells the server what to do
+** URI is a set of readable characters to locate the resources we are requesting from the server
+** Headers tells about what type of file, in what format, from where etc.
 
 2. Response message
-            - Http version
+- Http version
 
-            -Status Codes
-                - gives response depending on the request from the server
+-Status Codes
+- gives response depending on the request from the server
 
 <!-- What are HTTP Status Codes -->
+
 
 - They tell the client how to interpret the server response
 
 a. 1xx. Informational Messages
 
-  - is present only in HTTP/1.1
-  - The server sends a "Expect: 100-continue" message, telling the client to contiue sending the remainder of the request
-    or to ignore if it has already sent it.
+- is present only in HTTP/1.1
+- The server sends a "Expect: 100-continue" message, telling the client to contiue sending the remainder of the request
+or to ignore if it has already sent it.
 
 b. 2xx. Successful
 
-  - This tells the client that the request was successfully processed.
-  - For the GET request, the server sends the resource in the message body itself.
+- This tells the client that the request was successfully processed.
+- For the GET request, the server sends the resource in the message body itself.
 
-  Some Codes are:
+Some Codes are:
 
-  1. 202 Accepted:
-    - the request was accepted but may not include the resource in the response.
+1. 202 Accepted:
+- the request was accepted but may not include the resource in the response.
 
-  2. 204 No Content:
-    - There is no message body in the response
+2. 204 No Content:
+- There is no message body in the response
 
-  3. 205 Reset Content:
-    - indicates to the client to reset its document view.
+3. 205 Reset Content:
+- indicates to the client to reset its document view.
 
 c. 3xx. Redirection
 
-  - This requires the client to take additional action.
+- This requires the client to take additional action.
 
-  Some Codes are:
+Some Codes are:
 
-  1. 301 Moved Permanently:
-    - The resource is now located at a new URL
+1. 301 Moved Permanently:
+- The resource is now located at a new URL
 
-  2. 303 See other:
-    - The resource is located at a new URL
-    - The 'Location' response header contains the temporary URL
+2. 303 See other:
+- The resource is located at a new URL
+- The 'Location' response header contains the temporary URL
 
 d. 4xx. Client Error
 
-  - These codes are used when the server thinks that the client is at fault, either by requesting an invalid resource
-    or making a bad request.
+- These codes are used when the server thinks that the client is at fault, either by requesting an invalid resource
+or making a bad request.
 
-  Some Codes are :
+Some Codes are :
 
-  1. 400 Bad Request:
-    - The request was malformed
+1. 400 Bad Request:
+- The request was malformed
 
-  2. 401 Unauthorized:
-    - The request required authentication
-    - The 'Authentication' header needs to have the credentials
+2. 401 Unauthorized:
+- The request required authentication
+- The 'Authentication' header needs to have the credentials
 
-  3. 403 Forbidden:
-    - Server has denied access to the server
+3. 403 Forbidden:
+- Server has denied access to the server
 
 e. 5xx. Server Error
 
 - These codes indicate a server failure while processing the request
 
-  Some Codes are :
+Some Codes are :
 
-  1. 500 Internal Server Error
+1. 500 Internal Server Error
 
-  2. 501 Not Implemented:
-    - The server doesn't support the request functionality
+2. 501 Not Implemented:
+- The server doesn't support the request functionality
 
 <!-- How a typical request and response looks like -->
 
@@ -188,9 +189,9 @@ some degree of statefulness
 
 - Sessions are implemented using cookies. The server hands over the browser a cookie with the session ID and the browser hands over the
 same cookies with each request until the cookie expires or is otherwise forgotten
-   - Some cookies(session cookies) are forgotten as soon as the browswer closes
+- Some cookies(session cookies) are forgotten as soon as the browser closes
 
-  <!-- What is a cookie -->
+<!-- What is a cookie -->
 - it is like a bread crumb trail on the internet
 - saves user preferences for a particular website
 - only the website for which the cookie was saved can used it again
@@ -200,7 +201,7 @@ same cookies with each request until the cookie expires or is otherwise forgotte
 - they monitor the activity of the user
 
 <!-- Analogy -->
-  - subtitle language selection on subscene
+- subtitle language selection on subscene
 
 <!-- What does TCP do -->
 
@@ -218,7 +219,7 @@ Eg - Content type  -> xml / pdf/ json (Request header)
 
 - To avoid any person from getting access to any secure data
 - HTTPS = HTTP + SSL
-    - SSL stands for Secure Socket Layer
+- SSL stands for Secure Socket Layer
 
 - Encryption and Decryption Algorithms are used on the data
-    - the converted data is called "cipher" data
+- the converted data is called "cipher" data

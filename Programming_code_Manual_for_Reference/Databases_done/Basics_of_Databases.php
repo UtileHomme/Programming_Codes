@@ -25,7 +25,7 @@ of data
 
 5. Redundancy
 - Duplication of data is a big problem
-- Will also call accuracy problems
+- Will also cause accuracy problems
 
 ** Using DBs we can track who did what
 ** Backup and recovery is possible
@@ -116,7 +116,7 @@ c. Rollback
 - is used to remove some or all rows from the table
 - we can perform a COMMIT or ROLLBACK to make the change permanent or undo it
 - this operation causes all DELETE triggers on the table to fire
-- we can use "WHERE" with it 
+- we can use "WHERE" with it
 
 <!-- Truncate command -->
 - removes all rows from the table

@@ -17,11 +17,11 @@ DROP DATABASE testDB;
 
 // How to create a new table
 CREATE TABLE Persons (
-    PersonID int,
-    LastName varchar(255),
-    FirstName varchar(255),
-    Address varchar(255),
-    City varchar(255)
+  PersonID int,
+  LastName varchar(255),
+  FirstName varchar(255),
+  Address varchar(255),
+  City varchar(255)
 );
 
 // How to drop a table (along with the data in it)
@@ -73,10 +73,10 @@ INDEX - Used to create and retrieve data from the database very quickly
 // How to put "NOT NULL" constraint on a column
 
 CREATE TABLE Persons (
-    ID int NOT NULL,
-    LastName varchar(255) NOT NULL,
-    FirstName varchar(255) NOT NULL,
-    Age int
+  ID int NOT NULL,
+  LastName varchar(255) NOT NULL,
+  FirstName varchar(255) NOT NULL,
+  Age int
 );
 
 // What is a UNIQUE constraint
@@ -84,11 +84,11 @@ CREATE TABLE Persons (
 - we can have only one "PRIMARY KEY" but many "UNIQUE" columns in a table
 
 CREATE TABLE Persons (
-    ID int NOT NULL,
-    LastName varchar(255) NOT NULL,
-    FirstName varchar(255),
-    Age int,
-    UNIQUE (ID)
+  ID int NOT NULL,
+  LastName varchar(255) NOT NULL,
+  FirstName varchar(255),
+  Age int,
+  UNIQUE (ID)
 );
 
 //using ALTER
@@ -102,11 +102,11 @@ DROP INDEX UC_Person;
 // How to add a "PRIMARY KEY" constraint
 
 CREATE TABLE Persons (
-    ID int NOT NULL,
-    LastName varchar(255) NOT NULL,
-    FirstName varchar(255),
-    Age int,
-    PRIMARY KEY (ID)
+  ID int NOT NULL,
+  LastName varchar(255) NOT NULL,
+  FirstName varchar(255),
+  Age int,
+  PRIMARY KEY (ID)
 );
 
 //using ALTER
@@ -123,11 +123,11 @@ DROP PRIMARY KEY;
 Eg -
 
 CREATE TABLE Orders (
-    OrderID int NOT NULL,
-    OrderNumber int NOT NULL,
-    PersonID int,
-    PRIMARY KEY (OrderID),
-    FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
+  OrderID int NOT NULL,
+  OrderNumber int NOT NULL,
+  PersonID int,
+  PRIMARY KEY (OrderID),
+  FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
 );
 
 //using ALTER
@@ -145,11 +145,11 @@ DROP FOREIGN KEY FK_PersonOrder;
 Eg -
 
 CREATE TABLE Persons (
-    ID int NOT NULL,
-    LastName varchar(255) NOT NULL,
-    FirstName varchar(255),
-    Age int,
-    CHECK (Age>=18)
+  ID int NOT NULL,
+  LastName varchar(255) NOT NULL,
+  FirstName varchar(255),
+  Age int,
+  CHECK (Age>=18)
 );
 
 //using ALTER
@@ -163,11 +163,11 @@ DROP CHECK CHK_PersonAge;
 // How to use "DEFAULT" constraint
 
 CREATE TABLE Persons (
-    ID int NOT NULL,
-    LastName varchar(255) NOT NULL,
-    FirstName varchar(255),
-    Age int,
-    City varchar(255) DEFAULT 'Sandnes'
+  ID int NOT NULL,
+  LastName varchar(255) NOT NULL,
+  FirstName varchar(255),
+  Age int,
+  City varchar(255) DEFAULT 'Sandnes'
 );
 
 //using ALTER
@@ -181,7 +181,7 @@ ALTER City DROP DEFAULT;
 // What is the use of "INDEX" in queries
 - they are used to retrieve data from the db very fast
 
-** Updating the table with indexes takes more ttime than updating a table without it
+** Updating the table with indexes takes more time than updating a table without it
 - create indexes only when we frequently want to search for something
 
 //creating index on a combination of columns
@@ -194,11 +194,11 @@ DROP INDEX index_name;
 
 // How to set "AUTO_INCREMENT" on a particular column
 CREATE TABLE Persons (
-    ID int NOT NULL AUTO_INCREMENT,
-    LastName varchar(255) NOT NULL,
-    FirstName varchar(255),
-    Age int,
-    PRIMARY KEY (ID)
+  ID int NOT NULL AUTO_INCREMENT,
+  LastName varchar(255) NOT NULL,
+  FirstName varchar(255),
+  Age int,
+  PRIMARY KEY (ID)
 );
 
 //how to alter the starting value of "Auto Increment"

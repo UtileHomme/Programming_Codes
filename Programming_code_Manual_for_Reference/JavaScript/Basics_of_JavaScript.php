@@ -4,7 +4,7 @@
 - it is used to program the "behaviour" of the webpages
 
 1. It is a high level language
-  - doesn't need to know the suble details of the underlying computer
+  - doesn't need to know the subtle details of the underlying computer
   - we don't have to manage memory, the processor etc.
 
 2. It is a dynamic language

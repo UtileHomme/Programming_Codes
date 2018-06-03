@@ -121,8 +121,8 @@ class Animal implements Singable{
 	}
 
 	// 2. We will override this method in the subclass
-	function run(){
-
+	function run()
+	{
 
 		echo $this->name . " runs<br />";
 
