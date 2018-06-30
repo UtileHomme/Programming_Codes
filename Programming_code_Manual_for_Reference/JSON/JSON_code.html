@@ -1,0 +1,68 @@
+<!-- Reference - https://www.youtube.com/watch?v=wI1CWzNtE-M -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <ul id="people">
+
+  </ul>
+
+  <script type="text/javascript">
+
+  var person = {
+    name: "Brad",
+    age: 35,
+    address: {
+      street:"5 main street",
+      city: "Boston"
+    },
+    children:["Brianna", "Nicholas"]
+  }
+
+  //converting object to json
+  person = JSON.stringify(person);
+
+  //converting json to object
+  person = JSON.parse(person);
+
+  console.log(person);
+
+  console.log(person.children[0]);
+
+  var people = [
+    {
+      name:"Brad",
+      age: 35
+    },
+    {
+      name:"John",
+      age: 40
+    },
+    {
+      name:"Sarah",
+      age: 25
+    },
+  ]
+
+  console.log(people[1].age);
+
+  var output = '';
+  for(var i=0;i<people.length;i++)
+  {
+    // console.log(people[i].name)
+    output += '<li>'+people[i].name+'</li>'
+  }
+
+  document.getElementById('people').innerHTML = output;
+  </script>
+
+</body>
+</html>

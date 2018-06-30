@@ -15,7 +15,7 @@ In case of relational databases, a relationship exists between different aspects
 ** NoSQL allows you to structure data but they don't require it upfront
 - one can store data even though there isn't a logical category for it yet
 
-** In the SQL case, whenever we receive some data from somewhere, we have to either change the data to suite our database model or we have to change the database model to suit our data
+** In the SQL case, whenever we receive some data from somewhere, we have to either change the data to suit our database model or we have to change the database model to suit our data
 - this takes a lot of discipline and effort
 
 ** In case of NoSQL, we need not categorize the data beforehand; we can let it sit somewhere and categorize it later

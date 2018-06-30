@@ -53,6 +53,9 @@ e. HEAD
 - is similar to GET but without a message body
 - is used to retrieve the server headers for a particular resource, generally to check if the resource has changed via timestamps
 
+f. PATCH
+- updates partial resources
+
 <!-- What does a Typical HTTP message look like -->
 
 http://imgur.com/a/o9hDo

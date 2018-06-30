@@ -60,7 +60,13 @@ Branch and Student info are segregated in the above database structure
 
 - A table is said to be in First Normal Form if every cell contains atomic value
 - There should not be more than one value in a particular column
-  
+
 <!-- Second Normal Form -->
 
 <!-- Reference - https://www.youtube.com/watch?v=80CcB9_HSxU&list=PLmXKhU9FNesR1rSES7oLdJaNFgmuj0SYV&index=17 -->
+
+<!-- How to convert into 2nd Normal Form -->
+
+<!-- Reference - https://www.youtube.com/watch?v=Wx5CzybyLXA&list=PLmXKhU9FNesR1rSES7oLdJaNFgmuj0SYV&index=19&t=0s -->
+
+<!-- Reference - https://www.youtube.com/watch?v=yIN6k57OB3U&list=PLmXKhU9FNesR1rSES7oLdJaNFgmuj0SYV&index=20&t=0s -->
