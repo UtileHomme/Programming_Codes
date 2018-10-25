@@ -313,3 +313,71 @@ db.employees.find({}, {"FirstName":1, "EmpNo":1, "_id":0}).pretty().sort({"First
 <!-- How to sort in the descending order -->
 
 db.employees.find({}, {"FirstName":1, "EmpNo":1, "_id":0}).pretty().sort({"FirstName":-1})
+
+<!-- https://www.youtube.com/watch?v=JJyOFoMHkBo&t=0s&list=PLC3y8-rFHvwh11bWtwm3_qKvo46uDmaal&index=13 -->
+
+<!-- How to create an index in MongoDB -->
+
+db.employees.ensureIndex({"Email":1})
+
+<!-- How to check the existing indexes -->
+
+db.employees.getIndexes()
+
+<!-- How to drop indexes -->
+
+db.employees.dropIndex({"Email": 1})
+
+** The benefit of indexes is that it reduces the querying process to fraction of a second
+** Create index of fields that might be unique e.g. - Username, Email Id
+
+<!-- https://www.youtube.com/watch?v=zcN-rM3hgrw&t=0s&list=PLC3y8-rFHvwh11bWtwm3_qKvo46uDmaal&index=14 -->
+
+** Aggregation allows one to perform querys on a set of documents and get a single result out of them
+
+<!-- How to find the total number of female and male employees -->
+
+db.employees.aggregate([{$group: {_id: "$Gender", Sum: {$sum:1}}}])
+
+** group: Grouping is done on the basis of gender
+** Sum: Any word or label
+** $sum: This is to be set as 1 so that is displayed
+
+<!-- How to find the maximum age of the employees -->
+
+db.employees.aggregate([{$group: {_id: "$Gender", MaxAge: {$max:"$Age"}}}])
+
+** $max: since we wish to use the "max" property
+** $age: the document on which the "max" property is to be applied
+
+<!-- How to find minimum age -->
+
+db.employees.aggregate([{$group: {_id: "$Gender", MinAge: {$min:"$Age"}}}])
+
+<!-- https://www.youtube.com/watch?v=CHNB38MAvKY&t=0s&list=PLC3y8-rFHvwh11bWtwm3_qKvo46uDmaal&index=15 -->
+
+<!-- How to create a backup for mongodb db -->
+
+mongodump
+
+** a folder "dump" will be created in which all backups will be present
+
+<!-- How to restore the backup -->
+
+- Go to the particular path in which the backup was originally created and type "mongorestore"
+
+<!-- How to create a backup for a single db -->
+
+mongodump --db "dbname"
+
+<!-- How to restore a single database -->
+
+mongorestore --db company dump/company
+
+<!-- How to create backup for only a single collection from a db -->
+
+mongodump --db newdatabase --collection mycol
+
+<!-- How to restore a single collection -->
+
+mongorestore --db newdatabase --collection mycol dump/newdatabase/mycol.bson
