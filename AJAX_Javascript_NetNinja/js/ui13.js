@@ -1,0 +1,1 @@
+$('#box').resizable({ containment: 'parent'});
