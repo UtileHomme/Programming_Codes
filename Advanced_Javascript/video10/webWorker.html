@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // checks if webworker functionality is available for the browser
+        if (window.Worker)
+        {
+            var myWorker = new Worker("worker.js");
+
+            var message = {
+                addThis: {
+                    num1: 1,
+                    num2: 3
+                }
+            };
+
+            myWorker.postMessage(message);
+
+            myWorker.onmessage = function (e) {
+                console.log(e.data.result);
+            };
+        }
+    </script>
+    <script src="worker.js"></script>
+</body>
+
+</html>
