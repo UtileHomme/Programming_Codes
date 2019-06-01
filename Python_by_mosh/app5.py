@@ -54,3 +54,65 @@
 # starts from index 1 and leaves out the last index
 # print(name[1:-1])
 
+# first = 'John'
+# last = 'Smith'
+#
+# message = first + ' [' + last + '] is a coder'
+
+# Formatted string
+# msg = f'{first} [{last}] is a coder'
+# print(msg)
+# print(message)
+
+# course = 'Python for Beginners'
+
+# print(len(course))
+
+# print(course.upper());
+# print(course.lower());
+
+# Used for finding character indices - returns -1 when the character isn't found
+# print(course.find('o'))
+
+# Used for replacing a substring
+# print(course.replace('Beginners', 'Absolute Beginners'))
+
+# Checks whether a substring exists in a string - returns boolean value
+# print('Python' in course)
+
+# Gives float value
+# print(10/3)
+
+# Gives int value
+# print (10 // 3)
+
+# Gives remainder
+# print(10 % 3)
+
+# Gives exponential value
+# print(10 ** 3)
+
+# For rounding the number
+# x = 2.9
+# print(round(x))
+
+# Returns positive representation of the value
+# print(abs(-2.9))
+
+# for importing math module
+# import math
+
+# print(math.ceil(2.9))
+# print(math.floor(2.9))
+
+# If statements
+
+is_hot = False
+is_cold = True
+
+if is_hot:
+    print("It's a hot day")
+elif is_cold:
+    print("It's cold")
+else:
+    print("Enjoy your day")

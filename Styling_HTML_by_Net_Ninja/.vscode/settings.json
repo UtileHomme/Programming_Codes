@@ -1,0 +1,76 @@
+  {
+        "atomKeymap.promptV3Features": true,
+        "editor.multiCursorModifier": "ctrlCmd",
+        "editor.formatOnPaste": false,
+        "editor.wordWrap": "off",
+        "search.useIgnoreFiles": false,
+        "editor.fontSize": 18,
+        "terminal.integrated.fontSize": 26,
+        "C_Cpp.default.cppStandard": "c++11",
+        "liveServer.settings.donotShowInfoMsg": true,
+        "git.autofetch": true,
+        "editor.renderIndentGuides": false,
+        "code-runner.runInTerminal": false,
+        "files.autoSave": "afterDelay",
+        "emmet.triggerExpansionOnTab": true,
+        "blade.format.enable": true, // if you would like to enable blade format
+         "code-runner.executorMap": {
+             "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+             "cpp": "cd $dir && g++ -std=c++11 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        },
+        "jshint.options": {"esversion": 6},
+        "files.trimTrailingWhitespace": true,
+        "window.zoomLevel": -1,
+        "cSpell.language": "en",
+        "window.titleBarStyle": "custom",
+        "window.openFilesInNewWindow": "off",
+        "workbench.editor.enablePreviewFromQuickOpen": false,
+
+        "beautify.language": {
+            "js": {
+                "type": [
+                    "javascript",
+                    "json",
+                    "jsonc"
+                ],
+                "filename": [
+                    ".jshintrc",
+                    ".jsbeautifyrc"
+                ]
+            },
+            "css": [
+                "css",
+                "scss"
+            ],
+            "html": [
+                "htm",
+                "html",
+                "php",
+                "blade.php"
+            ]
+        },
+        "gitlens.advanced.messages": {
+            "suppressFileNotUnderSourceControlWarning": true
+        },
+        "window.restoreWindows": "all",
+        "[php]": {
+            "editor.formatOnSave": false
+
+        },
+        "[javascript]": {
+            "editor.formatOnSave": true
+        },
+        "[css]": {
+            "editor.formatOnSave": true
+        },
+        "workbench.editor.showTabs": true,
+        "workbench.editor.enablePreview": false,
+        "workbench.colorTheme": "Dracula",
+        "bookmarks.saveBookmarksInProject": true,
+        "terminal.integrated.rendererType": "dom",
+        "editor.suggestSelection": "first",
+        "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+        "html.autoClosingTags": true,
+        "auto-close-tag.SublimeText3Mode": true
+
+    }
