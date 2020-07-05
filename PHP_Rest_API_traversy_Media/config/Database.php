@@ -2,9 +2,9 @@
   class Database {
     // DB Params
     private $host = 'localhost';
-    private $db_name = 'myblog';
+    private $db_name = 'phpAPI_traversymedia';
     private $username = 'root';
-    private $password = 'votreami';
+    private $password = '';
     private $conn;
 
     // DB Connect

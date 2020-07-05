@@ -1,5 +1,6 @@
 <?php
 
+
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
@@ -32,7 +33,6 @@ if($num >0)
     {
         extract($row);
 
-
         $post_item = array(
             'id' => $id,
             'title' => $title,
@@ -42,9 +42,14 @@ if($num >0)
             'category_name' => $category_name
         );
 
+        // var_dump(extract($row));
+        // var_dump($post_item);
+
         //Push to 'data'
         array_push($posts_arr['data'], $post_item);
     }
+
+
 
     //Turn to JSON and output
     echo json_encode($posts_arr);

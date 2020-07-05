@@ -38,6 +38,7 @@ class Category {
         ' . $this->table . '
         WHERE id = ?
         LIMIT 0,1';
+        
         //Prepare statement
         $stmt = $this->conn->prepare($query);
         // Bind ID
