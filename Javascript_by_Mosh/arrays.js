@@ -7,6 +7,6 @@ selectedColors[2] = 1;
 
 console.log(selectedColors[0]);
 
-// Arrayobjects have predefined properties
+// Array objects have predefined properties
 
 console.log(selectedColors.length);
